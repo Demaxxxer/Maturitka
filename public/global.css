@@ -1,1 +1,50 @@
 /* Globální styly */
+:root{
+    --grey: #393E46;
+    --darkgrey: #222831;
+    --yellow: #FFD369;
+    --text: white;
+}
+
+@font-face {
+    font-family: 'fontLOGO' ;
+    src: url('./fontLOGO.otf');
+}
+
+@font-face{
+    font-family: 'roboto';
+    src: url('./roboto.ttf');
+}
+
+
+html, body{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: var(--yellow);
+    font-family: roboto;
+}
+
+.lista1 {
+    position: absolute;
+}
+
+button{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
+    cursor: pointer;
+    outline: none;
+}
+input{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    outline: none;
+    -webkit-appearance: none;
+}

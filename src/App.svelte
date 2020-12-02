@@ -1,12 +1,12 @@
 <script>
-import Prvni from './components/prvni.svelte';
-import Druhy from './components/druhy.svelte';
+import Menu from './components/Menu.svelte';
+import Footer from './components/Footer.svelte';
 </script>
 
 <main>
-Čau z hlavního komponentu
-<Prvni />
-<Druhy />
+
+<Menu />
+<Footer />
 </main>
 
 <style>
