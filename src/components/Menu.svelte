@@ -1,4 +1,9 @@
 <script>
+    let search = '';
+
+    function goFind(e){
+      console.log('Vyheldať: ' + search)
+    }
 
 </script>
 
@@ -8,8 +13,11 @@
             <td class="bagoshop"></td>
             <td class="obal">
                 <div class="vyhledavani">
-                    <input type="text" placeholder="Hledat hry, konzole...">
-                    <button class="hledat">Hledat</button>
+                    <input type="text"
+                        bind:value={search}
+                        on:keyup={e => e.key == 'Enter' && goFind(e)}
+                        placeholder="Hledat hry, konzole...">
+                    <button class="hledat" on:click={e => goFind(e)}>Hledat</button>
                 </div>
             </td>
             <td class="kosik"><button>Košík</button></td>

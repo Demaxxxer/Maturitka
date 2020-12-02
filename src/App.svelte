@@ -1,12 +1,14 @@
 <script>
-import Menu from './components/Menu.svelte';
-import Footer from './components/Footer.svelte';
+//import { Router } from 'svelte-router-spa';
+//import { routes } from './routes';
+
+import Home from './pages/Home.svelte'
 </script>
 
-<main>
 
-<Menu />
-<Footer />
+
+<main>
+<Home />
 </main>
 
 <style>
