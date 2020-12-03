@@ -20,9 +20,10 @@
 
 <style>
 .footer{
-	position: fixed;
+	position: relative;
 	bottom: 0;
 	left: 0;
+	margin-top: 100px;
 	width: 100%;
 	height: 100px;
 	background-color: var(--darkgrey);

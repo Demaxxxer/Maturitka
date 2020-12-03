@@ -10,7 +10,7 @@
 <div class="lista1">
     <table cellspacing="0">
         <tr>
-            <td class="bagoshop"></td>
+            <td class="bagoshop"><button></button></td>
             <td class="obal">
                 <div class="vyhledavani">
                     <input type="text"
@@ -44,10 +44,15 @@
 		padding-left: 5px;
 		width: 20%;
 	}
-	.bagoshop::after{
+	.bagoshop button{
+		background: none;
+		width: 100%;
+		height: 100%;
+	}
+	.bagoshop button::after{
 		content: "BAGOSHOP";
 		font-size: 2.5em;
-		padding: 10px 0  0 5px;
+		padding: 10px 0 0 5px;
 		box-sizing: border-box;
 		font-family: fontLOGO;
 		color: var(--yellow);
@@ -109,9 +114,9 @@
 		background-position: center left;
 		background-size: 25px;
 	}
-	@media only screen and (max-width: 700px){
-		.bagoshop{
-			width: 20%;
+	@media only screen and (max-width: 800px){
+		.bagoshop button{
+			width: 100%;
 			height: 100%;
 			background-size: 50px;
 			background-position: center;
@@ -119,14 +124,16 @@
 			background-image: url('/images/Console.svg');
 			padding: 0 16px;
 		}
-		.bagoshop::after{
+		.bagoshop button::after{
 			content: " ";
 		}
 		.kosik button{
+			width: 80px;
 			font-size: 1rem;
 			background-size: 18px;
 			padding-right: 5px;
-			padding-left: 21px;
+			padding-left: 10px;
+
 		}
 		.lista1{
 			height: 60px;

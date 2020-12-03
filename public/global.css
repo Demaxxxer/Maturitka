@@ -30,12 +30,17 @@ html, body{
     left: 0;
     bottom: 0;
     right: 0;
+    margin: 0;
     background-color: var(--yellow);
     font-family: roboto;
+    min-width: 300px;
 }
 
-.lista1 {
-    position: absolute;
+a{
+    display: block;
+    text-decoration: none;
+    color: black;
+
 }
 
 button{
