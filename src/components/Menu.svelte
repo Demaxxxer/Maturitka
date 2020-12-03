@@ -98,10 +98,11 @@
 		width: 20%;
 	}
 	.kosik button{
+		width: 120px;
 		height: 100%;
 		color: white;
 		font-size: 1.5rem;
-		padding: 4px 5px 0 30px;
+		padding: 4px 0px 0 10px;
 		background: none;
 		background-image: url('/images/Kosik.svg');
 		background-repeat: no-repeat;
@@ -124,7 +125,7 @@
 		.kosik button{
 			font-size: 1rem;
 			background-size: 18px;
-			padding-right: 10px;
+			padding-right: 5px;
 			padding-left: 21px;
 		}
 		.lista1{

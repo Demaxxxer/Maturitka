@@ -26,6 +26,7 @@
 	width: 100%;
 	height: 100px;
 	background-color: var(--darkgrey);
+	border-top: solid 2px var(--lightgrey);
 }
 
 .spodek{
