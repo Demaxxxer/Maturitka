@@ -1,9 +1,7 @@
-import Home from './pages/Home.svelte'
-import NotFound from './pages/NotFound.svelte'
+import Home from './views/Home.svelte'
+import NotFound from './views/NotFound.svelte'
 
-const routes = [
-  { name: '/', component: Home},
-  { name: '*', component: NotFound}
-]
-
-export { routes }
+export default {
+  '/': Home,
+  '*': NotFound
+}

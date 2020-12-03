@@ -26,113 +26,109 @@
 </div>
 
 <style>
-.lista1{
-			 position: fixed;
-			 top: 0;
-			 left: 0;
-			 width: 100%;
-			 height: 100px;
-			 background-color: var(--darkgrey);
-	 }
-
-	 table{
-			 max-width: 1000px;
-			 width: 100%;
-			 height: 100%;
-			 margin: 0 auto;
-	 }
-
-
-	 /*.bagoshop{
-			 box-sizing: border-box;
-			 font-family: fontLOGO;
-			 color: var(--yellow);
-
-	 }*/
-
-	 .bagoshop::after{
-			 content: "BAGOSHOP";
-			 font-size: 3.5em;
-			 padding: 10px 20px 0 0;
-			 box-sizing: border-box;
-			 font-family: fontLOGO;
-			 color: var(--yellow);
-	 }
-
-	 .obal{
-			 width: 100%;
-	 }
-
+	.lista1{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 80px;
+		background-color: var(--darkgrey);
+	}
+	table{
+		max-width: 1000px;
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+	}
+	.bagoshop{
+		padding-left: 5px;
+		width: 20%;
+	}
+	.bagoshop::after{
+		content: "BAGOSHOP";
+		font-size: 2.5em;
+		padding: 10px 0  0 5px;
+		box-sizing: border-box;
+		font-family: fontLOGO;
+		color: var(--yellow);
+	}
+	.obal{
+		width: 60%;
+		max-width: 600px;
+		padding: 0px 15px;
+		box-sizing: border-box;
+	}
 	.vyhledavani{
+		border-bottom: solid 1px white;
 		box-sizing: border-box;
 		width: 100%;
-		padding: 15px 10px 0 0;
+		height: 30px;
+		max-width: 450px;
 		margin: 0 auto;
-		max-width: 300px;
-
 	}
-
 	.hledat{
 		background: none;
-		width: 50px;
+		width: 65px;
+		height: 100%;
 		float: right;
 		text-align: right;
-		border-bottom: solid 1px white;
+		font-size: 1em;
 		color: white;
 		background-image: url('/images/Lupa.svg');
 		background-repeat: no-repeat;
 		background-position: center left;
-		background-size: 11px;
+		background-size: 15px;
 		box-sizing: border-box;
+		padding-left: 15px;
 	}
-
 	.vyhledavani input {
 		box-sizing: border-box;
-		border-bottom: solid 1px white;
 		color: white;
-		padding: 0 10px 0px 2px;
-		width: calc(100% - 50px);
+		padding: 0 5px 0 2px;
+		width: calc(100% - 65px);
+		height: 100%;
 		float: left;
 	}
-
-	 .kosik{
-			 box-sizing: border-box;
+	.vyhledavani input::placeholder{
+		font-size: 1.2em;
 	}
-
-	 .kosik button{
-			 height: 100%;
-			 color: white;
-			 font-size: 1.5rem;
-			 padding: 0 5px 0 25px;
-			 background: none;
-			 background-image: url('/images/Kosik.svg');
-			 background-repeat: no-repeat;
-			 background-position: center left;
-			 background-size: 25px;
-	 }
-
-	 @media only screen and (max-width: 800px){
-			 .bagoshop{
-					 width: 20%;
-					 height: 100%;
-					 background-size: 50px;
-					 background-position: center;
-					 background-repeat: no-repeat;
-					 background-image: url('/images/Console.svg');
-					 padding: 0 16px;
-			 }
-			 .bagoshop::after{
-					 content: " ";
-			 }
-
-			 .kosik{
-					 font-size: 0.6em;
-			 }
-			 /*.kosik button{
-					 background-size: 20px;
-			 }*/
-			 .lista1{
-					 height: 60px;
-			 }
-	 }
+	.kosik{
+		box-sizing: border-box;
+		padding-left: 40px;
+		width: 20%;
+	}
+	.kosik button{
+		height: 100%;
+		color: white;
+		font-size: 1.5rem;
+		padding: 4px 5px 0 30px;
+		background: none;
+		background-image: url('/images/Kosik.svg');
+		background-repeat: no-repeat;
+		background-position: center left;
+		background-size: 25px;
+	}
+	@media only screen and (max-width: 700px){
+		.bagoshop{
+			width: 20%;
+			height: 100%;
+			background-size: 50px;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-image: url('/images/Console.svg');
+			padding: 0 16px;
+		}
+		.bagoshop::after{
+			content: " ";
+		}
+		.kosik button{
+			font-size: 1rem;
+			background-size: 18px;
+			padding-right: 10px;
+			padding-left: 21px;
+		}
+		.lista1{
+			height: 60px;
+		}
+	}
 </style>

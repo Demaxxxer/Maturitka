@@ -4,6 +4,8 @@
     --darkgrey: #222831;
     --yellow: #FFD369;
     --text: white;
+    --lightgrey: #F3F3F3;
+    --darkergrey: #D2D2D2;
 }
 
 @font-face {
@@ -14,6 +16,11 @@
 @font-face{
     font-family: 'roboto';
     src: url('./roboto.ttf');
+}
+
+@font-face{
+    font-family: 'robotothic';
+    src: url('./robotolista.ttf');
 }
 
 
