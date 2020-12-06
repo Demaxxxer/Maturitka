@@ -5,9 +5,7 @@
 </script>
 
 <main>
-<Menu />
-<Kategorie />
-<Footer />
+
 </main>
 
 <style>

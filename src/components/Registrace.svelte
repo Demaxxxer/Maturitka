@@ -2,7 +2,7 @@
 
 </script>
 
-<div class="pozadi_registrace">
+<div class="pozadi">
     <form>
         <p>Nová registrace</p>
         <p>Registrační údaje</p>
@@ -51,5 +51,8 @@
 </div>
 
 <style>
+    input{
+        background: white;
 
+    }
 </style>

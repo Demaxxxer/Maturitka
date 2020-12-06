@@ -1,13 +1,23 @@
 /* Globální styly */
 :root{
+    
     --grey: #393E46;
     --darkgrey: #222831;
     --yellow: #FFD369;
     --text: white;
     --lightgrey: #F3F3F3;
     --darkergrey: #D2D2D2;
+    --menuHeight:  120px;
+    --footerHeight: 100px;
+    --sumasumarum: calc( var(--footerHeight) + var(--menuHeight));
 }
+@media only screen and (max-width: 800px){
+    :root{
+        --menuHeight: 90px;
 
+    }
+
+}
 @font-face {
     font-family: 'fontLOGO' ;
     src: url('./fontLOGO.otf');
@@ -34,6 +44,7 @@ html, body{
     background-color: var(--yellow);
     font-family: roboto;
     min-width: 300px;
+    overflow: hidden;
 }
 
 a{

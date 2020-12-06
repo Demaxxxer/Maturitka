@@ -23,7 +23,7 @@
 	position: relative;
 	bottom: 0;
 	left: 0;
-	margin-top: 100px;
+	box-sizing: border-box;
 	width: 100%;
 	height: 100px;
 	background-color: var(--darkgrey);
@@ -69,7 +69,7 @@
 }
 
 .informace{
-	padding: 8px 0 0 30px;
+	padding: 8px 0 0 20px;
 	box-sizing: border-box;
 	float:left;
 	width: 50%;
@@ -82,7 +82,7 @@
 .copyright{
 	text-align: center;
 	float: left;
-	font-size: 0.7em;
+	font-size: 0.6em;
 	width: 100%;
 	height: 30%;
 	box-sizing: border-box;

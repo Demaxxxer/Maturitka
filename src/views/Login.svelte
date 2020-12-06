@@ -1,20 +1,11 @@
 <script>
-    let search = '';
-
-    function goFind(e){
-      console.log('Vyheldať: ' + search)
-    }
-
+	import Registrace from '../components/Registrace.svelte'
 </script>
 <main>
-    <div class="pozadi">
-        
-    </div>
+	<Registrace/>
 </main>
 <style>
-    .pozadi{
-        
-    }
+	
 	/*@media only screen and (max-width: 800px){
 		.bagoshop button{
 			width: 100%;
