@@ -36,7 +36,7 @@
             <br><br>
             <label for="ulice">Ulice a č. p. *</label><br>
             <input type="text" id="ulice" name="ulice" required><br><br>
-            <label for="obec">Obec *</label><br>
+            <label for="obec">Obec*</label><br>
             <input type="text" id="obec" name="obec" required><br><br>
             <label for="psc">PSČ *</label><br>
             <input type="number" id="psc" name="psc" required><br><br>
