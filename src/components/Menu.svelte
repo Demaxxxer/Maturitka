@@ -16,8 +16,8 @@
                     <input type="text"
                         bind:value={search}
                         on:keyup={e => e.key == 'Enter' && goFind(e)}
-                        placeholder="Hledat hry, konzole...">
-                    <button class="hledat" on:click={e => goFind(e)}>Hledat</button>
+                        placeholder="Hledat">
+                    <button class="hledat" on:click={e => goFind(e)}></button>
                 </div>
             </td>
             <td class="kosik"><button>Košík</button></td>
@@ -73,7 +73,7 @@
 	}
 	.hledat{
 		background: none;
-		width: 65px;
+		width: 20px;
 		height: 100%;
 		float: right;
 		text-align: right;

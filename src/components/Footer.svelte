@@ -24,10 +24,9 @@
 	bottom: 0;
 	left: 0;
 	box-sizing: border-box;
-	width: 100%;
+	width: 100vw;
 	height: 100px;
 	background-color: var(--darkgrey);
-	border-top: solid 2px var(--lightgrey);
 }
 
 .spodek{
@@ -40,7 +39,7 @@
 
 .logo{
 	position: relative;
-	padding: 30px 2px 0 0;
+	padding-top: 30px;
 	float:left;
 	width: 50%;
 	height: 70%;
@@ -69,12 +68,12 @@
 }
 
 .informace{
-	padding: 8px 0 0 20px;
+	padding: 8px 0 0 10px;
 	box-sizing: border-box;
 	float:left;
 	width: 50%;
 	height: 70%;
-	font-size: 0.8em;
+	font-size: 0.9em;
 	color: white;
 
 }
@@ -82,7 +81,7 @@
 .copyright{
 	text-align: center;
 	float: left;
-	font-size: 0.6em;
+	font-size: 0.7em;
 	width: 100%;
 	height: 30%;
 	box-sizing: border-box;

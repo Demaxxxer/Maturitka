@@ -12,35 +12,19 @@ import Kategorie from './components/Kategorie.svelte';
     <Menu />
     <Kategorie />
     <div class="wrapper">
-        <div class="hero">
-            <Router {routes}/>
-        </div>
-        <Footer />
+        <Router {routes}/>
     </div>
 
+    <Footer />
 </main>
 
 <style>
-    
     .wrapper{
-        position: absolute;
-        top: var(--menuHeight);
-        right: -5px;
-        overflow-y: auto;
+        margin-top: 120px;
         width: 100vw;
-        height: calc(100vh - var(--menuHeight));
+        height: 100%;
+        min-height: calc(100vh - 220px);
     }
 
-    .wrapper::-webkit-scrollbar{
-        //position: absolute;
-    }
-
-    .hero{
-        background: var(--grey);
-        max-width: 1000px;
-        margin: 0 auto;
-        min-height: calc(100vh - var(--sumasumarum));
-        box-sizing: border-box;
-    }
 
 </style>
