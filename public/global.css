@@ -5,8 +5,7 @@
     --darkgrey: #222831;
     --yellow: #FFD369;
     --text: white;
-    --lightgrey: #F3F3F3;
-    --darkergrey: #D2D2D2;
+    --lightgrey: #bababa;
     --menuHeight:  120px;
     --footerHeight: 100px;
     --sumasumarum: calc( var(--footerHeight) + var(--menuHeight));
@@ -30,7 +29,7 @@
 
 @font-face{
     font-family: 'robotothic';
-    src: url('./robotolista.ttf');
+    src: url('./robotobold.ttf');
 }
 
 
@@ -44,13 +43,13 @@ html, body{
     background-color: var(--yellow);
     font-family: roboto;
     min-width: 300px;
-    overflow: hidden;
+
 }
 
 a{
     display: block;
     text-decoration: none;
-    color: black;
+    color:white;
 
 }
 
@@ -61,7 +60,9 @@ button{
     display: block;
     cursor: pointer;
     outline: none;
+    background: none;
 }
+
 input{
     margin: 0;
     padding: 0;
@@ -69,5 +70,5 @@ input{
     border-radius: 0;
     background: none;
     outline: none;
-    -webkit-appearance: none;
+
 }

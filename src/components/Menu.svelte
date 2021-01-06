@@ -10,7 +10,13 @@
 <div class="lista1">
     <table cellspacing="0">
         <tr>
-            <td class="bagoshop"><button></button></td>
+            <td>
+				<div class="bagoshop">
+					<button>
+
+					</button>
+				</div>
+			</td>
             <td class="obal">
                 <div class="vyhledavani">
                     <input type="text"
@@ -20,7 +26,8 @@
                     <button class="hledat" on:click={e => goFind(e)}></button>
                 </div>
             </td>
-            <td class="kosik"><button>Košík</button></td>
+			<td class="kosik"><a href="/#/kosik"><button>Košík</button></a></td>
+			<!--<td class="mezera"><div></div></td>-->
         </tr>
     </table>
 </div>
@@ -28,6 +35,7 @@
 <style>
 	.lista1{
 		position: fixed;
+		z-index: 10;
 		top: 0;
 		left: 0;
 		width: 100%;
@@ -35,23 +43,25 @@
 		background-color: var(--darkgrey);
 	}
 	table{
-		max-width: 1000px;
+		max-width: 1200px;
 		width: 100%;
 		height: 100%;
 		margin: 0 auto;
 	}
 	.bagoshop{
-		padding-left: 5px;
+		margin-left: 10px;
 		width: 20%;
+
 	}
 	.bagoshop button{
 		background: none;
-		width: 100%;
-		height: 100%;
+		width: 210px;
+		height: 37px;
+
 	}
 	.bagoshop button::after{
 		content: "BAGOSHOP";
-		font-size: 2.5em;
+		font-size: 3em;
 		padding: 10px 0 0 5px;
 		box-sizing: border-box;
 		font-family: fontLOGO;
@@ -76,21 +86,18 @@
 		width: 20px;
 		height: 100%;
 		float: right;
-		text-align: right;
-		font-size: 1em;
-		color: white;
 		background-image: url('/images/Lupa.svg');
 		background-repeat: no-repeat;
 		background-position: center left;
 		background-size: 15px;
 		box-sizing: border-box;
-		padding-left: 15px;
+
 	}
 	.vyhledavani input {
 		box-sizing: border-box;
 		color: white;
 		padding: 0 5px 0 2px;
-		width: calc(100% - 65px);
+		width: calc(100% - 30px);
 		height: 100%;
 		float: left;
 	}
@@ -98,22 +105,30 @@
 		font-size: 1.2em;
 	}
 	.kosik{
-		box-sizing: border-box;
-		padding-left: 40px;
-		width: 20%;
+		width: 130px;
+
 	}
-	.kosik button{
-		width: 120px;
-		height: 100%;
-		color: white;
-		font-size: 1.5rem;
-		padding: 4px 0px 0 10px;
-		background: none;
+
+	.kosik a button{
+		height: 30px;
 		background-image: url('/images/Kosik.svg');
 		background-repeat: no-repeat;
-		background-position: center left;
-		background-size: 25px;
+		background-size: 30px;
+		background-position: right center;
+		font-size: 1.6em;
+		color: var(--text);
+		padding-right: 40px;
+		margin: 0 auto;
+
 	}
+
+
+	/*.mezera{
+		width: 2%;
+		background: none;
+	}*/
+
+
 	@media only screen and (max-width: 800px){
 		.bagoshop button{
 			width: 100%;
@@ -127,14 +142,7 @@
 		.bagoshop button::after{
 			content: " ";
 		}
-		.kosik button{
-			width: 80px;
-			font-size: 1rem;
-			background-size: 18px;
-			padding-right: 5px;
-			padding-left: 10px;
 
-		}
 		.lista1{
 			height: 60px;
 		}

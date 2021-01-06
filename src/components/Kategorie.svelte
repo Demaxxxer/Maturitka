@@ -1,18 +1,12 @@
 <script>
-    const zalozky = [
-        {name: 'Hry', ev: 'test'},
-        {name: 'Konzole', ev: 'test'},
-        {name: 'Příslušenství', ev: 'test'},
-        {name: 'PC', ev: 'test'},
-        {name: 'VR', ev: 'test'},
-    ]
+
 </script>
 
 <div class="lista">
     <div class="podlista">
         <table cellspacing="0">
             <tr>
-                <td class="kategorie"><button></button></td>
+                <!--<td class="kategorie"><button></button></td>
                 {#each zalozky as zalozka}
                     <td class="odrazky">
                         <button>
@@ -20,12 +14,17 @@
                         </button>
                     </td>
                     
-                {/each}         
+                {/each}        
                 <td class="registr">
                     <a href="/#/prihlaseni">
                         <button>Účet</button>
                     </a>
+                </td>-->
+                <td class="carky">
+                    <button></button>
                 </td>
+                <td class="mezera"></td>
+                <td class="login"><button class="prihlasit">Přihlásit se</button></td>
             </tr>
         </table>
     </div>
@@ -34,11 +33,12 @@
 <style>
     .lista{
         position: fixed;
+        z-index: 10;
         top: 80px;
         left: 0;
         width: 100%;
         height: 40px;
-        background: var(--lightgrey);
+        background-color: white;
     }
 
     .odrazky:nth-child(2){
@@ -50,26 +50,53 @@
         height: 100%;
 
     }
-    .kategorie button{
-        width: 40px;
+    .carky button{
+        width: 100%;
         height: 100%;
         background-size: 20px;
         background-position: center;
         background-repeat: no-repeat;
         background-image: url('/images/Carecky.svg');
-        border-right: solid 2px var(--darkergrey); 
+    }
+    .carky{
+        width: 126px;
+        height: 100%;
+        border-left: solid 2px var(--lightgrey);
+        border-right: solid 2px var(--lightgrey);
+        background-color: white;
+    }
+    .carky button{
+        background-color: white;
+    }
+    .login{
+        width: 126px;
+        height: 100%;
+        border-left: solid 2px var(--lightgrey);
+        border-right: solid 2px var(--lightgrey);
+        background: white;
+    }
+    .login button{
+        background-color: white;
+        font-family: roboto;
+    }
+    .prihlasit{
+        font-size: 1.2em;
     }
     .podlista{
-        max-width: 1000px;
+        max-width: 1200px;
 		width: 100%;
 		height: 100%;
-		margin: 0 auto;
+        margin: 0 auto;
+        background-color: white;
     }
     table{
         width: 100%;
         Height: 100%;
     }
-    .odrazky, .registr{
+    .login button{
+        margin: 0 auto;
+    }
+    /*.odrazky, .registr{
         font-family: robotothic;
         width: calc(100% / 6);
         text-align: center;
@@ -87,7 +114,8 @@
         background-position: center right 20%;
         background-repeat: no-repeat;
         background-image: url('/images/User.png');
-    }
+    }*/
+
     @media only screen and (max-width: 800px){
 
 		.lista{
@@ -95,7 +123,7 @@
             top: 60px;
             height: 30px
         }
-        .odrazky{
+        /*.odrazky{
             display: none;
         }
 
@@ -114,7 +142,7 @@
         .registr button{
             background-position: center right 15px;
             background-size: 14px;
-        }
+        }*/
     }
     
 </style>

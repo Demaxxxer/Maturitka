@@ -12,7 +12,9 @@ import Kategorie from './components/Kategorie.svelte';
     <Menu />
     <Kategorie />
     <div class="wrapper">
-        <Router {routes}/>
+        <div class="pozadi">
+            <Router {routes}/>
+        </div>
     </div>
 
     <Footer />
@@ -20,10 +22,32 @@ import Kategorie from './components/Kategorie.svelte';
 
 <style>
     .wrapper{
-        margin-top: 120px;
-        width: 100vw;
+
+        width: 100%;
         height: 100%;
-        min-height: calc(100vh - 220px);
+        margin-top: 140px;
+        min-height: calc(100vh - 260px);
+    }
+    .pozadi{
+        background-color: var(--grey);
+        width: 100%;
+        height: 100%;
+        min-height: calc(100vh - 260px);
+        max-width: 1200px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        padding-top: 15px;
+        /*padding-bottom: 15px;*/
+        
+    }
+
+    @media only screen and (max-width: 800px){
+
+        .pozadi{
+            margin-top: 90px;
+            margin-bottom: 100px;
+        }
+        
     }
 
 

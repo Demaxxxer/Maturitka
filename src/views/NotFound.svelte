@@ -9,5 +9,9 @@
 </main>
 
 <style>
-
+  h2{
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 150px;
+  }
 </style>

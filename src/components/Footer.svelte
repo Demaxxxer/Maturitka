@@ -5,13 +5,12 @@
 <div class="footer">
     <div class="spodek">
         <div class="logo">BAGOSHOP</div>
-        <div class="informace">
-            <p>
-                telefon: +420 730 274 897<br>
-                e-mail: bagoshop@gmail.com
-            </p>
-
-        </div>
+			<div class="informace">
+				<p>
+					telefon: +420 730 274 897<br>
+					e-mail: bagoshop@gmail.com
+				</p>
+			</div>
         <div class="copyright">
             © Copyright 2020 -2021 | Všechna práva vyhrazena | Designed by Jan Pastierčin
         </div>
@@ -24,9 +23,10 @@
 	bottom: 0;
 	left: 0;
 	box-sizing: border-box;
-	width: 100vw;
+	width: 100%;
 	height: 100px;
 	background-color: var(--darkgrey);
+	margin-top: 20px;
 }
 
 .spodek{
@@ -73,7 +73,7 @@
 	float:left;
 	width: 50%;
 	height: 70%;
-	font-size: 0.9em;
+	font-size: 0.8em;
 	color: white;
 
 }
@@ -81,7 +81,7 @@
 .copyright{
 	text-align: center;
 	float: left;
-	font-size: 0.7em;
+	font-size: 0.6em;
 	width: 100%;
 	height: 30%;
 	box-sizing: border-box;
