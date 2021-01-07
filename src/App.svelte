@@ -38,7 +38,6 @@ import Kategorie from './components/Kategorie.svelte';
         box-sizing: border-box;
         padding-top: 15px;
         /*padding-bottom: 15px;*/
-        
     }
 
     @media only screen and (max-width: 800px){
@@ -47,7 +46,6 @@ import Kategorie from './components/Kategorie.svelte';
             margin-top: 90px;
             margin-bottom: 100px;
         }
-        
     }
 
 
