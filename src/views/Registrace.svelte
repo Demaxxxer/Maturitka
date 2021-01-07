@@ -9,35 +9,34 @@
         <p class="registrace">Nová registrace</p>
 
         <p class="rudaje">Registrační údaje</p>
-        <p class="podminky">Údaje označené <sup>*</sup> jsou povinné</p>
         <form>
             <table>
                 <tr>
-                    <td><label for="jmeno">Jméno <sup>*</sup></label></td>
+                    <td><label for="jmeno">Jméno</label></td>
                     <td><input type="text" id="jmeno" class="input" required></td>
                 </tr>
                 <tr>
-                    <td><label for="prijmeni">Přijmení <sup>*</sup></label></td>
+                    <td><label for="prijmeni">Přijmení</label></td>
                     <td><input type="text" id="prijmeni" class="input" required></td>
                 </tr>
                 <tr>
-                    <td><label for="telefon">Telefoní číslo <sup>*</sup></label></td>
+                    <td><label for="telefon">Telefoní číslo</label></td>
                     <td><input type="number" id="telefon" class="input" required></td>
                 </tr>
                 <tr>
-                    <td><label for="email">Email <sup>*</sup></label></td>
+                    <td><label for="email">Email</label></td>
                     <td><input type="email" id="email" class="input" required></td>
                 </tr>
                 <tr>
-                    <td><label for="email">Email znovu <sup>*</sup></label></td>
+                    <td><label for="email">Email znovu</label></td>
                     <td><input type="email" id="email" class="input" required></td>
                 </tr>
                 <tr>
-                    <td><label for="heslo">Heslo <sup>*</sup></label></td>
+                    <td><label for="heslo">Heslo</label></td>
                     <td><input type="text" id="heslo" class="input" required></td>
                 </tr>
                 <tr>
-                    <td><label for="heslo">Heslo znovu <sup>*</sup></label></td>
+                    <td><label for="heslo">Heslo znovu</label></td>
                     <td><input type="text" id="heslo" class="input" required></td>
                 </tr>
             </table>
@@ -50,15 +49,13 @@
 </div>
 
 <style>
-
-    input{
-        background: none;
+    .pozadi{
+        color: white;
     }
 
     .input{
-
         border-bottom: solid 1px var(--lightgrey);
-        color: var(--lightgrey);
+        color: var(--text);
         width: 200px;
         margin-left: 20px;
     }
@@ -69,27 +66,20 @@
 
 
     .ohraniceni{
-        
-        color: var(--lightgrey);
+
         background-color: var(--darkgrey);
         width: 100%;
         height: 100%;
-        max-width: 940px;
+        max-width: 660px;
         max-height: 620px;
         margin: 0 auto;
         border-radius: 10px;
         padding-bottom: 20px;
     }
-    .podminky{
-        font-size: 0.8em;
-    }
     .registrace{
         padding-top: 10px;
         font-size: 1.7em;
         font-weight: bold;
-    }
-    sup{
-        color: red;
     }
     .registr{
         height: 40px;
@@ -110,6 +100,5 @@
     .souhlas{
         margin-left: 10px;
     }
-
-
+    
 </style>

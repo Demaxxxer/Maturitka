@@ -1,5 +1,9 @@
 <script>
+    import { loginPopup } from '../stores/stavy.js';
 
+function open(){
+    loginPopup.update(_ => true);
+}
 </script>
 
 <div class="lista">
@@ -24,7 +28,9 @@
                     <button></button>
                 </td>
                 <td class="mezera"></td>
-                <td class="login"><button class="prihlasit">Přihlásit se</button></td>
+                <td class="login">
+                    <button class="prihlasit" on:click={_ => open()}>Přihlásit se</button>
+                </td>
             </tr>
         </table>
     </div>

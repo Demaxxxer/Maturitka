@@ -4,6 +4,7 @@ import routes from './routes';
 import Menu from './components/Menu.svelte';
 import Footer from './components/Footer.svelte';
 import Kategorie from './components/Kategorie.svelte';
+import Login from './components/Login.svelte';
 
 </script>
 
@@ -16,8 +17,8 @@ import Kategorie from './components/Kategorie.svelte';
             <Router {routes}/>
         </div>
     </div>
-
     <Footer />
+    <Login />
 </main>
 
 <style>

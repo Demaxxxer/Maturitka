@@ -12,9 +12,11 @@
         <tr>
             <td>
 				<div class="bagoshop">
-					<button>
+					<a href="/#/">
+						<button>
 
-					</button>
+						</button>
+					</a>
 				</div>
 			</td>
             <td class="obal">
@@ -27,7 +29,6 @@
                 </div>
             </td>
 			<td class="kosik"><a href="/#/kosik"><button>Košík</button></a></td>
-			<!--<td class="mezera"><div></div></td>-->
         </tr>
     </table>
 </div>
@@ -53,13 +54,13 @@
 		width: 20%;
 
 	}
-	.bagoshop button{
+	.bagoshop a button{
 		background: none;
 		width: 210px;
 		height: 37px;
 
 	}
-	.bagoshop button::after{
+	.bagoshop a button::after{
 		content: "BAGOSHOP";
 		font-size: 3em;
 		padding: 10px 0 0 5px;
@@ -122,16 +123,10 @@
 
 	}
 
-
-	/*.mezera{
-		width: 2%;
-		background: none;
-	}*/
-
-
 	@media only screen and (max-width: 800px){
-		.bagoshop button{
+		.bagoshop a button{
 			width: 100%;
+			min-width: 50px;
 			height: 100%;
 			background-size: 50px;
 			background-position: center;
@@ -139,7 +134,7 @@
 			background-image: url('/images/Console.svg');
 			padding: 0 16px;
 		}
-		.bagoshop button::after{
+		.bagoshop a button::after{
 			content: " ";
 		}
 

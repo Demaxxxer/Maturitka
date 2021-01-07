@@ -1,9 +1,11 @@
 <script>
-    import  {nf} from '../scripty/uzitecne.js'
+    import {nf} from '../scripty/uzitecne.js'
+    import {kosik} from '../stores/stavy.js';
+
     function odstranit(id){
-        let novePolozky = [...polozky];
+        let novePolozky = [...$kosik];
         novePolozky=novePolozky.filter(polozka => {return polozka.id != id});
-        polozky = novePolozky;
+        kosik.update(_ => novePolozky);
     
     }
     function soucet(items){
@@ -14,38 +16,8 @@
         });
         return cena;
     }
-    $: sum = soucet(polozky);
+    $: sum = soucet($kosik);
     
-
-    let polozky = [
-        {
-            id:"1",
-            nazev:"polozka1 fadfgwfghg fdjhsghf dshfghgfhsg",
-            cena:"111",
-            kusy:"25",
-            imgUrl:"/images/obrazek1.png",
-            skladem:true,
-        },
-        {
-            id:"2",
-            nazev:"polozka2",
-            cena:"5099",
-            kusy:"2",
-            imgUrl:"/images/obrazek2.png",
-            skladem:true,
-        },
-        {
-            id:"3",
-            nazev:"polozka3",
-            cena:"333",
-            kusy:"3",
-            imgUrl:"/images/obrazek3.png",
-            skladem:false,
-        },        
-
-
-    ]
-
 </script>
 <main>
     <div class="bar">
@@ -55,15 +27,17 @@
         <div class="postup3" id="souhrnbarva">Souhrn</div>
 
     </div>
-    <div class="empty">
+    {#if $kosik.length<1}
+    <div class="empty" >
         <p>Žádné položky v košíku</p>
     </div>
+    {/if}
     <div class="polozky">
-        {#each polozky as polozka}
+        {#each $kosik as polozka}
 
         <div class="polozka"><!--relative-->
             <img  alt="error"><!--src="{polozka.imgUrl}"-->
-            <div class="nazev">{polozka.nazev}</div>
+            <div class="nazev">{ polozka.nazev}</div>
             <button class="odstranit" on:click={_ => odstranit(polozka.id)}>╳</button>
             <form class="kusy">
                 <label>Kusy</label>
@@ -75,6 +49,7 @@
 
         {/each}
     </div>
+    {#if $kosik.length> 0}
     <div class="spodek">
         <div class="vpravo">
             <div class="flow">
@@ -87,6 +62,7 @@
             <button class="pokracovat">Pokračovat v objednávce</button>
         </div>
     </div>
+    {/if}
 </main>
 <style>
     main{
@@ -143,9 +119,12 @@
         color: var(--text);
     }
     .empty{
+        text-align: center;
+        font-size: 1.3em;
+        margin-top: 200px;
         width: 100%;
         height: 100%;
-        margin: 0 auto;
+
 
     }
     .polozky{
@@ -247,22 +226,5 @@
     }
 
 
-    @media only screen and (max-width: 1000px){
-    
-    .bar{
-
-        max-width: 660px;
-        width: 100%;
-        background-size: 40%;
-    }
-    .postup{
-        background-size: 40%;
-    }
-
-    .cenaKosiku{
-        position: absolute;
-    }
-
-}
 
 </style>
