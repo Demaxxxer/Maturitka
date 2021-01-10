@@ -1,7 +1,7 @@
 import {readable, writable} from 'svelte/store';
 
 export const loginPopup = writable(false);
-
+export const registracePopup = writable(false);
 export const kosik = writable(
     [
     {

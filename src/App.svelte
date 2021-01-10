@@ -5,6 +5,7 @@ import Menu from './components/Menu.svelte';
 import Footer from './components/Footer.svelte';
 import Kategorie from './components/Kategorie.svelte';
 import Login from './components/Login.svelte';
+import Registrace from './components/Registrace.svelte';
 
 </script>
 
@@ -19,6 +20,7 @@ import Login from './components/Login.svelte';
     </div>
     <Footer />
     <Login />
+    <Registrace />
 </main>
 
 <style>

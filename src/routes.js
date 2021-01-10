@@ -1,12 +1,12 @@
 import Home from './views/Home.svelte'
-import Registrace from './views/Registrace.svelte'
 import NotFound from './views/NotFound.svelte'
 import Kosik from './views/Kosik.svelte'
+import Platba from './views/Platba.svelte'
 
 export default {
   '/': Home,
-  '/registrace': Registrace,
   '/kosik': Kosik,
+  '/platba': Platba,
   '*': NotFound,
 
 }

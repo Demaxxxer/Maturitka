@@ -10,7 +10,7 @@
 <div class="lista1">
     <table cellspacing="0">
         <tr>
-            <td>
+            <td class="bago">
 				<div class="bagoshop">
 					<a href="/#/">
 						<button>
@@ -49,9 +49,15 @@
 		height: 100%;
 		margin: 0 auto;
 	}
+	.bago{
+		width: 15%;
+		max-width: 220px;
+	}
 	.bagoshop{
-		margin-left: 10px;
+		margin-left: 8px;
 		width: 20%;
+
+
 
 	}
 	.bagoshop a button{
@@ -71,7 +77,7 @@
 	.obal{
 		width: 60%;
 		max-width: 600px;
-		padding: 0px 15px;
+		padding-right: 100px;
 		box-sizing: border-box;
 	}
 	.vyhledavani{
@@ -97,7 +103,6 @@
 	.vyhledavani input {
 		box-sizing: border-box;
 		color: white;
-		padding: 0 5px 0 2px;
 		width: calc(100% - 30px);
 		height: 100%;
 		float: left;
@@ -106,7 +111,8 @@
 		font-size: 1.2em;
 	}
 	.kosik{
-		width: 130px;
+		width: 10%;
+		max-width: 130px;
 
 	}
 
@@ -124,15 +130,21 @@
 	}
 
 	@media only screen and (max-width: 800px){
+		.obal{
+			padding-right:10px;
+		}
+		.bago{
+			padding: 0px 30px 0 30px;
+		}
 		.bagoshop a button{
 			width: 100%;
-			min-width: 50px;
 			height: 100%;
+			min-width: 55px;
+
 			background-size: 50px;
 			background-position: center;
 			background-repeat: no-repeat;
 			background-image: url('/images/Console.svg');
-			padding: 0 16px;
 		}
 		.bagoshop a button::after{
 			content: " ";
@@ -140,6 +152,9 @@
 
 		.lista1{
 			height: 60px;
+		}
+		.kosik{
+			padding: 0 10px 0 0;
 		}
 	}
 </style>

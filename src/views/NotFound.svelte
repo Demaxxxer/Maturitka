@@ -4,14 +4,15 @@
 
 <main>
 
-  <h2>Tato stránka bohužel neexistuje</h2>
+  <p>Tato stránka bohužel neexistuje</p>
 
 </main>
 
 <style>
-  h2{
+  p{
     text-align: center;
     margin: 0 auto;
     margin-top: 150px;
+    font-size: 2em;
   }
 </style>

@@ -4,6 +4,11 @@
     function close(){
         loginPopup.update(_ => false);
     }
+    import { registracePopup } from '../stores/stavy.js';
+
+function open(){
+    registracePopup.update(_ => true);
+}
 </script>
 
 <div class="ohraniceni" active={$loginPopup}> 
@@ -20,12 +25,12 @@
             </tr>
             <tr>
                 <td><label>Heslo</label></td>
-                <td><input type="password" id="heslo" required></td>
+                <td><input type="password" id="heslo" rewuired></td>
             </tr>
         </table>
         <div class="tlacitka">
             <button type="submit" id="login" class="login">Přihlásit se</button>
-            <button id="registr" class="registr">Registrovat se</button>
+            <button id="registrace" class="registrace" on:click={_ =>{close(); open()}}>Registrovat se</button>
         </div>
     </form>  
 </div>
@@ -54,12 +59,14 @@
     .formular{
         position: fixed;
         z-index: 21;
-        width: 400px;
+        width: 320px;
         height: 200px;
         background-color: var(--darkgrey);
+        border-radius: 10px;
         left: 50%;
         transform: translateX(-50%);
         top: 30%;
+        padding: 0 20px;
     }
     .prihlaseni{
         text-align: center;
@@ -76,7 +83,7 @@
         margin: 0 auto;
     }
     label{
-        margin-left: 20px;
+
         margin-top: 10px;
     }
 
@@ -85,7 +92,7 @@
         border-bottom: solid 1px var(--lightgrey);
         color: var(--lightgrey);
         width: 200px;
-        margin-left: 20px;
+        margin-left: 30px;
         margin-bottom: 7px;
     }
     .tlacitka{
@@ -104,7 +111,7 @@
         margin-left: 20px;
     }
 
-    .registr{
+    .registrace{
         height: 35px;
         width: 140px;
         border: solid 1px var(--grey);

@@ -59,7 +59,7 @@
 
         </div>
         <div class="flow2">
-            <button class="pokracovat">Pokračovat v objednávce</button>
+            <a href="/#/platba"><button class="pokracovat">Pokračovat v objednávce</button></a>
         </div>
     </div>
     {/if}
@@ -73,15 +73,17 @@
         color: var(--text);
         padding-bottom: 150px;
     }
+
     .bar{
         background-color: var(--darkgrey);
         height: 75px;
-        width: 940px;
+        max-width: 78.5%;
         margin: 0 auto;
         /*background-image: url('/images/tvar1.svg'), url('/images/sipecka.svg');
         background-position: left center, left 66% center;
         background-repeat: no-repeat, no-repeat;*/
     }
+
     .postup1, .postup2, .postup3{
         float: left;
 
@@ -90,6 +92,7 @@
         line-height: 75px;
         font-size: 1.5em;
     }
+
     .postup1{        
         width: 35%;
         background-image: url('/images/tvar1.svg');
@@ -97,11 +100,11 @@
         background-position: right center;
 
     }
-    .postup2{        
+
+    .postup2{
         width: 30%;
-
-
     }
+
     .postup3{
         width: 35%;
         background-image: url('/images/sipecka.svg');
@@ -109,24 +112,28 @@
         background-position: left center;
 
     }
+
     #kosikbarva{
         color: var(--darkgrey);
     }
+
     #platbabarva{
         color: var(--text);
     }
+
     #souhrnbarva{
+
         color: var(--text);
     }
+
     .empty{
         text-align: center;
         font-size: 1.3em;
         margin-top: 200px;
         width: 100%;
         height: 100%;
-
-
     }
+
     .polozky{
         max-width: 960px;
         width: 100%;
@@ -139,6 +146,7 @@
         height: 200px;
         margin: 10px;
     }
+
     img{
         position: absolute;
         height: 150px;
@@ -147,6 +155,7 @@
         left: 25px;
         background: white;
     }
+
     .nazev{
         position: absolute;
         max-width: 300px;
@@ -154,6 +163,7 @@
         left: 200px;
         font-size: 1.4em;
     }
+
     .odstranit{
         position: absolute;     
         top: 15px;
@@ -167,6 +177,7 @@
         bottom: 20px;
         margin: 0 auto;
     }
+
     input{
         height: 20px;
         width: 40px;
@@ -175,11 +186,13 @@
         background-color: white;
         text-align: center;
     }
+
     .cena{
         position: absolute;
         bottom: 25px;
         right: 15px;
     }
+
     .vpravo{
 
         box-sizing: border-box;
@@ -189,22 +202,26 @@
     .flow{
         float: right;
     }
+
     .flow2{
         overflow: auto;
         box-sizing: border-box;
     }
+
     .cenaObsahu{
         text-align: right;
         font-size: 1.2;
 
 
     }
+
     .cenaKosiku{
         text-align: right;
         font-size: 1.5em;
         margin-left: 20px;
 
     }
+
     .pokracovat{
     
         height: 40px;
@@ -216,6 +233,7 @@
         margin: 20px 126px 30px 0;
         float: right;
     }
+
     .spodek{
         position: absolute;
         width: 100%;
