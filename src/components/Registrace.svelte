@@ -74,9 +74,11 @@
         left: 0;
         display: none;
     }
+
     .ohraniceni[active="true"]{
         display: block;
     }
+
     .backdrop{
         position: fixed;
         background-color: rgba(0,0,0,0.7);
@@ -85,12 +87,14 @@
         top: 0;
         left: 0;
     }
+
     .krizek{
         position: absolute;
         color: white;
         top: 10px;
         right: 10px;
     }
+    
     .formular{
         position: fixed;
         z-index: 21;

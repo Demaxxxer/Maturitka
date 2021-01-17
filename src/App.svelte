@@ -25,11 +25,9 @@ import Registrace from './components/Registrace.svelte';
 
 <style>
     .wrapper{
-
         width: 100%;
         height: 100%;
         margin-top: 140px;
-        min-height: calc(100vh - 260px);
     }
     .pozadi{
         background-color: var(--grey);
@@ -44,10 +42,18 @@ import Registrace from './components/Registrace.svelte';
     }
 
     @media only screen and (max-width: 800px){
-
-        .pozadi{
+        .wrapper{
             margin-top: 90px;
-            margin-bottom: 100px;
+            min-height: 100%;
+        }
+        .pozadi{
+            
+            box-sizing: border-box;
+            padding-top: 15px;
+
+            min-height: calc(100vh - 190px);
+
+
         }
     }
 

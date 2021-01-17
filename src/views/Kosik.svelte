@@ -1,6 +1,7 @@
 <script>
-    import {nf} from '../scripty/uzitecne.js'
+    import {nf,soucet} from '../scripty/uzitecne.js'
     import {kosik} from '../stores/stavy.js';
+
 
     function odstranit(id){
         let novePolozky = [...$kosik];
@@ -8,14 +9,7 @@
         kosik.update(_ => novePolozky);
     
     }
-    function soucet(items){
-        let cena = 0;
-        items.forEach(polozka => {
-            cena += polozka.cena * polozka.kusy;
-
-        });
-        return cena;
-    }
+    
     $: sum = soucet($kosik);
     
 </script>

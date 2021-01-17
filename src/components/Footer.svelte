@@ -89,4 +89,9 @@
 	color: white;
 
 }
+@media only screen and (max-width: 800px){
+		.footer{
+			margin-top: 0px;
+		}
+}
 </style>

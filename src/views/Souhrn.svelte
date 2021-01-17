@@ -19,54 +19,29 @@
         <p>Osobní údaje</p>
         <table>
             <tr>
-                <td><label for="jmeno">Jméno</label></td>
-                <td><input type="text" id="jmeno" class="input" required></td>
+                <td><label for="jmeno">Jméno: </label></td>
+                <td></td>
             </tr>
             <tr>
-                <td><label for="prijmeni">Přijmení</label></td>
-                <td><input type="text" id="prijmeni" class="input" required></td>
+                <td><label for="prijmeni">Přijmení: </label></td>
+                <td></td>
             </tr>
             <tr>
-                <td><label for="email">Email</label></td>
-                <td><input type="email" id="email" class="input" required></td>
+                <td><label for="email">Email: </label></td>
+                <td></td>
             </tr>
-            
         </table>
-
 
     </div>
         
-    <form class="ohraniceni2">
-
-        <p>Typ platby</p>
-
-        <div>
-            <input type="radio" id="karta" name="typ" value="karta">
-            <label for="karta" class="karta">Kartou online</label>
-        </div>
-        <div>
-            <input type="radio" id="paypal" name="typ" value="paypal">
-            <label for="paypal" class="paypal">PayPal</label>
-        </div>
-        <div>
-            <input type="radio" id="paysafe" name="typ" value="paysafe">
-            <label for="paysafe" class="paysafe">Paysafecard</label>
-        </div>
-        <div>
-            <input type="radio" id="bitcoin" name="typ" value="bitcoin">
-            <label for="bitcoin" class="bitcoin">Bitcoin</label>
-        </div>
-    </form>
-
     <div class="text">
         Cena košíku:<span class="suma">{nf(sum)} Kč</span>
     </div>
-
     
     <div class="flow">
-        <a href="/#/kosik"><button class="zpet">Zpět do košíku</button></a>
+        <a href="/#/platba"><button class="zpet">Zpět k platbě</button></a>
 
-        <a href="/#/souhrn"><button class="pokracovat" >Pokračovat v objednávce</button></a>
+        <a href="/#/"><button class="pokracovat" >Dokončit objednávku</button></a>
     </div>
 
 </main>
@@ -79,7 +54,6 @@
         position: relative;
         color: var(--text);
         padding-bottom: 15px;
-
     }
 
     .input {
@@ -114,29 +88,32 @@
     }
 
     .postup1 {        
-        width: 32%;
+        width: 35%;
+        background-image: url('/images/sipecka.svg');
+        background-repeat: no-repeat;
+        background-position: center right;
     }
 
     .postup2 {
-        width: 36%;
-        background-image: url('/images/tvar2.svg');
-        background-repeat: no-repeat;
-        background-position: center center;
+        width: 30%;
+
     }
 
     .postup3 {
-        width: 32%;
-
+        width: 35%;
+        background-image: url('/images/tvar3.svg');
+        background-repeat: no-repeat;
+        background-position: center right;
     }
 
     #kosikbarva {
         color: var(--text);
     }
     #platbabarva {
-        color: var(--darkgrey);
+        color: var(--text);
     }
     #souhrnbarva {
-        color: var(--text);
+        color: var(--darkgrey);
     }
 
     .ohraniceni1 {
@@ -227,7 +204,6 @@
 
     }
     .flow {
-        height: 100%;
         width: 100%;
         display: flex;
         justify-content: space-evenly;
