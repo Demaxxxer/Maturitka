@@ -19,15 +19,15 @@
         <p>Osobní údaje</p>
         <table>
             <tr>
-                <td><label for="jmeno">Jméno: </label></td>
+                <td><label for="jmeno">Jméno:</label></td>
                 <td></td>
             </tr>
             <tr>
-                <td><label for="prijmeni">Přijmení: </label></td>
+                <td><label for="prijmeni">Přijmení:</label></td>
                 <td></td>
             </tr>
             <tr>
-                <td><label for="email">Email: </label></td>
+                <td><label for="email">Email:</label></td>
                 <td></td>
             </tr>
         </table>
@@ -39,8 +39,6 @@
     </div>
     
     <div class="flow">
-        <a href="/#/platba"><button class="zpet">Zpět k platbě</button></a>
-
         <a href="/#/"><button class="pokracovat" >Dokončit objednávku</button></a>
     </div>
 
@@ -200,17 +198,14 @@
         background-color: var(--yellow);
         border-radius: 10px;
         font-size: 1.3em;
+        margin: 20px 126px 30px 0;
+        float: right;
 
 
     }
     .flow {
-        width: 100%;
-        display: flex;
-        justify-content: space-evenly;
-        margin: 20px 0 0 0;
-
-
-
+        overflow: auto;
+        box-sizing: border-box;
     }
 
     .text .suma {

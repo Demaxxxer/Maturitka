@@ -15,7 +15,7 @@ function open(){
                 </td>
                 <td class="mezera"></td>
                 <td class="login">
-                    <button class="prihlasit" on:click={_ => open()}>Přihlásit se</button>
+                    <button on:click={_ => open()}>Přihlásit se</button>
                 </td>
             </tr>
         </table>
@@ -61,10 +61,11 @@ function open(){
     .login button{
         background-color: white;
         font-family: roboto;
-    }
-    .prihlasit{
+        height: 100%;
+        width: 100%;
         font-size: 1.2em;
     }
+
     .podlista{
         max-width: 1200px;
 		width: 100%;

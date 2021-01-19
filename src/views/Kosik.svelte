@@ -205,8 +205,6 @@
     .cenaObsahu{
         text-align: right;
         font-size: 1.2;
-
-
     }
 
     .cenaKosiku{

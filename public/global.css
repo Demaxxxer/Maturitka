@@ -6,6 +6,7 @@
     --yellow: #FFD369;
     --text: white;
     --lightgrey: #bababa;
+    --pozadi: rgba(63, 63, 63, 0.3);;
     --menuHeight:  120px;
     --footerHeight: 100px;
     --sumasumarum: calc( var(--footerHeight) + var(--menuHeight));
@@ -48,7 +49,9 @@ html, body{
     min-width: 300px;
 
 }
+.pozadi{
 
+}
 a{
     display: block;
     text-decoration: none;

@@ -1,0 +1,27 @@
+<script>
+    
+</script>
+
+<main>
+
+    <button class="button">Koupit</button>
+</main>
+
+<style>
+
+    .button{
+        font-family: roboto;
+        font-size: 1.2em;
+        height: 40px;
+        width: 120px;
+        background-color: var(--yellow);
+        border-color: var(--darkgrey);
+        border-radius: 10px;
+        background-image: url('/images/Kosik1.svg');
+        background-repeat: no-repeat;
+        background-position: center right 15px;
+        background-size: 15px;
+        padding-right: 20px;
+    }
+
+</style>

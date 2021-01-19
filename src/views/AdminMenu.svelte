@@ -8,68 +8,25 @@
 </script>
 
 <main>
-    <div class="bar">
-
-        <div class="postup1" id="kosikbarva">Košík</div>
-        <div class="postup2" id="platbabarva">Platba</div>
-        <div class="postup3" id="souhrnbarva">Souhrn</div>
-
-    </div>
     <div class="ohraniceni1">
-        <p>Osobní údaje</p>
+        <p>Správa</p>
         <table>
             <tr>
-                <td><label for="jmeno">Jméno</label></td>
-                <td><input type="text" id="jmeno" class="input" required></td>
+
+                <td></td>
             </tr>
             <tr>
-                <td><label for="prijmeni">Přijmení</label></td>
-                <td><input type="text" id="prijmeni" class="input" required></td>
+
+                <td></td>
             </tr>
             <tr>
-                <td><label for="email">Email</label></td>
-                <td><input type="email" id="email" class="input" required></td>
+
+                <td></td>
             </tr>
-            
         </table>
-
-
-    </div>
-        
-    <form class="ohraniceni2">
-
-        <p>Typ platby</p>
-
-        <div>
-            <input type="radio" id="karta" name="typ" value="karta">
-            <label for="karta" class="karta">Kartou online</label>
-        </div>
-        <div>
-            <input type="radio" id="paypal" name="typ" value="paypal">
-            <label for="paypal" class="paypal">PayPal</label>
-        </div>
-        <div>
-            <input type="radio" id="paysafe" name="typ" value="paysafe">
-            <label for="paysafe" class="paysafe">Paysafecard</label>
-        </div>
-        <div>
-            <input type="radio" id="bitcoin" name="typ" value="bitcoin">
-            <label for="bitcoin" class="bitcoin">Bitcoin</label>
-        </div>
-    </form>
-    <div class="spodek">
-        <div class="text">
-            Cena košíku:<span class="suma">{nf(sum)} Kč</span>
-        </div>
-
-        
-        <div class="flow">
-            <a href="/#/kosik"><button class="zpet">Zpět do košíku</button></a>
-
-            <a href="/#/souhrn"><button class="pokracovat" >Pokračovat v objednávce</button></a>
-        </div>
     </div>
 </main>
+
 <style>
     
     main {
@@ -78,8 +35,7 @@
         min-height: calc(100vh - 425px);
         position: relative;
         color: var(--text);
-        padding-bottom: 125px;
-
+        padding-bottom: 15px;
     }
 
     .input {
@@ -114,29 +70,32 @@
     }
 
     .postup1 {        
-        width: 32%;
+        width: 35%;
+        background-image: url('/images/sipecka.svg');
+        background-repeat: no-repeat;
+        background-position: center right;
     }
 
     .postup2 {
-        width: 36%;
-        background-image: url('/images/tvar2.svg');
-        background-repeat: no-repeat;
-        background-position: center center;
+        width: 30%;
+
     }
 
     .postup3 {
-        width: 32%;
-
+        width: 35%;
+        background-image: url('/images/tvar3.svg');
+        background-repeat: no-repeat;
+        background-position: center right;
     }
 
     #kosikbarva {
         color: var(--text);
     }
     #platbabarva {
-        color: var(--darkgrey);
+        color: var(--text);
     }
     #souhrnbarva {
-        color: var(--text);
+        color: var(--darkgrey);
     }
 
     .ohraniceni1 {
@@ -227,14 +186,10 @@
 
     }
     .flow {
-        height: 100%;
         width: 100%;
         display: flex;
         justify-content: space-evenly;
         margin: 20px 0 0 0;
-        overflow: auto;
-        box-sizing: border-box;
-
 
 
 
@@ -250,14 +205,5 @@
         text-align: center;
         margin-top: 15px;
     }
-    .spodek{
-        position: absolute;
-        width: 100%;
-        height: 120px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    }
-
 
 </style>
