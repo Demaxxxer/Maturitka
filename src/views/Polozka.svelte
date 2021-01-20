@@ -133,7 +133,8 @@
         height: 100%;
         width: 50%;
         float: left;
-        padding: 0 40px;
+        padding: 0 0 0  40px;
+
 
     }
 
@@ -143,6 +144,7 @@
         height: 320px;
         min-width: 256px;
         min-height: 320px;
+        
     }
 
     .popisek{
