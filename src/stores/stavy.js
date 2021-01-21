@@ -22,5 +22,11 @@ export const kosik = writable(
         },
     ]
 );
+export const platba = writable({
+    prijmeni:"",
+    jmeno:"",
+    email:"",
+    platba:"",
+})
 
 

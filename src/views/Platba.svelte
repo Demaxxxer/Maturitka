@@ -1,74 +1,78 @@
 <script>
     import {nf,soucet} from '../scripty/uzitecne.js'
-    import {kosik} from '../stores/stavy.js';
-
+    import {kosik,platba} from '../stores/stavy.js';
     $: sum = soucet($kosik);
 
+    function zapis(e,klic){
+        
+        platba.update(test => {
+            test[klic] = e.target.value
+            return test
+        })
+
+    }
     
 </script>
 
 <main>
-    <div class="bar">
+    <form on:submit|preventDefault={(e) => document.location.href="/#/souhrn"}>
+        <div class="bar">
 
-        <div class="postup1" id="kosikbarva">Košík</div>
-        <div class="postup2" id="platbabarva">Platba</div>
-        <div class="postup3" id="souhrnbarva">Souhrn</div>
+            <a href="/#/kosik"><button type="button" class="postup1">Košík</button></a>
+            <a href="/#/platba"><button type="button" class="postup2">Platba</button></a>
+            <a href="/#/souhrn"><button class="postup3">Souhrn</button></a>
 
-    </div>
-    <div class="ohraniceni1">
-        <p>Osobní údaje</p>
-        <table>
-            <tr>
-                <td><label for="jmeno">Jméno</label></td>
-                <td><input type="text" id="jmeno" class="input" required></td>
-            </tr>
-            <tr>
-                <td><label for="prijmeni">Přijmení</label></td>
-                <td><input type="text" id="prijmeni" class="input" required></td>
-            </tr>
-            <tr>
-                <td><label for="email">Email</label></td>
-                <td><input type="email" id="email" class="input" required></td>
-            </tr>
+        </div>
+        <div class="ohraniceni1">
+            <p>Osobní údaje</p>
+            <table>
+                <tr>
+                    <td><label for="jmeno">Jméno</label></td>
+                    <td><input type="text" class="input" on:input={e => zapis(e,"jmeno")} value={$platba.jmeno} required></td>
+                </tr>
+                <tr>
+                    <td><label for="prijmeni">Přijmení</label></td>
+                    <td><input type="text" class="input" on:input={e => zapis(e,"prijmeni")} value={$platba.prijmeni} required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email</label></td>
+                    <td><input type="email" class="input" on:input={e => zapis(e,"email")} value={$platba.email} required></td>
+                </tr>
+            </table>
+        </div>
             
-        </table>
+        <div class="ohraniceni2">
 
+            <p>Typ platby</p>
 
-    </div>
-        
-    <form class="ohraniceni2">
-
-        <p>Typ platby</p>
-
-        <div>
-            <input type="radio" id="karta" name="typ" value="karta">
-            <label for="karta" class="karta">Kartou online</label>
+            <div>
+                <input type="radio" id="karta" name="typ" value="karta" checked="checked">
+                <label for="karta" class="karta">Kartou online</label>
+            </div>
+            <div>
+                <input type="radio" id="paypal" name="typ" value="paypal">
+                <label for="paypal" class="paypal">PayPal</label>
+            </div>
+            <div>
+                <input type="radio" id="paysafe" name="typ" value="paysafe">
+                <label for="paysafe" class="paysafe">Paysafecard</label>
+            </div>
+            <div>
+                <input type="radio" id="bitcoin" name="typ" value="bitcoin">
+                <label for="bitcoin" class="bitcoin">Bitcoin</label>
+            </div>
         </div>
-        <div>
-            <input type="radio" id="paypal" name="typ" value="paypal">
-            <label for="paypal" class="paypal">PayPal</label>
-        </div>
-        <div>
-            <input type="radio" id="paysafe" name="typ" value="paysafe">
-            <label for="paysafe" class="paysafe">Paysafecard</label>
-        </div>
-        <div>
-            <input type="radio" id="bitcoin" name="typ" value="bitcoin">
-            <label for="bitcoin" class="bitcoin">Bitcoin</label>
+        <div class="spodek">
+            <div class="text">
+                Cena košíku:<span class="suma">{nf(sum)} Kč</span>
+            </div>
+            <div class="flow">
+                <a class="button" href="/#/kosik"><button type="button" class="zpet">Zpět</button></a>
+
+                <button type="submit" class="pokracovat">Pokračovat </button>
+            </div>
         </div>
     </form>
-    <div class="spodek">
-        <div class="text">
-            Cena košíku:<span class="suma">{nf(sum)} Kč</span>
-        </div>
-
-        
-        <div class="flow">
-            <a href="/#/kosik"><button class="zpet">Zpět do košíku</button></a>
-
-            <a href="/#/souhrn"><button class="pokracovat" >Pokračovat v objednávce</button></a>
-        </div>
-    </div>
 </main>
 <style>
     
@@ -88,7 +92,6 @@
         width: 100%;
         max-width: 200px;
         margin: 0 0 7px 30px;
-
     }
 
     p {
@@ -106,7 +109,6 @@
 
     .postup1, .postup2, .postup3 {
         float: left;
-
         text-align: center;
         height: 100%;
         line-height: 75px;
@@ -114,28 +116,20 @@
     }
 
     .postup1 {        
-        width: 32%;
+        width: 33%;
+        background-color: var(--darkgrey);
+        color: var(--text);
     }
 
     .postup2 {
-        width: 36%;
-        background-image: url('/images/tvar2.svg');
-        background-repeat: no-repeat;
-        background-position: center center;
+        width: 34%;
+        background-color: var(--yellow);
+        color: var(--darkgrey);
     }
 
     .postup3 {
-        width: 32%;
-
-    }
-
-    #kosikbarva {
-        color: var(--text);
-    }
-    #platbabarva {
-        color: var(--darkgrey);
-    }
-    #souhrnbarva {
+        width: 33%;
+        background-color: var(--darkgrey);
         color: var(--text);
     }
 
@@ -205,26 +199,21 @@
         padding-left: 70px;
         margin-left: 35px;
     }
-
-    .zpet {
-        height: 40px;
-        width: 250px;
-        border: solid 1px var(--grey);
-        background-color: var(--yellow);
-        border-radius: 10px;
-        font-size: 1.3em;
-
+    .spodek{
+        position: absolute;
+        width: 100%;
+        height: 100px;
+        left: 0;
+        right: 0;
+        bottom: 0;
     }
-
-    .pokracovat {
-        height: 40px;
-        width: 250px;
-        border: solid 1px var(--grey);
-        background-color: var(--yellow);
-        border-radius: 10px;
+    .text {
+        padding-top: 4px;
+        text-align: center;
+    }
+    .text .suma {
+        margin-left: 10px;
         font-size: 1.3em;
-
-
     }
     .flow {
         height: 100%;
@@ -234,29 +223,27 @@
         margin: 20px 0 0 0;
         overflow: auto;
         box-sizing: border-box;
-
-
-
-
     }
-
-    .text .suma {
-        margin: 20px 0 0 10px;
+    .zpet {
+        height: 40px;
+        width: 150px;
+        border: solid 1px var(--grey);
+        background-color: var(--yellow);
+        border-radius: 10px;
         font-size: 1.3em;
-
-
     }
-    .text {
-        text-align: center;
-        margin-top: 15px;
+
+    .pokracovat {
+        height: 40px;
+        width: 150px;
+        border: solid 1px var(--grey);
+        background-color: var(--yellow);
+        border-radius: 10px;
+        font-size: 1.3em;
     }
-    .spodek{
-        position: absolute;
-        width: 100%;
-        height: 120px;
-        left: 0;
-        right: 0;
-        bottom: 0;
+    .button{
+        height: 40px;
+        width: 150px;
     }
 
 

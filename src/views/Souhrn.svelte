@@ -1,45 +1,34 @@
 <script>
     import {nf,soucet} from '../scripty/uzitecne.js'
-    import {kosik} from '../stores/stavy.js';
+    import {kosik,platba} from '../stores/stavy.js';
 
     $: sum = soucet($kosik);
 
-    
 </script>
 
 <main>
     <div class="bar">
 
-        <div class="postup1" id="kosikbarva">Košík</div>
-        <div class="postup2" id="platbabarva">Platba</div>
-        <div class="postup3" id="souhrnbarva">Souhrn</div>
+        <a href="/#/kosik"><button class="postup1">Košík</button></a>
+        <a href="/#/platba"><button class="postup2">Platba</button></a>
+        <a href="/#/souhrn"><button class="postup3">Souhrn</button></a>
 
     </div>
     <div class="ohraniceni1">
         <p>Osobní údaje</p>
-        <table>
-            <tr>
-                <td><label for="jmeno">Jméno:</label></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td><label for="prijmeni">Přijmení:</label></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td><label for="email">Email:</label></td>
-                <td></td>
-            </tr>
-        </table>
+        <div class="udaje">Jméno <span class="hodnota">{$platba.jmeno}</span></div>
+        <div class="udaje">Přijmení <span class="hodnota">{$platba.prijmeni}</span></div>
+        <div class="udaje">Email <span class="hodnota">{$platba.email}</span></div>
+    </div>
+    <div class="spodek">
+        <div class="text">
+            Cena košíku:<span class="suma">{nf(sum)} Kč</span>
+        </div>
+        <div class="flow">
+            <a class="button" href="/#/platba"><button class="zpet">Zpět</button></a>
 
-    </div>
-        
-    <div class="text">
-        Cena košíku:<span class="suma">{nf(sum)} Kč</span>
-    </div>
-    
-    <div class="flow">
-        <a href="/#/"><button class="pokracovat" >Dokončit objednávku</button></a>
+            <a class="button" href="/#/"><button class="pokracovat">Dokončit</button></a>
+        </div>
     </div>
 
 </main>
@@ -48,25 +37,24 @@
     main {
         height: 100%;
         width: 100%;
-        min-height: calc(100vh - 425px);
+        min-height: calc(100vh - 325px);
         position: relative;
         color: var(--text);
         padding-bottom: 15px;
-    }
-
-    .input {
-        border-bottom: solid 1px var(--lightgrey);
-        color: var(--text);
-        width: 100%;
-        max-width: 200px;
-        margin: 0 0 7px 30px;
-
     }
 
     p {
         font-size: 1.3em;
         max-width: 150px;
         width: 100%;
+    }
+    .ohraniceni1 {
+        max-width: 700px;
+        height: 170px;
+        background-color: var(--darkgrey);
+        border-radius: 10px;
+        margin: 20px auto 10px auto;
+        padding: 5px 35px 5px 35px;
     }
 
     .bar {
@@ -78,7 +66,6 @@
 
     .postup1, .postup2, .postup3 {
         float: left;
-
         text-align: center;
         height: 100%;
         line-height: 75px;
@@ -86,137 +73,70 @@
     }
 
     .postup1 {        
-        width: 35%;
-        background-image: url('/images/sipecka.svg');
-        background-repeat: no-repeat;
-        background-position: center right;
+        width: 33%;
+        background-color: var(--darkgrey);
+        color: var(--text);
     }
 
     .postup2 {
-        width: 30%;
-
+        width: 34%;
+        background-color: var(--darkgrey);
+        color: var(--text);
+        border-left: solid 2px var(--lightgrey);
     }
 
     .postup3 {
-        width: 35%;
-        background-image: url('/images/tvar3.svg');
-        background-repeat: no-repeat;
-        background-position: center right;
-    }
-
-    #kosikbarva {
-        color: var(--text);
-    }
-    #platbabarva {
-        color: var(--text);
-    }
-    #souhrnbarva {
+        width: 33%;
+        background-color: var(--yellow);
         color: var(--darkgrey);
     }
 
-    .ohraniceni1 {
-        max-width: 700px;
-        height: 170px;
-        background-color: var(--darkgrey);
-        border-radius: 10px;
-        margin: 20px auto 10px auto;
-        padding: 5px 35px 5px 35px;
+    .spodek{
+        position: absolute;
+        width: 100%;
+        height: 100px;
+        left: 0;
+        right: 0;
+        bottom: 0;
     }
-
-    .ohraniceni2 {
-        max-width: 700px;
-        height: 250px;
-        background-color: var(--darkgrey);
-        border-radius: 10px;
-        margin: 20px auto 10px auto;
-        padding: 5px 35px 5px 35px;
+    .text {
+        padding-top: 4px;
+        text-align: center;
     }
-
-
-    .ohraniceni2 div {
-        margin: 10px 0;
-        border-bottom: solid 1px var(--text);
-        padding: 5px 0;
-    }
-
-    .ohraniceni2 input {
+    .text .suma {
         margin-left: 10px;
+        font-size: 1.3em;
     }
-
-    label {
+    .flow {
         height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        margin: 20px 0 0 0;
+        overflow: auto;
+        box-sizing: border-box;
     }
-
-    .karta {
-        background-image: url('/images/kreditka.svg');
-        background-repeat: no-repeat;
-        background-position: left;
-        padding-left: 70px;
-        margin-left: 35px;
-    }
-
-    .paypal {
-        background-image: url('/images/paypal.svg');
-        background-repeat: no-repeat;
-        background-position: left;
-        padding-left: 70px;
-        margin-left: 35px;
-    }
-
-    .paysafe {
-        background-image: url('/images/paysafe.svg');
-        background-repeat: no-repeat;
-        background-position: left;
-        background-size: 50px;
-        padding-left: 87px;
-        margin-left: 18px;
-    }
-
-    .bitcoin {
-        background-image: url('/images/bitcoin.svg');
-        background-repeat: no-repeat;
-        background-position: left;
-        background-size: 18px;
-        padding-left: 70px;
-        margin-left: 35px;
-    }
-
     .zpet {
         height: 40px;
-        width: 250px;
+        width: 150px;
         border: solid 1px var(--grey);
         background-color: var(--yellow);
         border-radius: 10px;
         font-size: 1.3em;
-
     }
 
     .pokracovat {
         height: 40px;
-        width: 250px;
+        width: 150px;
         border: solid 1px var(--grey);
         background-color: var(--yellow);
         border-radius: 10px;
         font-size: 1.3em;
-        margin: 20px 126px 30px 0;
-        float: right;
-
-
     }
-    .flow {
-        overflow: auto;
-        box-sizing: border-box;
+    .button{
+        height: 40px;
+        width: 150px;
     }
 
-    .text .suma {
-        margin: 20px 0 0 10px;
-        font-size: 1.3em;
-
-
-    }
-    .text {
-        text-align: center;
-        margin-top: 15px;
-    }
 
 </style>

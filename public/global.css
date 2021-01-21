@@ -50,7 +50,7 @@ html, body{
 
 }
 .pozadi{
-
+    position: relative;
 }
 a{
     display: block;

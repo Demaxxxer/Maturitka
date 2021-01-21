@@ -16,9 +16,9 @@
 <main>
     <div class="bar">
 
-        <div class="postup1" id="kosikbarva">Košík</div>
-        <div class="postup2" id="platbabarva">Platba</div>
-        <div class="postup3" id="souhrnbarva">Souhrn</div>
+        <a href="/#/kosik"><button class="postup1">Košík</button></a>
+        <a href="/#/platba"><button class="postup2">Platba</button></a>
+        <div class="postup3">Souhrn</div>
 
     </div>
     {#if $kosik.length<1}
@@ -34,7 +34,7 @@
             <div class="nazev">{ polozka.nazev}</div>
             <button class="odstranit" on:click={_ => odstranit(polozka.id)}>╳</button>
             <form class="kusy">
-                <label>Kusy</label>
+                <label for="number">Kusy</label>
                 <input type="number" min="1" max="999" bind:value={polozka.kusy}>
 
             </form>
@@ -45,16 +45,13 @@
     </div>
     {#if $kosik.length> 0}
     <div class="spodek">
-        <div class="vpravo">
-            <div class="flow">
-                <span class="cenaObsahu">Cena obsahu košíku:</span>
-                <span class="cenaKosiku"> {nf(sum)} Kč</span><br>
-            </div>
+        <div class="text">
+            Cena košíku:<span class="suma">{nf(sum)} Kč</span>
+        </div>
+        <div class="flow">
+            <a href="/#/platba"><button class="pokracovat">Pokračovat</button></a>
+        </div>
 
-        </div>
-        <div class="flow2">
-            <a href="/#/platba"><button class="pokracovat">Pokračovat v objednávce</button></a>
-        </div>
     </div>
     {/if}
 </main>
@@ -69,54 +66,35 @@
     }
 
     .bar{
-        background-color: var(--darkgrey);
         height: 75px;
         max-width: 78.5%;
         margin: 0 auto;
-        /*background-image: url('/images/tvar1.svg'), url('/images/sipecka.svg');
-        background-position: left center, left 66% center;
-        background-repeat: no-repeat, no-repeat;*/
     }
 
-    .postup1, .postup2, .postup3{
+    .postup1, .postup2, .postup3 {
         float: left;
-
         text-align: center;
         height: 100%;
         line-height: 75px;
         font-size: 1.5em;
     }
 
-    .postup1{        
-        width: 35%;
-        background-image: url('/images/tvar1.svg');
-        background-repeat: no-repeat;
-        background-position: right center;
-
-    }
-
-    .postup2{
-        width: 30%;
-    }
-
-    .postup3{
-        width: 35%;
-        background-image: url('/images/sipecka.svg');
-        background-repeat: no-repeat;
-        background-position: left center;
-
-    }
-
-    #kosikbarva{
+    .postup1 {        
+        width: 33%;
+        background-color: var(--yellow);
         color: var(--darkgrey);
     }
 
-    #platbabarva{
+    .postup2 {
+        width: 34%;
+        background-color: var(--darkgrey);
+        border-right: solid 2px var(--lightgrey);
         color: var(--text);
     }
 
-    #souhrnbarva{
-
+    .postup3 {
+        width: 33%;
+        background-color: var(--darkgrey);
         color: var(--text);
     }
 
@@ -129,9 +107,9 @@
     }
 
     .polozky{
-        max-width: 960px;
+        max-width: 790px;
         width: 100%;
-        margin: 30px auto 0 auto;
+        margin: 20px auto 0 auto;
     }
     .polozka{
         position: relative;
@@ -144,7 +122,7 @@
     img{
         position: absolute;
         height: 150px;
-        width: 150px;
+        width: 100px;
         top: 25px;
         left: 25px;
         background: white;
@@ -154,7 +132,7 @@
         position: absolute;
         max-width: 300px;
         top: 25px;
-        left: 200px;
+        left: 150px;
         font-size: 1.4em;
     }
 
@@ -185,51 +163,37 @@
         position: absolute;
         bottom: 25px;
         right: 15px;
-    }
-
-    .vpravo{
-
-        box-sizing: border-box;
-        margin: 0 126px;
-        overflow: auto;
+        font-family: roboto;
     }
     .flow{
-        float: right;
+        text-align: center;
+        bottom: 20px;
+    }
+    .text {
+        text-align: center;
+    }
+    .text .suma {
+        margin-left: 10px;
+        font-size: 1.3em;
     }
 
-    .flow2{
-        overflow: auto;
-        box-sizing: border-box;
-    }
-
-    .cenaObsahu{
-        text-align: right;
-        font-size: 1.2;
-    }
-
-    .cenaKosiku{
-        text-align: right;
-        font-size: 1.5em;
-        margin-left: 20px;
-
-    }
-
-    .pokracovat{
-    
+    .pokracovat {
+        position: absolute;
         height: 40px;
-        width: 250px;
+        width: 150px;
         border: solid 1px var(--grey);
         background-color: var(--yellow);
         border-radius: 10px;
         font-size: 1.3em;
-        margin: 20px 126px 30px 0;
-        float: right;
+        bottom: 15px;
+        transform: translateX(-50%);
+        left: 50%;
     }
 
     .spodek{
         position: absolute;
         width: 100%;
-        height: 120px;
+        height: 100px;
         left: 0;
         right: 0;
         bottom: 0;
