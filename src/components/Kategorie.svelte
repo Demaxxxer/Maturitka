@@ -1,8 +1,11 @@
 <script>
-    import { loginPopup } from '../stores/stavy.js';
+    import { loginPopup, uzivatel } from '../stores/stavy.js';
 
 function open(){
     loginPopup.update(_ => true);
+}
+function logout(){
+    console.log("tady sa to bude odhlašovat někdy v budoucnu")
 }
 const links = [
     '/#/test',
@@ -13,11 +16,26 @@ const links = [
 ]
 const categories = [
     'Akční hry',
-    'Simulátory',
-    'Závodní hry',
-    'Strategie',
     'Logické hry',
+    'Simulátory',
+    'Strategické hry',
+    'RPG hry',
+    'Závodní hry',
 ]
+const odkazy = [
+    '/#/test',
+    '/#/test',
+
+
+]
+const editace = [
+    'Přidáváná produktů',
+    'Editace produktů',
+
+]
+
+
+
 </script>
 
 <div class="lista">
@@ -37,11 +55,28 @@ const categories = [
                         </a>
                         {/each}
                     </div>
-
                 </td>
                 <td class="mezera"></td>
                 <td class="login">
+                    {#if $uzivatel}
+                    <button>{$uzivatel.jmeno} {$uzivatel.prijmeni}</button>
+                    <div class="edits">
+                        {#if $uzivatel.perms}
+                        {#each editace as edit, i}
+                        <a href={odkazy[i]}>
+                            <div class="edit">
+                                {edit}
+                            </div>
+                        </a>
+                        {/each}
+                        {/if}
+                        <button on:click={_ => logout()}>
+                            <div class="edit">Odhlásit se</div>
+                        </button>
+                    </div>
+                    {:else}
                     <button on:click={_ => open()}>Přihlásit se</button>
+                    {/if}
                 </td>
             </tr>
         </table>
@@ -58,7 +93,7 @@ const categories = [
         width: 100%;
         height: 40px;
         background-color: white;
-        border-bottom: solid 1px var(--lightgrey);
+        box-shadow: 0px 3px 5px rgba(10, 10, 10, 0.3);
     }
 
     .dropdown button{
@@ -76,8 +111,6 @@ const categories = [
         position: relative;
         width: 220px;
         height: 100%;
-        border-left: solid 2px var(--lightgrey);
-        border-right: solid 2px var(--lightgrey);
         background-color: white;
     }
     .dropdown:hover .cats{
@@ -86,14 +119,7 @@ const categories = [
     .dropdown button{
         background-color: white;
     }
-    .cats{
-        position: absolute;
-        background: white;
-        width: 225px;
-        display: none;
-        left: -2px;
-        top: 40px;
-    }
+
     .cat{
         color: var(--grey);
         font-family: roboto;
@@ -104,12 +130,13 @@ const categories = [
     .cat:hover{
         background: rgb(230, 230, 230)
     }
-    .login{
-        width: 126px;
-        height: 100%;
-        border-left: solid 2px var(--lightgrey);
-        border-right: solid 2px var(--lightgrey);
+    .cats{
+        position: absolute;
         background: white;
+        width: 225px;
+        display: none;
+        right: -3px;
+        top: 40px;
     }
     .login button{
         background-color: white;
@@ -117,8 +144,39 @@ const categories = [
         height: 100%;
         width: 100%;
         font-size: 1.2em;
+        margin: 0 auto;
+    }
+    .login{
+        position: relative;
+        right: 0;
+        width: 200px;
+        height: 100%;
+        background: white;
     }
 
+    .login:hover .edits{
+        display: block;
+    }
+    .edit{
+        color: var(--grey);
+        font-family: roboto;
+        text-align: center;
+        font-size: 1rem;
+        padding: 10px;
+    }
+    .edit:hover{
+        background: rgb(230, 230, 230)
+    }
+    .edits{
+        color: var(--darkgrey);
+        position: absolute;
+        background: white;
+        width: 206px;
+        display: none;
+        left: -4px;
+        top: 40px;
+
+    }
     .podlista{
         max-width: 1200px;
 		width: 100%;
@@ -130,9 +188,6 @@ const categories = [
         width: 100%;
         Height: 100%;
     }
-    .login button{
-        margin: 0 auto;
-    }
     
 
 
@@ -142,6 +197,35 @@ const categories = [
             position: fixed;
             top: 60px;
             height: 30px
+        }
+        .dropdown{
+            width: 160px;
+        }
+        .dropdown button{
+            background-position: center left 23%; 
+            font-size: 1em;  
+        }
+        .cat{
+            font-size: 0.9rem;
+        }
+        .cats{
+            width: 160px;
+            top: 30px;
+            right: 3px;
+        }
+        .login{
+            width: 150px;
+        }
+        .login button{
+            font-size: 1em;  
+        }
+        .edit{
+            font-size: 0.9rem;
+        }
+        .edits{
+            width: 150px;
+            top: 30px;
+            left: 4px;
         }
 
     }

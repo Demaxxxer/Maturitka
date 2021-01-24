@@ -5,12 +5,12 @@
     const produkt = {
         id:"2",
         nazev:"Grand Theft Auto V",
-        popisek:"kjnadh lhgh sljd  jlkjhf   ADSHFASD F F ASD FA G LK sdfl g",
+        popisek:"Lorem ipsum",
         cena:"1200",
         kusy:"2",
         imgUrl:"/images/gta5.jpeg",
         imgsUrl:"/images/obrazek1.jpeg",
-        skladem:true,
+        skladem: true,
         popis:`Aj asdk fůlkasdjfůlksadjfůlksajd ůkjsaů lfsaůd fůsk sld flaskdj flkajs dflkj asldkfj ladk fůlkasdjfůlksadjfůlksajd ůkjsaů lfsaůd fůsk sld flaskdj flkajs dflkj asldkfj dk fůlkasdjfůlksadjfůlksajd ůkjsaů lfsaůd fůsk sld flaskdj flkajs dflkj asldkfj dk fůlkasdjf ůlksa djfůlksajd ůkjsaů lfsaůd fůsk sld flaskdj flkajs dflkj asldkfj dk fůlkasdjfů lksadjfůl sajd ůkjsaů lfsaůd fůsk sld flaskdj flkajs dflkj asldkfj skdjf klasjf ksad fkj sdaf Aj asdk fůlkasdjfůlksadjfůlksajd ůkjsaů lfsaůd fůsk sld flaskdj flkajs dflkj asldkfj laskdjf klasjf ksad fkj sdaf.`
 
     }
@@ -29,6 +29,8 @@
             <div class="nazev">{produkt.nazev}</div>
 
             <div class="popisek">{produkt.popisek}</div>
+
+            <div class="skladem">{produkt.skladem} kusů</div>
 
             <div class="cena">{nf(produkt.cena)} Kč</div>
 
@@ -93,7 +95,7 @@
     .ohraniceni {
         max-width: 940px;
         height: 100%;
-        min-height: 450px;
+        min-height: 420px;
         background-color: var(--darkgrey);
         border-radius: 10px;
         margin: 20px auto 10px auto;
@@ -148,7 +150,7 @@
     }
 
     .popisek{
-        min-height: 90px;
+        height: 230px;
         width: 50%;
         float: right;
         padding: 10px 40px 0 15px;
@@ -156,6 +158,14 @@
         font-size: 0.8em;
     }
 
+    .skladem{
+        font-size: 1.2em;
+        width: 25%;
+        float: left;
+        min-height: 20px;
+        text-align: left;
+        padding: 5px 0 0 15px;
+    }
     .cena{
         font-size: 1.6em;
         width: 25%;
@@ -226,6 +236,8 @@
 
     @media only screen and (max-width: 800px){
         .ohraniceni{
+            position: relative;
+            min-height: 600px;
             margin: 15px 15px;
 
         }
@@ -234,25 +246,26 @@
 
         }
         .vrsek{
-            position: relative;
+
             margin: 0 20px;
         }
         .nazev{
             position: absolute;
- 
-            float: left;
-            top: 10px;
-            left: 10px;
+            width: 100%;
+            top: 50px;
+            text-align: center;
         }
 
         .obrazek{
-            padding-top: 60px;
-			float: none;
+            position: absolute;
+            width: 100%;
+            padding: 0;
             margin: 0 auto;
-            width: 400px;
+            top: 100px;
         }
 
         .popisek{
+            position: absolute;
             width: 100%;
             height: 100%;
             min-height: 20px;
@@ -263,14 +276,18 @@
         }
 
         .cena{
+            position: absolute;
             min-width: 150px;
 			float: left;
-            margin-left: 50px;
+            left: 15%;
+            bottom: 20px
         }
 
         .koupit{
+            position: absolute;
 			float: right;
-            margin-right: 50px;
+            right: 15%;
+            bottom: 20px
         }
         .min{
             width: 100%;

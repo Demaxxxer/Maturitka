@@ -56,9 +56,6 @@
 	.bagoshop{
 		margin-left: 8px;
 		width: 20%;
-
-
-
 	}
 	.bagoshop a button{
 		background: none;
@@ -75,9 +72,9 @@
 		color: var(--yellow);
 	}
 	.obal{
-		width: 60%;
+		width: 50%;
 		max-width: 600px;
-		padding-right: 100px;
+
 		box-sizing: border-box;
 	}
 	.vyhledavani{
@@ -113,7 +110,6 @@
 	.kosik{
 		width: 10%;
 		max-width: 130px;
-
 	}
 
 	.kosik a button{
@@ -125,8 +121,6 @@
 		font-size: 1.6em;
 		color: var(--text);
 		padding-right: 40px;
-		margin: 0 auto;
-
 	}
 
 	@media only screen and (max-width: 800px){
@@ -155,6 +149,7 @@
 		}
 		.kosik{
 			padding: 0 10px 0 0;
+			margin: 0 auto;
 		}
 	}
 </style>

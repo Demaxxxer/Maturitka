@@ -15,32 +15,21 @@
 
         <table>
             <tr>
-                <td><label for="rjmeno">Jméno</label></td>
-                <td><input type="text" id="rjmeno" class="input" required></td>
+                <td><label for="jmeno">Jméno</label></td>
+                <td><input type="text" name="jmeno" class="input" required></td>
             </tr>
             <tr>
-                <td><label for="rprijmeni">Přijmení</label></td>
-                <td><input type="text" id="rprijmeni" class="input" required></td>
+                <td><label for="prijmeni">Přijmení</label></td>
+                <td><input type="text" name="prijmeni" class="input" required></td>
             </tr>
-            <tr>
-                <td><label for="telefon">Telefoní číslo</label></td>
-                <td><input type="number" id="telefon" class="input" required></td>
-            </tr>
+
             <tr>
                 <td><label for="email">Email</label></td>
-                <td><input type="email" id="email" class="input" required></td>
-            </tr>
-            <tr>
-                <td><label for="email">Email znovu</label></td>
-                <td><input type="email" id="email" class="input" required></td>
+                <td><input type="email" name="email" class="input" required></td>
             </tr>
             <tr>
                 <td><label for="heslo">Heslo</label></td>
-                <td><input type="text" id="heslo" class="input" required></td>
-            </tr>
-            <tr>
-                <td><label for="heslo">Heslo znovu</label></td>
-                <td><input type="text" id="heslo" class="input" required></td>
+                <td><input type="text" name="heslo" class="input" required></td>
             </tr>
         </table>                    
 

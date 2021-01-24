@@ -4,6 +4,7 @@ import Kosik from './views/Kosik.svelte'
 import Platba from './views/Platba.svelte'
 import Souhrn from './views/Souhrn.svelte'
 import Polozka from './views/Polozka.svelte'
+import Dokoncit from './views/Dokoncit.svelte'
 
 
 export default {
@@ -12,5 +13,6 @@ export default {
   '/platba': Platba,
   '/souhrn': Souhrn,
   '/polozka': Polozka,
+  '/dokoncit': Dokoncit,
   '*': NotFound,
 }

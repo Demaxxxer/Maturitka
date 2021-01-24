@@ -88,7 +88,7 @@
     .postup2 {
         width: 34%;
         background-color: var(--darkgrey);
-        border-right: solid 2px var(--lightgrey);
+        border-right: solid 2px var(--grey);
         color: var(--text);
     }
 

@@ -23,10 +23,30 @@ export const kosik = writable(
     ]
 );
 export const platba = writable({
-    prijmeni:"",
     jmeno:"",
+    prijmeni:"",
     email:"",
     platba:"",
+})/*
+export const uzivatel = writable({
+    jmeno:"",
+    prijmeni:"",
+    email:"",
+    perms:false,
+
+})*/
+export const uzivatel = writable({
+    jmeno:"Jan",
+    prijmeni:"Pastierčin",
+    email:"demaxer@seznam.cz",
+    perms:true,
+
+})/*
+export const uzivatel = writable({
+    jmeno:"Jan",
+    prijmeni:"Pastierčin",
+    email:"demaxer@seznam.cz",
+    perms:false,
+
 })
-
-
+export const uzivatel = writable(false)*/

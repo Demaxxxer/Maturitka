@@ -15,7 +15,7 @@
         height: 40px;
         width: 120px;
         background-color: var(--yellow);
-        border-color: var(--darkgrey);
+        border: solid 1px var(--darkgrey);
         border-radius: 10px;
         background-image: url('/images/Kosik1.svg');
         background-repeat: no-repeat;

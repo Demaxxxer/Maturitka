@@ -16,9 +16,9 @@
     </div>
     <div class="ohraniceni1">
         <p>Osobní údaje</p>
-        <div class="udaje">Jméno <span class="hodnota">{$platba.jmeno}</span></div>
-        <div class="udaje">Přijmení <span class="hodnota">{$platba.prijmeni}</span></div>
-        <div class="udaje">Email <span class="hodnota">{$platba.email}</span></div>
+        <div class="udaje">Jméno <span class="udaj1">{$platba.jmeno}</span></div>
+        <div class="udaje">Přijmení <span class="udaj2">{$platba.prijmeni}</span></div>
+        <div class="udaje">Email <span class="udaj3">{$platba.email}</span></div>
     </div>
     <div class="spodek">
         <div class="text">
@@ -27,7 +27,7 @@
         <div class="flow">
             <a class="button" href="/#/platba"><button class="zpet">Zpět</button></a>
 
-            <a class="button" href="/#/"><button class="pokracovat">Dokončit</button></a>
+            <a class="button" href="/#/dokoncit"><button class="pokracovat">Dokončit</button></a>
         </div>
     </div>
 
@@ -82,7 +82,7 @@
         width: 34%;
         background-color: var(--darkgrey);
         color: var(--text);
-        border-left: solid 2px var(--lightgrey);
+        border-left: solid 2px var(--grey);
     }
 
     .postup3 {
@@ -99,6 +99,22 @@
         right: 0;
         bottom: 0;
     }
+    .udaje{
+        margin-top: 10px;
+    }
+    .udaj1{
+        padding-left: 25px;
+    }
+    .udaj2{
+        padding-left: 15px;
+    }
+    .udaj3{
+        padding-left: 35px;
+    }
+    .udaj1, .udaj2, .udaj3{
+        font-size: 0.8em;
+    }
+
     .text {
         padding-top: 4px;
         text-align: center;
