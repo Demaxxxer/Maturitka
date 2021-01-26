@@ -5,7 +5,8 @@ import Platba from './views/Platba.svelte'
 import Souhrn from './views/Souhrn.svelte'
 import Polozka from './views/Polozka.svelte'
 import Dokoncit from './views/Dokoncit.svelte'
-
+import Edit from './views/Edit.svelte'
+import Seznam from './views/Seznam.svelte'
 
 export default {
   '/': Home,
@@ -14,5 +15,7 @@ export default {
   '/souhrn': Souhrn,
   '/polozka': Polozka,
   '/dokoncit': Dokoncit,
+  '/edit': Edit,
+  '/seznam': Seznam,
   '*': NotFound,
 }

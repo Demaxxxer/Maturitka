@@ -55,7 +55,7 @@
 	}
 	.bagoshop{
 		margin-left: 8px;
-		width: 20%;
+		width: 25%;
 	}
 	.bagoshop a button{
 		background: none;

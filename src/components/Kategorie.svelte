@@ -23,14 +23,14 @@ const categories = [
     'Závodní hry',
 ]
 const odkazy = [
-    '/#/test',
-    '/#/test',
+    '/#/edit',
+    '/#/seznam',
 
 
 ]
 const editace = [
-    'Přidáváná produktů',
-    'Editace produktů',
+    'Přidávání produktů',
+    'Seznam produktů',
 
 ]
 

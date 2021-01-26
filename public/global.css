@@ -32,7 +32,13 @@
     font-family: 'robotothic';
     src: url('./robotobold.ttf');
 }
+main{
 
+    width: 100%;
+    min-height: calc(100vh - 425px);
+    position: relative;
+    color: var(--text);
+}
 body{
     color: white;
 }
