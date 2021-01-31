@@ -56,7 +56,7 @@
 
     .nazev{
         position: absolute;
-        max-width: 200px;
+        max-width: 230px;
         top: 25px;
         left: 170px;
         font-size: 1.2em;

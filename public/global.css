@@ -57,6 +57,7 @@ html, body{
 }
 .pozadi{
     position: relative;
+    background-color: var(--pozadi);
 }
 a{
     display: block;

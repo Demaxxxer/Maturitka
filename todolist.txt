@@ -1,0 +1,17 @@
+když nejsou žádné položky v košíku, jde kliknout na platbu
+tlačítko na přidávání produktů aby ukazovalo vložené obrázky
+pozadí má být průhledné a udělat custom pozadí pod to, jestli bude čas
+dopsat souhrn objednávky, zobrazit typ platby, počet položek v košíku
+při zobrazování na telefonu musí být margin na stranách 15px asi
+při listování mezi produkty ne načítají další posouváním dolů
+nastřílat tam stíny ať to má ten feeling
+v editaci položek, musí se předělat dropdown pro kategorie a inputy větší mezeru mezi sebou
+dodělat styl jednotlivých položek:
+-náhledový obrázek odsunout kousek doprava a text doleva
+-přidat počet kusů skladem
+-button koupit udělat hezčí
+-sprovoznit galerii
+zarovnat doprostřed vyhledávací input na menu stránky
+pohrát se s dolní lištou zarovnat text
+
+
