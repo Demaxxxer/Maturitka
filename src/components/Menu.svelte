@@ -56,6 +56,7 @@
 	.bagoshop{
 		margin-left: 8px;
 		width: 25%;
+		
 	}
 	.bagoshop a button{
 		background: none;
@@ -70,6 +71,7 @@
 		box-sizing: border-box;
 		font-family: fontLOGO;
 		color: var(--yellow);
+		
 	}
 	.obal{
 		width: 50%;

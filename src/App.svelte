@@ -40,22 +40,23 @@ import Registrace from './components/Registrace.svelte';
         padding-top: 15px;
         /*padding-bottom: 15px;*/
     }
-
-    @media only screen and (max-width: 800px){
+    @media only screen and (max-width: 1200px){
         .wrapper{
-            margin-top: 90px;
+            margin-top: 105px;
             min-height: 100%;
+            padding-top: 15px;  
         }
         .pozadi{
-            
+
             box-sizing: border-box;
-            padding-top: 15px;
-
             min-height: calc(100vh - 190px);
-
-
         }
     }
+    @media only screen and (max-width: 800px){
+        .wrapper{
+            margin-top: 75px;
+        }
 
+    }
 
 </style>

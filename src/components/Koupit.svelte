@@ -2,17 +2,15 @@
     
 </script>
 
-<main>
+<button class="button">Koupit</button>
 
-    <button class="button">Koupit</button>
-</main>
 
 <style>
 
     .button{
         font-family: roboto;
         font-size: 1.2em;
-        height: 40px;
+        height: 35px;
         width: 120px;
         background-color: var(--yellow);
         border: solid 1px var(--darkgrey);

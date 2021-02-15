@@ -1,15 +1,21 @@
 <script>
     import { registracePopup } from '../stores/stavy.js';
+    import { potvrzeniPopup } from '../stores/stavy.js';
 
     function close(){
         registracePopup.update(_ => false);
     }
+
+    function open(){
+        potvrzeniPopup.update(_ => true);
+    }
+    
 </script>
 
 <div class="ohraniceni" active={$registracePopup}>
 
     <div class="backdrop" on:click={_ => close()}></div>
-    <form class="formular">
+    <form class="formular" on:submit|preventDefault={_ => console.log()}>
         <p class="registrace">Nová registrace</p>
         <button class="krizek" on:click={_ => close()}>╳</button>
 
@@ -33,7 +39,7 @@
             </tr>
         </table>                    
 
-        <button type="submit" id="registr" class="registr">Registrovat se</button>
+        <button type="submit" id="registr" class="registr" on:click={_ =>{close(); open()}}>Registrovat se</button>
         
     </form>  
 </div>
@@ -88,7 +94,7 @@
         position: fixed;
         z-index: 21;
         width: 400px;
-        height: 400px;
+        height: 300px;
         background-color: var(--darkgrey);
         border-radius: 10px;
         left: 50%;
@@ -98,7 +104,7 @@
 
     .registrace{
         padding-top: 10px;
-        font-size: 1.7em;
+        font-size: 1.5em;
         margin-bottom: 20px;
         text-align: center;
 
@@ -112,7 +118,7 @@
         border-radius: 10px;
         font-size: 1.3em;
         margin: 0 auto;
-        margin-top: 15px
+        margin-top: 20px
     }
 
 

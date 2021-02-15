@@ -1,21 +1,21 @@
 <script>
     import { loginPopup } from '../stores/stavy.js';
+    import { registracePopup } from '../stores/stavy.js';
 
     function close(){
         loginPopup.update(_ => false);
     }
-    import { registracePopup } from '../stores/stavy.js';
 
-function open(){
-    registracePopup.update(_ => true);
-}
+    function open(){
+        registracePopup.update(_ => true);
+    }
 </script>
 
-<div class="ohraniceni" active={$loginPopup}> 
+<div class="oregistr" active={$loginPopup}> 
 
     <div class="backdrop" on:click={_ => close()}></div>
     <form class="formular">
-        <p class="prihlaseni">Přihlášení</p>
+        <div class="prihlaseni">Přihlášení</div>
         <button class="krizek" on:click={_ => close()}>╳</button>
 
         <table class="table">
@@ -38,14 +38,14 @@ function open(){
 
 <style>
 
-    .ohraniceni{
+    .oregistr{
         position: fixed;
         z-index: 20;
         top: 0;
         left: 0;
         display: none;
     }
-    .ohraniceni[active="true"]{
+    .oregistr[active="true"]{
         display: block;
     }
     .backdrop{
@@ -60,7 +60,7 @@ function open(){
         position: fixed;
         z-index: 21;
         width: 320px;
-        height: 200px;
+        height: 180px;
         background-color: var(--darkgrey);
         border-radius: 10px;
         left: 50%;
@@ -69,8 +69,9 @@ function open(){
         padding: 0 20px;
     }
     .prihlaseni{
+        margin: 10px 0 10px;
         text-align: center;
-        font-size: 1.3em;
+        font-size: 1.5em;
 
     }
     .krizek{

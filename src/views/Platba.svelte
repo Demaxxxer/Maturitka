@@ -246,5 +246,22 @@
         width: 150px;
     }
 
+    @media only screen and (max-width: 1200px){
+        .ohraniceni1, .ohraniceni2{
+            width: 700px;
+            margin: 20px auto;
+        }
+        main{
+            padding-bottom: 110px;
+        }
+        
+    }
+    @media only screen and (max-width: 800px){
+        .ohraniceni1, .ohraniceni2{
+            width: 400px;
+            margin: 20px auto;
+        }
+        
+    }
 
 </style>

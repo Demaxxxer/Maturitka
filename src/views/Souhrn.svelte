@@ -56,6 +56,7 @@
         margin: 20px auto 10px auto;
         padding: 5px 35px 5px 35px;
     }
+    
 
     .bar {
         background-color: var(--darkgrey);
