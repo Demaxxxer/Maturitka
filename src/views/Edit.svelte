@@ -16,17 +16,20 @@
             
                 <label for="cena">Cena</label>
                 <input type="text" class="underline" name="cena"><br>
+
+                <label for="datum">Datum zveřejnění</label>
+                <input type="text" class="underline" name="datum"><br>
             
             
-                <label class="katergorie" for="kategorie">Kategorie</label>
-                <select class="kategorie" name="kategorie" >
-                        <option value="activ">Akční hry</option>
-                        <option value="logic">Logické hry</option>
-                        <option value="sim">Simulátory</option>
-                        <option value="strat">Strategické hry</option>
-                        <option value="rpg">RPG hry</option>
-                        <option value="race">Zívodní hry</option>
-                    </select>
+                <label class="kategorieText" for="kategorie">Kategorie</label>
+                <select class="kategorieBox" name="kategorie" >
+                    <option value="activ">Akční hry</option>
+                    <option value="logic">Logické hry</option>
+                    <option value="sim">Simulátory</option>
+                    <option value="strat">Strategické hry</option>
+                    <option value="rpg">RPG hry</option>
+                    <option value="race">Závodní hry</option>
+                </select>
                 
             
                 <div class="popis" for="popis">Popis produktu</div>
@@ -150,9 +153,13 @@
         margin-bottom: 10px;
     }
     label{
-        margin-bottom: 10px;
+        padding-bottom: 15px;
+        line-height: 25px;
     }
-    .kategorie{
+    .kategorieText{
+        line-height: 50px;
+    }
+    .kategorieBox{
         position: absolute;
         left: 40%;
         margin-top: 10px;
@@ -171,10 +178,7 @@
     .box1{
         margin: 10px 0;
     }
-    .popis{
 
-        vertical-align: top;
-    }
     .pridat {
         height: 40px;
         width: 150px;
@@ -192,7 +196,7 @@
         }
         
     }
-    @media only screen and (max-width: 500px){
+    @media only screen and (max-width: 550px){
         .wrapper1, .wrapper2, .wrapper3{
             width: 400px;
             margin: 15px auto;

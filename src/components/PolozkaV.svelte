@@ -1,12 +1,12 @@
 <script>
     import Koupit from './Koupit.svelte'
     import {nf} from '../scripty/uzitecne.js'
-    import {toppolozky} from '../stores/stavy.js'
+    import {polozky} from '../stores/stavy.js'
     
 </script>
-
+<main>
     <div class="polozky">
-        {#each $toppolozky as polozka}
+        {#each $polozky as polozka}
         <div class="polozka">
             <div class="nazev">{polozka.nazev}</div>
             <img  alt="error">
@@ -15,7 +15,7 @@
         </div>
         {/each}
     </div>
-
+</main>
 <style>
 
     .polozky{

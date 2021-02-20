@@ -1,9 +1,16 @@
 <script>
     import Objednavka from '../components/Objednavka.svelte'
-    import {objednavka} from '../stores/stavy.js';
+    import {objednavka, uzivatel} from '../stores/stavy.js';
 </script>
 <main>
     <div class="ohraniceni1">
+        <div class="nadpis">Údaje účtu</div>
+        <div class="jmeno">Jméno a přijmení: <span class="jmenoH">{$uzivatel.jmeno} {$uzivatel.prijmeni}</span></div>
+        <div class="email">E-mail: <span class="emailH">{$uzivatel.email}</span></div>
+
+
+    </div>
+    <div class="ohraniceni2">
         <div class="nadpis">Objednávky</div>
         <div class="nazev1">ID</div>
         <div class="nazev2">Datum</div>
@@ -19,15 +26,26 @@
 </main>
 <style>
 
-    main{
-        height: 100%;
-        width: 100%;
-        min-height: calc(100vh - 425px);
+    .ohraniceni1{
         position: relative;
-        color: var(--text);
-        padding-bottom: 150px;
+        max-width: 700px;
+        height: 100px;
+        background-color: var(--darkgrey);
+        border-radius: 10px;
+        margin: 10px auto 20px auto;
+        padding: 5px 35px 5px 35px;
+
     }
-    .ohraniceni1 {
+    .jmeno, .email{
+        margin-bottom: 5px;
+    }
+    .jmenoH{
+        margin-left: 10px;
+    }
+    .emailH{
+        margin-left: 88px;
+    }
+    .ohraniceni2{
         position: relative;
         max-width: 700px;
         height: 90px;
@@ -62,7 +80,7 @@
     
 
     @media only screen and (max-width: 1200px){
-        .ohraniceni1{
+        .ohraniceni1, .ohraniceni2{
             width: 700px;
             margin: 20px auto;
         }
@@ -72,7 +90,7 @@
         
     }
     @media only screen and (max-width: 800px){
-        .ohraniceni1{
+        .ohraniceni1, .ohraniceni2{
             width: 400px;
             margin: 20px auto;
         }

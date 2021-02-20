@@ -1,5 +1,5 @@
 <script>
-    import PolozkaHS from '../components/PolozkaHS.svelte';
+    import PolozkaV from '../components/PolozkaV.svelte';
     
 </script>
 <main>
@@ -8,7 +8,7 @@
         <div class="seradit">Filtry</div>
     </div>
     <div class="sloupce">
-        <div class="polozka"><PolozkaHS/></div>
+        <div class="polozka"><PolozkaV></PolozkaV></div>
     </div>
     
 </main>

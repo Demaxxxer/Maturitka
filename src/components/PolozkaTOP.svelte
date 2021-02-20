@@ -1,44 +1,36 @@
 <script>
     import Koupit from './Koupit.svelte'
     import {nf} from '../scripty/uzitecne.js'
-    import {toppolozky} from '../stores/stavy.js'
+    import {polozkyTOP} from '../stores/stavy.js'
     
 </script>
 
-    <div class="polozky">
-        {#each $toppolozky as polozka}
-        <div class="polozka">
-            <div class="nazev">{polozka.nazev}</div>
-            <img  alt="error">
-            <div class="cena">Cena: {nf(polozka.cena * polozka.kusy)} Kč</div>
-            <div class="koupit"><Koupit></Koupit></div>
-        </div>
-        {/each}
+<div class="polozky">
+    {#each $polozkyTOP as polozka}
+    <div class="polozka">
+        <div class="nazev">{polozka.nazev}</div>
+        <img  alt="error">
+        <div class="cena">Cena: {nf(polozka.cena * polozka.kusy)} Kč</div>
+        <div class="koupit"><Koupit></Koupit></div>
     </div>
+    {/each}
+</div>
 
 <style>
 
-    .polozky{
-        max-width: 940px;
-        width: calc(100% - 80px);
-        margin: 20px auto 0 auto;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
+
     .polozka{
         position: relative;
-        background-color: var(--darkgrey);
         border-radius: 10px;
         width: 270px;
         height: 300px;
-        margin-bottom: 20px;
+        padding-top: 20px;
     }
 
     .nazev{
         position: absolute;
         width: 100%;
-        top: 25px;
+        top: 10px;
         text-align: center;
         font-size: 1em;
 

@@ -1,14 +1,10 @@
 <script>
     import { registracePopup } from '../stores/stavy.js';
-    import { potvrzeniPopup } from '../stores/stavy.js';
 
     function close(){
         registracePopup.update(_ => false);
     }
 
-    function open(){
-        potvrzeniPopup.update(_ => true);
-    }
     
 </script>
 
@@ -39,7 +35,7 @@
             </tr>
         </table>                    
 
-        <button type="submit" id="registr" class="registr" on:click={_ =>{close(); open()}}>Registrovat se</button>
+        <button type="submit" id="registr" class="registr" on:click={_ =>close()}>Registrovat se</button>
         
     </form>  
 </div>

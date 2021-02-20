@@ -15,6 +15,7 @@
         <div class="polozka">
             <img  alt="error">
             <div class="nazev">{ polozka.nazev}</div>
+            <div class="id">ID: {polozka.id}</div>
             <button class="odstranit" on:click={_ => odstranit(polozka.id)}>╳</button>
             <a href="/#/edit"><button class="edit"></button></a>
             <form class="kusy">
@@ -53,12 +54,18 @@
         left: 25px;
         background: white;
     }
-
+    .id{
+        position: absolute;
+        max-width: 230px;
+        bottom: 65px;
+        left: 38%;
+        font-size: 1.1em;
+    }
     .nazev{
         position: absolute;
         max-width: 230px;
         top: 25px;
-        left: 170px;
+        left: 38%;
         font-size: 1.2em;
     }
 
@@ -82,14 +89,14 @@
     }
     .kusy{
         position: absolute;
-        left: 40%;
+        left: 38%;
         bottom: 45px;
 
     }
 
     .cena{
         position: absolute;
-        left: 40%;
+        left: 38%;
         bottom: 25px;
         font-family: roboto;
     }

@@ -1,19 +1,19 @@
 <script>
-    import { potvrzeniPopup } from '../stores/stavy.js';
+    import { potvrzeni } from '../stores/stavy.js';
 
     function close(){
-        potvrzeniPopup.update(_ => false);
+        potvrzeni.update(_ => false);
     }
 </script>
 
-<div class="ohraniceni" active={$potvrzeniPopup}>
+<div class="ohraniceni" active={$potvrzeni}>
 
     <div class="backdrop" on:click={_ => close()}></div>
     <form class="formular">
 
         <button class="krizek" on:click={_ => close()}>╳</button>
 
-        <div class="registrace">Byli jste úspěšně zaregistováni.</div>           
+        <div class="text"></div>        
         
     </form>  
 </div>
@@ -59,14 +59,6 @@
         left: 50%;
         transform: translateX(-50%);
         top: 30%;
-    }
-
-    .registrace{
-        padding-top: 10px;
-        font-size: 1.5em;
-        margin-bottom: 20px;
-        margin: 0 auto;
-
     }
     
 </style>
