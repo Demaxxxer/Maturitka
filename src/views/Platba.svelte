@@ -24,49 +24,48 @@
 
         </div>
         <div class="ohraniceni1">
-            <p>Osobní údaje</p>
-            <table>
-                <tr>
-                    <td><label for="jmeno">Jméno</label></td>
-                    <td><input type="text" class="input" on:input={e => zapis(e,"jmeno")} value={$platba.jmeno} required></td>
-                </tr>
-                <tr>
-                    <td><label for="prijmeni">Přijmení</label></td>
-                    <td><input type="text" class="input" on:input={e => zapis(e,"prijmeni")} value={$platba.prijmeni} required></td>
-                </tr>
-                <tr>
-                    <td><label for="email">Email</label></td>
-                    <td><input type="email" class="input" on:input={e => zapis(e,"email")} value={$platba.email} required></td>
-                </tr>
-            </table>
+            <div class="nadpis1">Osobní údaje</div>
+            <div class="wrapper1">
+                <label for="jmeno" class="label">Jméno</label>
+                <input type="text" class="input1" on:input={e => zapis(e,"jmeno")} value={$platba.jmeno} required><br>
+
+                <label for="prijmeni" class="label">Přijmení</label>
+                <input type="text" class="input2" on:input={e => zapis(e,"prijmeni")} value={$platba.prijmeni} required><br>
+
+                <label for="email" class="label">Email</label>
+                <input type="email" class="input3" on:input={e => zapis(e,"email")} value={$platba.email} required><br>
+            </div>
         </div>
             
         <div class="ohraniceni2">
 
-            <p>Typ platby</p>
-
-            <div>
-                <input type="radio" id="karta" name="typ" value="karta" checked="checked">
-                <label for="karta" class="karta">Kartou online</label>
-            </div>
-            <div>
-                <input type="radio" id="paypal" name="typ" value="paypal">
-                <label for="paypal" class="paypal">PayPal</label>
-            </div>
-            <div>
-                <input type="radio" id="paysafe" name="typ" value="paysafe">
-                <label for="paysafe" class="paysafe">Paysafecard</label>
-            </div>
-            <div>
-                <input type="radio" id="bitcoin" name="typ" value="bitcoin">
-                <label for="bitcoin" class="bitcoin">Bitcoin</label>
+            <div class="nadpis2">Typ platby</div>
+            <div class="platby">
+                <div>
+                    <input type="radio" id="karta" name="typ" value="karta" checked="checked">
+                    <label for="karta" class="karta">Kartou online</label>
+                </div>
+                <div>
+                    <input type="radio" id="paypal" name="typ" value="paypal">
+                    <label for="paypal" class="paypal">PayPal</label>
+                </div>
+                <div>
+                    <input type="radio" id="paysafe" name="typ" value="paysafe">
+                    <label for="paysafe" class="paysafe">Paysafecard</label>
+                </div>
+                <div>
+                    <input type="radio" id="bitcoin" name="typ" value="bitcoin">
+                    <label for="bitcoin" class="bitcoin">Bitcoin</label>
+                </div>
             </div>
         </div>
+
         <div class="spodek">
-            <div class="text">
-                Cena košíku:<span class="suma">{nf(sum)} Kč</span>
-            </div>
-            <div class="flow">
+                <div class="text">
+                    Cena košíku:<span class="suma">{nf(sum)} Kč</span>
+                </div>
+
+                <div class="flow">
                 <a class="button" href="/#/kosik"><button type="button" class="zpet">Zpět</button></a>
 
                 <button type="submit" class="pokracovat">Pokračovat </button>
@@ -86,18 +85,29 @@
 
     }
 
-    .input {
+    .input1, .input2, .input3 {
         border-bottom: solid 1px var(--lightgrey);
         color: var(--text);
         width: 100%;
         max-width: 200px;
-        margin: 0 0 7px 30px;
+        margin-bottom: 7px;
     }
+    .input1{
+        margin-left: 25px;
+    }   
 
-    p {
+    .input2{
+        margin-left: 15px;
+    }
+    .input3{
+        margin-left: 34px;
+    }
+    .nadpis1, .nadpis2{
         font-size: 1.3em;
-        max-width: 150px;
-        width: 100%;
+        margin: 20px 0;
+    }
+    .nadpis2{
+        padding-bottom: 5px;
     }
 
     .bar {
@@ -151,8 +161,7 @@
         padding: 5px 35px 5px 35px;
     }
 
-
-    .ohraniceni2 div {
+    .ohraniceni2 .platby div {
         margin: 10px 0;
         border-bottom: solid 1px var(--text);
         padding: 5px 0;
@@ -160,7 +169,17 @@
 
     .ohraniceni2 input {
         margin-left: 10px;
+    
     }
+
+    .wrapper1{
+        height: 100%;
+    }
+    .label{
+        width: 100%;
+        margin-top: 10px;
+    }
+
 
     label {
         height: 100%;

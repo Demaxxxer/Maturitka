@@ -8,6 +8,9 @@
   <div class="ohraniceni1">
     
   </div>
+  <div class="ohraniceni2">
+    
+  </div>
 
 </main>
 

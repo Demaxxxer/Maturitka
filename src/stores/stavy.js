@@ -76,6 +76,23 @@ export const polozky = writable(
         
     ]
 );
+export const objednavka = writable(
+    [
+        {
+            id:"1",
+            datum:"2.3.2021",
+            kusy:"5",
+            cena:"2121",
+
+        },
+        {
+            id:"2",
+            datum:"1.2.2021",
+            kusy:"12",
+            cena:"111",
+        },
+    ]
+);
 export const platba = writable({
     jmeno:"",
     prijmeni:"",
@@ -83,24 +100,16 @@ export const platba = writable({
     platba:"",
 })/*
 export const uzivatel = writable({
-    jmeno:"",
-    prijmeni:"",
-    email:"",
-    perms:false,
-
-})
-export const uzivatel = writable({
     jmeno:"Jan",
     prijmeni:"Pastierčin",
     email:"demaxer@seznam.cz",
     perms:true,
 
-})
+})*/
 export const uzivatel = writable({
     jmeno:"Jan",
     prijmeni:"Pastierčin",
     email:"demaxer@seznam.cz",
     perms:false,
-
-})*/
-export const uzivatel = writable(false)
+})/*
+export const uzivatel = writable(false)*/

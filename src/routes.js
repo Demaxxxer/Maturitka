@@ -8,6 +8,7 @@ import Dokoncit from './views/Dokoncit.svelte'
 import Edit from './views/Edit.svelte'
 import Seznam from './views/Seznam.svelte'
 import Vyhledani from './views/Vyhledani.svelte'
+import Objednavky from './views/Objednavky.svelte'
 
 export default {
   '/': Home,
@@ -19,5 +20,6 @@ export default {
   '/edit': Edit,
   '/seznam': Seznam,
   '/vyhledani': Vyhledani,
+  '/objednavky': Objednavky,
   '*': NotFound,
 }

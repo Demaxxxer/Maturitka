@@ -70,9 +70,13 @@ const editace = [
                         </a>
                         {/each}
                         {/if}
+                        <a href="/#/objednavky"><button on:click={_ => logout()}>
+                            <div class="edit">Objednávky</div>
+                        </button></a>
                         <button on:click={_ => logout()}>
                             <div class="edit">Odhlásit se</div>
                         </button>
+                        
                     </div>
                     {:else}
                     <button on:click={_ => open()}>Přihlásit se</button>
