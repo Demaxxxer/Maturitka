@@ -2,6 +2,7 @@ import {readable, writable} from 'svelte/store';
 
 export const loginPopup = writable(false);
 export const registracePopup = writable(false);
+export const kosikAlert = writable(false);
 export const potvrzeni = writable(false);
 export const kosik = writable(
     [
@@ -144,13 +145,15 @@ export const platba = writable({
     platba:"",
 })
 export const uzivatel = writable({
+    id:"1",
     jmeno:"Jan",
     prijmeni:"Pastierčin",
-    email:"demaxer@seznam.cz",
+    email:"jan.pastiercin@seznam.cz",
     perms:true,
 
 })/*
 export const uzivatel = writable({
+    id:"2",
     jmeno:"Jan",
     prijmeni:"Pastierčin",
     email:"demaxer@seznam.cz",

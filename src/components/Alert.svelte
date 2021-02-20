@@ -6,59 +6,52 @@
     }
 </script>
 
-<div class="ohraniceni" active={$potvrzeni}>
+<div class="zprava" error="true">
 
-    <div class="backdrop" on:click={_ => close()}></div>
-    <form class="formular">
+    <div class="text">Uživatel s tímto jménem už je zaregistrovaný!</div> 
 
-        <button class="krizek" on:click={_ => close()}>╳</button>
-
-        <div class="text"></div>        
-        
-    </form>  
-</div>
-
+    <button class="krizek" on:click={_ => close()}><b>╳</b></button>
+</div>  
 
 
 <style>
-    .ohraniceni{
-        position: fixed;
-        z-index: 20;
-        top: 0;
-        left: 0;
-        display: none;
-    }
-
-    .ohraniceni[active="true"]{
-        display: block;
-    }
-
-    .backdrop{
-        position: fixed;
-        background-color: rgba(0,0,0,0.7);
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-    }
-
     .krizek{
         position: absolute;
-        color: white;
-        top: 10px;
-        right: 10px;
+        color: black;
+        line-height: 50px;
+        right: 20px;
+        
+    }
+    .text{
+        position: absolute;
+        color: black;
+        line-height: 50px;
+        left: 20px;
     }
     
-    .formular{
+    .zprava{
+        color: black;
         position: fixed;
-        z-index: 21;
-        width: 400px;
-        height: 300px;
-        background-color: var(--darkgrey);
-        border-radius: 10px;
+        z-index: 31;
+        width: 600px;
+        height: 50px;
+        background-color: #c6ffb3;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
         left: 50%;
         transform: translateX(-50%);
-        top: 30%;
+        top: 120px;
+    }
+    .zprava[error="true"]{
+        background-color: #fe4d4d;
+
+    }
+    
+    @media only screen and (max-width: 800px){
+        .zprava{
+            top: 90px;
+        }
+
     }
     
 </style>

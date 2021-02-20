@@ -6,11 +6,13 @@ import Footer from './components/Footer.svelte';
 import Kategorie from './components/Kategorie.svelte';
 import Login from './components/Login.svelte';
 import Registrace from './components/Registrace.svelte';
+import Alert from './components/Alert.svelte';
 
 </script>
 
 
 <main>
+    <Alert />
     <Menu />
     <Kategorie />
     <div class="wrapper">
@@ -24,10 +26,12 @@ import Registrace from './components/Registrace.svelte';
 </main>
 
 <style>
+
     .wrapper{
         width: 100%;
         height: 100%;
         margin-top: 140px;
+        
     }
     .pozadi{
         background-color: var(--grey);

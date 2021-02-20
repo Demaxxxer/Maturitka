@@ -15,7 +15,7 @@
 
     .objednavka{
         position: relative;
-        max-width: 700px;
+        max-width: 940px;
         height: 50px;
         background-color: var(--darkgrey);
         border-radius: 10px;
@@ -48,9 +48,6 @@
         .objednavka{
             width: 700px;
             margin: 20px auto;
-        }
-        main{
-            padding-bottom: 110px;
         }
         
     }

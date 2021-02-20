@@ -62,7 +62,7 @@
         
     }
     @media only screen and (max-width: 940px){
-      .ohraniceni1, .ohraniceni2, .ohraniceni3, .ohraniceni4{
+        .ohraniceni1, .ohraniceni2, .ohraniceni3, .ohraniceni4{
             width: 400px;
             margin: 20px auto;
         }

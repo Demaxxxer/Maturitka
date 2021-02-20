@@ -7,8 +7,10 @@ import Polozka from './views/Polozka.svelte'
 import Dokoncit from './views/Dokoncit.svelte'
 import Edit from './views/Edit.svelte'
 import Seznam from './views/Seznam.svelte'
+import SeznamU from './views/SeznamU.svelte'
 import Vyhledani from './views/Vyhledani.svelte'
 import Profil from './views/Profil.svelte'
+
 
 export default {
   '/': Home,
@@ -19,6 +21,7 @@ export default {
   '/dokoncit': Dokoncit,
   '/edit': Edit,
   '/seznam': Seznam,
+  '/seznamuzivatelu': SeznamU,
   '/vyhledani': Vyhledani,
   '/profil': Profil,
   '*': NotFound,

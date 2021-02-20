@@ -20,12 +20,12 @@
 
         <table class="table">
             <tr>
-                <td><label>Email</label></td>
+                <td><label for="email">Email</label></td>
                 <td><input type="email" id="email" required></td>
             </tr>
             <tr>
-                <td><label>Heslo</label></td>
-                <td><input type="password" id="heslo" rewuired></td>
+                <td><label for="heslo">Heslo</label></td>
+                <td><input type="password" id="heslo" required></td>
             </tr>
         </table>
         <div class="tlacitka">

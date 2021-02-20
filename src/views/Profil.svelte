@@ -28,7 +28,7 @@
 
     .ohraniceni1{
         position: relative;
-        max-width: 700px;
+        max-width: 940px;
         height: 100px;
         background-color: var(--darkgrey);
         border-radius: 10px;
@@ -47,7 +47,7 @@
     }
     .ohraniceni2{
         position: relative;
-        max-width: 700px;
+        max-width: 940px;
         height: 90px;
         background-color: var(--darkgrey);
         border-radius: 10px;

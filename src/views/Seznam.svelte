@@ -1,50 +1,44 @@
 <script>
     import Polozka from '../components/Polozka.svelte';
-    import {nf} from '../scripty/uzitecne.js'
-    import {kosik} from '../stores/stavy.js';
 
-    function odstranit(id){
-        let novePolozky = [...$kosik];
-        novePolozky=novePolozky.filter(polozka => {return polozka.id != id});
-        kosik.update(_ => novePolozky);
-    }
     
 </script>
 <main>
     <form>
-        <div class="wrapper">
-            <div class="nadpis">Editace produktů</div>
-        
-            <label class="nazev" for="nazev">Název</label>
-            <input type="text" class="hodnota1" name="nazev"><br>
-
-            <label class="nazev" for="id">ID</label>
-            <input type="number" class="hodnota1" name="id"><br>
-        
-        
-            <label class="" for="kategorie">Kategorie</label>
-            <select class="kategorie" name="kategorie" >
-                <option value="activ">Akční hry</option>
-                <option value="logic">Logické hry</option>
-                <option value="sim">Simulátory</option>
-                <option value="strat">Strategické hry</option>
-                <option value="rpg">RPG hry</option>
-                <option value="race">Závodní hry</option>
-            </select><br>
+        <div class="ohraniceni">
+            <div class="padding">
+                <div class="nadpis">Editace produktů</div>
             
+                <label class="nazev" for="nazev">Název</label>
+                <input type="text" class="hodnota1" name="nazev"><br>
 
-            <div class="cena">Cena</div>
-            <div class="od"> od </div>
-            <input type="number" class="hodnota2" name="cena" min="1" max="9999">
-            <div class="do"> do </div>
-            <input type="number" class="hodnota3" name="cena" min="1" max="9999">
-            <br>
+                <label class="nazev" for="id">ID</label>
+                <input type="number" class="hodnota1" name="id"><br>
             
             
+                <label class="" for="kategorie">Kategorie</label>
+                <select class="kategorie" name="kategorie" >
+                    <option value="activ">Akční hry</option>
+                    <option value="logic">Logické hry</option>
+                    <option value="sim">Simulátory</option>
+                    <option value="strat">Strategické hry</option>
+                    <option value="rpg">RPG hry</option>
+                    <option value="race">Závodní hry</option>
+                </select><br>
+                
 
-            <input type="checkbox" class="radio" name="skladem">
-            <label for="skladem" class="radioText">Není skladem</label><br>
+                <div class="cena">Cena</div>
+                <div class="od"> od </div>
+                <input type="number" class="hodnota2" name="cena" min="1" max="9999">
+                <div class="do"> do </div>
+                <input type="number" class="hodnota3" name="cena" min="1" max="9999">
+                <br>
+                
+                
 
+                <input type="checkbox" class="radio" name="skladem">
+                <label for="skladem" class="radioText">Není skladem</label><br>
+            </div>
         </div>
     </form>
     <div class="sloupce">
@@ -54,18 +48,20 @@
 </main>
 <style>
     main{
-        padding: 5px 0 15px;    
+        padding-bottom: 10px;
     }
-    .wrapper{
+    .ohraniceni{
         position: relative;
         width: 940px;
         height: 100%;
-        padding: 20px 20px;
         margin: 0 auto;
         background-color: var(--darkgrey);
         border-radius: 10px;
         line-height: 30px;
         
+    }
+    .padding{
+        padding: 10px 20px;
     }
     .nadpis{
         font-size: 1.4em;
@@ -109,8 +105,8 @@
         color: black;
     }
     @media only screen and (max-width: 1200px){
-        .wrapper{
-            width: 880px;
+        .ohraniceni{
+            width: 760px;
             margin: 20px auto;
         }
         main{
@@ -118,8 +114,8 @@
         }
         
     }
-    @media only screen and (max-width: 956px){
-        .wrapper{
+    @media only screen and (max-width: 800px){
+        .ohraniceni{
             width: 400px;
             margin: 20px auto;
         }

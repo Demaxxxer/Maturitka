@@ -25,12 +25,13 @@ const categories = [
 const odkazy = [
     '/#/edit',
     '/#/seznam',
-
+    '/#/seznamuzivatelu',
 
 ]
 const editace = [
     'Přidávání produktů',
     'Seznam produktů',
+    'Seznam uživatelů',
 
 ]
 

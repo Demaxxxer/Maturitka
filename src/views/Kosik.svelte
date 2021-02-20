@@ -145,7 +145,7 @@
     }
     .kusy{
         position: absolute;
-        left: 60%;
+        left: 50%;
         bottom: 20px;
         margin: 0 auto;
     }
@@ -170,7 +170,10 @@
         bottom: 20px;
     }
     .text {
-        text-align: center;
+        position: absolute;
+        bottom: 75px;
+        left: 50%;
+        transform: translateX(-50%);
     }
     .text .suma {
         margin-left: 10px;
@@ -190,14 +193,7 @@
         left: 50%;
     }
 
-    .spodek{
-        position: absolute;
-        width: 100%;
-        height: 100px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    }
+
 
     @media only screen and (max-width: 1200px){
         .polozka{
