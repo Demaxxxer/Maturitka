@@ -1,11 +1,16 @@
 <script>
     import PolozkaV from '../components/PolozkaV.svelte';
+
+
+    function open(){
+        filtry.update(_ => true);
+    }
     
 </script>
 <main>
     <div class="wrapper">
         <div class="nadpis">Kategorie:</div>
-        <div class="seradit">Filtry</div>
+        <button class="seradit" on:click >Filtry</button>
     </div>
     <div class="sloupce">
         <div class="polozka"><PolozkaV></PolozkaV></div>

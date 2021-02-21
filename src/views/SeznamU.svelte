@@ -10,13 +10,16 @@
             <div class="nadpis">Seznam uživatelů</div>
 
             <label class="jmeno" for="jmenou">Jméno</label>
-            <input type="text" class="hodnota2" name="jmenou"><br>
+            <input type="text" class="hodnota1" name="jmenou"><br>
 
             <label class="prijmeni" for="prijmeniu">Přijmení</label>
-            <input type="text" class="hodnota3" name="prijmeniu"><br>
+            <input type="text" class="hodnota2" name="prijmeniu"><br>
 
             <label class="email" for="emailu">Email</label>
-            <input type="email" class="hodnota4" name="emailu"><br>
+            <input type="email" class="hodnota3" name="emailu"><br>
+
+            <label class="admin" for="admin">Admin</label>
+            <input type="checkbox" class="hodnota4" name="admin"><br>
 
 
 
@@ -24,7 +27,10 @@
         <div class="ohraniceni2">
             <div class="j">Jméno a Přijmení</div>
             <div class="e">Email</div>
+            <div class="a">Administrativa</div>
             <div class="o">Odtranit</div>
+
+
 
         </div>
     </form>
@@ -40,7 +46,7 @@
     .ohraniceni1{
         position: relative;
         width: 940px;
-        height: 140px;
+        height: 160px;
         padding: 10px 0;
         margin: 0 auto;
         background-color: var(--darkgrey);
@@ -64,7 +70,7 @@
         margin-bottom: 10px;
         padding-left: 20px;
     }
-    .jmeno, .prijmeni, .idecko, .email{
+    .jmeno, .prijmeni, .admin, .email{
         padding-left: 20px;
     }
     .hodnota1, .hodnota2, .hodnota3, .hodnota4{
@@ -73,8 +79,11 @@
         margin-top: 3px;
         left: 150px;
     }
+    .hodnota4{
+        margin-top: 5px;
+    }
 
-    .id, .j, .e, .o{
+    .a, .j, .e, .o{
         position: absolute;
         line-height: 50px;
     }
@@ -82,7 +91,11 @@
         left: 35px;
     }
     .e{
-        left: 50%;
+        left: 35%;
+        transform: translateX(-50%);
+    }
+    .a{
+        left: 65%;
         transform: translateX(-50%);
     }
     .o{

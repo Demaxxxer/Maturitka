@@ -12,9 +12,12 @@
 </script>
 
 <div class="ohraniceni">
-    <div class="jmeno">{$uzivatel.jmeno} {$uzivatel.prijmeni}</div>
-    <div class="email">{$uzivatel.email}</div>
-    <button class="odstranit" on:click={_ => odstranit(uzivatel.id)}>╳</button>
+    <form>
+        <div class="jmeno">{$uzivatel.jmeno} {$uzivatel.prijmeni}</div>
+        <div class="email">{$uzivatel.email}</div>
+        <input type="checkbox" id="admin" class="admin">
+        <button class="odstranit" on:click={_ => odstranit(uzivatel.id)}>╳</button>
+    </form>
 </div>
 
 <style>
@@ -28,7 +31,7 @@
         margin: 20px auto 20px auto;
     }
 
-    .id, .jmeno, .email, .odstranit{
+    .admin, .jmeno, .email, .odstranit{
         position: absolute;
         line-height: 50px;
     }
@@ -36,10 +39,15 @@
         left: 35px;
     }
     .email{
-        left: 50%;
+        left: 35%;
         transform: translateX(-50%);
     }
+    .admin{
+        left: 65%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
 
+    }
     .odstranit{
         right: 75px;
         color: var(--text);
