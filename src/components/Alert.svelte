@@ -15,29 +15,28 @@
 
 
 <style>
-    .zprava{
-        display: none;
-    }
+
     .krizek{
         position: absolute;
         color: black;
-        line-height: 50px;
+        line-height: 60px;
         right: 20px;
         
     }
     .text{
         position: absolute;
         color: black;
-        line-height: 50px;
+        line-height: 60px;
         left: 20px;
     }
     
     .zprava{
+        display: none;
         color: black;
         position: fixed;
         z-index: 31;
         width: 600px;
-        height: 50px;
+        height: 60px;
         background-color: #c6ffb3;
         border-bottom-right-radius: 10px;
         border-bottom-left-radius: 10px;
@@ -47,12 +46,13 @@
     }
     .zprava[error="true"]{
         background-color: #fe4d4d;
-
     }
     
     @media only screen and (max-width: 800px){
         .zprava{
-            top: 0px;
+            width: 100%;
+            border-bottom-right-radius: 0px;
+            border-bottom-left-radius: 0px;
         }
 
     }

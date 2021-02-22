@@ -30,17 +30,19 @@
         {/each}
     </div>
 
-    <div class="celkovaCena">
-        Cena košíku:<span class="suma">{nf(sum)} Kč</span>
-    </div>
-
     <div class="spodek">
+        <div class="text">
+            Cena košíku:<span class="suma">{nf(sum)} Kč</span>
+        </div>
 
-
-        <a class="button" href="/#/platba"><button class="zpet">Zpět</button></a>
+        <div class="flow">
+            <a class="button" href="/#/platba"><button class="zpet">Zpět</button></a>
 
         <a class="button" href="/#/dokoncit"><button class="pokracovat">Dokončit</button></a>
+        </div>
     </div>
+
+
 
 </main>
 <style>
@@ -60,7 +62,8 @@
     }
     .ohraniceni1{
         max-width: 700px;
-        height: 170px;
+        height: 160px;
+        box-sizing: border-box;
         background-color: var(--darkgrey);
         border-radius: 10px;
         margin: 20px auto 10px auto;
@@ -69,6 +72,7 @@
     .ohraniceni2{
         max-width: 700px;
         height: 100%;
+        box-sizing: border-box;
         background-color: var(--darkgrey);
         border-radius: 10px;
         margin: 20px auto 10px auto;
@@ -111,14 +115,11 @@
     }
 
     .spodek{
-        position: absolute;
         width: 100%;
+        height: 100px;
+        left: 0;
+        right: 0;
         bottom: 0;
-        display: flex;
-        justify-content: space-evenly;
-        margin-bottom: 15px;
-        overflow: auto;
-        box-sizing: border-box;
     }
     .udaje{
         margin-top: 7px;
@@ -147,15 +148,23 @@
     .cena {
         float: right;
     }
-    .celkovaCena {
-        position: absolute;
-        bottom: 75px;
-        width: 100%;
+
+    .text {
+
         text-align: center;
     }
-    .suma{
-        font-size: 1.3em;
+    .text .suma {
         margin-left: 10px;
+        font-size: 1.3em;
+    }
+    .flow {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 20px;
+        overflow: auto;
+        box-sizing: border-box;
     }
     .zpet {
         height: 40px;
@@ -186,14 +195,12 @@
         main{
             padding-bottom: 20px;
         }
-        
     }
     @media only screen and (max-width: 800px){
         .ohraniceni1, .ohraniceni2{
             width: 400px;
             margin: 20px auto;
         }
-        
     }
 
 

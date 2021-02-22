@@ -61,11 +61,11 @@
         </div>
 
         <div class="spodek">
-                <div class="text">
-                    Cena košíku:<span class="suma">{nf(sum)} Kč</span>
-                </div>
+            <div class="text">
+                Cena košíku:<span class="suma">{nf(sum)} Kč</span>
+            </div>
 
-                <div class="flow">
+            <div class="flow">
                 <a class="button" href="/#/kosik"><button type="button" class="zpet">Zpět</button></a>
 
                 <button type="submit" class="pokracovat">Pokračovat </button>
@@ -81,7 +81,7 @@
         min-height: calc(100vh - 425px);
         position: relative;
         color: var(--text);
-        padding-bottom: 125px;
+
 
     }
 
@@ -145,7 +145,8 @@
 
     .ohraniceni1 {
         max-width: 700px;
-        height: 170px;
+        height: 160px;
+        box-sizing: border-box;
         background-color: var(--darkgrey);
         border-radius: 10px;
         margin: 20px auto 10px auto;
@@ -155,6 +156,7 @@
     .ohraniceni2 {
         max-width: 700px;
         height: 250px;
+        box-sizing: border-box;
         background-color: var(--darkgrey);
         border-radius: 10px;
         margin: 20px auto 10px auto;
@@ -219,7 +221,7 @@
         margin-left: 35px;
     }
     .spodek{
-        position: absolute;
+        position: relative;
         width: 100%;
         height: 100px;
         left: 0;
@@ -227,7 +229,7 @@
         bottom: 0;
     }
     .text {
-        padding-top: 4px;
+        margin-top: 25px;
         text-align: center;
     }
     .text .suma {
@@ -271,7 +273,7 @@
             margin: 20px auto;
         }
         main{
-            padding-bottom: 110px;
+            padding: 0 10px 110px;
         }
         
     }

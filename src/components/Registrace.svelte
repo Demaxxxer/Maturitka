@@ -42,6 +42,10 @@
                 <td><label for="heslo">Heslo</label></td>
                 <td><input type="text" name="heslo" class="input" bind:value={rpass} required></td>
             </tr>
+            <tr>
+                <td><label for="hesloZnovu">Znovu heslo</label></td>
+                <td><input type="text" name="hesloZnovu" class="input" bind:value={rpass} required></td>
+            </tr>
         </table>
 
         <button type="submit" id="registr" class="registr" on:click={_ =>close()}>Registrovat se</button>
@@ -99,7 +103,7 @@
         position: fixed;
         z-index: 21;
         width: 400px;
-        height: 300px;
+        height: 320px;
         background-color: var(--darkgrey);
         border-radius: 10px;
         left: 50%;

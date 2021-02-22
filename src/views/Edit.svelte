@@ -11,11 +11,10 @@
                 
             
                 <label for="kusy">Kusy skladem</label>
-                <input type="number" class="underline2" name="kusy" placeholder="20" min="0" max="9999"><br>
-            
+                <input type="number" class="underline2" name="kusy" placeholder="20" min="0" max="9999"><span class="ks">ks</span><br>           
             
                 <label for="cena">Cena</label>
-                <input type="number" class="underline3" name="cena" placeholder="3000" min="0" max="9999"><br>
+                <input type="number" class="underline3" name="cena" placeholder="3000" min="0" max="9999"><span class="kc">Kč</span><br>
 
                 <label for="datum">Datum vydání</label>
                 <input type="date" class="underline4" name="datum" placeholder="1.1.2020"><br>
@@ -30,11 +29,6 @@
                     <option value="rpg">RPG hry</option>
                     <option value="race">Závodní hry</option>
                 </select>
-                
-            
-                <div class="popis" for="popis">Popis produktu</div>
-                <textarea name="popis" class="box1" placeholder="Krátký popis..."></textarea>
-            
 
 
             <div for="img">Náhled hry</div>
@@ -68,7 +62,7 @@
                 <input type="text" class="underline" name="gpu1" placeholder="Nvidia, AMD, ..."><br>
             
                 <label for="ram1">Paměť RAM</label>
-                <input type="text" class="underline" name="ram1" placeholder="4GB"><br>
+                <input type="number" class="underline5" name="ram1" placeholder="4" min="0" max="128"><span class="gb">GB</span><br>
             
                 <label for="direct1">DirectX</label>
                 <input type="text" class="underline" name="direct1" placeholder="DirectX 11"><br>
@@ -86,8 +80,8 @@
                 <input type="text" class="underline" name="gpu2" placeholder="Nvidia, AMD, ..."><br>
             
                 <label for="ram2">Paměť RAM</label>
-                <input type="text" class="underline" name="ram2" placeholder="4GB"><br>
-            
+                <input type="number" class="underline5" name="ram2" placeholder="4" min="0" max="128"><span class="gb">GB</span><br>
+                
                 <label for="direct2">DirectX</label>
                 <input type="text" class="underline" name="direct2" placeholder="DirectX 11"><br>
             </div>
@@ -141,7 +135,7 @@
     .podnadpis2{
         margin-top: 20px;
     }
-    .underline, .underline1, .underline2, .underline3, .underline4{
+    .underline, .underline1, .underline2, .underline3, .underline4, .underline5{
         position: absolute;
         left: 40%;
         border-bottom: solid 1px var(--lightgrey);
@@ -149,24 +143,24 @@
         margin-bottom: 10px;
         width: 100%;
     }
-    .underline{
+    .underline, .underline1{
         max-width: 200px;
     }
-    .underline1{
-        max-width: 200px;
-    }
-    .underline2{
-        max-width: 50px;
-    }
-    .underline3{
-        max-width: 50px;
+    .underline2, .underline3{
+        max-width: 65px;
     }
     .underline4{
         max-width: 120px;
     }
+    .underline5{
+        max-width: 60px;
+    }
+    .underline5::after{
+        content: 'GB';
+    }
     input[type="date"]::-webkit-calendar-picker-indicator {
         filter: invert(1);
-}
+    }
     label{
         padding-bottom: 15px;
         line-height: 25px;
@@ -179,7 +173,7 @@
         left: 40%;
         margin-top: 10px;
     }
-    .box1, .box2{
+    .box2{
         resize: none;
         display: block;
         background: var(--text);
@@ -190,10 +184,20 @@
     .box2{
         margin-top: 10px;
     }
-    .box1{
-        margin: 10px 0;
+    .gb, .ks, .kc{
+        position: absolute;
+        padding-top: 1px;
+        font-size: 0.8em;
     }
-
+    .gb{
+        left: 42.5%;
+    }
+    .ks{
+        left: 43.5%;
+    }
+    .kc{
+        left: 43.5%;
+    }
     .pridat {
         height: 40px;
         width: 150px;

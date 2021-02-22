@@ -10,22 +10,32 @@
 <div class="lista">
     <div class="menu">
 
-		<div class="logo">
-			<a href="/#/">
-				<button></button>
-			</a>
+		<div class="logoObal">
+			<div class="logoObalek">
+				<div class="logo">
+					<a href="/#/">
+						<button></button>
+					</a>
+				</div>
+			</div>
 		</div>
-
-		<div class="hledani">
-			<input type="text"
-				bind:value={search}
-				on:keyup={e => e.key == 'Enter' && goFind(e)}
-				placeholder="Hledat">
-			<button class="hledat" on:click={e => goFind(e)}></button>
+		<div class="hledaniObal">
+			<div class="hledaniObalek">
+				<div class="hledani">
+					<input type="text"
+						bind:value={search}
+						on:keyup={e => e.key == 'Enter' && goFind(e)}
+						placeholder="Hledat">
+					<button class="hledat" on:click={e => goFind(e)}></button>
+				</div>
+			</div>
 		</div>
-
-		<div class="kosik">
-			<a href="/#/kosik"><button>Košík</button></a>
+		<div class="kosikObal">
+			<div class="kosikObalek">
+				<div class="kosik">
+					<a href="/#/kosik"><button>Košík</button></a>
+				</div>
+			</div>
 		</div>
 
     </div>
@@ -48,38 +58,56 @@
 		height: 100%;
 		margin: 0 auto;
 	}
-	.logo{
+	.logoObal{
 		position: absolute;
-		width: 20%;
+		height: 100%;
+		width: 25%;
+		top: 0;
 		left: 0;
+
+	}
+	.hledaniObal{
+		position: absolute;
+		height: 100%;
+		width: 50%;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.kosikObal{
+		position: absolute;
+		height: 100%;
+		width: 25%;
+		top: 0;
+		right: 0;
+	}
+	.logoObalek, .hledaniObalek, .kosikObalek{
+		position: relative;
+		height: 100%;
+	}
+	.logo, .hledani{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateX(-50%) translateY(-50%);
 	}
 
 	.logo a button{
-		background: none;
+
 		width: 210px;
 		height: 37px;
 
 	}
 	.logo a button::after{
 		content: "BAGOSHOP";
-		font-size: 3em;
+		font-size: 2.8em;
 		box-sizing: border-box;
 		font-family: fontLOGO;
 		color: var(--yellow);
-		
-	}
-	.hledani{
-		width: 50%;
-		max-width: 600px;
-		box-sizing: border-box;
-	}
-	.hledani{
-		position: absolute;
-		width: 60%;
-		margin: 0 auto;
 	}
 
 	.hledani{
+		position: absolute;
 		border-bottom: solid 1px white;
 		box-sizing: border-box;
 		width: 100%;
@@ -109,8 +137,9 @@
 	}
 	.kosik{
 		position: absolute;
-		width: 20%;
-		right: 0;
+		top: 50%;
+		left: 67%;
+		transform: translateX(-50%) translateY(-50%);
 	}
 	.kosik a button{
 		height: 30px;
@@ -124,25 +153,34 @@
 	}
 
 	@media only screen and (max-width: 800px){
-		.bagoshop a button{
-			width: 100%;
+		.logo{
 			height: 100%;
-			min-width: 55px;
+			width: 100%;
 			background-size: 50px;
 			background-position: center;
 			background-repeat: no-repeat;
 			background-image: url('/images/Console.svg');
-		}
-		.bagoshop a button::after{
-			content: " ";
+			left: 50%;
+			top: 50%;
+			transform: translateX(-50%) translateY(-50%);
 		}
 
+		.logo a button::after{
+			content: " ";
+			background: none;
+		}
 		.lista{
 			height: 60px;
 		}
 		.kosik{
-			padding: 0 10px 0 0;
-			margin: 0 auto;
+			left: 55%;
 		}
+		.kosik a button{
+			font-size: 1.3em;
+			background-size: 22px;
+			padding-right: 30px;
+
+		}
+		
 	}
 </style>

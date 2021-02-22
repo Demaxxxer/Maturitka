@@ -7,7 +7,7 @@
 </script>
 
 <main>
-    <div class="text">Objednávka je dokončena, kliknutím na tlačítko se vrátíte zpět.</div>
+    <div class="text">Objednávka byla dokončena, kliknutím na tlačítko se vrátíte zpět.</div>
     <div class="flow">
         <a class="button" href="/#/"><button class="zpet">Zpět na úvodní stránku</button></a>
     </div>
