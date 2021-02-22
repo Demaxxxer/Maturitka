@@ -16,7 +16,7 @@
                 <input type="number" class="hodnota1" name="id"><br>
             
             
-                <label class="" for="kategorie">Kategorie</label>
+                <label for="kategorie">Kategorie</label>
                 <select class="kategorie" name="kategorie" >
                     <option value="activ">Akční hry</option>
                     <option value="logic">Logické hry</option>

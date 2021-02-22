@@ -15,6 +15,9 @@
 
 
 <style>
+    .zprava{
+        display: none;
+    }
     .krizek{
         position: absolute;
         color: black;
@@ -40,7 +43,7 @@
         border-bottom-left-radius: 10px;
         left: 50%;
         transform: translateX(-50%);
-        top: 120px;
+        top: 0px;
     }
     .zprava[error="true"]{
         background-color: #fe4d4d;
@@ -49,7 +52,7 @@
     
     @media only screen and (max-width: 800px){
         .zprava{
-            top: 90px;
+            top: 0px;
         }
 
     }

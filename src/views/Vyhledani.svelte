@@ -12,6 +12,16 @@
         <div class="nadpis">Kategorie:</div>
         <button class="seradit" on:click >Filtry</button>
     </div>
+    <div>
+        <label for="seradit">Seřadit:</label>
+        <select class="serazeni" name="seradit" >
+            <option value="drahe">Od nejdražšího</option>
+            <option value="levne">Od nejlevnějšího</option>
+            <option value="nej">Od nejprodávanějšího</option>
+        </select><br>
+        
+    </div>
+
     <div class="sloupce">
         <div class="polozka"><PolozkaV></PolozkaV></div>
     </div>
