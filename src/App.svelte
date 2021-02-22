@@ -34,6 +34,9 @@ onMount(_ => {
     method: 'get',
     url: '/api/user/loged',
   }).then(res => {
+
+    console.log(res.data);
+
     uzivatel.update(_ => {
       return {
         jmeno: res.data.fname,
@@ -42,6 +45,9 @@ onMount(_ => {
         perms: res.data.isAdmin,
       }
     });
+
+    console.log($uzivatel.perms);
+
     loaded = true;
   }).catch(err => {
     loaded = true;
@@ -53,6 +59,30 @@ function handleAccess(){
   replace('/')
 }
 
+function adminGuard(comp){
+  return {
+    component: comp,
+    conditions: [
+      (detail) => {
+          return $uzivatel.perms
+      }
+    ]
+  }
+}
+
+function userGuard(comp){
+  return {
+    component: comp,
+    conditions: [
+      (detail) => {
+          return $uzivatel
+      }
+    ]
+  }
+}
+
+
+
 const routes = {
   '/': Home,
   '/kosik': Kosik,
@@ -60,25 +90,11 @@ const routes = {
   '/souhrn': Souhrn,
   '/polozka': Polozka,
   '/dokoncit': Dokoncit,
-  '/edit': wrap({
-        component: Edit,
-        conditions: [
-          (detail) => {
-              return $uzivatel.perms
-          }
-        ]
-    }),
-  '/seznam': Seznam,
-  '/seznamuzivatelu': SeznamU,
+  '/edit': wrap(adminGuard(Edit)),
+  '/seznam': wrap(adminGuard(Seznam)),
+  '/seznamuzivatelu': wrap(adminGuard(SeznamU)),
   '/vyhledani': Vyhledani,
-  '/profil': wrap({
-        component: Profil,
-        conditions: [
-          (detail) => {
-              return $uzivatel
-          }
-        ]
-    }),
+  '/profil': wrap(adminGuard(Profil)),
   '*': NotFound,
 }
 

@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 import {replace} from 'svelte-spa-router'
-import { loginPopup, uzivatel } from '../stores/stavy.js';
+import { loginPopup, alertContent, uzivatel, } from '../stores/stavy.js';
 
 function open(){
     loginPopup.update(_ => true);
@@ -16,8 +16,16 @@ function logout(){
     uzivatel.update(_ => false);
     replace('/')
 
+    alertContent.update(_ => {
+      return [false,res.data.err]
+    });
+
   }).catch(err => {
-    console.log(err.response)
+
+    alertContent.update(_ => {
+      return [true,err.response.err]
+    });
+
   })
 
 }

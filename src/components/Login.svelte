@@ -1,7 +1,6 @@
 <script>
     import axios from 'axios';
-    import { loginPopup, uzivatel } from '../stores/stavy.js';
-    import { registracePopup } from '../stores/stavy.js';
+    import { loginPopup, uzivatel, registracePopup, alertContent } from '../stores/stavy.js';
 
     let lemail = '';
     let lpass = '';
@@ -32,14 +31,21 @@
             }
           });
           loginPopup.update(_ => false);
+          alertContent.update(_ => {
+            return [false,res.data.err]
+          });
       }).catch(err => {
         const msg = err.response.data;
-
+        let final;
         if(msg.field){
-          console.log(msg.field + ' ' + msg.type);
+          final = msg.field + ' ' + msg.type
         } else {
-          console.log(msg)
+          final = msg.err
         }
+
+        alertContent.update(_ => {
+          return [true,final]
+        });
 
       })
     }
@@ -66,7 +72,7 @@
         </table>
         <div class="tlacitka">
             <button type="submit" id="login" class="login">Přihlásit se</button>
-            <button id="registrace" class="registrace" on:click={_ =>{close(); open()}}>Registrovat se</button>
+            <button type="button" id="registrace" class="registrace" on:click={_ =>{close(); open()}}>Registrovat se</button>
         </div>
     </form>
 </div>
