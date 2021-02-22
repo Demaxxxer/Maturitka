@@ -11,14 +11,14 @@
                 
             
                 <label for="kusy">Kusy skladem</label>
-                <input type="text" class="underline" name="kusy"><br>
+                <input type="text" class="underline" name="kusy" placeholder="20"><br>
             
             
                 <label for="cena">Cena</label>
-                <input type="text" class="underline" name="cena"><br>
+                <input type="text" class="underline" name="cena" placeholder="3000"><br>
 
                 <label for="datum">Datum zveřejnění</label>
-                <input type="text" class="underline" name="datum"><br>
+                <input type="text" class="underline" name="datum" placeholder="1.1.2020"><br>
             
             
                 <label class="kategorieText" for="kategorie">Kategorie</label>
@@ -33,7 +33,7 @@
                 
             
                 <div class="popis" for="popis">Popis produktu</div>
-                <textarea name="popis" class="box1"></textarea>
+                <textarea name="popis" class="box1" placeholder="Krátký popis..."></textarea>
             
 
 
