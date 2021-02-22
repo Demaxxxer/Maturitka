@@ -1,5 +1,5 @@
 <script>
-    import { registracePopup } from '../stores/stavy.js';
+    import { alertContent,registracePopup } from '../stores/stavy.js';
 
     let rjmeno;
     let rprijmeni;
@@ -11,7 +11,34 @@
     }
 
     function doRegister(){
-      console.log()
+      axios({
+        method: 'post',
+        url: '/api/user/login',
+        data: {
+          firstname: rjmeno,
+          surname: rprijmeni,
+          email: remail,
+          pass: rpass,
+          passRepeat: 'none'
+        }
+      }).then(res => {
+          //loginPopup.update(_ => false);
+          alertContent.update(_ => {
+            return [false,res.data.err]
+          });
+      }).catch(err => {
+        const msg = err.response.data;
+        let final;
+        if(msg.field){
+          final = msg.field + ' ' + msg.type
+        } else {
+          final = msg.err
+        }
+        alertContent.update(_ => {
+          return [true,final]
+        });
+
+      })
     }
 
 

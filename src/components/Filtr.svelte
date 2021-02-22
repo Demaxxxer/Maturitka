@@ -48,9 +48,7 @@
     </div>
 </form>
 <style>
-    main{
-        padding: 5px 0 15px;    
-    }
+
     .wrapper{
         position: relative;
         width: 940px;
