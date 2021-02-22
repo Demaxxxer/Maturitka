@@ -1,12 +1,25 @@
 <script>
+import axios from 'axios';
+
+import {replace} from 'svelte-spa-router'
 import { loginPopup, uzivatel } from '../stores/stavy.js';
 
 function open(){
     loginPopup.update(_ => true);
 }
 function logout(){
-    console.log($uzivatel);
-    console.log("tady sa to bude odhlašovat někdy v budoucnu")
+
+  axios({
+    method: 'post',
+    url: '/api/user/logout',
+  }).then(res => {
+    uzivatel.update(_ => false);
+    replace('/')
+
+  }).catch(err => {
+    console.log(err.response)
+  })
+
 }
 const links = [
     '/#/test',

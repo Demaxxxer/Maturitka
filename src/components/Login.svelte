@@ -1,5 +1,6 @@
 <script>
-    import { loginPopup } from '../stores/stavy.js';
+    import axios from 'axios';
+    import { loginPopup, uzivatel } from '../stores/stavy.js';
     import { registracePopup } from '../stores/stavy.js';
 
     let lemail = '';
@@ -14,11 +15,33 @@
     }
 
     function doLogin(){
+      axios({
+        method: 'post',
+        url: '/api/user/login',
+        data: {
+          email: lemail,
+          pass: lpass
+        }
+      }).then(res => {
+          uzivatel.update(_ => {
+            return {
+              jmeno: res.data.fname,
+              prijmeni: res.data.sname,
+              email: res.data.email,
+              perms: res.data.isAdmin,
+            }
+          });
+          loginPopup.update(_ => false);
+      }).catch(err => {
+        const msg = err.response.data;
 
+        if(msg.field){
+          console.log(msg.field + ' ' + msg.type);
+        } else {
+          console.log(msg)
+        }
 
-
-      console.log(lemail);
-      console.log(lpass);
+      })
     }
 
 </script>
@@ -26,9 +49,10 @@
 <div class="oregistr" active={$loginPopup}>
 
     <div class="backdrop" on:click={_ => close()}></div>
+    <button class="krizek" on:click={_ => close()}>╳</button>
     <form class="formular" on:submit|preventDefault={ _=> doLogin()}>
         <div class="prihlaseni">Přihlášení</div>
-        <button class="krizek" on:click={_ => close()}>╳</button>
+
 
         <table class="table">
             <tr>
