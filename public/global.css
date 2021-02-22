@@ -1,6 +1,6 @@
 /* Globální styly */
 :root{
-    
+
     --grey: #393E46;
     --darkgrey: #222831;
     --yellow: #FFD369;
@@ -11,12 +11,18 @@
     --footerHeight: 100px;
     --sumasumarum: calc( var(--footerHeight) + var(--menuHeight));
 }
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 @media only screen and (max-width: 800px){
     :root{
         --menuHeight: 90px;
 
     }
-  
+
 }
 @font-face {
     font-family: 'fontLOGO' ;

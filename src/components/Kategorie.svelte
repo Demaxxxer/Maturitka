@@ -1,10 +1,11 @@
 <script>
-    import { loginPopup, uzivatel } from '../stores/stavy.js';
+import { loginPopup, uzivatel } from '../stores/stavy.js';
 
 function open(){
     loginPopup.update(_ => true);
 }
 function logout(){
+    console.log($uzivatel);
     console.log("tady sa to bude odhlašovat někdy v budoucnu")
 }
 const links = [
@@ -46,7 +47,7 @@ const editace = [
                 <td class="dropdown">
 
                     <button>Kategorie</button>
-                
+
                     <div class="cats">
                         {#each categories as category, i}
                         <a href={links[i]}>
@@ -77,7 +78,7 @@ const editace = [
                         <button on:click={_ => logout()}>
                             <div class="edit">Odhlásit se</div>
                         </button>
-                        
+
                     </div>
                     {:else}
                     <button on:click={_ => open()}>Přihlásit se</button>
@@ -110,7 +111,7 @@ const editace = [
         background-repeat: no-repeat;
         text-align: center;
         font-size: 1.2em;
-        padding-left: 30px;        
+        padding-left: 30px;
     }
     .dropdown{
         position: relative;
@@ -130,7 +131,7 @@ const editace = [
         font-family: roboto;
         padding: 10px;
         text-align: center;
-        
+
     }
     .cat:hover{
         background: rgb(230, 230, 230)
@@ -193,7 +194,7 @@ const editace = [
         width: 100%;
         Height: 100%;
     }
-    
+
 
 
     @media only screen and (max-width: 800px){
@@ -207,8 +208,8 @@ const editace = [
             width: 160px;
         }
         .dropdown button{
-            background-position: center left 23%; 
-            font-size: 1em;  
+            background-position: center left 23%;
+            font-size: 1em;
         }
         .cat{
             font-size: 0.9rem;
@@ -222,7 +223,7 @@ const editace = [
             width: 150px;
         }
         .login button{
-            font-size: 1em;  
+            font-size: 1em;
         }
         .edit{
             font-size: 0.9rem;
@@ -234,5 +235,5 @@ const editace = [
         }
 
     }
-    
+
 </style>

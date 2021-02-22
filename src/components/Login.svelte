@@ -2,6 +2,9 @@
     import { loginPopup } from '../stores/stavy.js';
     import { registracePopup } from '../stores/stavy.js';
 
+    let lemail = '';
+    let lpass = '';
+
     function close(){
         loginPopup.update(_ => false);
     }
@@ -9,30 +12,39 @@
     function open(){
         registracePopup.update(_ => true);
     }
+
+    function doLogin(){
+
+
+
+      console.log(lemail);
+      console.log(lpass);
+    }
+
 </script>
 
-<div class="oregistr" active={$loginPopup}> 
+<div class="oregistr" active={$loginPopup}>
 
     <div class="backdrop" on:click={_ => close()}></div>
-    <form class="formular">
+    <form class="formular" on:submit|preventDefault={ _=> doLogin()}>
         <div class="prihlaseni">Přihlášení</div>
         <button class="krizek" on:click={_ => close()}>╳</button>
 
         <table class="table">
             <tr>
                 <td><label for="email">Email</label></td>
-                <td><input type="email" id="email" required></td>
+                <td><input type="email" id="email" bind:value={lemail} required></td>
             </tr>
             <tr>
                 <td><label for="heslo">Heslo</label></td>
-                <td><input type="password" id="heslo" required></td>
+                <td><input type="password" id="heslo" bind:value={lpass} required></td>
             </tr>
         </table>
         <div class="tlacitka">
             <button type="submit" id="login" class="login">Přihlásit se</button>
             <button id="registrace" class="registrace" on:click={_ =>{close(); open()}}>Registrovat se</button>
         </div>
-    </form>  
+    </form>
 </div>
 
 
