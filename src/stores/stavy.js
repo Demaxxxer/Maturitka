@@ -74,7 +74,7 @@ export const polozky = writable(
             imgUrl:"/images/obrazek2.png",
             skladem:true,
         },
-        
+
     ]
 );
 export const polozkyTOP = writable(
@@ -88,7 +88,7 @@ export const polozkyTOP = writable(
             skladem:true,
         },
 
-        
+
     ]
 );
 export const toppolozky = writable(
@@ -118,7 +118,7 @@ export const toppolozky = writable(
             skladem:true,
         },
 
-        
+
     ]
 );
 export const objednavka = writable(
@@ -138,12 +138,14 @@ export const objednavka = writable(
         },
     ]
 );
+
 export const platba = writable({
     jmeno:"",
     prijmeni:"",
     email:"",
     platba:"",
 })
+/*
 export const uzivatel = writable({
     id:"1",
     jmeno:"Jan",
@@ -151,12 +153,13 @@ export const uzivatel = writable({
     email:"jan.pastiercin@seznam.cz",
     perms:true,
 
-})/*
+})
 export const uzivatel = writable({
     id:"2",
     jmeno:"Jan",
     prijmeni:"Pastierčin",
     email:"demaxer@seznam.cz",
     perms:false,
-})/*
-export const uzivatel = writable(false)*/
+})
+*/
+export const uzivatel = writable(false)

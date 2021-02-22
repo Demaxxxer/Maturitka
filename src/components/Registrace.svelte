@@ -1,43 +1,52 @@
 <script>
     import { registracePopup } from '../stores/stavy.js';
 
+    let rjmeno;
+    let rprijmeni;
+    let remail;
+    let rpass;
+
     function close(){
         registracePopup.update(_ => false);
     }
 
-    
+    function doRegister(){
+      console.log()
+    }
+
+
 </script>
 
 <div class="ohraniceni" active={$registracePopup}>
 
     <div class="backdrop" on:click={_ => close()}></div>
-    <form class="formular" on:submit|preventDefault={_ => console.log()}>
+    <form class="formular" on:submit|preventDefault={_ => doRegister()}>
         <p class="registrace">Nová registrace</p>
         <button class="krizek" on:click={_ => close()}>╳</button>
 
         <table>
             <tr>
                 <td><label for="jmeno">Jméno</label></td>
-                <td><input type="text" name="jmeno" class="input" required></td>
+                <td><input type="text" name="jmeno" class="input" bind:value={rjmeno} required></td>
             </tr>
             <tr>
                 <td><label for="prijmeni">Přijmení</label></td>
-                <td><input type="text" name="prijmeni" class="input" required></td>
+                <td><input type="text" name="prijmeni" class="input" bind:value={rprijmeni} required></td>
             </tr>
 
             <tr>
                 <td><label for="email">Email</label></td>
-                <td><input type="email" name="email" class="input" required></td>
+                <td><input type="email" name="email" class="input" bind:value={remail} required></td>
             </tr>
             <tr>
                 <td><label for="heslo">Heslo</label></td>
-                <td><input type="text" name="heslo" class="input" required></td>
+                <td><input type="text" name="heslo" class="input" bind:value={rpass} required></td>
             </tr>
-        </table>                    
+        </table>
 
         <button type="submit" id="registr" class="registr" on:click={_ =>close()}>Registrovat se</button>
-        
-    </form>  
+
+    </form>
 </div>
 
 
@@ -55,7 +64,7 @@
 
     input, label, p{
         margin: 0 0 5px 30px;
-        
+
     }
 
     .ohraniceni{
@@ -85,7 +94,7 @@
         top: 10px;
         right: 10px;
     }
-    
+
     .formular{
         position: fixed;
         z-index: 21;
@@ -122,5 +131,5 @@
         height: 35px;
     }
 
-    
+
 </style>
