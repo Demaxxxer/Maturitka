@@ -1,10 +1,13 @@
 <script>
+    import axios from 'axios';
+
     import { alertContent,registracePopup } from '../stores/stavy.js';
 
     let rjmeno;
     let rprijmeni;
     let remail;
     let rpass;
+    let rpassRepeat;
 
     function close(){
         registracePopup.update(_ => false);
@@ -13,16 +16,16 @@
     function doRegister(){
       axios({
         method: 'post',
-        url: '/api/user/login',
+        url: '/api/user/create',
         data: {
           firstname: rjmeno,
           surname: rprijmeni,
           email: remail,
           pass: rpass,
-          passRepeat: 'none'
+          passRepeat: rpassRepeat
         }
       }).then(res => {
-          //loginPopup.update(_ => false);
+
           alertContent.update(_ => {
             return [false,res.data.err]
           });
@@ -67,15 +70,15 @@
             </tr>
             <tr>
                 <td><label for="heslo">Heslo</label></td>
-                <td><input type="text" name="heslo" class="input" bind:value={rpass} required></td>
+                <td><input type="password" name="heslo" class="input" bind:value={rpass} required></td>
             </tr>
             <tr>
                 <td><label for="hesloZnovu">Znovu heslo</label></td>
-                <td><input type="text" name="hesloZnovu" class="input" bind:value={rpass} required></td>
+                <td><input type="password" name="hesloZnovu" class="input" bind:value={rpassRepeat} required></td>
             </tr>
         </table>
 
-        <button type="submit" id="registr" class="registr" on:click={_ =>close()}>Registrovat se</button>
+        <button type="submit" id="registr" class="registr">Registrovat se</button>
 
     </form>
 </div>

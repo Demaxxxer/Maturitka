@@ -1,8 +1,36 @@
 <script>
+    import axios from 'axios';
+    import { onMount } from 'svelte';
     import Uzivatel from '../components/Uzivatel.svelte';
-    
 
-    
+
+    let users = [];
+    let loaded = false;
+
+    onMount(_ => {
+      axios({
+        method: 'get',
+        url: '/api/user/get',
+      }).then(res => {
+        users = res.data;
+        loaded = true;
+      }).catch(err => {
+        //Uživatel tu nemá co dělat
+      })
+    });
+
+    function handleDelete(props){
+        users = users.filter(user => user._id != props.detail.id);
+    }
+
+    /*
+    function odstranit(id){
+        let novyUzivatel = [...$uzivatel];
+        noveUzivatel=noveUzivatel.filter(uzivatel => {return uzivatel.id != id});
+        kosik.update(_ => uzivatel);
+    }
+    */
+
 </script>
 <main>
     <form>
@@ -34,14 +62,15 @@
 
         </div>
     </form>
-
-    <Uzivatel></Uzivatel>
-
-    
+    {#if loaded}
+        {#each users as user}
+          <Uzivatel userInfo={user} on:userDelete={handleDelete}></Uzivatel>
+        {/each}
+    {/if}
 </main>
 <style>
     main{
-        padding: 5px 0 15px;    
+        padding: 5px 0 15px;
     }
     .ohraniceni1{
         position: relative;
@@ -52,7 +81,7 @@
         background-color: var(--darkgrey);
         border-radius: 10px;
         line-height: 30px;
-        
+
     }
     .ohraniceni2{
         position: relative;
@@ -63,7 +92,7 @@
         border-radius: 10px;
         line-height: 50px;
         margin-top: 20px;
-        
+
     }
     .nadpis{
         font-size: 1.4em;
@@ -101,7 +130,7 @@
     .o{
         right: 50px;
     }
-    
+
 
     @media only screen and (max-width: 1200px){
         .ohraniceni1, .ohraniceni2{
@@ -111,14 +140,14 @@
         main{
             padding-bottom: 20px;
         }
-        
+
     }
     @media only screen and (max-width: 800px){
         .ohraniceni1, .ohraniceni2{
             width: 400px;
             margin: 20px auto;
         }
-        
+
     }
 
 
