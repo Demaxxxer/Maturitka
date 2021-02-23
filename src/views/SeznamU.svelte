@@ -21,23 +21,20 @@
             <label class="admin" for="admin">Admin</label>
             <input type="checkbox" class="hodnota4" name="admin"><br>
 
-
-
+            <div>
+                <button type="submit" class="hledat">Hledat</button>
+            </div>
         </div>
         <div class="ohraniceni2">
             <div class="j">Jméno a Přijmení</div>
             <div class="e">Email</div>
             <div class="a">Administrativa</div>
             <div class="o">Odtranit</div>
-
-
-
         </div>
     </form>
 
     <Uzivatel></Uzivatel>
 
-    
 </main>
 <style>
     main{
@@ -46,7 +43,7 @@
     .ohraniceni1{
         position: relative;
         width: 940px;
-        height: 160px;
+        height: 100%;
         padding: 10px 0;
         margin: 0 auto;
         background-color: var(--darkgrey);
@@ -101,7 +98,15 @@
     .o{
         right: 50px;
     }
-    
+    .hledat{
+        margin: 0 auto;
+        height: 40px;
+        width: 150px;
+        border: solid 1px var(--grey);
+        background-color: var(--yellow);
+        border-radius: 10px;
+        font-size: 1.3em;
+    }
 
     @media only screen and (max-width: 1200px){
         .ohraniceni1, .ohraniceni2{
