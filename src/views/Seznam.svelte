@@ -15,7 +15,6 @@
                 <label class="nazev" for="id">ID</label>
                 <input type="number" class="hodnota1" name="id"><br>
             
-            
                 <label for="kategorie">Kategorie</label>
                 <select class="kategorie" name="kategorie" >
                     <option value="activ">Akční hry</option>
@@ -26,18 +25,19 @@
                     <option value="race">Závodní hry</option>
                 </select><br>
                 
-
                 <div class="cena">Cena</div>
                 <div class="od"> od </div>
                 <input type="number" class="hodnota2" name="cena" min="1" max="9999">
                 <div class="do"> do </div>
-                <input type="number" class="hodnota3" name="cena" min="1" max="9999">
-                <br>
-                
-                
+                <input type="number" class="hodnota3" name="cena" min="1" max="9999"><br>
 
                 <input type="checkbox" class="radio" name="skladem">
                 <label for="skladem" class="radioText">Není skladem</label><br>
+
+                <div>
+                    <button type="submit" class="hledat">Hledat</button>
+                </div>
+                
             </div>
         </div>
     </form>
@@ -94,8 +94,6 @@
     .hodnota2, .hodnota3{
         width: 60px;
     }
-
-
     .kategorie{
         position: absolute;
         appearance: none;
@@ -103,6 +101,16 @@
         left: 120px;
         margin-top: 5px;
         color: black;
+    }
+    .hledat{
+        margin: 0 auto;
+        height: 40px;
+        width: 150px;
+        border: solid 1px var(--grey);
+        background-color: var(--yellow);
+        border-radius: 10px;
+        font-size: 1.3em;
+
     }
     @media only screen and (max-width: 1200px){
         .ohraniceni{
