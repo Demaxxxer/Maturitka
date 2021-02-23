@@ -49,24 +49,28 @@
             <label class="admin" for="admin">Admin</label>
             <input type="checkbox" class="hodnota4" name="admin"><br>
 
-
-
+            <div>
+                <button type="submit" class="hledat">Hledat</button>
+            </div>
         </div>
         <div class="ohraniceni2">
             <div class="j">Jméno a Přijmení</div>
             <div class="e">Email</div>
             <div class="a">Administrativa</div>
             <div class="o">Odtranit</div>
-
-
-
         </div>
     </form>
+<<<<<<< HEAD
+
+    <Uzivatel></Uzivatel>
+
+=======
     {#if loaded}
         {#each users as user}
           <Uzivatel userInfo={user} on:userDelete={handleDelete}></Uzivatel>
         {/each}
     {/if}
+>>>>>>> cd3261f7ab0f968aadc9d17f4c9c6303b3cada40
 </main>
 <style>
     main{
@@ -75,7 +79,7 @@
     .ohraniceni1{
         position: relative;
         width: 940px;
-        height: 160px;
+        height: 100%;
         padding: 10px 0;
         margin: 0 auto;
         background-color: var(--darkgrey);
@@ -130,7 +134,19 @@
     .o{
         right: 50px;
     }
+<<<<<<< HEAD
+.hledat{
+        margin: 0 auto;
+        height: 40px;
+        width: 150px;
+        border: solid 1px var(--grey);
+        background-color: var(--yellow);
+        border-radius: 10px;
+        font-size: 1.3em;
+    }
+=======
 
+>>>>>>> cd3261f7ab0f968aadc9d17f4c9c6303b3cada40
 
     @media only screen and (max-width: 1200px){
         .ohraniceni1, .ohraniceni2{
