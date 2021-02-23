@@ -1,8 +1,36 @@
 <script>
+    import axios from 'axios';
+    import { onMount } from 'svelte';
     import Uzivatel from '../components/Uzivatel.svelte';
-    
 
-    
+
+    let users = [];
+    let loaded = false;
+
+    onMount(_ => {
+      axios({
+        method: 'get',
+        url: '/api/user/get',
+      }).then(res => {
+        users = res.data;
+        loaded = true;
+      }).catch(err => {
+        //Uživatel tu nemá co dělat
+      })
+    });
+
+    function handleDelete(props){
+        users = users.filter(user => user._id != props.detail.id);
+    }
+
+    /*
+    function odstranit(id){
+        let novyUzivatel = [...$uzivatel];
+        noveUzivatel=noveUzivatel.filter(uzivatel => {return uzivatel.id != id});
+        kosik.update(_ => uzivatel);
+    }
+    */
+
 </script>
 <main>
     <form>
@@ -32,13 +60,21 @@
             <div class="o">Odtranit</div>
         </div>
     </form>
+<<<<<<< HEAD
 
     <Uzivatel></Uzivatel>
 
+=======
+    {#if loaded}
+        {#each users as user}
+          <Uzivatel userInfo={user} on:userDelete={handleDelete}></Uzivatel>
+        {/each}
+    {/if}
+>>>>>>> cd3261f7ab0f968aadc9d17f4c9c6303b3cada40
 </main>
 <style>
     main{
-        padding: 5px 0 15px;    
+        padding: 5px 0 15px;
     }
     .ohraniceni1{
         position: relative;
@@ -49,7 +85,7 @@
         background-color: var(--darkgrey);
         border-radius: 10px;
         line-height: 30px;
-        
+
     }
     .ohraniceni2{
         position: relative;
@@ -60,7 +96,7 @@
         border-radius: 10px;
         line-height: 50px;
         margin-top: 20px;
-        
+
     }
     .nadpis{
         font-size: 1.4em;
@@ -98,7 +134,8 @@
     .o{
         right: 50px;
     }
-    .hledat{
+<<<<<<< HEAD
+.hledat{
         margin: 0 auto;
         height: 40px;
         width: 150px;
@@ -107,6 +144,9 @@
         border-radius: 10px;
         font-size: 1.3em;
     }
+=======
+
+>>>>>>> cd3261f7ab0f968aadc9d17f4c9c6303b3cada40
 
     @media only screen and (max-width: 1200px){
         .ohraniceni1, .ohraniceni2{
@@ -116,14 +156,14 @@
         main{
             padding-bottom: 20px;
         }
-        
+
     }
     @media only screen and (max-width: 800px){
         .ohraniceni1, .ohraniceni2{
             width: 400px;
             margin: 20px auto;
         }
-        
+
     }
 
 

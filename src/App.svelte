@@ -94,7 +94,7 @@ const routes = {
   '/seznam': wrap(adminGuard(Seznam)),
   '/seznamuzivatelu': wrap(adminGuard(SeznamU)),
   '/vyhledani': Vyhledani,
-  '/profil': wrap(adminGuard(Profil)),
+  '/profil': wrap(userGuard(Profil)),
   '*': NotFound,
 }
 
