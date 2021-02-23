@@ -14,6 +14,7 @@
       }).then(res => {
         users = res.data;
         loaded = true;
+        console.log(res.data);
       }).catch(err => {
         //Uživatel tu nemá co dělat
       })
@@ -57,20 +58,16 @@
             <div class="j">Jméno a Přijmení</div>
             <div class="e">Email</div>
             <div class="a">Administrativa</div>
-            <div class="o">Odtranit</div>
+            <div class="o">Odstranit</div>
         </div>
     </form>
-<<<<<<< HEAD
 
-    <Uzivatel></Uzivatel>
-
-=======
     {#if loaded}
         {#each users as user}
           <Uzivatel userInfo={user} on:userDelete={handleDelete}></Uzivatel>
         {/each}
     {/if}
->>>>>>> cd3261f7ab0f968aadc9d17f4c9c6303b3cada40
+
 </main>
 <style>
     main{
@@ -134,8 +131,8 @@
     .o{
         right: 50px;
     }
-<<<<<<< HEAD
-.hledat{
+
+    .hledat{
         margin: 0 auto;
         height: 40px;
         width: 150px;
@@ -144,9 +141,7 @@
         border-radius: 10px;
         font-size: 1.3em;
     }
-=======
 
->>>>>>> cd3261f7ab0f968aadc9d17f4c9c6303b3cada40
 
     @media only screen and (max-width: 1200px){
         .ohraniceni1, .ohraniceni2{

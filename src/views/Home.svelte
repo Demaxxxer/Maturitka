@@ -22,6 +22,7 @@
 
 <style>
   .ohraniceni1{
+    box-sizing: border-box;
     background-color: var(--darkgrey);
     border-radius: 10px;
     height: 350px;
