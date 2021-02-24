@@ -143,11 +143,8 @@
         right: 50px;
     }
 
-<<<<<<< HEAD
-    .hledat{
-=======
   .hledat{
->>>>>>> c868233ec887452406badf9f9eab0fead5e0953b
+
         margin: 0 auto;
         height: 40px;
         width: 150px;
