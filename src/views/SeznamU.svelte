@@ -168,7 +168,11 @@
     @media only screen and (max-width: 800px){
         .ohraniceni1, .ohraniceni2{
             width: 400px;
-            margin: 20px auto;
+            margin: 20 auto;
+
+        }
+        .ohraniceni2{
+            
         }
 
     }
