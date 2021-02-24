@@ -21,7 +21,18 @@
     });
 
     function handleDelete(props){
-        users = users.filter(user => user._id != props.detail.id);
+        axios({
+          method: 'delete',
+          url: '/api/user/delete',
+          data: {
+            id: props.detail.id
+          }
+        }).then(res => {
+          users = users.filter(user => user._id != props.detail.id);
+        }).catch(err => {
+          //Uživatel tu nemá co dělat
+        })
+
     }
 
     /*
@@ -132,7 +143,11 @@
         right: 50px;
     }
 
+<<<<<<< HEAD
     .hledat{
+=======
+  .hledat{
+>>>>>>> c868233ec887452406badf9f9eab0fead5e0953b
         margin: 0 auto;
         height: 40px;
         width: 150px;

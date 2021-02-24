@@ -226,22 +226,24 @@ const editace = [
             height: 30px
         }
         .dropdown{
-            width: 160px;
+            width: 110px;
+            
         }
         .dropdown button{
-            background-position: center left 23%;
+            background-position: center left 10%;
             font-size: 1em;
         }
         .cat{
             font-size: 0.9rem;
         }
         .cats{
-            width: 160px;
+            width: 110px;
             top: 30px;
             right: 3px;
+
         }
         .login{
-            width: 150px;
+            width: 110px;
         }
         .login button{
             font-size: 1em;
