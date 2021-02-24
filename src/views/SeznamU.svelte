@@ -20,7 +20,18 @@
     });
 
     function handleDelete(props){
-        users = users.filter(user => user._id != props.detail.id);
+        axios({
+          method: 'delete',
+          url: '/api/user/delete',
+          data: {
+            id: props.detail.id
+          }
+        }).then(res => {
+          users = users.filter(user => user._id != props.detail.id);
+        }).catch(err => {
+          //Uživatel tu nemá co dělat
+        })
+
     }
 
     /*
@@ -60,17 +71,13 @@
             <div class="o">Odtranit</div>
         </div>
     </form>
-<<<<<<< HEAD
 
-    <Uzivatel></Uzivatel>
-
-=======
     {#if loaded}
         {#each users as user}
           <Uzivatel userInfo={user} on:userDelete={handleDelete}></Uzivatel>
         {/each}
     {/if}
->>>>>>> cd3261f7ab0f968aadc9d17f4c9c6303b3cada40
+
 </main>
 <style>
     main{
@@ -134,8 +141,8 @@
     .o{
         right: 50px;
     }
-<<<<<<< HEAD
-.hledat{
+
+  .hledat{
         margin: 0 auto;
         height: 40px;
         width: 150px;
@@ -144,9 +151,7 @@
         border-radius: 10px;
         font-size: 1.3em;
     }
-=======
 
->>>>>>> cd3261f7ab0f968aadc9d17f4c9c6303b3cada40
 
     @media only screen and (max-width: 1200px){
         .ohraniceni1, .ohraniceni2{

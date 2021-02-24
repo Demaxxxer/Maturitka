@@ -25,9 +25,6 @@
           //Vypsat error
         })
 
-
-
-
     }
 
     function dispatchDelete(id){
@@ -43,7 +40,7 @@
         {#if $uzivatel.email != userInfo.email}
           <input type="checkbox" id="admin" class="admin" checked={userInfo.isAdmin}
               on:input={e => setAdmin(e,userInfo._id)}>
-          <button class="odstranit" on:click={_ => dispatchDelete(userInfo._id)}>╳</button>
+          <button type="button" class="odstranit" on:click={_ => dispatchDelete(userInfo._id)}>╳</button>
         {/if}
     </form>
 </div>
