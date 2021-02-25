@@ -1,8 +1,8 @@
 <script>
     import axios from 'axios';
     import { onMount } from 'svelte';
+    import { alertContent } from '../stores/stavy.js';
     import Uzivatel from '../components/Uzivatel.svelte';
-
 
     let users = [];
     let loaded = false;
@@ -53,18 +53,11 @@
           }
         }).then(res => {
           users = users.filter(user => user._id != props.detail.id);
+          alertContent.update(_ => res)
         }).catch(err => {
-          //Uživatel tu nemá co dělat
+          alertContent.update(_ => err)
         })
     }
-
-    /*
-    function odstranit(id){
-        let novyUzivatel = [...$uzivatel];
-        noveUzivatel=noveUzivatel.filter(uzivatel => {return uzivatel.id != id});
-        kosik.update(_ => uzivatel);
-    }
-    */
 
 </script>
 <main>

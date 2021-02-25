@@ -35,8 +35,6 @@ onMount(_ => {
     url: '/api/user/loged',
   }).then(res => {
 
-    console.log(res.data);
-
     uzivatel.update(_ => {
       return {
         jmeno: res.data.fname,
@@ -45,8 +43,6 @@ onMount(_ => {
         perms: res.data.isAdmin,
       }
     });
-
-    console.log($uzivatel.perms);
 
     loaded = true;
   }).catch(err => {
