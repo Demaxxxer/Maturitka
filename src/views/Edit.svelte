@@ -13,13 +13,6 @@
     let desc;
     let gallery = [];
     let previewGallery = [];
-    let minProps = {
-      os: '',
-      cpu: '',
-      gpu: '',
-      ram: '',
-      dx: ''
-    };
     let recProps = {
       os: '',
       cpu: '',
@@ -153,7 +146,39 @@
     }
 
     function handleSave(){
-      console.log(minProps);
+
+      const filePayload = new FormData();
+      gallery.forEach( file => {
+        filePayload.append('gallery', file);
+      });
+
+      filePayload.append('thumbnail', thumbnail);
+
+      const formPayload = {
+        name,
+        storage,
+        cost,
+        release,
+        cat,
+        desc,
+        recProps
+      }
+
+      axios({
+        method: 'post',
+        url: '/api/item/create',
+        headers: {'content-type': 'multipart/form-data'},
+        data: {
+          filePayload,
+          formPayload
+        }
+      }).then(res => {
+        console.log(res)
+      }).catch(err => {
+        //Špatné údaje třeba
+      })
+
+
     }
 
 </script>
