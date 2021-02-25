@@ -1,7 +1,8 @@
 <script>
     import axios from 'axios';
 
-    import { alertContent,registracePopup } from '../stores/stavy.js';
+    import { loginPopup,alertContent,registracePopup } from '../stores/stavy.js';
+
 
     let rjmeno;
     let rprijmeni;
@@ -29,6 +30,9 @@
           alertContent.update(_ => {
             return [false,res.data.err]
           });
+
+          registracePopup.update(_ => false);
+
       }).catch(err => {
         const msg = err.response.data;
         let final;

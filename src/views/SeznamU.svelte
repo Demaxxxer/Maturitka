@@ -7,6 +7,13 @@
     let users = [];
     let loaded = false;
 
+    let search = {
+      fname: '',
+      sname: '',
+      email: '',
+      isAdmin: false,
+    }
+
     onMount(_ => {
       axios({
         method: 'get',
@@ -14,11 +21,28 @@
       }).then(res => {
         users = res.data;
         loaded = true;
-        console.log(res.data);
       }).catch(err => {
         //Uživatel tu nemá co dělat
       })
     });
+
+    function handleUserSearch(){
+      axios({
+        method: 'get',
+        url: '/api/user/get',
+        params: {
+          fname: search.fname,
+          sname: search.sname,
+          email: search.email,
+          isAdmin: search.isAdmin,
+        }
+      }).then(res => {
+        users = res.data
+      }).catch(err => {
+        //Muže nastat chyba vyhledání v databázi
+      })
+
+    }
 
     function handleDelete(props){
         axios({
@@ -32,7 +56,6 @@
         }).catch(err => {
           //Uživatel tu nemá co dělat
         })
-
     }
 
     /*
@@ -45,21 +68,21 @@
 
 </script>
 <main>
-    <form>
+    <form on:submit|preventDefault={handleUserSearch}>
         <div class="ohraniceni1">
             <div class="nadpis">Seznam uživatelů</div>
 
-            <label class="jmeno" for="jmenou">Jméno</label>
-            <input type="text" class="hodnota1" name="jmenou"><br>
+            <label class="jmeno" for="jmeno-input">Jméno</label>
+            <input type="text" class="hodnota1" id="jmeno-input" bind:value={search.fname}><br>
 
-            <label class="prijmeni" for="prijmeniu">Přijmení</label>
-            <input type="text" class="hodnota2" name="prijmeniu"><br>
+            <label class="prijmeni" for="prijmeni-input">Přijmení</label>
+            <input type="text" class="hodnota2" id="prijmeni-input" bind:value={search.sname}><br>
 
-            <label class="email" for="emailu">Email</label>
-            <input type="email" class="hodnota3" name="emailu"><br>
+            <label class="email" for="email-input">Email</label>
+            <input type="text" class="hodnota3" id="email-input" bind:value={search.email}><br>
 
-            <label class="admin" for="admin">Admin</label>
-            <input type="checkbox" class="hodnota4" name="admin"><br>
+            <label class="admin" for="admin-input">Admin</label>
+            <input type="checkbox" class="hodnota4" id="admin-input" bind:checked={search.isAdmin}><br>
 
             <div>
                 <button type="submit" class="hledat">Hledat</button>
@@ -143,11 +166,7 @@
         right: 50px;
     }
 
-<<<<<<< HEAD
-    .hledat{
-=======
   .hledat{
->>>>>>> c868233ec887452406badf9f9eab0fead5e0953b
         margin: 0 auto;
         height: 40px;
         width: 150px;
