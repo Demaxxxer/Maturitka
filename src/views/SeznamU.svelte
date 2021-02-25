@@ -167,10 +167,6 @@
     }
 
   .hledat{
-<<<<<<< HEAD
-=======
-
->>>>>>> add516bdaca216749703433dc0a8f2d9983c8460
         margin: 0 auto;
         height: 40px;
         width: 150px;
