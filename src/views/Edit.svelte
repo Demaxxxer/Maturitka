@@ -107,7 +107,7 @@
       for(let i=0;i<files.length;i++){
         //Špatný formát
         if(fileTypes.indexOf(files[i].type) == -1){
-          alertContent.update(_ => [true,'Soubor ' + files[i].name + ' neni platný obrázek'])
+          alertContent.update(_ => [true,'Soubor ' + files[i].name + ' není platný obrázek'])
           return;
         }
         //Špatná velikost
@@ -183,37 +183,38 @@
 
 </script>
 <main>
-    <form on:submit|preventDefault={handleSave}>
-        <div class="wrapper1">
-            <div class="nadpis">Nový produkt</div>
+  <form on:submit|preventDefault={handleSave}>
+      <div class="wrapper1">
+          <div class="nadpis">Nový produkt</div>
 
-                <label for="nazev">Název</label>
-                <input type="text" class="underline1" name="nazev" placeholder="Název hry"><br>
-
-
-                <label for="kusy">Kusy skladem</label>
-                <input type="number" class="underline2" name="kusy" placeholder="20" min="0" max="9999"><span class="ks">ks</span><br>
-
-                <label for="cena">Cena</label>
-                <input type="number" class="underline3" name="cena" placeholder="3000" min="0" max="9999"><span class="kc">Kč</span><br>
-
-                <label for="datum">Datum vydání</label>
-                <input type="date" class="underline4" name="datum" placeholder="1.1.2020"><br>
+              <label for="nazev">Název</label>
+              <input type="text" class="underline1" name="nazev" placeholder="Název hry"><br>
 
 
-                <label class="kategorieText" for="kategorie">Kategorie</label>
-                <select class="kategorieBox" name="kategorie" >
-                    <option value="activ">Akční hry</option>
-                    <option value="logic">Logické hry</option>
-                    <option value="sim">Simulátory</option>
-                    <option value="strat">Strategické hry</option>
-                    <option value="rpg">RPG hry</option>
-                    <option value="race">Závodní hry</option>
-                </select>
+              <label for="kusy">Kusy skladem</label>
+              <input type="number" class="underline2" name="kusy" placeholder="20" min="0" max="9999"><span class="ks">ks</span><br>
+
+              <label for="cena">Cena</label>
+              <input type="number" class="underline3" name="cena" placeholder="3000" min="0" max="9999"><span class="kc">Kč</span><br>
+
+              <label for="datum">Datum vydání</label>
+              <input type="date" class="underline4" name="datum" placeholder="1.1.2020"><br>
 
 
-              <div for="img">Náhled hry</div>
-              <div>
+              <label class="kategorieText" for="kategorie">Kategorie</label>
+              <select class="kategorieBox" name="kategorie" >
+                  <option value="activ">Akční hry</option>
+                  <option value="logic">Logické hry</option>
+                  <option value="sim">Simulátory</option>
+                  <option value="strat">Strategické hry</option>
+                  <option value="rpg">RPG hry</option>
+                  <option value="race">Závodní hry</option>
+              </select>
+
+
+            <div class="nadpiso">Náhled hry</div>
+            <div class="napoveda">Kliknutím nebo přetažením nahrajete náhledový obrázek</div>
+            <div>
 
               <div class="nahledak">
 
@@ -234,49 +235,50 @@
 
             </div>
 
-        </div>
-        <div class="wrapper2">
-            <lable for="popisek" class="podnadpis">Podrobný popis produktů</lable><br>
-            <textarea name="popisek" class="box2" placeholder="Podrobný popis..."></textarea><br>
+            </div>
+              <div class="wrapper2">
+                  <lable for="popisek" class="podnadpis">Podrobný popis produktů</lable><br>
+                  <textarea name="popisek" class="box2" placeholder="Podrobný popis..."></textarea><br>
 
-            <div class="nadpis">Galerie obrázků</div>
-            <div>
-                <label class="nahrani" for="gallery-input" id="gallery-label"></label>
-                <input type="file" multiple class="gallery-input" id="gallery-input"
-                  accept="image/png, image/jpeg"
-                  on:input={e => handleAddGallery(e)}>
-                {#each previewGallery as preview, i}
-                  <div class="gallery-preview">
-                    <img src={preview} alt="Obrázek se nepodařilo načíst">
-                    <button type="button" class="delete-preview"
-                      on:click={_=>galleryDelete(i)}>╳</button>
+                  <div class="nadpis">Galerie obrázků</div>
+                  <div class="napoveda">Kliknutím nebo přetažením nahrajete obrázek do galerie</div>
+                  <div>
+                      <label class="nahrani" for="gallery-input" id="gallery-label"></label>
+                      <input type="file" multiple class="gallery-input" id="gallery-input"
+                        accept="image/png, image/jpeg"
+                        on:input={e => handleAddGallery(e)}>
+                      {#each previewGallery as preview, i}
+                        <div class="gallery-preview">
+                          <img src={preview} alt="Obrázek se nepodařilo načíst">
+                          <button type="button" class="delete-preview"
+                            on:click={_=>galleryDelete(i)}>╳</button>
+                        </div>
+                      {/each}
                   </div>
-                {/each}
-            </div>
 
         </div>
-        <div class="wrapper3">
-            <div class="nadpis">Hardwarové a softwarové požadavky</div>
+    <div class="wrapper3">
+      <div class="nadpis">Hardwarové a softwarové požadavky</div>
 
-            <div class="podnadpis2">Doporučené PC požadavky</div>
+        <div class="podnadpis2">Doporučené PC požadavky</div>
 
-                <label for="os2">Operační systém</label>
-                <input type="text" class="underline" bind:value={recProps.os} placeholder="Windows, Linux, ..."><br>
+            <label for="os2">Operační systém</label>
+            <input type="text" class="underline" bind:value={recProps.os} placeholder="Windows, Linux, ..."><br>
 
-                <label for="cpu2">Procesor</label>
-                <input type="text" class="underline" bind:value={recProps.cpu} placeholder="Intel, AMD, ..."><br>
+            <label for="cpu2">Procesor</label>
+            <input type="text" class="underline" bind:value={recProps.cpu} placeholder="Intel, AMD, ..."><br>
 
-                <label for="gpu2">Grafická karta</label>
-                <input type="text" class="underline" bind:value={recProps.gpu} placeholder="Nvidia, AMD, ..."><br>
+            <label for="gpu2">Grafická karta</label>
+            <input type="text" class="underline" bind:value={recProps.gpu} placeholder="Nvidia, AMD, ..."><br>
 
-                <label for="ram2">Paměť RAM</label>
-                <input type="number" class="underline5" bind:value={recProps.ram} placeholder="4" min="0" max="128"><span class="gb">GB</span><br>
+            <label for="ram2">Paměť RAM</label>
+            <input type="number" class="underline5" bind:value={recProps.ram} placeholder="4" min="0" max="128"><span class="gb">GB</span><br>
 
-                <label for="direct2">DirectX</label>
-                <input type="text" class="underline" bind:value={recProps.dx} placeholder="DirectX 11"><br>
-            </div>
-        <button class="pridat" type="submit">Přidat položku</button>
-    </form>
+            <label for="direct2">DirectX</label>
+            <input type="text" class="underline" bind:value={recProps.dx} placeholder="DirectX 11"><br>
+      </div>
+    <button class="pridat" type="submit">Přidat položku</button>
+  </form>
 </main>
 <style>
     main{
@@ -383,12 +385,18 @@
       padding: 7px;
       background-color: #fe4d4d;
     }
-
+    .nadpiso{
+      margin-bottom: 5px;
+    }
     .nadpis{
         font-size: 1.5em;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
-
+    .napoveda{
+      font-size: 0.7em;
+      color: #808080;
+      margin-bottom: 20px;
+    }
     .podnadpis, .podnadpis2{
         font-size: 1.3em;
         margin-bottom: 20px;
