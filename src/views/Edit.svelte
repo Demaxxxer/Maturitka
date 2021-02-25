@@ -13,13 +13,7 @@
     let desc;
     let gallery = [];
     let previewGallery = [];
-    let minProps = {
-      os: '',
-      cpu: '',
-      gpu: '',
-      ram: '',
-      dx: ''
-    };
+
     let recProps = {
       os: '',
       cpu: '',
@@ -114,7 +108,7 @@
       for(let i=0;i<files.length;i++){
         //Špatný formát
         if(fileTypes.indexOf(files[i].type) == -1){
-          alertContent.update(_ => [true,'Soubor ' + files[i].name + ' neni platný obrázek'])
+          alertContent.update(_ => [true,'Soubor ' + files[i].name + ' není platný obrázek'])
           return;
         }
         //Špatná velikost
