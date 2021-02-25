@@ -167,6 +167,10 @@
     }
 
   .hledat{
+<<<<<<< HEAD
+=======
+
+>>>>>>> add516bdaca216749703433dc0a8f2d9983c8460
         margin: 0 auto;
         height: 40px;
         width: 150px;
@@ -190,7 +194,11 @@
     @media only screen and (max-width: 800px){
         .ohraniceni1, .ohraniceni2{
             width: 400px;
-            margin: 20px auto;
+            margin: 20 auto;
+
+        }
+        .ohraniceni2{
+            
         }
 
     }

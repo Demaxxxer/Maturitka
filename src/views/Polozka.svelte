@@ -5,14 +5,12 @@
     const produkt = {
         id:"2",
         nazev:"Grand Theft Auto V",
-        popisek:"Lorem ipsum",
         cena:"1200",
         kusy:"2",
         imgUrl:"/images/gta5.jpeg",
         imgsUrl:"/images/obrazek1.jpeg",
         skladem: true,
         popis:`Aj asdk fůlkasdjfůlksadjfůlksajd ůkjsaů lfsaůd fůsk sld flaskdj flkajs dflkj asldkfj ladk fůlkasdjfůlksadjfůlksajd ůkjsaů lfsaůd fůsk sld flaskdj flkajs dflkj asldkfj dk fůlkasdjfůlksadjfůlksajd ůkjsaů lfsaůd fůsk sld flaskdj flkajs dflkj asldkfj dk fůlkasdjf ůlksa djfůlksajd ůkjsaů lfsaůd fůsk sld flaskdj flkajs dflkj asldkfj dk fůlkasdjfů lksadjfůl sajd ůkjsaů lfsaůd fůsk sld flaskdj flkajs dflkj asldkfj skdjf klasjf ksad fkj sdaf Aj asdk fůlkasdjfůlksadjfůlksajd ůkjsaů lfsaůd fůsk sld flaskdj flkajs dflkj asldkfj laskdjf klasjf ksad fkj sdaf.`
-
     }
 </script>
 
@@ -27,8 +25,6 @@
             </div>
             
             <div class="nazev">{produkt.nazev}</div>
-
-            <div class="popisek">{produkt.popisek}</div>
 
             <div class="skladem">{produkt.skladem} kusů</div>
 
@@ -48,32 +44,18 @@
             <img src={produkt.imgsUrl} alt="Žádné obrázky">
         </div>
 
-        <div class="nadpis">
-            Hardwarové a Softwarové požadavky
-            <div class="min">
-                <span class="podnadpis1">Minimální požadavky</span>
-                <div class="info">
-                    <span>Operační systém: </span><br>
-                    <span>DirectX: </span><br>
-                    <span>Procesor: </span><br>
-                    <span>Grafická Karta: </span><br>
-                    <span>Paměť RAM: </span><br>
-                    <span>Uložiště: </span>
-                </div>
-
-            </div>
-            <div class="rec">
-                <span class="podnadpis2">Doporučené požadavky</span>
-                <div class="info">
-                    <span>Operační systém: </span><br>
-                    <span>DirectX: </span><br>
-                    <span>Procesor: </span><br>
-                    <span>Grafická Karta: </span><br>
-                    <span>Paměť RAM: </span><br>
-                    <span>Uložiště: </span>
-                </div>
+        <div class="rec">
+            <span class="podnadpis2">Doporučené požadavky</span>
+            <div class="info">
+                <span>Operační systém: </span><br>
+                <span>DirectX: </span><br>
+                <span>Procesor: </span><br>
+                <span>Grafická Karta: </span><br>
+                <span>Paměť RAM: </span><br>
+                <span>Uložiště: </span>
             </div>
         </div>
+
     </div>
 </main>
 
@@ -87,20 +69,23 @@
         padding-bottom: 15px;
 
     }
-    .nazev, .popisek, .cena{
-        box-sizing: border-box;
-        padding: 0 20px 0 15px;
-    }
-
     .ohraniceni {
+        position: relative;
         max-width: 940px;
         height: 100%;
         min-height: 420px;
         background-color: var(--darkgrey);
         border-radius: 10px;
-        margin: 20px auto 10px auto;
-        padding-top: 5px;
+        margin: 0 auto;
+        margin-top: 10px;
     }
+
+    .nazev, .cena{
+        box-sizing: border-box;
+        padding: 0 20px 0 15px;
+    }
+
+
     .ohraniceni2 {
         max-width: 940px;
         height: 100%;
@@ -122,7 +107,7 @@
     }
 
     .nazev{
-        width: 50%;
+        width: 60%;
         float: right;
         font-size: 2em;
         max-height: 50px;
@@ -133,7 +118,7 @@
     .obrazek{
         box-sizing: border-box;
         height: 100%;
-        width: 50%;
+        width: 40%;
         float: left;
         padding: 0 0 0  40px;
 
@@ -149,14 +134,7 @@
         
     }
 
-    .popisek{
-        height: 230px;
-        width: 50%;
-        float: right;
-        padding: 10px 40px 0 15px;
-        box-sizing: border-box;
-        font-size: 0.8em;
-    }
+
 
     .skladem{
         font-size: 1.2em;

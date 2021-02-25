@@ -233,24 +233,6 @@
         <div class="wrapper3">
             <div class="nadpis">Hardwarové a softwarové požadavky</div>
 
-            <div class="podnadpis">Minimální PC požadavky</div>
-
-                <label for="os1">Operační systém</label>
-                <input type="text" class="underline" bind:value={minProps.os} placeholder="Windows, Linux, ..."><br>
-
-                <label for="cpu1">Procesor</label>
-                <input type="text" class="underline" bind:value={minProps.cpu} placeholder="Intel, AMD, ..."><br>
-
-                <label for="gpu1">Grafická karta</label>
-                <input type="text" class="underline" bind:value={minProps.gpu} placeholder="Nvidia, AMD, ..."><br>
-
-                <label for="ram1">Paměť RAM</label>
-                <input type="number" class="underline5" bind:value={minProps.ram} placeholder="4" min="0" max="128"><span class="gb">GB</span><br>
-
-                <label for="direct1">DirectX</label>
-                <input type="text" class="underline" bind:value={minProps.dx} placeholder="DirectX 11"><br>
-
-
             <div class="podnadpis2">Doporučené PC požadavky</div>
 
                 <label for="os2">Operační systém</label>
@@ -309,12 +291,10 @@
       top: 0;
       left: 0;
       display: block;
-      //overflow: hidden;
-      //width: 100%;
-      //height: 100%;
       cursor: pointer;
       pointer-events: none;
       z-index: 1;
+
     }
 
     .thumbnail-preview img {

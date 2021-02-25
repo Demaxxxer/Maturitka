@@ -223,7 +223,7 @@ const editace = [
 		.lista{
             position: fixed;
             top: 60px;
-            height: 30px
+            height: 40px;
         }
         .dropdown{
             width: 110px;
@@ -238,12 +238,12 @@ const editace = [
         }
         .cats{
             width: 110px;
-            top: 30px;
+            top: 40px;
             right: 3px;
 
         }
         .login{
-            width: 110px;
+            width: 150px;
         }
         .login button{
             font-size: 1em;
@@ -253,7 +253,7 @@ const editace = [
         }
         .edits{
             width: 150px;
-            top: 30px;
+            top: 40px;
             left: 4px;
         }
 
