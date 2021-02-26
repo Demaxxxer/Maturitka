@@ -16,15 +16,11 @@ function logout(){
     uzivatel.update(_ => false);
     replace('/')
 
-    alertContent.update(_ => {
-      return [false,res.data.err]
-    });
+    alertContent.update(_ => res);
 
   }).catch(err => {
 
-    alertContent.update(_ => {
-      return [true,err.response.err]
-    });
+    alertContent.update(_ => err);
 
   })
 
@@ -227,7 +223,7 @@ const editace = [
         }
         .dropdown{
             width: 110px;
-            
+
         }
         .dropdown button{
             background-position: center left 10%;

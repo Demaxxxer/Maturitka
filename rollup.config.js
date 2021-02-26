@@ -6,6 +6,19 @@ import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
 import dev from 'rollup-plugin-dev'
 
+//const proxy = require('koa-better-http-proxy');
+const Koa = require('koa');
+const Proxy = require('koa-proxy-middleware');
+
+const proxy = new Proxy({
+  proxies: [
+    {
+      host: 'http://localhost:8080/api/',
+      context: 'api'
+    },
+  ]
+});
+
 const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
@@ -62,11 +75,23 @@ export default {
 		!production && dev({
 			  dirs: ['public'],
 				spa: 'public/index.html',
+				limit: '100mb',
 				port: 5000,
+
+				extend(app, modules) {
+					app.use(proxy)
+				},
+
+/*
 				proxy: {
 					'/api/*': 'http://localhost:8080',
 				},
+*/
 			}),
+
+
+			//dev({ extend(app, modules) { app.use(modules.router.get('/foo', myHandler)) } })
+
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated

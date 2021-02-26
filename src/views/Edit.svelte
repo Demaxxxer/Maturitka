@@ -13,20 +13,17 @@
     let desc;
     let gallery = [];
     let previewGallery = [];
-
-    let recProps = {
-      os: '',
-      cpu: '',
-      gpu: '',
-      ram: '',
-      dx: ''
-    };
-
+    let os;
+    let cpu;
+    let gpu;
+    let ram;
+    let dx;
 
     //Maximální velikost obrázku v Megabajtech
     const thumbnailSize = 5
     const gallerySize = 5
-
+    //Maximální počet obrázku v galerii
+    const galleryMax = 10
 
     let previewState = false;
     let previewThumbnail = '';
@@ -76,12 +73,17 @@
       if(!file) return;
       //Špatný formát
       if(fileTypes.indexOf(file.type) == -1){
-        alertContent.update(_ => [true,'Špatný typ souboru'])
+        alertContent.update(_ => { return { custom: true,
+            msg: 'Špatný typ souboru'
+        }})
+
         return;
       }
       //Špatá velikost
       if( (file.size / 1024 / 1024) > thumbnailSize ){
-        alertContent.update(_ => [true,'Obrázek je moc veliký'])
+        alertContent.update(_ => { return { custom: true,
+            msg: 'Obrázek je moc veliký'
+        }})
         return;
       }
 
@@ -93,7 +95,9 @@
       const file = e.target.files[0]
       //Špatný formát
       if( (file.size / 1024 / 1024) > thumbnailSize ){
-        alertContent.update(_ => [true,'Obrázek je moc veliký'])
+        alertContent.update(_ => { return { custom: true,
+            msg: 'Obrázek je moc veliký'
+        }})
         return;
       }
 
@@ -108,12 +112,16 @@
       for(let i=0;i<files.length;i++){
         //Špatný formát
         if(fileTypes.indexOf(files[i].type) == -1){
-          alertContent.update(_ => [true,'Soubor ' + files[i].name + ' není platný obrázek'])
+          alertContent.update(_ => { return { custom: true,
+              msg: 'Soubor ' + files[i].name + ' není platný obrázek'
+          }})
           return;
         }
         //Špatná velikost
         if( (files[i].size / 1024 / 1024) > gallerySize ){
-          alertContent.update(_ => [true,'Obrázek ' + files[i].name + ' je moc veliký'])
+          alertContent.update(_ => { return { custom: true,
+              msg: 'Obrázek ' + files[i].name + ' je moc veliký'
+          }})
           return;
         }
 
@@ -147,7 +155,35 @@
     }
 
     function handleSave(){
-      console.log(minProps);
+      const payload = new FormData();
+      //Přidává galerii
+      gallery.forEach( file => {
+        payload.append('gallery', file);
+      });
+      //Přidává náhleďák
+      if(thumbnail){
+        payload.append('thumbnail', thumbnail);
+      }
+      //Přidává vstupy formuláře
+      const inputs = {
+        name,storage,cost,release,cat,desc,os,cpu,gpu,ram,dx,
+      }
+      for (const input in inputs) {
+        payload.append(input, inputs[input]);
+      }
+
+      axios({
+        method: 'post',
+        url: '/api/item/create',
+        //headers: {'content-type': 'multipart/form-data'},
+        data: payload
+      }).then(res => {
+        console.log(res)
+      }).catch(err => {
+        //Špatné údaje třeba
+      })
+
+
     }
 
 </script>
@@ -157,21 +193,21 @@
           <div class="nadpis">Nový produkt</div>
 
               <label for="nazev">Název</label>
-              <input type="text" class="underline1" name="nazev" placeholder="Název hry"><br>
+              <input type="text" class="underline1" name="nazev" placeholder="Název hry" bind:value={name}><br>
 
 
               <label for="kusy">Kusy skladem</label>
-              <input type="number" class="underline2" name="kusy" placeholder="20" min="0" max="9999"><span class="ks">ks</span><br>
+              <input type="number" class="underline2" name="kusy" placeholder="20" min="0" max="9999" bind:value={storage}><span class="ks">ks</span><br>
 
               <label for="cena">Cena</label>
-              <input type="number" class="underline3" name="cena" placeholder="3000" min="0" max="9999"><span class="kc">Kč</span><br>
+              <input type="number" class="underline3" name="cena" placeholder="3000" min="0" max="9999" bind:value={cost}><span class="kc">Kč</span><br>
 
               <label for="datum">Datum vydání</label>
-              <input type="date" class="underline4" name="datum" placeholder="1.1.2020"><br>
+              <input type="date" class="underline4" name="datum" placeholder="1.1.2020" bind:value={release}><br>
 
 
               <label class="kategorieText" for="kategorie">Kategorie</label>
-              <select class="kategorieBox" name="kategorie" >
+              <select class="kategorieBox" name="kategorie" bind:value={cat}>
                   <option value="activ">Akční hry</option>
                   <option value="logic">Logické hry</option>
                   <option value="sim">Simulátory</option>
@@ -207,7 +243,7 @@
             </div>
               <div class="wrapper2">
                   <lable for="popisek" class="podnadpis">Podrobný popis produktů</lable><br>
-                  <textarea name="popisek" class="box2" placeholder="Podrobný popis..."></textarea><br>
+                  <textarea name="popisek" class="box2" placeholder="Podrobný popis..." bind:value={desc}></textarea><br>
 
                   <div class="nadpis">Galerie obrázků</div>
                   <div class="napoveda">Kliknutím nebo přetažením nahrajete obrázek do galerie</div>
@@ -232,19 +268,19 @@
         <div class="podnadpis2">Doporučené PC požadavky</div>
 
             <label for="os2">Operační systém</label>
-            <input type="text" class="underline" bind:value={recProps.os} placeholder="Windows, Linux, ..."><br>
+            <input type="text" class="underline" bind:value={os} placeholder="Windows, Linux, ..."><br>
 
             <label for="cpu2">Procesor</label>
-            <input type="text" class="underline" bind:value={recProps.cpu} placeholder="Intel, AMD, ..."><br>
+            <input type="text" class="underline" bind:value={cpu} placeholder="Intel, AMD, ..."><br>
 
             <label for="gpu2">Grafická karta</label>
-            <input type="text" class="underline" bind:value={recProps.gpu} placeholder="Nvidia, AMD, ..."><br>
+            <input type="text" class="underline" bind:value={gpu} placeholder="Nvidia, AMD, ..."><br>
 
             <label for="ram2">Paměť RAM</label>
-            <input type="number" class="underline5" bind:value={recProps.ram} placeholder="4" min="0" max="128"><span class="gb">GB</span><br>
+            <input type="number" class="underline5" bind:value={ram} placeholder="4" min="0" max="128"><span class="gb">GB</span><br>
 
             <label for="direct2">DirectX</label>
-            <input type="text" class="underline" bind:value={recProps.dx} placeholder="DirectX 11"><br>
+            <input type="text" class="underline" bind:value={dx} placeholder="DirectX 11"><br>
       </div>
     <button class="pridat" type="submit">Přidat položku</button>
   </form>

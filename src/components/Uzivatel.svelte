@@ -18,11 +18,9 @@
             value: e.target.checked
           }
         }).then(res => {
-
-          console.log(res.data);
+          alertContent.update(_ => res)
         }).catch(err => {
-          console.log(err.response.data);
-          //Vypsat error
+          alertContent.update(_ => err)
         })
 
     }

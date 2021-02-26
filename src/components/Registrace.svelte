@@ -26,25 +26,10 @@
           passRepeat: rpassRepeat
         }
       }).then(res => {
-
-          alertContent.update(_ => {
-            return [false,res.data.err]
-          });
-
+          alertContent.update(_ => res);
           registracePopup.update(_ => false);
-
       }).catch(err => {
-        const msg = err.response.data;
-        let final;
-        if(msg.field){
-          final = msg.field + ' ' + msg.type
-        } else {
-          final = msg.err
-        }
-        alertContent.update(_ => {
-          return [true,final]
-        });
-
+        alertContent.update(_ => err);
       })
     }
 
