@@ -195,7 +195,6 @@
               <label for="nazev">Název</label>
               <input type="text" class="underline1" name="nazev" placeholder="Název hry" bind:value={name}><br>
 
-
               <label for="kusy">Kusy skladem</label>
               <input type="number" class="underline2" name="kusy" placeholder="20" min="0" max="9999" bind:value={storage}><span class="ks">ks</span><br>
 
@@ -204,7 +203,6 @@
 
               <label for="datum">Datum vydání</label>
               <input type="date" class="underline4" name="datum" placeholder="1.1.2020" bind:value={release}><br>
-
 
               <label class="kategorieText" for="kategorie">Kategorie</label>
               <select class="kategorieBox" name="kategorie" bind:value={cat}>
@@ -215,14 +213,10 @@
                   <option value="rpg">RPG hry</option>
                   <option value="race">Závodní hry</option>
               </select>
-
-
             <div class="nadpiso">Náhled hry</div>
             <div class="napoveda">Kliknutím nebo přetažením nahrajete náhledový obrázek</div>
             <div>
-
               <div class="nahledak">
-
                 <label class="nahledak-label" for="img-thumbnail" id="img-thumbnail-label"></label>
                 <input class="nahledak-input" id="img-thumbnail"
                   type="file"
@@ -232,12 +226,7 @@
                   <div class="thumbnail-preview" active={previewState}>
                     <img src={previewThumbnail} alt="Obrazek nelze načíst">
                   </div>
-
-
               </div>
-
-
-
             </div>
 
             </div>
@@ -281,6 +270,10 @@
 
             <label for="direct2">DirectX</label>
             <input type="text" class="underline" bind:value={dx} placeholder="DirectX 11"><br>
+
+            <label for="disc">Uložiště</label>
+            <input type="number" class="underline5" bind:value={ram} placeholder="30" min="0" max="999"><span class="gb">GB</span>
+            <!--Přidal jsem tady uložiště na disku-->
       </div>
     <button class="pridat" type="submit">Přidat položku</button>
   </form>

@@ -14,13 +14,12 @@
     </div>
     <div class="ohraniceni2">
         <label for="seradit">Seřadit:</label>
-        <select class="serazeni" name="seradit" >
+        <select class="seradit" name="seradit" >
             <option value="drahe">Od nejdražšího</option>
             <option value="levne">Od nejlevnějšího</option>
             <option value="nej">Od nejprodávanějšího</option>
-        </select><br>
-        
-    </div>
+        </select>
+    </div><br>
 
     <div class="sloupce">
         <div class="polozka"><PolozkaV></PolozkaV></div>
@@ -51,21 +50,35 @@
         padding: 10px;
         box-sizing: border-box;
     }
-    .nadpis, .seradit{
+    .nadpis{
         position: absolute;
         font-size: 1.2em;
         top: 15px;
     }
     .seradit{
-        right: 50px;
+        width: 200px;
+        background-color: var(--darkgrey);
+        position: absolute;
+        appearance: none;
+        height: 20px;
+        left: 120px;
+        margin-top: 5px;
         color: var(--text);
+    }
+    select {
+        text-align: center;
+        text-align-last: center;
+        outline: 0;
+    }
+    option {
+        background-color: var(--darkgrey);
+        text-align: center;
+        text-align-last: center;
     }
     .nadpis{
         left: 30px;
     }
-    .serazeni{
-        left: 50px;
-    }
+
 
 
 

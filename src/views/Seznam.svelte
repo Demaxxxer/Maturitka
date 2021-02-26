@@ -95,12 +95,27 @@
         width: 60px;
     }
     .kategorie{
+        width: 200px;
+        background-color: var(--darkgrey);
         position: absolute;
         appearance: none;
         height: 20px;
         left: 120px;
         margin-top: 5px;
-        color: black;
+        color: var(--text);
+    }
+    select {
+        text-align: center;
+        text-align-last: center;
+        outline: 0;
+    }
+    option {
+        background-color: var(--darkgrey);
+        text-align: center;
+        text-align-last: center;
+    }
+    input:focus{
+        outline: 0 none;
     }
     .hledat{
         margin: 0 auto;
