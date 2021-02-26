@@ -29,7 +29,7 @@
                 <label for="jmeno" class="label">Jméno</label>
                 <input type="text" class="input1" on:input={e => zapis(e,"jmeno")} value={$platba.jmeno} required><br>
 
-                <label for="prijmeni" class="label">Přijmení</label>
+                <label for="prijmeni" class="label">Příjmení</label>
                 <input type="text" class="input2" on:input={e => zapis(e,"prijmeni")} value={$platba.prijmeni} required><br>
 
                 <label for="email" class="label">Email</label>

@@ -17,7 +17,7 @@
     <div class="ohraniceni1">
         <div class="nadpis">Osobní údaje</div>
         <div class="udaje">Jméno <span class="udaj1">{$platba.jmeno}</span></div>
-        <div class="udaje">Přijmení <span class="udaj2">{$platba.prijmeni}</span></div>
+        <div class="udaje">Příjmení <span class="udaj2">{$platba.prijmeni}</span></div>
         <div class="udaje">Email <span class="udaj3">{$platba.email}</span></div>
     </div>
     <div class="ohraniceni2">

@@ -75,7 +75,7 @@
             <label class="jmeno" for="jmeno-input">Jméno</label>
             <input type="text" class="hodnota1" id="jmeno-input" bind:value={search.fname}><br>
 
-            <label class="prijmeni" for="prijmeni-input">Přijmení</label>
+            <label class="prijmeni" for="prijmeni-input">Příjmení</label>
             <input type="text" class="hodnota2" id="prijmeni-input" bind:value={search.sname}><br>
 
             <label class="email" for="email-input">Email</label>
@@ -106,6 +106,9 @@
 <style>
     main{
         padding: 5px 0 15px;
+    }
+    input{
+      color: var(--text);
     }
     .ohraniceni1{
         position: relative;
@@ -194,7 +197,30 @@
 
         }
         .ohraniceni2{
-            
+          position: relative;
+          height: 80px;
+        }
+        .a, .j, .e, .o{
+        line-height: 40px;
+        }
+        .j{
+          top: 5px;
+          left: 20px;
+
+        }
+        .e{
+          bottom: 5px;
+          left: 20px;
+          transform: translateX(0%);
+        }
+        .a{
+          bottom: 5px;
+          right: 50px;
+          transform: translateX(0%);
+        }
+        .o{
+          top: 5px;
+          left: 280px;
         }
 
     }

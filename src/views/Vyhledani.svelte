@@ -8,11 +8,11 @@
     
 </script>
 <main>
-    <div class="wrapper">
+    <div class="ohraniceni1">
         <div class="nadpis">Kategorie:</div>
         <button class="seradit" on:click >Filtry</button>
     </div>
-    <div>
+    <div class="ohraniceni2">
         <label for="seradit">Seřadit:</label>
         <select class="serazeni" name="seradit" >
             <option value="drahe">Od nejdražšího</option>
@@ -31,27 +31,40 @@
     main{
         padding: 5px 0;    
     }
-    .wrapper{
+    .ohraniceni1, .ohraniceni2{
         position: relative;
+    }
+    .ohraniceni1{
         width: 940px;
         height: 50px;
         background-color: var(--darkgrey);
         border-radius: 10px;
-        left: 50%;
-        transform: translateX(-50%);
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+    .ohraniceni2{
+        margin: 0 auto;
+        width: 940px;
+        height: 100%;
+        background-color: var(--darkgrey);
+        border-radius: 10px;
+        padding: 10px;
+        box-sizing: border-box;
     }
     .nadpis, .seradit{
         position: absolute;
         font-size: 1.2em;
         top: 15px;
-
-        
     }
     .seradit{
         right: 50px;
+        color: var(--text);
     }
     .nadpis{
         left: 30px;
+    }
+    .serazeni{
+        left: 50px;
     }
 
 

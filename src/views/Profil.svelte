@@ -5,7 +5,7 @@
 <main>
     <div class="ohraniceni1">
         <div class="nadpis">Údaje účtu</div>
-        <div class="jmeno">Jméno a přijmení: <span class="jmenoH">{$uzivatel.jmeno} {$uzivatel.prijmeni}</span></div>
+        <div class="jmeno">Jméno a příjmení: <span class="jmenoH">{$uzivatel.jmeno} {$uzivatel.prijmeni}</span></div>
         <div class="email">E-mail: <span class="emailH">{$uzivatel.email}</span></div>
 
 

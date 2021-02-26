@@ -71,7 +71,6 @@
         left: 65%;
         top: 50%;
         transform: translateX(-50%) translateY(-50%);
-
     }
     .odstranit{
         right: 75px;
@@ -89,7 +88,29 @@
     @media only screen and (max-width: 800px){
         .ohraniceni{
             width: 400px;
-            margin: 20px auto;
+            height: 80px;
+            margin: 20px auto 0;
+        }
+        .admin, .jmeno, .email, .odstranit{
+            line-height: 40px;
+        }
+        .jmeno{
+            top: 5px;
+            left: 20px;
+        }
+        .email{
+            bottom: 5px;
+            left: 20px;
+            transform: translateX(0%) translateY(0%);
+        }
+        .admin{
+            top: 50px;
+            left: 305px;
+            transform: translateX(0%) translateY(0%);
+        }
+        .odstranit{
+            top: 5px;
+            left: 305px;
         }
 
     }
