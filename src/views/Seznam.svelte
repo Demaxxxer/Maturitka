@@ -1,22 +1,38 @@
 <script>
+    import axios from 'axios';
+    import { onMount } from 'svelte';
     import Polozka from '../components/Polozka.svelte';
 
-    
+    let loaded = false;
+
+    onMount(_ => {
+      axios({
+        method: 'get',
+        url: '/api/items/get',
+      }).then(res => {
+        console.log(res.data)
+        loaded = true;
+      }).catch(err => {
+        //Špatně všechno
+      })
+    });
+
 </script>
 <main>
     <form>
         <div class="ohraniceni">
             <div class="padding">
                 <div class="nadpis">Editace produktů</div>
-            
+
                 <label class="nazev" for="nazev">Název</label>
                 <input type="text" class="hodnota1" name="nazev"><br>
 
                 <label class="nazev" for="id">ID</label>
                 <input type="number" class="hodnota1" name="id"><br>
-            
+
                 <label for="kategorie">Kategorie</label>
                 <select class="kategorie" name="kategorie" >
+                    <option value="0">Všechny</option>
                     <option value="activ">Akční hry</option>
                     <option value="logic">Logické hry</option>
                     <option value="sim">Simulátory</option>
@@ -24,7 +40,7 @@
                     <option value="rpg">RPG hry</option>
                     <option value="race">Závodní hry</option>
                 </select><br>
-                
+
                 <div class="cena">Cena</div>
                 <div class="od"> od </div>
                 <input type="number" class="hodnota2" name="cena" min="1" max="9999">
@@ -37,14 +53,14 @@
                 <div>
                     <button type="submit" class="hledat">Hledat</button>
                 </div>
-                
+
             </div>
         </div>
     </form>
     <div class="sloupce">
         <Polozka/>
     </div>
-    
+
 </main>
 <style>
     main{
@@ -58,7 +74,7 @@
         background-color: var(--darkgrey);
         border-radius: 10px;
         line-height: 30px;
-        
+
     }
     .padding{
         padding: 10px 20px;
@@ -120,14 +136,14 @@
         main{
             padding-bottom: 20px;
         }
-        
+
     }
     @media only screen and (max-width: 800px){
         .ohraniceni{
             width: 400px;
             margin: 20px auto;
         }
-        
+
     }
 
 

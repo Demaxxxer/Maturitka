@@ -1,23 +1,24 @@
 <script>
     import axios from 'axios';
     import { onMount } from 'svelte';
+    import {push, pop, replace} from 'svelte-spa-router'
 
     import { alertContent } from '../stores/stavy.js'
 
-    let name;
-    let storage;
-    let cost;
-    let release;
+    let name = '';
+    let storage = '';
+    let cost = '';
+    let release = '';
     let cat;
     let thumbnail;
-    let desc;
+    let desc = '';
     let gallery = [];
     let previewGallery = [];
-    let os;
-    let cpu;
-    let gpu;
-    let ram;
-    let dx;
+    let os = '';
+    let cpu = '';
+    let gpu = '';
+    let ram = '';
+    let dx = '';
 
     //Maximální velikost obrázku v Megabajtech
     const thumbnailSize = 5
@@ -178,8 +179,11 @@
         //headers: {'content-type': 'multipart/form-data'},
         data: payload
       }).then(res => {
-        console.log(res)
+        alertContent.update(_ => res);
+        replace('/')
       }).catch(err => {
+        alertContent.update(_ => err);
+        console.log(err.response)
         //Špatné údaje třeba
       })
 
