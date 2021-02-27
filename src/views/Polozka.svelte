@@ -6,11 +6,18 @@
         id:"2",
         nazev:"Grand Theft Auto V",
         cena:"9999",
+        datum: "1.1.2020",
         kusy:"2",
         imgUrl:"/images/gta5.jpeg",
         imgsUrl:"/images/obrazek1.jpeg",
         skladem:"20",
-        popis:`Aj asdk fů fůsk sld flaskdj flkajs dflkj asldkfj dk fůlkas lksajd ůkjsaů lfsaůd fůsk sld flaskdj flkajs dflkj asldkfj dk fůlka sdjf ůlks a djfůlksa jd ůkjs aů lfsaůd fůsk sld flas kdj f lkajs df lkj asldkf j dk fůlkas djfů lksadj fůl sajd ůkj saů lfsa ůd fůsk sld flaskdj flkajs dflkj asldkfj skdjf klasjf ksad fkj sdaf Aj asdk fůlka sdjf ůlks adj fů lksajd ůkjsaů lfsaůd fůsk sld flaskdj flkajs dflkj asldkfj laskdjf klasjf ksad fkj sdaf.`
+        popis:`Aj asdk fů fůsk sld flaskdj flkajs dflkj asldkfj dk fůlkas lksajd ůkjsaů lfsaůd fůsk sld flaskdj flkajs dflkj asldkfj dk fůlka sdjf ůlks a djfůlksa jd ůkjs aů lfsaůd fůsk sld flas kdj f lkajs df lkj asldkf j dk fůlkas djfů lksadj fůl sajd ůkj saů lfsa ůd fůsk sld flaskdj flkajs dflkj asldkfj skdjf klasjf ksad fkj sdaf Aj asdk fůlka sdjf ůlks adj fů lksajd ůkjsaů lfsaůd fůsk sld flaskdj flkajs dflkj asldkfj laskdjf klasjf ksad fkj sdaf.`,
+        os: "Windows, Linux, IOS",
+        direct: "DirectX 12",
+        cpu: "Intel core i7 6700k 4.4 GHz, Ryzen 5 3600x 4.2 GHz",
+        gpu: "NVidia GeForce GTX 1060 6GB, AMD Radeon RX 580",
+        ram: "8 GB",
+        disk: "100 GB",
     }
 </script>
 
@@ -38,6 +45,8 @@
     <div class="ohraniceni2">
         <div class="nadpis">Popis produktu</div>
 
+        <div class="datum">Datum vydání: {produkt.datum}</div>
+
         <div class="text">{produkt.popis}</div>
 
         <div class="nadpis">Galerie obrázků</div>
@@ -58,12 +67,12 @@
                     <div>Uložiště: </div>
                 </div>
                 <div class="vypisek">
-                    <div></div><br>
-                    <div></div><br>
-                    <div></div><br>
-                    <div></div><br>
-                    <div></div><br>
-                    <div></div>
+                    <div>{produkt.os}</div><br>
+                    <div>{produkt.direct}</div><br>
+                    <div>{produkt.cpu}</div><br>
+                    <div>{produkt.gpu}</div><br>
+                    <div>{produkt.ram}</div><br>
+                    <div>{produkt.disk}</div>
                 </div>
             </div>
         </div>
@@ -174,11 +183,15 @@
         padding: 20px 40px;
         font-size: 1.7em;
     }
+    .datum{
+        margin: 0 0 20px 50px;
+        font-size: 0.9em;
+    }
     .text{
         box-sizing: border-box;
         border-bottom: solid 1px var(--text);
 
-        font-size: 0.8em;
+        font-size: 0.9em;
         line-height: 18px;
 
         padding: 0 15px 30px;
@@ -260,16 +273,21 @@
         padding: 0 0 30px;
         margin: 0 35px;
         }
+        .datum{
+        margin: 0 0 15px 35px;
+        font-size: 0.7em;
+    }
         .info{
             left: 35px;
             height: 100px;
-            width: 150px;
+            width: 100px;
             line-height: 8px;
             font-size: 0.6em;
         }
         .vypisek{
+            left: 120px;
             height: 100px;
-            width: 200px;
+            width: 250px;
             line-height: 8px;
             font-size: 0.6em;
         }

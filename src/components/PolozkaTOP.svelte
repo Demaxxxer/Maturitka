@@ -17,7 +17,9 @@
 </div>
 
 <style>
-
+    .polozky{
+        height: 500px;
+    }
 
     .polozka{
         position: relative;
@@ -30,31 +32,31 @@
     .nazev{
         position: absolute;
         width: 100%;
-        top: 10px;
+        top: 20px;
         text-align: center;
-        font-size: 1em;
+        font-size: 0.9em;
 
     }
     img{
         position: absolute;
         height: 150px;
         width: 120px;
-        top: 75px;
+        top: 85px;
         left: 50%;
         transform: translateX(-50%);
         background: white;
     }
-
     .cena{
         position: absolute;
-        bottom: 20px;
+        bottom: 30px;
         left: 20px;
-        font-size: 0.9em;
+        font-size: 0.8em;
         font-family: roboto;
     }
     .koupit{
+        font-size: 0.8em;
         position: absolute;
-        bottom: 12px;
+        bottom: 22px;
         right: 10px;
     }
 </style>
