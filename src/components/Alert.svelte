@@ -6,21 +6,123 @@
     let alertError = true;
     let alertText = '';
 
-    function chooseAlertText(url,code){
-      console.log('Přidat alert text na URL: [' + url + '] (' + code + ')');
-      //$alertContent.response.data - při inputech určuje který input ve fields
-      return 'Tady by bylo dobré přidat ekšuly nějaký text';
+    const alertBasic = {
+      500: 'Nastala chyba na straně serveru',
+      409: 'Objekt už existuje',
+      404: 'Objekt nenalezen',
+      403: 'Zakázáno',
+      401: 'Nejste přihlášen',
+      400: 'Zadán špatný formát',
+      201: 'Úspěšně vytvořeno',
+      200: 'Požadavek splněn'
+    }
+
+    const alertRouting = [
+      {
+        path: '/api/user/login',
+        status: {
+          200: 'Uživatel úspěšně přihlášen'
+        }
+      },
+      {
+        path: '/api/user/logout',
+        status: {
+          200: 'Uživatel úspěšně odhlášen'
+        }
+      },
+      {
+        path: '/api/item/create',
+        status: {
+          
+          409: 'Pološka s tímto jménem už existuje',
+          201: 'Položka úspěšně přidána'
+        },
+        fieldsAndType: {
+          name: {
+            empty: 'Nebylo zadáno jméno',
+            short: 'Název produktu je moc krátky',
+            long: 'Název produktu je moc dlouhý',
+            wrongChars: 'Název produktu obsahuje nepovolené znaky'
+          },
+          storage: {
+            empty: 'Nebyly zadány kusy skladem',
+            notANumber: 'Kusy skladem neni platné číslo'
+          },
+          cost: {
+            empty: 'Nebyla zadána cena',
+            notANumber: 'Cena neni platné číslo'
+          },
+          release: {
+            empty: 'Nebyl zadán datum',
+            notADate: 'Nebylo správně vyplněno datum vydání',
+          },
+          os: {
+            empty: 'Nebyl zadán operační systém',
+            wrongChars: 'Operační systém obsahuje nepovolené znaky'
+          },
+          cpu: {
+            empty: 'Nebyl zadán procesor',
+            wrongChars: 'Procesor obsahuje nepovolené znaky'
+          },
+          gpu: {
+            empty: 'Nebyla zadána grafická karta',
+            wrongChars: 'Grafická karta obsahuje nepovolené znaky'
+          },
+          dx: {
+            empty: 'Nebyl zadán DirectX',
+            wrongChars: 'DirectX obsahuje nepovolené znaky'
+          },
+        },
+        fields: {
+          'galleryOrThumbnail': 'Nebyl vložen náhled hry nebo alespoň jeden obrázek do galerie'
+        }
+      }
+    ]
+
+    function chooseAlertText(url,code,data){
+
+      console.log(data);
+
+      for (const i in alertRouting){
+        const route = alertRouting[i];
+        if(url.indexOf(route.path) != -1){
+
+          if(code == 400 && data && data.field){
+            if(data.type){
+              if(route.fieldsAndType[data.field] && route.fieldsAndType[data.field][data.type]){
+                return route.fieldsAndType[data.field][data.type];
+              }
+            }
+            if(route.fields[data.field]){
+              return route.fields[data.field];
+            }
+          }
+
+          if(route.status[code]){
+            return route.status[code]
+          }
+
+        }
+      }
+
+      if(alertBasic[code]){
+        console.log('Přidat alert text na URL: [' + url + '] (' + code + ')');
+        console.log(data);
+        return alertBasic[code];
+      }
+
     }
 
     function setAlertText(){
       const url = $alertContent.config.url;
       let statusCode;
-
+      let alertData;
 
       if($alertContent.response){
         //Errory
         alertError = true;
         statusCode = $alertContent.response.status
+        alertData = $alertContent.response.data
       } else if($alertContent.status){
         //V pohodě
         alertError = false;
@@ -31,7 +133,7 @@
         return
       }
 
-      alertText = chooseAlertText(url,statusCode)
+      alertText = chooseAlertText(url,statusCode,alertData)
     }
 
     function showAlert(){
