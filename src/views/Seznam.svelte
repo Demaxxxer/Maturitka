@@ -1,51 +1,89 @@
 <script>
     import axios from 'axios';
     import { onMount } from 'svelte';
-    import Polozka from '../components/Polozka.svelte';
+
+    import { alertContent, cats } from '../stores/stavy.js';
+    import ItemManage from '../components/ItemManage.svelte';
 
     let loaded = false;
+    let items = [];
 
-    onMount(_ => {
+    let search = {
+      name: '',
+      cat: '',
+      costMin: '',
+      costMax: '',
+      //storage:
+    }
+
+    function fetchItems(query = {}){
       axios({
         method: 'get',
         url: '/api/items/get',
+        params: query
       }).then(res => {
-        console.log(res.data)
+        items = res.data;
         loaded = true;
       }).catch(err => {
         //Špatně všechno
       })
+    }
+
+    onMount(_ => {
+      fetchItems();
     });
+
+    function handleSearch(e){
+      e.preventDefault();
+      fetchItems(search)
+    }
+
+    function handleDelete(e){
+      /*
+        let novePolozky = [...$polozky];
+        novePolozky=novePolozky.filter(polozka => {return polozka.id != id});
+        kosik.update(_ => novePolozky);
+      */
+
+      axios({
+        method: 'delete',
+        url: '/api/item/delete',
+        data: {
+          id: e.detail.id
+        }
+      }).then(res => {
+        fetchItems();
+        alertContent.update(_ => res);
+      }).catch(err => {
+        alertContent.update(_ => err);
+      })
+
+    }
+
 
 </script>
 <main>
-    <form>
+    <form on:submit={e => handleSearch(e)}>
         <div class="ohraniceni">
             <div class="padding">
                 <div class="nadpis">Editace produktů</div>
 
-                <label class="nazev" for="nazev">Název</label>
-                <input type="text" class="hodnota1" name="nazev"><br>
+                <label class="nazev" for="item-seznam-name">Název</label>
+                <input type="text" class="hodnota1" id="item-seznam-name" bind:value={search.name}><br>
 
-                <label class="nazev" for="id">ID</label>
-                <input type="number" class="hodnota1" name="id"><br>
-
-                <label for="kategorie">Kategorie</label>
-                <select class="kategorie" name="kategorie" >
+                <label for="item-seznam-cats">Kategorie</label>
+                <select class="kategorie" name="item-seznam-cats" bind:value={search.cat}>
                     <option value="0">Všechny</option>
-                    <option value="activ">Akční hry</option>
-                    <option value="logic">Logické hry</option>
-                    <option value="sim">Simulátory</option>
-                    <option value="strat">Strategické hry</option>
-                    <option value="rpg">RPG hry</option>
-                    <option value="race">Závodní hry</option>
+                    {#each Object.keys($cats) as c}
+                      <option value={c}>{$cats[c]}</option>
+                    {/each}
                 </select><br>
 
                 <div class="cena">Cena</div>
                 <div class="od"> od </div>
-                <input type="number" class="hodnota2" name="cena" min="1" max="9999">
+                <input type="number" class="hodnota2" name="cena" min="1" max="9999" bind:value={search.costMin}>
                 <div class="do"> do </div>
-                <input type="number" class="hodnota3" name="cena" min="1" max="9999"><br>
+                <input type="number" class="hodnota3" name="cena" min="1" max="9999" bind:value={search.costMax}><br>
 
                 <input type="checkbox" class="radio" name="skladem">
                 <label for="skladem" class="radioText">Není skladem</label><br>
@@ -58,7 +96,14 @@
         </div>
     </form>
     <div class="sloupce">
-        <Polozka/>
+
+      <div class="polozky">
+        {#each items as item,i}
+          <ItemManage details={item} on:itemDelete={handleDelete}/>
+        {/each}
+      </div>
+
+
     </div>
 
 </main>
@@ -66,6 +111,15 @@
     main{
         padding-bottom: 10px;
     }
+    .polozky{
+        max-width: 940px;
+        width: 100%;
+        margin: 20px auto 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
     .ohraniceni{
         position: relative;
         width: 940px;

@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 import {replace} from 'svelte-spa-router'
-import { loginPopup, alertContent, uzivatel, } from '../stores/stavy.js';
+import { loginPopup, alertContent, uzivatel, cats } from '../stores/stavy.js';
 
 function open(){
     loginPopup.update(_ => true);
@@ -15,11 +15,9 @@ function logout(){
   }).then(res => {
     uzivatel.update(_ => false);
     replace('/')
-
     alertContent.update(_ => res);
 
   }).catch(err => {
-
     alertContent.update(_ => err);
 
   })
@@ -66,13 +64,15 @@ const editace = [
                     <button>Kategorie</button>
 
                     <div class="cats">
-                        {#each categories as category, i}
+
+                        {#each Object.keys($cats) as cat, i}
                         <a href={links[i]}>
                             <div class="cat">
-                                {category}
+                                {$cats[cat]}
                             </div>
                         </a>
                         {/each}
+
                     </div>
                 </td>
                 <td class="mezera"></td>

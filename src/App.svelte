@@ -87,6 +87,7 @@ const routes = {
   '/polozka': Polozka,
   '/dokoncit': Dokoncit,
   '/edit': wrap(adminGuard(Edit)),
+  '/edit/:id': wrap(adminGuard(Edit)),
   '/seznam': wrap(adminGuard(Seznam)),
   '/seznamuzivatelu': wrap(adminGuard(SeznamU)),
   '/vyhledani': Vyhledani,

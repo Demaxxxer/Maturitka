@@ -19,8 +19,15 @@
 
     const alertRouting = [
       {
+        path: '/api/user/create',
+        status: {
+          201: 'Uživatel úspěšně zaregistrován'
+        }
+      },
+      {
         path: '/api/user/login',
         status: {
+          404: 'Uživatel s tímto emailem nenalezen',
           200: 'Uživatel úspěšně přihlášen'
         }
       },
@@ -33,7 +40,7 @@
       {
         path: '/api/item/create',
         status: {
-          
+
           409: 'Pološka s tímto jménem už existuje',
           201: 'Položka úspěšně přidána'
         },
@@ -76,7 +83,20 @@
         fields: {
           'galleryOrThumbnail': 'Nebyl vložen náhled hry nebo alespoň jeden obrázek do galerie'
         }
-      }
+      },
+      {
+        path: 'api/item/get',
+        status: {
+          404: 'Položka nenalezena'
+        }
+      },
+      {
+        path: 'api/item/delete',
+        status: {
+          200: 'Položka úspěšně vymazána'
+        }
+      },
+
     ]
 
     function chooseAlertText(url,code,data){

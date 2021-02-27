@@ -1,5 +1,14 @@
 import {readable, writable} from 'svelte/store';
 
+export const cats = readable({
+  activ: 'Akční hry',
+  logic: 'Logické hry',
+  sim: 'Simulátory',
+  strat: 'Strategické hry',
+  rpg: 'RPG hry',
+  race: 'Závodní hry'
+})
+
 export const loginPopup = writable(false);
 export const registracePopup = writable(false);
 export const alertContent = writable(false);

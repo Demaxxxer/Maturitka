@@ -8,8 +8,9 @@ import dev from 'rollup-plugin-dev'
 
 //const proxy = require('koa-better-http-proxy');
 const Koa = require('koa');
-const Proxy = require('koa-proxy-middleware');
-
+const proxy = require('koa-proxy');
+//const Proxy = require('koa-proxy-middleware');
+/*
 const proxy = new Proxy({
   proxies: [
     {
@@ -18,7 +19,7 @@ const proxy = new Proxy({
     },
   ]
 });
-
+*/
 const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
@@ -79,8 +80,12 @@ export default {
 				port: 5000,
 
 				extend(app, modules) {
-					app.use(proxy)
-				},
+					//app.use(proxy)
+          app.use(proxy({
+            host:  'http://localhost:8080', // proxy alicdn.com...
+            match: /^\/api\//        // ...just the /static folder
+          }));
+        },
 
 /*
 				proxy: {

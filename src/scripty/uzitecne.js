@@ -10,3 +10,9 @@ export function soucet(items){
     });
     return cena;
 }
+
+/* Toto na linuxu asi fungovat nebude sa obávám */
+export function getImgUrl(path){
+  const arr = path.split('\\');
+  return '/api/uploads/' + arr[1];
+}

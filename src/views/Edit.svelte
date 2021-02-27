@@ -3,7 +3,11 @@
     import { onMount } from 'svelte';
     import {push, pop, replace} from 'svelte-spa-router'
 
-    import { alertContent } from '../stores/stavy.js'
+    import { alertContent, cats } from '../stores/stavy.js'
+    import { getImgUrl } from '../scripty/uzitecne.js';
+
+
+    export let params = {}
 
     let name = '';
     let storage = '';
@@ -35,6 +39,40 @@
     ];
 
     onMount(_ => {
+      if(params.id){
+        axios({
+          method: 'get',
+          url: '/api/item/get',
+          params: params
+        }).then(res => {
+          name = res.data.name;
+          storage = res.data.storage;
+          cost = res.data.cost;
+          const time = new Date(res.data.release);
+          //yyyy-mm-dd
+          release = time.toISOString().split("T")[0];
+          cat = res.data.cat;
+          thumbnail = res.data.thumbnail;
+          desc = res.data.desc;
+          previewState = true;
+          previewThumbnail = getImgUrl(res.data.thumbnail);
+
+          for(const i in res.data.gallery){
+            previewGallery.push(getImgUrl(res.data.gallery[i]))
+            gallery.push(res.data.gallery[i]);
+          }
+          previewGallery = [...previewGallery];
+          os = res.data.os;
+          cpu = res.data.cpu;
+          gpu = res.data.gpu;
+          ram = res.data.ram;
+          dx = res.data.dx;
+        }).catch(err => {
+          //Špatná id produktu
+          alertContent.update(_ => err);
+          replace('/')
+        })
+      }
       //Přidává eventy dropzony na náhlédový obrázek
       const thumbnailLabel = document.getElementById('img-thumbnail-label');
       ['dragenter', 'dragover', 'dragleave'].forEach(eventName => {
@@ -155,7 +193,7 @@
       previewGallery = previewGallery;
     }
 
-    function handleSave(){
+    function handleNew(){
       const payload = new FormData();
       //Přidává galerii
       gallery.forEach( file => {
@@ -165,7 +203,7 @@
       if(thumbnail){
         payload.append('thumbnail', thumbnail);
       }
-      //Přidává vstupy formuláře
+      //Pisemné vstupy formuláře
       const inputs = {
         name,storage,cost,release,cat,desc,os,cpu,gpu,ram,dx,
       }
@@ -183,6 +221,46 @@
         replace('/')
       }).catch(err => {
         alertContent.update(_ => err);
+        //Špatné údaje třeba
+      })
+    }
+
+    function handleSave(){
+
+      const payload = new FormData();
+
+      console.log(gallery);
+
+      //Přidává galerii
+      gallery.forEach( file => {
+        payload.append('gallery', file);
+      });
+
+      //Přidává náhleďák
+      if(thumbnail){
+        payload.append('thumbnail', thumbnail);
+      }
+
+      onsole.log(thumbnail);
+
+      //Pisemné vstupy formuláře
+      const inputs = {
+        name,storage,cost,release,cat,desc,os,cpu,gpu,ram,dx,
+      }
+      for (const input in inputs) {
+        payload.append(input, inputs[input]);
+      }
+
+      axios({
+        method: 'post',
+        url: '/api/item/update',
+        //headers: {'content-type': 'multipart/form-data'},
+        data: payload
+      }).then(res => {
+        alertContent.update(_ => res);
+        replace('/')
+      }).catch(err => {
+        alertContent.update(_ => err);
         console.log(err.response)
         //Špatné údaje třeba
       })
@@ -190,9 +268,17 @@
 
     }
 
+
 </script>
 <main>
-  <form on:submit|preventDefault={handleSave}>
+  <form on:submit|preventDefault={e => {
+    if(params.id){
+        handleSave()
+        return;
+      }
+      handleNew()
+    }
+  }>
       <div class="wrapper1">
           <div class="nadpis">Nový produkt</div>
 
@@ -212,12 +298,9 @@
 
               <label class="kategorieText" for="kategorie">Kategorie</label>
               <select class="kategorieBox" name="kategorie" bind:value={cat}>
-                  <option value="activ">Akční hry</option>
-                  <option value="logic">Logické hry</option>
-                  <option value="sim">Simulátory</option>
-                  <option value="strat">Strategické hry</option>
-                  <option value="rpg">RPG hry</option>
-                  <option value="race">Závodní hry</option>
+                {#each Object.keys($cats) as c}
+                  <option value={c}>{$cats[c]}</option>
+                {/each}
               </select>
 
 
@@ -286,7 +369,7 @@
             <label for="direct2">DirectX</label>
             <input type="text" class="underline" bind:value={dx} placeholder="DirectX 11"><br>
       </div>
-    <button class="pridat" type="submit">Přidat položku</button>
+    <button class="pridat" type="submit">{params.id ? 'Uložit položku' : 'Přidat položku'}</button>
   </form>
 </main>
 <style>
