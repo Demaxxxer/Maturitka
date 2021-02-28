@@ -17,6 +17,53 @@
       200: 'Požadavek splněn'
     }
 
+
+    const itemManageFieldsAndType = {
+      name: {
+        empty: 'Nebylo zadáno jméno',
+        short: 'Název produktu je moc krátky',
+        long: 'Název produktu je moc dlouhý',
+        wrongChars: 'Název produktu obsahuje nepovolené znaky'
+      },
+      storage: {
+        empty: 'Nebyly zadány kusy skladem',
+        notANumber: 'Kusy skladem neni platné číslo'
+      },
+      cost: {
+        empty: 'Nebyla zadána cena',
+        notANumber: 'Cena neni platné číslo'
+      },
+      release: {
+        empty: 'Nebyl zadán datum',
+        notADate: 'Nebylo správně vyplněno datum vydání',
+      },
+      os: {
+        empty: 'Nebyl zadán operační systém',
+        wrongChars: 'Operační systém obsahuje nepovolené znaky'
+      },
+      cpu: {
+        empty: 'Nebyl zadán procesor',
+        wrongChars: 'Procesor obsahuje nepovolené znaky'
+      },
+      gpu: {
+        empty: 'Nebyla zadána grafická karta',
+        wrongChars: 'Grafická karta obsahuje nepovolené znaky'
+      },
+      dx: {
+        empty: 'Nebyl zadán DirectX',
+        wrongChars: 'DirectX obsahuje nepovolené znaky'
+      },
+      size: {
+        empty: 'Nebyl zadáno uložiště',
+        notANumber: 'Uložiště není číslo'
+      },
+    }
+    const itemManagefields = {
+      'galleryOrThumbnail': 'Nebyl vložen náhled hry nebo alespoň jeden obrázek do galerie',
+      'galleryOld': 'Rozdíl upravených obrázku nebyl poslán v dobrém formátu',
+    }
+
+
     const alertRouting = [
       {
         path: '/api/user/create',
@@ -40,49 +87,21 @@
       {
         path: '/api/item/create',
         status: {
-
-          409: 'Pološka s tímto jménem už existuje',
+          409: 'Položka s tímto jménem už existuje',
           201: 'Položka úspěšně přidána'
         },
-        fieldsAndType: {
-          name: {
-            empty: 'Nebylo zadáno jméno',
-            short: 'Název produktu je moc krátky',
-            long: 'Název produktu je moc dlouhý',
-            wrongChars: 'Název produktu obsahuje nepovolené znaky'
-          },
-          storage: {
-            empty: 'Nebyly zadány kusy skladem',
-            notANumber: 'Kusy skladem neni platné číslo'
-          },
-          cost: {
-            empty: 'Nebyla zadána cena',
-            notANumber: 'Cena neni platné číslo'
-          },
-          release: {
-            empty: 'Nebyl zadán datum',
-            notADate: 'Nebylo správně vyplněno datum vydání',
-          },
-          os: {
-            empty: 'Nebyl zadán operační systém',
-            wrongChars: 'Operační systém obsahuje nepovolené znaky'
-          },
-          cpu: {
-            empty: 'Nebyl zadán procesor',
-            wrongChars: 'Procesor obsahuje nepovolené znaky'
-          },
-          gpu: {
-            empty: 'Nebyla zadána grafická karta',
-            wrongChars: 'Grafická karta obsahuje nepovolené znaky'
-          },
-          dx: {
-            empty: 'Nebyl zadán DirectX',
-            wrongChars: 'DirectX obsahuje nepovolené znaky'
-          },
+        fieldsAndType: itemManageFieldsAndType,
+        fields: itemManagefields,
+      },
+      {
+        path: '/api/item/update',
+        status: {
+          409: 'Položka s tímto jménem už existuje',
+          404: 'Položka s tímto id neexistuje',
+          200: 'Položka úspěšně upravena'
         },
-        fields: {
-          'galleryOrThumbnail': 'Nebyl vložen náhled hry nebo alespoň jeden obrázek do galerie'
-        }
+        fieldsAndType: itemManageFieldsAndType,
+        fields: itemManagefields,
       },
       {
         path: 'api/item/get',
@@ -129,6 +148,8 @@
         console.log('Přidat alert text na URL: [' + url + '] (' + code + ')');
         console.log(data);
         return alertBasic[code];
+      } else {
+        return 'Neočekaváná chyba: ' + code;
       }
 
     }

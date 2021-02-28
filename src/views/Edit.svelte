@@ -23,6 +23,7 @@
     let gpu = '';
     let ram = '';
     let dx = '';
+    let size = '';
 
     //Maximální velikost obrázku v Megabajtech
     const thumbnailSize = 5
@@ -67,6 +68,7 @@
           gpu = res.data.gpu;
           ram = res.data.ram;
           dx = res.data.dx;
+          size = res.data.size;
         }).catch(err => {
           //Špatná id produktu
           alertContent.update(_ => err);
@@ -205,7 +207,7 @@
       }
       //Pisemné vstupy formuláře
       const inputs = {
-        name,storage,cost,release,cat,desc,os,cpu,gpu,ram,dx,
+        name,storage,cost,release,cat,desc,os,cpu,gpu,ram,dx,size
       }
       for (const input in inputs) {
         payload.append(input, inputs[input]);
@@ -218,7 +220,7 @@
         data: payload
       }).then(res => {
         alertContent.update(_ => res);
-        replace('/')
+        replace('/seznam')
       }).catch(err => {
         alertContent.update(_ => err);
         //Špatné údaje třeba
@@ -229,23 +231,27 @@
 
       const payload = new FormData();
 
-      console.log(gallery);
-
       //Přidává galerii
+
+      let oldFiles = [];
       gallery.forEach( file => {
-        payload.append('gallery', file);
+        if(file instanceof File){
+          payload.append('gallery', file);
+        } else {
+          oldFiles.push(file);
+        }
       });
+
+      payload.append('galleryOld', JSON.stringify(oldFiles));
 
       //Přidává náhleďák
       if(thumbnail){
         payload.append('thumbnail', thumbnail);
       }
 
-      onsole.log(thumbnail);
-
       //Pisemné vstupy formuláře
       const inputs = {
-        name,storage,cost,release,cat,desc,os,cpu,gpu,ram,dx,
+        name,storage,cost,release,cat,desc,os,cpu,gpu,ram,dx,size
       }
       for (const input in inputs) {
         payload.append(input, inputs[input]);
@@ -254,11 +260,13 @@
       axios({
         method: 'post',
         url: '/api/item/update',
-        //headers: {'content-type': 'multipart/form-data'},
+        params: {
+          id: params.id
+        },
         data: payload
       }).then(res => {
         alertContent.update(_ => res);
-        replace('/')
+        replace('/seznam')
       }).catch(err => {
         alertContent.update(_ => err);
         console.log(err.response)
@@ -359,7 +367,7 @@
             <input type="text" class="underline" bind:value={dx} placeholder="DirectX 11"><br>
 
             <label for="disc">Uložiště</label>
-            <input type="number" class="underline5" bind:value={ram} placeholder="30" min="0" max="999"><span class="gb">GB</span>
+            <input type="number" class="underline5" bind:value={size} placeholder="30" min="0" max="999"><span class="gb">GB</span>
             <!--Přidal jsem tady uložiště na disku-->
       </div>
     <button class="pridat" type="submit">{params.id ? 'Uložit položku' : 'Přidat položku'}</button>

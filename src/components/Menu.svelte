@@ -1,8 +1,10 @@
 <script>
+    import {push, pop, replace} from 'svelte-spa-router';
     let search = '';
-
     function goFind(e){
-      console.log('Vyheldať: ' + search)
+      if(search.length > 0){
+        push('/produkty?hledat='+ search);
+      }
     }
 
 </script>
@@ -181,6 +183,6 @@
 			padding-right: 30px;
 
 		}
-		
+
 	}
 </style>

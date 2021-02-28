@@ -1,14 +1,11 @@
 <script>
 import axios from 'axios';
-
-import {replace} from 'svelte-spa-router'
 import { loginPopup, alertContent, uzivatel, cats } from '../stores/stavy.js';
 
 function open(){
     loginPopup.update(_ => true);
 }
 function logout(){
-
   axios({
     method: 'post',
     url: '/api/user/logout',
@@ -16,28 +13,17 @@ function logout(){
     uzivatel.update(_ => false);
     replace('/')
     alertContent.update(_ => res);
-
   }).catch(err => {
     alertContent.update(_ => err);
-
   })
-
 }
-const links = [
-    '/#/test',
-    '/#/test',
-    '/#/test',
-    '/#/test',
-    '/#/test',
-]
-const categories = [
-    'Akční hry',
-    'Logické hry',
-    'Simulátory',
-    'Strategické hry',
-    'RPG hry',
-    'Závodní hry',
-]
+function goToCatPage(cat){
+  const url = '/produkty/' + cat;
+  console.log(url);
+  push(url);
+}
+
+
 const odkazy = [
     '/#/edit',
     '/#/seznam',
@@ -66,7 +52,7 @@ const editace = [
                     <div class="cats">
 
                         {#each Object.keys($cats) as cat, i}
-                        <a href={links[i]}>
+                        <a href={'/#/produkty/' + cat}>
                             <div class="cat">
                                 {$cats[cat]}
                             </div>

@@ -16,6 +16,7 @@ import Edit from './views/Edit.svelte'
 import Seznam from './views/Seznam.svelte'
 import SeznamU from './views/SeznamU.svelte'
 import Vyhledani from './views/Vyhledani.svelte'
+import Produkty from './views/Produkty.svelte'
 import Profil from './views/Profil.svelte'
 /* Import pro statické komponenty */
 import { uzivatel } from './stores/stavy.js';
@@ -91,6 +92,8 @@ const routes = {
   '/seznam': wrap(adminGuard(Seznam)),
   '/seznamuzivatelu': wrap(adminGuard(SeznamU)),
   '/vyhledani': Vyhledani,
+  '/produkty': Produkty,
+  '/produkty/:cat': Produkty,
   '/profil': wrap(userGuard(Profil)),
   '*': NotFound,
 }
