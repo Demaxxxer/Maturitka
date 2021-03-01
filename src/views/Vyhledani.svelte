@@ -10,7 +10,9 @@
 <main>
     <div class="ohraniceni1">
         <div class="nadpis">Kategorie:</div>
-        <button class="seradit" on:click >Filtry</button>
+        <div class="seradit">
+            <button>Filtry</button>
+        </div>
     </div>
     <div class="ohraniceni2">
         <label for="seradit">Seřadit:</label>
@@ -34,6 +36,7 @@
         position: relative;
     }
     .ohraniceni1{
+
         width: 940px;
         height: 50px;
         background-color: var(--darkgrey);
@@ -52,18 +55,16 @@
     }
     .nadpis{
         position: absolute;
-        font-size: 1.2em;
         top: 15px;
     }
     .seradit{
-        width: 200px;
-        background-color: var(--darkgrey);
-        position: absolute;
-        appearance: none;
+        font-size: 1.5em;
         height: 20px;
-        left: 120px;
+        width: 200px;
+        background-color: red;
+        position: absolute;
+        right: 50px;
         margin-top: 5px;
-        color: var(--text);
     }
     select {
         text-align: center;

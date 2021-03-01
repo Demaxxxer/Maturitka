@@ -40,7 +40,9 @@
 <main>
     <div class="ohraniceni1">
         <div class="nadpis">Kategorie:</div>
-        <button class="seradit" on:click >Filtry</button>
+        <div class="filtr">
+            <button on:click >Filtry</button>
+        </div>
     </div>
     <div class="ohraniceni2">
         <label for="seradit">Seřadit:</label>
@@ -49,6 +51,14 @@
             <option value="levne">Od nejlevnějšího</option>
             <option value="nej">Od nejprodávanějšího</option>
         </select>
+
+        
+        <div class="cena">Cena:</div>
+        <div>
+            <input type="range" min="1" max="9999">
+        </div>
+        
+        
     </div><br>
 
     {#if loaded}
@@ -82,28 +92,39 @@
     .ohraniceni2{
         margin: 0 auto;
         width: 940px;
-        height: 100%;
+        height: 200px;
         background-color: var(--darkgrey);
         border-radius: 10px;
-        padding: 10px;
+        padding: 20px 30px;
         box-sizing: border-box;
     }
     .nadpis{
         position: absolute;
         font-size: 1.2em;
-        top: 15px;
+        line-height: 50px;
+        left: 30px;
+    }
+    .filtr{
+        position: absolute;
+        float: right;
+        background-color: var(--darkgrey);
+        right: 30px;
+        line-height: 50px;
+    }
+    .filtr button{
+        line-height: 50px;
+        color: var(--text);
+        font-size: 1.2em;
     }
     .seradit{
-        width: 200px;
-        background-color: var(--darkgrey);
         position: absolute;
-        appearance: none;
-        height: 20px;
-        left: 120px;
-        margin-top: 5px;
-        color: var(--text);
+        float: right;
+        background-color: var(--darkgrey);
+        left: 100px;
+        line-height: 50px;
     }
     select {
+        color: var(--text);
         text-align: center;
         text-align-last: center;
         outline: 0;
@@ -113,8 +134,8 @@
         text-align: center;
         text-align-last: center;
     }
-    .nadpis{
-        left: 30px;
+    .cena{
+        line-height: 50px;
     }
 
     .polozky{
@@ -125,6 +146,7 @@
         flex-wrap: wrap;
         justify-content: space-around;
     }
+
 
 
 </style>

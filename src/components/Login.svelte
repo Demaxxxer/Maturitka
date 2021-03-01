@@ -42,10 +42,11 @@
 <div class="oregistr" active={$loginPopup}>
 
     <div class="backdrop" on:click={_ => close()}></div>
-    <button class="krizek" on:click={_ => close()}>╳</button>
-    <form class="formular" on:submit|preventDefault={ _=> doLogin()}>
-        <div class="prihlaseni">Přihlášení</div>
 
+    <form class="formular" on:submit|preventDefault={ _=> doLogin()}>
+
+        <div class="prihlaseni">Přihlášení</div>
+        <button class="krizek" on:click={_ => close()}>╳</button>
 
         <table class="table">
             <tr>
@@ -63,7 +64,6 @@
         </div>
     </form>
 </div>
-
 
 <style>
 
@@ -140,7 +140,6 @@
         font-size: 1.1em;
         margin-left: 20px;
     }
-
     .registrace{
         height: 35px;
         width: 140px;

@@ -122,7 +122,7 @@
     img{
         position: absolute;
         height: 150px;
-        width: 100px;
+        width: 120px;
         top: 25px;
         left: 25px;
         background: white;
@@ -132,7 +132,7 @@
         position: absolute;
         max-width: 300px;
         top: 25px;
-        left: 150px;
+        left: 170px;
         font-size: 1.4em;
     }
 

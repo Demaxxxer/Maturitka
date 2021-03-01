@@ -74,7 +74,7 @@
             <label class="email" for="email-input">Email</label>
             <input type="text" class="hodnota3" id="email-input" bind:value={search.email}><br>
 
-            <label class="admin" for="admin-input">Admin</label>
+            <label class="admin" for="admin-input">Administrativa</label>
             <input type="checkbox" class="hodnota4" id="admin-input" bind:checked={search.isAdmin}><br>
 
             <div>

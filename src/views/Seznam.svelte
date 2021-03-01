@@ -66,7 +66,7 @@
     <form on:submit={e => handleSearch(e)}>
         <div class="ohraniceni">
             <div class="padding">
-                <div class="nadpis">Editace produktů</div>
+                <div class="nadpis">Seznam produktů</div>
 
                 <label class="nazev" for="item-seznam-name">Název</label>
                 <input type="text" class="hodnota1" id="item-seznam-name" bind:value={search.name}><br>
@@ -128,7 +128,7 @@
         background-color: var(--darkgrey);
         border-radius: 10px;
         line-height: 30px;
-
+        margin-top: 5px;
     }
     .padding{
         padding: 10px 20px;

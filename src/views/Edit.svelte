@@ -531,9 +531,24 @@
         line-height: 50px;
     }
     .kategorieBox{
+        width: 120px;
+        background-color: var(--darkgrey);
         position: absolute;
+        appearance: none;
+        height: 20px;
         left: 40%;
-        margin-top: 10px;
+        margin-top: 15px;
+        color: var(--text);
+    }
+    select {
+        text-align: center;
+        text-align-last: center;
+        outline: 0;
+    }
+    option {
+        background-color: var(--darkgrey);
+        text-align: center;
+        text-align-last: center;
     }
     .box2{
         resize: none;
@@ -572,17 +587,35 @@
     @media only screen and (max-width: 1200px){
         .wrapper1, .wrapper2, .wrapper3{
 
-            width: 500px;
+            width: 740px;
             margin: 15px auto;
+            box-sizing: border-box;
+        }
+        .gb{
+            left: 325px;
+        }
+        .ks{
+            left: 333px;
+        }
+        .kc{
+            left: 333px;
         }
 
     }
-    @media only screen and (max-width: 550px){
+    @media only screen and (max-width: 800px){
         .wrapper1, .wrapper2, .wrapper3{
             width: 400px;
             margin: 15px auto;
         }
-
+        .gb{
+            left: 185px;
+        }
+        .ks{
+            left: 193px;
+        }
+        .kc{
+            left: 193px;
+        }
     }
 
 </style>
