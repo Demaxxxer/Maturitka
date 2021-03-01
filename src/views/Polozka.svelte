@@ -1,43 +1,70 @@
 <script>
-    import Koupit from '../components/Koupit.svelte'
-    import {nf} from '../scripty/uzitecne.js'
+    import axios from 'axios';
+    import Koupit from '../components/Koupit.svelte';
+    import {push, pop, replace} from 'svelte-spa-router';
+    import { alertContent } from '../stores/stavy.js';
+    import { nf,getImgUrl } from '../scripty/uzitecne.js';
 
-    const produkt = {
-        id:"2",
-        nazev:"Grand Theft Auto V",
-        cena:"9999",
-        datum: "1.1.2020",
-        kusy:"2",
-        imgUrl:"/images/gta5.jpeg",
-        imgsUrl:"/images/obrazek1.jpeg",
-        skladem:"20",
-        popis:`Aj asdk fů fůsk sld flaskdj flkajs dflkj asldkfj dk fůlkas lksajd ůkjsaů lfsaůd fůsk sld flaskdj flkajs dflkj asldkfj dk fůlka sdjf ůlks a djfůlksa jd ůkjs aů lfsaůd fůsk sld flas kdj f lkajs df lkj asldkf j dk fůlkas djfů lksadj fůl sajd ůkj saů lfsa ůd fůsk sld flaskdj flkajs dflkj asldkfj skdjf klasjf ksad fkj sdaf Aj asdk fůlka sdjf ůlks adj fů lksajd ůkjsaů lfsaůd fůsk sld flaskdj flkajs dflkj asldkfj laskdjf klasjf ksad fkj sdaf.`,
-        os: "Windows, Linux, IOS",
-        direct: "DirectX 12",
-        cpu: "Intel core i7 6700k 4.4 GHz, Ryzen 5 3600x 4.2 GHz",
-        gpu: "NVidia GeForce GTX 1060 6GB, AMD Radeon RX 580",
-        ram: "8 GB",
-        disk: "100 GB",
+
+    export let params;
+
+    let loaded = false;
+    let item = {};
+    let itemDate;
+
+    let selectedPic = 0;
+
+    $: reFetch(params.id);
+
+    function reFetch(id){
+      axios({
+        method: 'get',
+        url: '/api/item/get',
+        params: {
+          id: id
+        }
+      }).then(res => {
+        item = res.data;
+        itemDate = new Date(item.release);
+        loaded = true;
+        console.log(item);
+      }).catch(err => {
+        alertContent.update(_ => err);
+        replace('/');
+      })
     }
+
+    function galleryMove(dir){
+      selectedPic += dir;
+      if(selectedPic < 0){
+        selectedPic = item.gallery.length - 1;
+        return;
+      }
+      if(selectedPic > item.gallery.length - 1){
+        selectedPic = 0;
+      }
+    }
+
 </script>
 
 <main>
+  {#if loaded}
     <div class="ohraniceni">
 
-        <div class="zpet"><button></button></div>
+        <div class="zpet"><button on:click={e => pop()}></button></div>
 
-        <div class="nazev">{produkt.nazev}</div>
+        <div class="nazev">{item.name}</div>
 
         <div class="vrch">
 
             <div class="obrazek">
-                <img src={produkt.imgUrl} alt="error">
+                <img src={getImgUrl(item.thumbnail)} alt="error">
             </div>
         </div>
         <div class="spodek">
-            <div class="skladem">{produkt.skladem} kusů</div>
+            <div class="skladem">{item.storage} kusů</div>
 
-            <div class="cena">{nf(produkt.cena)} Kč</div>
+            <div class="cena">{nf(item.cost)} Kč</div>
 
             <div class="koupit"><Koupit></Koupit></div>
         </div>
@@ -45,14 +72,16 @@
     <div class="ohraniceni2">
         <div class="nadpis">Popis produktu</div>
 
-        <div class="datum">Datum vydání: {produkt.datum}</div>
+        <div class="datum">Datum vydání: {`${itemDate.getDate()}.${itemDate.getMonth()}.${itemDate.getFullYear()}`}</div>
 
-        <div class="text">{produkt.popis}</div>
+        <div class="text">{item.desc}</div>
 
         <div class="nadpis">Galerie obrázků</div>
 
         <div class="obrazky">
-            <img src={produkt.imgsUrl} alt="Žádné obrázky">
+            <img src={getImgUrl(item.gallery[selectedPic])} alt="Žádné obrázky">
+            <button class="control-left" on:click={_ => galleryMove(-1)}></button>
+            <button class="control-right" on:click={_ => galleryMove(1)}></button>
         </div>
 
         <div class="rec">
@@ -67,17 +96,18 @@
                     <div>Uložiště: </div>
                 </div>
                 <div class="vypisek">
-                    <div>{produkt.os}</div><br>
-                    <div>{produkt.direct}</div><br>
-                    <div>{produkt.cpu}</div><br>
-                    <div>{produkt.gpu}</div><br>
-                    <div>{produkt.ram}</div><br>
-                    <div>{produkt.disk}</div>
+                    <div>{item.os}</div><br>
+                    <div>{item.dx}</div><br>
+                    <div>{item.cpu}</div><br>
+                    <div>{item.gpu}</div><br>
+                    <div>{item.ram} GB</div><br>
+                    <div>{item.size} GB</div>
                 </div>
             </div>
         </div>
 
     </div>
+  {/if}
 </main>
 
 <style>
@@ -197,19 +227,45 @@
         padding: 0 15px 30px;
         margin: 0 35px;
     }
+
     .obrazky{
+        position: relative;
         border-bottom: solid 1px var(--text);
         margin: 0 35px;
         padding: 0 0 30px;
+        width: 800px;
+        height: 449px;
     }
+
+    .control-left, .control-right {
+      position: absolute;
+      top: 50%;
+      width: 40px;
+      height: 80px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 30px;
+      background-image: url('/images/zpet.svg');
+      background-color: rgba(0,0,0,0.3);
+      transform: translateY(-50%);
+    }
+    .control-left {
+      left: 0;
+    }
+    .control-right {
+      right: 0;
+      transform: translateY(-50%) rotate(180deg);
+    }
+
     .obrazky img{
-        width: 100%;
-        height: 100%;
-        max-width: 800px;
-        max-height: 449px;
+        max-width:100%;
+        max-height:100%;
+        //width: 100%;
+        //height: 100%;
         display: block;
         margin: 0 auto;
     }
+
     .rec{
         position: relative;
         box-sizing: border-box;

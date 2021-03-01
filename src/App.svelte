@@ -85,7 +85,7 @@ const routes = {
   '/kosik': Kosik,
   '/platba': Platba,
   '/souhrn': Souhrn,
-  '/polozka': Polozka,
+  '/polozka/:id': Polozka,
   '/dokoncit': Dokoncit,
   '/edit': wrap(adminGuard(Edit)),
   '/edit/:id': wrap(adminGuard(Edit)),
