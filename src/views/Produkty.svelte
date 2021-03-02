@@ -62,19 +62,19 @@
         </div>
     </div>
     <div class="ohraniceni2">
-        <label for="seradit">Seřadit:</label>
-        <select class="seradit" name="seradit" on:input={handleSort} bind:value={sortValue}>
-            <option value="costDown">Od nejdražšího</option>
-            <option value="costUp">Od nejlevnějšího</option>
-            <option value="soldUp">Od nejprodávanějšího</option>
-        </select>
-
-
-        <div class="cena">Cena:</div>
-        <div>
-            <RangeSlider range bind:values={costLimit} float max={2000} min={50} on:stop={handleCostLimit} />
+        <div class="serazeni">
+            <label for="seradit">Seřadit:</label>
+            <select class="seradit" name="seradit" on:input={handleSort} bind:value={sortValue}>
+                <option value="costDown">Od nejdražšího</option>
+                <option value="costUp">Od nejlevnějšího</option>
+                <option value="soldUp">Od nejprodávanějšího</option>
+            </select>
         </div>
 
+        <div class="cena">Cena:</div>
+        <div class="sliderO">
+            <RangeSlider id="slider" range pushy bind:values={costLimit} float max={2000} min={0} on:stop={handleCostLimit} pips step={50} suffix="Kč" />
+        </div>
 
     </div><br>
 
@@ -109,7 +109,7 @@
     .ohraniceni2{
         margin: 0 auto;
         width: 940px;
-        height: 200px;
+        height: 120px;
         background-color: var(--darkgrey);
         border-radius: 10px;
         padding: 20px 30px;
@@ -151,9 +151,31 @@
         text-align: center;
         text-align-last: center;
     }
+    .serazeni{
+        width: 100%;
+    }
+    .cena, .sliderO{
+        margin-top: 20px;
+    }
     .cena{
         line-height: 50px;
+        height: 50px;
+        width: 5%;
+        float: left;
     }
+    .sliderO{
+        padding-top: 5px;
+        height: 50px;
+        width: 90%;
+        float: left;
+        margin-left: 25px;
+    }
+    
+    #slider .rangeSlider{
+        --range-handle-focus: var(--yellow);
+        --range-float: var(--range-handle-focus);
+        --range-float-text: black;
+    } 
 
     .polozky{
         max-width: 940px;
@@ -164,6 +186,29 @@
         justify-content: space-around;
     }
 
+    @media only screen and (max-width: 1200px){
+        .ohraniceni1, .ohraniceni2{
+            width: 760px;
+            margin: 20px auto;
+        }
+        main{
+            padding-bottom: 20px;
+        }
+
+    }
+    @media only screen and (max-width: 800px){
+        .ohraniceni1, .ohraniceni2{
+            width: 400px;
+            margin: 20px auto;
+        }
+        .cena{
+            width: 15%;
+        }
+        .sliderO{
+            width: 80%;
+            margin-left: 10px;
+        }
+    }
 
 
 </style>
