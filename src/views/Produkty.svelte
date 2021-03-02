@@ -1,5 +1,6 @@
 <script>
     import axios from 'axios';
+    import RangeSlider from "svelte-range-slider-pips";
     import { onMount } from 'svelte';
     import {parse} from 'qs';
     import {querystring} from 'svelte-spa-router';
@@ -9,6 +10,11 @@
 
     let loaded = false;
     let items = {};
+    let costLimit = [
+      50,
+      2000,
+    ]
+    let sortValue = 'soldUp';
 
     $: reFetch(params.cat,parse($querystring).hledat);
 
@@ -29,7 +35,18 @@
       let query = {};
       if(cat)query.cat = cat;
       if(search)query.name = search;
+      query.sort = sortValue;
+      query.costMax = costLimit[1]
+      query.costMin = costLimit[0]
       fetchItems(query);
+    }
+
+    function handleCostLimit(e){
+      reFetch(params.cat,parse($querystring).hledat)
+    }
+
+    function handleSort(){
+      reFetch(params.cat,parse($querystring).hledat)
     }
 
     function open(){
@@ -46,19 +63,19 @@
     </div>
     <div class="ohraniceni2">
         <label for="seradit">Seřadit:</label>
-        <select class="seradit" name="seradit" >
-            <option value="drahe">Od nejdražšího</option>
-            <option value="levne">Od nejlevnějšího</option>
-            <option value="nej">Od nejprodávanějšího</option>
+        <select class="seradit" name="seradit" on:input={handleSort} bind:value={sortValue}>
+            <option value="costDown">Od nejdražšího</option>
+            <option value="costUp">Od nejlevnějšího</option>
+            <option value="soldUp">Od nejprodávanějšího</option>
         </select>
 
-        
+
         <div class="cena">Cena:</div>
         <div>
-            <input type="range" min="1" max="9999">
+            <RangeSlider range bind:values={costLimit} float max={2000} min={50} on:stop={handleCostLimit} />
         </div>
-        
-        
+
+
     </div><br>
 
     {#if loaded}
