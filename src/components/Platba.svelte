@@ -1,41 +1,40 @@
 <script>
     import {nf,soucet} from '../scripty/uzitecne.js'
-    import {kosik,platba} from '../stores/stavy.js';
-    //$: sum = soucet($kosik);
+    import {cartUser} from '../stores/stavy.js';
 
-    let sum = 3000;
+    export let sumed;
 
     function zapis(e,klic){
-
+/*
         platba.update(test => {
             test[klic] = e.target.value
             return test
         })
-
+*/
     }
 
 </script>
 
 <main>
-    <form on:submit|preventDefault={(e) => document.location.href="/#/souhrn"}>
+    <form on:submit|preventDefault={(e) => document.location.href="/#/kosik/souhrn"}>
         <div class="bar">
 
             <a href="/#/kosik"><button type="button" class="postup1">Košík</button></a>
-            <a href="/#/platba"><button type="button" class="postup2">Platba</button></a>
-            <a href="/#/souhrn"><button class="postup3">Souhrn</button></a>
+            <button type="button" class="postup2">Platba</button>
+            <a href="/#/kosik/souhrn"><button class="postup3">Souhrn</button></a>
 
         </div>
         <div class="ohraniceni1">
             <div class="nadpis1">Osobní údaje</div>
             <div class="wrapper1">
                 <label for="jmeno" class="label">Jméno</label>
-                <input type="text" class="input1" on:input={e => zapis(e,"jmeno")} value={$platba.jmeno} required><br>
+                <input type="text" class="input1" on:input={e => zapis(e,"jmeno")} bind:value={$cartUser.fname} required><br>
 
                 <label for="prijmeni" class="label">Příjmení</label>
-                <input type="text" class="input2" on:input={e => zapis(e,"prijmeni")} value={$platba.prijmeni} required><br>
+                <input type="text" class="input2" on:input={e => zapis(e,"prijmeni")} bind:value={$cartUser.sname} required><br>
 
                 <label for="email" class="label">Email</label>
-                <input type="email" class="input3" on:input={e => zapis(e,"email")} value={$platba.email} required><br>
+                <input type="email" class="input3" on:input={e => zapis(e,"email")} bind:value={$cartUser.email} required><br>
             </div>
         </div>
 
@@ -44,19 +43,19 @@
             <div class="nadpis2">Typ platby</div>
             <div class="platby">
                 <div>
-                    <input type="radio" id="karta" name="typ" value="karta" checked="checked">
+                    <input type="radio" id="karta" name="typ" value="karta" bind:group={$cartUser.payment}>
                     <label for="karta" class="karta">Kartou online</label>
                 </div>
                 <div>
-                    <input type="radio" id="paypal" name="typ" value="paypal">
+                    <input type="radio" id="paypal" name="typ" value="paypal" bind:group={$cartUser.payment}>
                     <label for="paypal" class="paypal">PayPal</label>
                 </div>
                 <div>
-                    <input type="radio" id="paysafe" name="typ" value="paysafe">
+                    <input type="radio" id="paysafe" name="typ" value="paysafe" bind:group={$cartUser.payment}>
                     <label for="paysafe" class="paysafe">Paysafecard</label>
                 </div>
                 <div>
-                    <input type="radio" id="bitcoin" name="typ" value="bitcoin">
+                    <input type="radio" id="bitcoin" name="typ" value="bitcoin" bind:group={$cartUser.payment}>
                     <label for="bitcoin" class="bitcoin">Bitcoin</label>
                 </div>
             </div>
@@ -64,7 +63,7 @@
 
         <div class="spodek">
             <div class="text">
-                Cena košíku:<span class="suma">{nf(sum)} Kč</span>
+                Cena košíku:<span class="suma">{nf(sumed)} Kč</span>
             </div>
 
             <div class="flow">

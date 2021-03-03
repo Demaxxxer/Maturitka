@@ -1,30 +1,12 @@
 <script>
     import axios from 'axios';
-    import { onMount } from 'svelte';
-    import { cart } from '../stores/stavy.js';
+    import { onMount,createEventDispatcher } from 'svelte';
+    import { cart, cartState } from '../stores/stavy.js';
     import { nf,soucet,getImgUrl,getCookie,setCookie,deleteCookie } from '../scripty/uzitecne.js'
     import { kosik } from '../stores/stavy.js';
 
-    let loaded = false;
-    let items = [];
-
-    onMount(_ => {
-      axios({
-        method: 'get',
-        url: '/api/items/fromcart',
-        params: {
-          cart: JSON.stringify($cart)
-        }
-      }).then(res => {
-        items = res.data;
-        loaded = true;
-      }).catch(err => {
-        loaded = true;
-        cart.update(_ => {});
-        deleteCookie('cart');
-      })
-
-    })
+  	const dispatch = createEventDispatcher();
+    export let items
 
     function handleNumberChange(e,id){
       if(isNaN(e.target.value))e.target.value = 1
@@ -45,18 +27,20 @@
         })
     }
 
+    function handleForward(){
+      cartState.update(_ => 'platba')
+      console.log($cartState)
+    }
+
     $: sum = soucet($cart,items);
 
 </script>
 <main>
 
-
-  {#if loaded}
-
     <div class="bar">
 
-        <a href="/#/kosik"><button class="postup1">Košík</button></a>
-        <a href="/#/platba"><button class="postup2">Platba</button></a>
+        <div class="postup1">Košík</div>
+        <a href="/#/kosik/platba"><button class="postup2">Platba</button></a>
         <div class="postup3">Souhrn</div>
 
     </div>
@@ -71,13 +55,13 @@
       <div class="polozky">
           {#each items as item,i}
 
-          <div class="polozka"><!--relative-->
-              <img  alt="error" src={getImgUrl(item.thumbnail)}><!--src="{polozka.imgUrl}"-->
+          <div class="polozka">
+              <img  alt="error" src={getImgUrl(item.thumbnail)}>
               <div class="nazev">{ item.name}</div>
-              <button class="odstranit" on:click={_ => odstranit(i)}>╳</button>
+              <button class="odstranit" on:click={_ => dispatch('delete',{index: i})}>╳</button>
               <form class="kusy">
                   <label for="number">Kusy</label>
-                  <input type="number" min="1" max="999" value={$cart[item._id]} on:change={e => handleNumberChange(e,item._id)}>
+                  <input type="number" min="1" max="999" value={$cart[item._id]} on:change={e => dispatch('change',{e:e,id:item._id})}>
 
               </form>
               <div class="cena">{nf(item.cost * $cart[item._id])} Kč</div>
@@ -91,12 +75,12 @@
               Cena košíku:<span class="suma">{nf(sum)} Kč</span>
           </div>
           <div class="flow">
-              <a href="/#/platba"><button class="pokracovat">Pokračovat</button></a>
+              <a href="/#/kosik/platba"><button class="pokracovat">Pokračovat</button></a>
           </div>
 
       </div>
     {/if}
-  {/if}
+
 </main>
 <style>
     main{

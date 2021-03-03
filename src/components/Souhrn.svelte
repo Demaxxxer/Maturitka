@@ -1,10 +1,10 @@
 <script>
     import {nf,soucet} from '../scripty/uzitecne.js'
-    import {kosik,platba} from '../stores/stavy.js';
+    import {cartUser, cart, kosik} from '../stores/stavy.js';
 
-    //$: sum = soucet($kosik);
+    export let sumed;
+    export let items;
 
-    let sum = 100;
 
 </script>
 
@@ -12,33 +12,34 @@
     <div class="bar">
 
         <a href="/#/kosik"><button class="postup1">Košík</button></a>
-        <a href="/#/platba"><button class="postup2">Platba</button></a>
-        <a href="/#/souhrn"><button class="postup3">Souhrn</button></a>
+        <a href="/#/kosik/platba"><button class="postup2">Platba</button></a>
+        <button class="postup3">Souhrn</button>
 
     </div>
     <div class="ohraniceni1">
         <div class="nadpis">Osobní údaje</div>
-        <div class="udaje">Jméno <span class="udaj1">{$platba.jmeno}</span></div>
-        <div class="udaje">Příjmení <span class="udaj2">{$platba.prijmeni}</span></div>
-        <div class="udaje">Email <span class="udaj3">{$platba.email}</span></div>
+        <div class="udaje">Jméno <span class="udaj1">{$cartUser.fname}</span></div>
+        <div class="udaje">Příjmení <span class="udaj2">{$cartUser.sname}</span></div>
+        <div class="udaje">Email <span class="udaj3">{$cartUser.email}</span></div>
     </div>
     <div class="ohraniceni2">
         <div class="nadpis">Objednávka</div>
-        {#each $kosik as polozka}
+        {#each items as item,i}
             <div class="polozka">
-                <div class="nazev">{polozka.nazev}</div>
-                <div class="cena">{nf(polozka.cena)} Kč</div>
+                <div class="nazev">{item.name}</div>
+                <div class="pocet">{$cart[item._id]}x</div>
+                <div class="cena">{nf(item.cost * $cart[item._id])} Kč</div>
             </div>
         {/each}
     </div>
 
     <div class="spodek">
         <div class="text">
-            Cena košíku:<span class="suma">{nf(sum)} Kč</span>
+            Cena košíku:<span class="suma">{nf(sumed)} Kč</span>
         </div>
 
         <div class="flow">
-            <a class="button" href="/#/platba"><button class="zpet">Zpět</button></a>
+            <a class="button" href="/#/kosik/platba"><button class="zpet">Zpět</button></a>
 
         <a class="button" href="/#/dokoncit"><button class="pokracovat">Dokončit</button></a>
         </div>
@@ -140,13 +141,19 @@
     }
 
     .polozka{
+        position: relative;
         width: 100%;
         height: 30px;
-
     }
     .nazev {
         float: left;
     }
+
+    .pocet {
+      position: absolute;
+      right: 100px;
+    }
+
     .cena {
         float: right;
     }
