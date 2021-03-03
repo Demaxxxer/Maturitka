@@ -1,31 +1,22 @@
 <script>
     import Koupit from './Koupit.svelte'
-    import {nf} from '../scripty/uzitecne.js'
-    import {toppolozky} from '../stores/stavy.js'
-    
+    import {nf, getImgUrl} from '../scripty/uzitecne.js'
+
+    export let details;
+
 </script>
 
-    <div class="polozky">
-        {#each $toppolozky as polozka}
-        <div class="polozka">
-            <div class="nazev">{polozka.nazev}</div>
-            <img  alt="error">
-            <div class="cena">Cena: {nf(polozka.cena * polozka.kusy)} Kč</div>
-            <div class="koupit"><Koupit></Koupit></div>
-        </div>
-        {/each}
-    </div>
+<div class="polozka">
+    <div class="nazev">{details.name}</div>
+    <img  alt="error" src={getImgUrl(details.thumbnail)}>
+    <div class="cena">Cena: {nf(details.cost)} Kč</div>
+    <a href={'/#/polozka/' + details._id}>
+      <button class="link"></button>
+    </a>
+    <div class="koupit"><Koupit itemId={details._id}></Koupit></div>
+</div>
 
 <style>
-
-    .polozky{
-        max-width: 940px;
-        width: calc(100% - 80px);
-        margin: 20px auto 0 auto;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
     .polozka{
         position: relative;
         background-color: var(--darkgrey);
@@ -60,6 +51,15 @@
         font-size: 0.9em;
         font-family: roboto;
     }
+
+    .link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
     .koupit{
         position: absolute;
         bottom: 12px;

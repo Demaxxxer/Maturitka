@@ -1,6 +1,38 @@
 <script>
+  import axios from 'axios';
+  import { onMount } from 'svelte';
+  import { cats} from '../stores/stavy.js'
   import PolozkaHS from '../components/PolozkaHS.svelte'
   import PolozkaTOP from '../components/PolozkaTOP.svelte'
+
+
+  let items = [];
+  let loaded = false;
+  let choosedCat = ''
+
+
+  onMount(_ => {
+    const catsKeys = Object.keys($cats)
+    const index = Math.floor(Math.random() * catsKeys.length);
+    choosedCat = $cats[catsKeys[index]];
+
+    axios({
+      method: 'get',
+      url: '/api/items/get',
+      params: {
+        cat: catsKeys[index],
+        cat: 'race',
+        limit: 3,
+        sort: 'soldUp'
+      }
+    }).then(res => {
+      items = res.data;
+      loaded = true;
+    }).catch(err => {
+      loaded = true;
+      //Toto by se němělo stát ale može
+    })
+  });
 
 </script>
 <main>
@@ -9,14 +41,17 @@
     <PolozkaTOP></PolozkaTOP>
   </div>
   <div>
-    <div class="ohraniceni2">Nejprodávanější akční hry</div>
-    <PolozkaHS></PolozkaHS>
-    <div class="ohraniceni3">Nejprodávanější simulátory</div>
-    <PolozkaHS></PolozkaHS>
-    <div class="ohraniceni4">Nejprodávanější závodní hry</div>
-    <PolozkaHS></PolozkaHS>
+  {#if loaded}
+    <div class="ohraniceni2">Nejprodávanější {choosedCat}</div>
+    <div class="polozky">
+        {#each items as item}
+          <PolozkaHS details={item} />
+        {/each}
+    </div>
+  {/if}
+
   </div>
-    
+
 
 </main>
 
@@ -28,7 +63,7 @@
     height: 350px;
     width: 940px;
     margin: 0 auto;
-    margin-top: 10px;    
+    margin-top: 10px;
     margin-bottom: 20px;
     padding: 10px 10px 5px;
 
@@ -52,6 +87,15 @@
     line-height: 50px;
   }
 
+  .polozky{
+      max-width: 940px;
+      width: calc(100% - 80px);
+      margin: 20px auto 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+  }
+
   @media only screen and (max-width: 1200px){
         .ohraniceni1, .ohraniceni2, .ohraniceni3, .ohraniceni4{
             width: 880px;
@@ -60,15 +104,15 @@
         main{
             padding-bottom: 20px;
         }
-        
+
     }
     @media only screen and (max-width: 940px){
         .ohraniceni1, .ohraniceni2, .ohraniceni3, .ohraniceni4{
             width: 400px;
             margin: 20px auto;
         }
-        
+
     }
 
-    
+
 </style>

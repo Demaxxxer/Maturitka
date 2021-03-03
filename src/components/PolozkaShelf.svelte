@@ -8,11 +8,13 @@
 
 
 <div class="polozka">
-    <a class="link" href={'/#/polozka/' + details._id}></a>
     <div class="nazev">{details.name}</div>
     <img alt="error" src={getImgUrl(details.thumbnail)}>
     <div class="cena">Cena: {nf(details.cost)} Kč</div>
-    <div class="koupit"><Koupit></Koupit></div>
+    <a href={'/#/polozka/' + details._id}>
+      <button class="link"></button>
+    </a>
+    <div class="koupit"><Koupit itemId={details._id}></Koupit></div>
 </div>
 
 
@@ -33,8 +35,6 @@
       left: 0;
       height: 100%;
       width: 100%;
-      z-index: 1;
-      cursor: pointer;
     }
 
     .nazev{

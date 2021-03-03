@@ -66,7 +66,7 @@
 
             <div class="cena">{nf(item.cost)} Kč</div>
 
-            <div class="koupit"><Koupit></Koupit></div>
+            <div class="koupit"><Koupit  itemId={item._id}></Koupit></div>
         </div>
     </div>
     <div class="ohraniceni2">

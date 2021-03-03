@@ -2,7 +2,9 @@
     import {nf,soucet} from '../scripty/uzitecne.js'
     import {kosik,platba} from '../stores/stavy.js';
 
-    $: sum = soucet($kosik);
+    //$: sum = soucet($kosik);
+
+    let sum = 100;
 
 </script>
 
@@ -46,7 +48,7 @@
 
 </main>
 <style>
-    
+
     main {
         height: 100%;
         width: 100%;
@@ -78,7 +80,7 @@
         margin: 20px auto 10px auto;
         padding: 5px 35px 5px 35px;
     }
-    
+
 
     .bar {
         background-color: var(--darkgrey);
@@ -95,7 +97,7 @@
         font-size: 1.5em;
     }
 
-    .postup1 {        
+    .postup1 {
         width: 33%;
         background-color: var(--darkgrey);
         color: var(--text);

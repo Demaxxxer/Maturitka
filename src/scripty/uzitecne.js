@@ -2,12 +2,12 @@ export function nf(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
 
-export function soucet(items){
+export function soucet(cart,items){
     let cena = 0;
-    items.forEach(polozka => {
-        cena += polozka.cena * polozka.kusy;
-
-    });
+    if(items.length < 1)return cena;
+    for (const i of items) {
+      cena += i.cost * cart[i._id];
+    }
     return cena;
 }
 
@@ -15,4 +15,37 @@ export function soucet(items){
 export function getImgUrl(path){
   const arr = path.split('\\');
   return '/api/uploads/' + arr[1];
+}
+
+/*
+
+Níže jsou funkce na manipulaci s cookies
+
+*/
+
+export function getCookie(cname){
+  let name = cname + "=";
+  const decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+export function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  const expires = "expires="+d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+export function deleteCookie(name) {
+    document.cookie = name+'=; Max-Age=-99999999;';
 }

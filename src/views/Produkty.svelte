@@ -8,8 +8,14 @@
 
     export let params = {};
 
+    let filterState = false;
+
+    function handleFilter(){
+      filterState = !filterState;
+    }
+
     let loaded = false;
-    let items = {};
+    let items = [];
     let costLimit = [
       50,
       2000,
@@ -58,10 +64,10 @@
     <div class="ohraniceni1">
         <div class="nadpis">Kategorie:</div>
         <div class="filtr">
-            <button on:click >Filtry</button>
+            <button on:click={handleFilter} >Filtry</button>
         </div>
     </div>
-    <div class="ohraniceni2">
+    <div class="ohraniceni2" active={filterState}>
         <div class="serazeni">
             <label for="seradit">Seřadit:</label>
             <select class="seradit" name="seradit" on:input={handleSort} bind:value={sortValue}>
@@ -107,6 +113,7 @@
         margin-bottom: 20px;
     }
     .ohraniceni2{
+        display: none;
         margin: 0 auto;
         width: 940px;
         height: 120px;
@@ -114,6 +121,9 @@
         border-radius: 10px;
         padding: 20px 30px;
         box-sizing: border-box;
+    }
+    .ohraniceni2[active="true"] {
+        display: block;
     }
     .nadpis{
         position: absolute;
@@ -170,12 +180,12 @@
         float: left;
         margin-left: 25px;
     }
-    
+
     #slider .rangeSlider{
         --range-handle-focus: var(--yellow);
         --range-float: var(--range-handle-focus);
         --range-float-text: black;
-    } 
+    }
 
     .polozky{
         max-width: 940px;

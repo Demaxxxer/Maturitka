@@ -1,6 +1,6 @@
 <script>
 import axios from 'axios';
-import { loginPopup, alertContent, uzivatel, cats } from '../stores/stavy.js';
+import { loginPopup, alertContent, uzivatel, cats, cart } from '../stores/stavy.js';
 
 function open(){
     loginPopup.update(_ => true);

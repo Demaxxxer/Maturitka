@@ -1,17 +1,19 @@
 <script>
     import {nf,soucet} from '../scripty/uzitecne.js'
     import {kosik,platba} from '../stores/stavy.js';
-    $: sum = soucet($kosik);
+    //$: sum = soucet($kosik);
+
+    let sum = 3000;
 
     function zapis(e,klic){
-        
+
         platba.update(test => {
             test[klic] = e.target.value
             return test
         })
 
     }
-    
+
 </script>
 
 <main>
@@ -36,7 +38,7 @@
                 <input type="email" class="input3" on:input={e => zapis(e,"email")} value={$platba.email} required><br>
             </div>
         </div>
-            
+
         <div class="ohraniceni2">
 
             <div class="nadpis2">Typ platby</div>
@@ -74,7 +76,7 @@
     </form>
 </main>
 <style>
-    
+
     main {
         height: 100%;
         width: 100%;
@@ -94,7 +96,7 @@
     }
     .input1{
         margin-left: 25px;
-    }   
+    }
 
     .input2{
         margin-left: 15px;
@@ -125,7 +127,7 @@
         font-size: 1.5em;
     }
 
-    .postup1 {        
+    .postup1 {
         width: 33%;
         background-color: var(--darkgrey);
         color: var(--text);
@@ -171,7 +173,7 @@
 
     .ohraniceni2 input {
         margin-left: 10px;
-    
+
     }
 
     .wrapper1{
@@ -275,14 +277,14 @@
         main{
             padding: 0 10px 110px;
         }
-        
+
     }
     @media only screen and (max-width: 800px){
         .ohraniceni1, .ohraniceni2{
             width: 400px;
             margin: 20px auto;
         }
-        
+
     }
 
 </style>

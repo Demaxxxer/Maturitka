@@ -1,11 +1,24 @@
 <script>
     import {push, pop, replace} from 'svelte-spa-router';
+    import { cart } from '../stores/stavy.js';
     let search = '';
     function goFind(e){
       if(search.length > 0){
         push('/produkty?hledat='+ search);
       }
+      cartSum()
     }
+
+    function cartSum(){
+      let all = 0;
+      for (const i in $cart){
+        all += $cart[i]
+      }
+      return all;
+    }
+
+    $: sum = cartSum($cart)
+
 
 </script>
 
@@ -36,6 +49,7 @@
 			<div class="kosikObalek">
 				<div class="kosik">
 					<a href="/#/kosik"><button>Košík</button></a>
+          <div class="cart-count">{sum}</div>
 				</div>
 			</div>
 		</div>
@@ -152,7 +166,18 @@
 		font-size: 1.6em;
 		color: var(--text);
 		padding-right: 40px;
-	}
+  }
+
+  .cart-count {
+    position: absolute;
+    top: -10px;
+    right: -20px;
+    width: 30px;
+    height: 30px;
+    color: var(--yellow);
+    pointer-events: none;
+    text-align: center;
+  }
 
 	@media only screen and (max-width: 800px){
 		.logo{

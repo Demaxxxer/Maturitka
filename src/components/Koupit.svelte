@@ -1,8 +1,31 @@
 <script>
+    import { cart } from '../stores/stavy.js';
+    import { getCookie,setCookie,deleteCookie } from '../scripty/uzitecne.js'
+
+    //getCookie(name)
+    //setCookie(cname, cvalue, exdays)
+    //deleteCookie(name)
+
+    import { createEventDispatcher } from 'svelte';
+    const dispatch = createEventDispatcher();
+    export let itemId;
+
+    function forwardEvent(){
+      cart.update(obj => {
+        if(obj[itemId]){
+          obj[itemId] += 1;
+        } else {
+          obj[itemId] = 1;
+        }
+        setCookie('cart', JSON.stringify(obj), 30)
+        return obj;
+      })
+      //dispatch('click',{id:itemId})
+    }
 
 </script>
 
-<button class="button">Koupit</button>
+<button class="button" on:click={forwardEvent}>Koupit</button>
 
 
 <style>

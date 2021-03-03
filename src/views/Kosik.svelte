@@ -1,19 +1,58 @@
 <script>
-    import {nf,soucet} from '../scripty/uzitecne.js'
-    import {kosik} from '../stores/stavy.js';
+    import axios from 'axios';
+    import { onMount } from 'svelte';
+    import { cart } from '../stores/stavy.js';
+    import { nf,soucet,getImgUrl,getCookie,setCookie,deleteCookie } from '../scripty/uzitecne.js'
+    import { kosik } from '../stores/stavy.js';
 
+    let loaded = false;
+    let items = [];
 
-    function odstranit(id){
-        let novePolozky = [...$kosik];
-        novePolozky=novePolozky.filter(polozka => {return polozka.id != id});
-        kosik.update(_ => novePolozky);
-    
+    onMount(_ => {
+      axios({
+        method: 'get',
+        url: '/api/items/fromcart',
+        params: {
+          cart: JSON.stringify($cart)
+        }
+      }).then(res => {
+        items = res.data;
+        loaded = true;
+      }).catch(err => {
+        loaded = true;
+        cart.update(_ => {});
+        deleteCookie('cart');
+      })
+
+    })
+
+    function handleNumberChange(e,id){
+      if(isNaN(e.target.value))e.target.value = 1
+      cart.update(obj => {
+        obj[id] = parseInt(e.target.value);
+        setCookie('cart',JSON.stringify(obj),30);
+        return obj;
+      })
     }
-    
-    $: sum = soucet($kosik);
-    
+
+    function odstranit(index){
+        cart.update(obj => {
+          delete obj[items[index]._id];
+          items.splice(index,1);
+          items = items;
+          setCookie('cart',JSON.stringify(obj),30);
+          return obj;
+        })
+    }
+
+    $: sum = soucet($cart,items);
+
 </script>
 <main>
+
+
+  {#if loaded}
+
     <div class="bar">
 
         <a href="/#/kosik"><button class="postup1">Košík</button></a>
@@ -21,39 +60,43 @@
         <div class="postup3">Souhrn</div>
 
     </div>
-    {#if $kosik.length<1}
+
+    {#if items.length<1}
     <div class="empty" >
         <p>Žádné položky v košíku</p>
     </div>
     {/if}
-    <div class="polozky">
-        {#each $kosik as polozka}
 
-        <div class="polozka"><!--relative-->
-            <img  alt="error"><!--src="{polozka.imgUrl}"-->
-            <div class="nazev">{ polozka.nazev}</div>
-            <button class="odstranit" on:click={_ => odstranit(polozka.id)}>╳</button>
-            <form class="kusy">
-                <label for="number">Kusy</label>
-                <input type="number" min="1" max="999" bind:value={polozka.kusy}>
+    {#if items.length> 0}
+      <div class="polozky">
+          {#each items as item,i}
 
-            </form>
-            <div class="cena">{nf(polozka.cena * polozka.kusy)} Kč</div>
-        </div>
+          <div class="polozka"><!--relative-->
+              <img  alt="error" src={getImgUrl(item.thumbnail)}><!--src="{polozka.imgUrl}"-->
+              <div class="nazev">{ item.name}</div>
+              <button class="odstranit" on:click={_ => odstranit(i)}>╳</button>
+              <form class="kusy">
+                  <label for="number">Kusy</label>
+                  <input type="number" min="1" max="999" value={$cart[item._id]} on:change={e => handleNumberChange(e,item._id)}>
 
-        {/each}
-    </div>
-    {#if $kosik.length> 0}
-    <div class="spodek">
-        <div class="text">
-            Cena košíku:<span class="suma">{nf(sum)} Kč</span>
-        </div>
-        <div class="flow">
-            <a href="/#/platba"><button class="pokracovat">Pokračovat</button></a>
-        </div>
+              </form>
+              <div class="cena">{nf(item.cost * $cart[item._id])} Kč</div>
+          </div>
 
-    </div>
+          {/each}
+      </div>
+
+      <div class="spodek">
+          <div class="text">
+              Cena košíku:<span class="suma">{nf(sum)} Kč</span>
+          </div>
+          <div class="flow">
+              <a href="/#/platba"><button class="pokracovat">Pokračovat</button></a>
+          </div>
+
+      </div>
     {/if}
+  {/if}
 </main>
 <style>
     main{
@@ -79,7 +122,7 @@
         font-size: 1.5em;
     }
 
-    .postup1 {        
+    .postup1 {
         width: 33%;
         background-color: var(--yellow);
         color: var(--darkgrey);
@@ -137,7 +180,7 @@
     }
 
     .odstranit{
-        position: absolute;     
+        position: absolute;
         top: 15px;
         color: white;
         right: 15px;
@@ -203,14 +246,14 @@
         main{
             padding-bottom: 110px;
         }
-        
+
     }
     @media only screen and (max-width: 800px){
         .polozka{
             width: 400px;
             margin: 20px auto;
         }
-        
+
     }
 
 </style>
