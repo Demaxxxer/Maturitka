@@ -2,7 +2,7 @@
 
 </script>
 
-<button class="button">Koupit</button>
+<button class="button">do košíku</button>
 
 
 <style>
@@ -17,9 +17,13 @@
         border-radius: 10px;
         background-image: url('/images/Kosik1.svg');
         background-repeat: no-repeat;
-        background-position: center right 15px;
+        background-position: center right 8px;
         background-size: 15px;
-        padding-right: 20px;
+        padding-right: 22px;
+
+    }
+    .button:hover{
+        
     }
 
 </style>

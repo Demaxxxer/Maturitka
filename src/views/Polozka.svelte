@@ -83,18 +83,10 @@
             <button class="control-left" on:click={_ => galleryMove(-1)}></button>
             <button class="control-right" on:click={_ => galleryMove(1)}></button>
         </div>
-
+        <div class="cara"></div>
         <div class="rec">
             <div class="nadpis">Doporučené požadavky</div>
             <div class="prostredek">
-                <div class="info">
-                    <div>Operační systém: </div><br>
-                    <div>DirectX: </div><br>
-                    <div>Procesor: </div><br>
-                    <div>Grafická Karta: </div><br>
-                    <div>Paměť RAM: </div><br>
-                    <div>Uložiště: </div>
-                </div>
                 <div class="vypisek">
                     <div>{item.os}</div><br>
                     <div>{item.dx}</div><br>
@@ -103,6 +95,15 @@
                     <div>{item.ram} GB</div><br>
                     <div>{item.size} GB</div>
                 </div>
+                <div class="info">
+                    <div>Operační systém: </div><br>
+                    <div>DirectX: </div><br>
+                    <div>Procesor: </div><br>
+                    <div>Grafická Karta: </div><br>
+                    <div>Paměť RAM: </div><br>
+                    <div>Uložiště: </div>
+                </div>
+
             </div>
         </div>
 
@@ -230,11 +231,11 @@
 
     .obrazky{
         position: relative;
-        border-bottom: solid 1px var(--text);
-        margin: 0 35px;
+        margin: 0 auto;
         padding: 0 0 30px;
-        width: 800px;
+        max-width: 800px;
         height: 449px;
+        width: 100%;
     }
 
     .control-left, .control-right {
@@ -258,12 +259,17 @@
     }
 
     .obrazky img{
-        max-width:100%;
-        max-height:100%;
+        max-width: 100%;
+        max-height: 100%;
         display: block;
         margin: 0 auto;
     }
-
+    .cara{
+        width: 870px;
+        box-sizing: border-box;
+        margin: 0 auto;
+        border-top: solid 1px var(--text);
+    }
     .rec{
         position: relative;
         box-sizing: border-box;
@@ -271,30 +277,27 @@
         height: 100%;
         min-height: 250px;
     }
-    .prostredek{
-        width: 400px;;
-        margin: 0 auto;
-    }
     .info, .vypisek{
         box-sizing: border-box;
     }
-    .info{
-        position: absolute;
-        left: 50px;
-        width: 160px;
-        height: 150px;
-        line-height: 12px;
-        font-size: 1em;
-        text-align: left;
-    }
+
     .vypisek{
-        position: absolute;
-        left: 180px;
-        width: 500px;
-        height: 150px;
+        float: right;
+        width: 50%;
+        height: 160px;
         line-height: 12px;
         font-size: 1em;
         text-align: left;
+        padding-left: 10px;
+    }
+    .info{
+        float: right;
+        width: 20%;
+        height: 160px;
+        line-height: 12px;
+        font-size: 1em;
+        text-align:  left;
+        padding-left: 10px;
     }
     @media only screen and (max-width: 1200px){
         .ohraniceni, .ohraniceni2{
@@ -322,15 +325,15 @@
             text-align: center;
         }
         .text{
-        font-size: 0.7em;
-        line-height: 15px;
-        padding: 0 0 30px;
-        margin: 0 35px;
+            font-size: 0.7em;
+            line-height: 15px;
+            padding: 0 0 30px;
+            margin: 0 35px;
         }
         .datum{
-        margin: 0 0 15px 35px;
-        font-size: 0.7em;
-    }
+            margin: 0 0 15px 35px;
+            font-size: 0.7em;
+        }
         .info{
             left: 35px;
             height: 100px;

@@ -170,12 +170,6 @@
         float: left;
         margin-left: 25px;
     }
-    
-    #slider .rangeSlider{
-        --range-handle-focus: var(--yellow);
-        --range-float: var(--range-handle-focus);
-        --range-float-text: black;
-    } 
 
     .polozky{
         max-width: 940px;

@@ -4,6 +4,7 @@
     --grey: #393E46;
     --darkgrey: #222831;
     --yellow: #FFD369;
+    --yellower: #ffdea1;
     --text: white;
     --lightgrey: #bababa;
     --pozadi: rgba(63, 63, 63, 0.3);;
@@ -74,7 +75,15 @@ a{
     color:white;
 
 }
-
+.rangeSlider{
+    --range-handle-focus: var(--yellow);
+    --range-float: var(--range-handle-focus);
+    --range-float-text: black;
+    --range-handle-inactive: var(--yellower);
+    --range-handle: var(--yellower);
+    --range-float-inactive:  var(--range-handle-inactive);
+    --range-range-inactive:  var(--range-handle-inactive);
+}
 button{
     margin: 0;
     padding: 0;
