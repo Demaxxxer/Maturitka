@@ -22,7 +22,28 @@ export const cartUser = writable({
   email: '',
   payment: 'karta'
 })
-export const orderInfo = writable({});
+
+const obj = {
+  "details": {
+    "fname": "Chrobat",
+    "sname": "Nagrutil",
+    "email": "e@g.c",
+    "payment": "karta"
+  },
+  cost: 56440,
+  "content": [
+    {
+      "name": "Warcart #1",
+      "cost": 1800,
+      "count": 2
+    }
+  ],
+  "createdAt": "2021-03-04T17:02:27.050Z",
+  "user": "k1zMOpLLnyFuFQxV",
+  "_id": "mwow6LBe6ZSWvMNu"
+}
+
+export const orderInfo = writable(obj);
 
 export const polozkyTOP = writable(
     [
@@ -36,23 +57,5 @@ export const polozkyTOP = writable(
         },
 
 
-    ]
-);
-
-export const objednavka = writable(
-    [
-        {
-            id:"1",
-            datum:"2.3.2021",
-            kusy:"5",
-            cena:"2121",
-
-        },
-        {
-            id:"2",
-            datum:"1.2.2021",
-            kusy:"12",
-            cena:"111",
-        },
     ]
 );

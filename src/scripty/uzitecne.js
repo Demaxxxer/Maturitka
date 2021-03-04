@@ -17,6 +17,11 @@ export function getImgUrl(path){
   return '/api/uploads/' + arr[1];
 }
 
+export function addZero(num){
+  if (num < 10) return '0' + num;
+  return num;
+}
+
 /*
 
 Níže jsou funkce na manipulaci s cookies

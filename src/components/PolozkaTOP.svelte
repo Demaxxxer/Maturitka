@@ -2,22 +2,24 @@
     import axios from 'axios';
     import { onMount } from 'svelte';
     import Koupit from './Koupit.svelte'
-    import {nf} from '../scripty/uzitecne.js'
+    import {nf, getImgUrl} from '../scripty/uzitecne.js'
     import {polozkyTOP} from '../stores/stavy.js'
+
+    let items = [];
+    let loaded = false;
+    let disabled = true;
 
     onMount(_ => {
       /*
       const catsKeys = Object.keys($cats)
       const index = Math.floor(Math.random() * catsKeys.length);
       choosedCat = $cats[catsKeys[index]];
-
+      */
       axios({
         method: 'get',
         url: '/api/items/get',
         params: {
-          cat: catsKeys[index],
-          cat: 'race',
-          limit: 3,
+          limit: 7,
           sort: 'soldUp'
         }
       }).then(res => {
@@ -27,116 +29,104 @@
         loaded = true;
         //Toto by se němělo stát ale može
       })
-      */
+
     });
 
-
-    let items = ['ok1','ok2','ok3','ok4','ok5'];
+    let attrs = [
+      'invis l',
+      'small l',
+      'medium l',
+      'large',
+      'medium r',
+      'small r',
+      'invis r',
+    ]
 
 </script>
-<!--
-<div class="polozky">
-    {#each $polozkyTOP as polozka}
-    <div class="polozka">
-        <div class="nazev">{polozka.nazev}</div>
-        <img  alt="error">
-        <div class="cena">Cena: {nf(polozka.cena * polozka.kusy)} Kč</div>
-        <div class="koupit"><Koupit></Koupit></div>
-    </div>
-    {/each}
-</div>
--->
 <div class="item-wrap">
-
-  {#each items as item}
-    <div class="items">
-
-    </div>
-  {/each}
-
+  {#if loaded && !disabled}
+    {#each items as item,i}
+      <div class={'item ' + attrs[i]}>
+        <div class="img-wrap">
+          <img src={getImgUrl(item.thumbnail)}>
+        </div>
+      </div>
+    {/each}
+  {:else}
+  <h2>Toto snad bude někdy fungovat</h2>
+  {/if}
 </div>
 
 <style>
 
   .item-wrap {
     position: relative;
+    margin-top: 25px;
+    background: green;
+    height: 270px;
+    width: 100%
   }
 
-  .items {
+  .item {
     position: absolute;
-    top: 0;
+    height: 100%;
+    width: 180px;
+    background: #384251;
+    border-radius: 20px;
+    border: solid 1px black;
+    box-sizing: border-box;
+  }
+
+  .invis {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+    border: 0;
+  }
+
+  .small {
+    transform: scale(0.75);
+    //width: 180px;;
+  }
+
+  .small.l {
+    left: 100px;
+  }
+
+  .small.r {
+    right: 100px;
+  }
+
+  .medium {
+    z-index: 2;
+    transform: scale(0.9);
+  }
+
+  .medium.l {
+    left: 220px;
+  }
+  .medium.r {
+    right: 220px;
+  }
+
+  .large {
+    z-index: 3;
     left: 50%;
-    width: 250px;
-    height: 300px;
-    background: red;
-    margin: 5px;
-    float: left;
-    border: solid 2px black;
     transform: translateX(-50%);
   }
 
-  .items:nth-child(3){
-    z-index: 5
+  .img-wrap {
+    display: flex;
+    margin: 20px auto 0 auto;
+    height: 190px;
+    width: 130px;
+    background-color: pink;
+    align-items: center
   }
 
-
-  .items:nth-child(1) {
-    transform: translateX(calc(-50% - 250px) ) scale(0.6);
+  .img-wrap img {
+    max-width: 100%;
+    max-height: 100%;
   }
 
-  .items:nth-child(2) {
-    transform: translateX(calc(-50% - 100px) ) scale(0.8);
-  }
-
-  .items:nth-child(4) {
-    transform: translateX(calc(-50% + 100px) ) scale(0.8);
-    z-index: 4;
-  }
-
-  .items:nth-child(5) {
-    transform: translateX(calc(-50% + 250px) ) scale(0.6);
-  }
-
-    .polozky{
-        height: 500px;
-    }
-
-    .polozka{
-        position: relative;
-        border-radius: 10px;
-        width: 270px;
-        height: 300px;
-        padding-top: 20px;
-    }
-
-    .nazev{
-        position: absolute;
-        width: 100%;
-        top: 20px;
-        text-align: center;
-        font-size: 0.9em;
-
-    }
-    img{
-        position: absolute;
-        height: 150px;
-        width: 120px;
-        top: 85px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: white;
-    }
-    .cena{
-        position: absolute;
-        bottom: 30px;
-        left: 20px;
-        font-size: 0.8em;
-        font-family: roboto;
-    }
-    .koupit{
-        font-size: 0.8em;
-        position: absolute;
-        bottom: 22px;
-        right: 10px;
-    }
 </style>

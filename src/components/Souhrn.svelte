@@ -22,6 +22,7 @@
         push('/dokoncit');
         cart.update(_ => { return {} });
         deleteCookie('cart');
+        alertContent.update(_ => res);
         orderInfo.update(_ => res.data)
         e.target.disabled = false;
       }).catch(err => {

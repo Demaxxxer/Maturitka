@@ -1,6 +1,27 @@
 <script>
+    import axios from 'axios';
+    import { onMount } from 'svelte';
     import Objednavka from '../components/Objednavka.svelte'
-    import {objednavka, uzivatel} from '../stores/stavy.js';
+    import {alertContent, uzivatel} from '../stores/stavy.js';
+
+    let loaded = false;
+    let orders = [];
+
+    onMount(_ => {
+
+      axios({
+        method: 'get',
+        url: '/api/order/get',
+      }).then(res => {
+        orders = res.data;
+        loaded = true;
+      }).catch(err => {
+        loaded = true;
+        alertContent.update(_ => err);
+        replace('/');
+      })
+    })
+
 </script>
 <main>
     <div class="ohraniceni1">
@@ -19,9 +40,11 @@
 
     </div>
     <div>
-        {#each $objednavka as info}
-            <Objednavka udaje={info}></Objednavka>
+      {#if loaded}
+        {#each orders as order}
+            <Objednavka udaje={order}></Objednavka>
         {/each}
+      {/if}
     </div>
 </main>
 <style>
@@ -77,7 +100,7 @@
     .nazev4{
         right: 50px;
     }
-    
+
 
     @media only screen and (max-width: 1200px){
         .ohraniceni1, .ohraniceni2{
@@ -87,14 +110,14 @@
         main{
             padding-bottom: 110px;
         }
-        
+
     }
     @media only screen and (max-width: 800px){
         .ohraniceni1, .ohraniceni2{
             width: 400px;
             margin: 20px auto;
         }
-        
+
     }
 
 </style>
