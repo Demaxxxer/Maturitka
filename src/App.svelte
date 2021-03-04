@@ -13,7 +13,6 @@ import Dokoncit from './views/Dokoncit.svelte';
 import Edit from './views/Edit.svelte';
 import Seznam from './views/Seznam.svelte';
 import SeznamU from './views/SeznamU.svelte';
-import Vyhledani from './views/Vyhledani.svelte';
 import Produkty from './views/Produkty.svelte';
 import Profil from './views/Profil.svelte';
 import Kupovani from './views/Kupovani.svelte';
@@ -32,12 +31,13 @@ let loaded = false;
 onMount(_ => {
   /* Vybírá košík z cookies a dává ho do store pro lechčí manipulaci */
   const savedCart = getCookie('cart');
-  try {
-    cart.update(_ => JSON.parse(savedCart));
-  } catch {
-    deleteCookie('cart');
+  if(savedCart){
+    try {
+      cart.update(_ => JSON.parse(savedCart));
+    } catch {
+      deleteCookie('cart');
+    }
   }
-
   /* Při načítání stránky kontroluje žeton uživatele */
   axios({
     method: 'get',
@@ -104,7 +104,6 @@ const routes = {
   '/edit/:id': wrap(adminGuard(Edit)),
   '/seznam': wrap(adminGuard(Seznam)),
   '/seznamuzivatelu': wrap(adminGuard(SeznamU)),
-  '/vyhledani': Vyhledani,
   '/produkty': Produkty,
   '/produkty/:cat': Produkty,
   '/profil': wrap(userGuard(Profil)),

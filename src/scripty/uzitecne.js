@@ -4,7 +4,7 @@ export function nf(x) {
 
 export function soucet(cart,items){
     let cena = 0;
-    if(items.length < 1)return cena;
+    if(!cart || items.length < 1)return cena;
     for (const i of items) {
       cena += i.cost * cart[i._id];
     }

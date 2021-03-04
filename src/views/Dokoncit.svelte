@@ -1,6 +1,11 @@
 <script>
     import {nf,soucet} from '../scripty/uzitecne.js'
-    import {kosik,platba} from '../stores/stavy.js';
+    import { orderInfo } from '../stores/stavy.js';
+    import { onMount } from 'svelte';
+
+    onMount(_ => {
+      console.log($orderInfo);
+    })
 
     //$: sum = soucet($kosik);
 
@@ -8,6 +13,9 @@
 
 <main>
     <div class="text">Objednávka byla dokončena, kliknutím na tlačítko se vrátíte zpět.</div>
+
+      
+
     <div class="flow">
         <a class="button" href="/#/"><button class="zpet">Zpět na úvodní stránku</button></a>
     </div>

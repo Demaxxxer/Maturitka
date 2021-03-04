@@ -9,6 +9,7 @@ export const cats = readable({
   race: 'Závodní hry'
 })
 
+export const uzivatel = writable(false)
 export const loginPopup = writable(false);
 export const registracePopup = writable(false);
 export const alertContent = writable(false);
@@ -21,88 +22,8 @@ export const cartUser = writable({
   email: '',
   payment: 'karta'
 })
+export const orderInfo = writable({});
 
-export const kosik = writable(
-    [
-        {
-            id:"1",
-            nazev:"Forza Horizon 4",
-            cena:"1200",
-            kusy:"1",
-            imgUrl:"/images/obrazek1.png",
-            skladem:true,
-        },
-        {
-            id:"2",
-            nazev:"Eurotruck Simulator 2",
-            cena:"200",
-            kusy:"2",
-            imgUrl:"/images/obrazek2.png",
-            skladem:true,
-        },
-        {
-            id:"3",
-            nazev:"Grand Theft Auto V",
-            cena:"500",
-            kusy:"1",
-            imgUrl:"/images/obrazek1.png",
-            skladem:true,
-        },
-    ]
-);
-export const polozky = writable(
-    [
-        {
-            id:"1",
-            nazev:"polozka1 fadfgwfghg fdjhsghf dshfghgfhsg",
-            cena:"111",
-            kusy:"25",
-            imgUrl:"/images/obrazek1.png",
-            skladem:true,
-        },
-        {
-            id:"2",
-            nazev:"polozka2",
-            cena:"5099",
-            kusy:"2",
-            imgUrl:"/images/obrazek2.png",
-            skladem:true,
-        },
-        {
-            id:"3",
-            nazev:"polozka1 fadfgwfghg fdjhsghf dshfghgfhsg",
-            cena:"111",
-            kusy:"25",
-            imgUrl:"/images/obrazek1.png",
-            skladem:true,
-        },
-        {
-            id:"4",
-            nazev:"polozka2",
-            cena:"5099",
-            kusy:"2",
-            imgUrl:"/images/obrazek2.png",
-            skladem:true,
-        },
-        {
-            id:"5",
-            nazev:"polozka1 fadfgwfghg fdjhsghf dshfghgfhsg",
-            cena:"111",
-            kusy:"25",
-            imgUrl:"/images/obrazek1.png",
-            skladem:true,
-        },
-        {
-            id:"6",
-            nazev:"polozka2",
-            cena:"5099",
-            kusy:"2",
-            imgUrl:"/images/obrazek2.png",
-            skladem:true,
-        },
-
-    ]
-);
 export const polozkyTOP = writable(
     [
         {
@@ -117,36 +38,7 @@ export const polozkyTOP = writable(
 
     ]
 );
-export const toppolozky = writable(
-    [
-        {
-            id:"1",
-            nazev:"polozka1 fadfgwfghg fdjhsghf dshfghgfhsg",
-            cena:"111",
-            kusy:"25",
-            imgUrl:"/images/obrazek1.png",
-            skladem:true,
-        },
-        {
-            id:"2",
-            nazev:"polozka2",
-            cena:"5099",
-            kusy:"2",
-            imgUrl:"/images/obrazek2.png",
-            skladem:true,
-        },
-        {
-            id:"3",
-            nazev:"polozka1 fadfgwfghg fdjhsghf dshfghgfhsg",
-            cena:"111",
-            kusy:"25",
-            imgUrl:"/images/obrazek1.png",
-            skladem:true,
-        },
 
-
-    ]
-);
 export const objednavka = writable(
     [
         {
@@ -164,11 +56,3 @@ export const objednavka = writable(
         },
     ]
 );
-
-export const platba = writable({
-    jmeno:"",
-    prijmeni:"",
-    email:"",
-    platba:"",
-})
-export const uzivatel = writable(false)

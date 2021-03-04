@@ -1,10 +1,37 @@
 <script>
-    import {nf,soucet} from '../scripty/uzitecne.js'
-    import {cartUser, cart} from '../stores/stavy.js';
+    import axios from 'axios';
+    import {push, pop, replace} from 'svelte-spa-router';
+    import {nf,soucet,deleteCookie} from '../scripty/uzitecne.js'
+    import { cart, cartUser, orderInfo } from '../stores/stavy.js';
 
     export let sumed;
     export let items;
 
+    function handleBuy(e){
+      e.target.disabled = true;
+      axios({
+        method: 'post',
+        url: '/api/order/create',
+        data: {
+          firstname: $cartUser.fname,
+          surname: $cartUser.sname,
+          email: $cartUser.email,
+          payment: $cartUser.payment
+        }
+      }).then(res => {
+        push('/dokoncit');
+        cart.update(_ => { return {} });
+        deleteCookie('cart');
+        orderInfo.update(_ => res.data)
+        e.target.disabled = false;
+      }).catch(err => {
+        //Chyba při nákupu
+        alertContent.update(_ => err);
+        e.target.disabled = false;
+      })
+
+
+    }
 
 </script>
 
@@ -41,7 +68,7 @@
         <div class="flow">
             <a class="button" href="/#/kosik/platba"><button class="zpet">Zpět</button></a>
 
-        <a class="button" href="/#/dokoncit"><button class="pokracovat">Dokončit</button></a>
+            <button class="pokracovat" on:click={e => handleBuy(e)}>Dokončit</button>
         </div>
     </div>
 

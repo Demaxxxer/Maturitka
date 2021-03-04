@@ -16,15 +16,31 @@
       axios({
         method: 'get',
         url: '/api/items/fromcart',
-        params: {
-          cart: JSON.stringify($cart)
-        }
       }).then(res => {
         items = res.data;
+        if(items.length < 1){
+          cart.update(_ => {});
+          deleteCookie('cart');
+        }
+
+        let dbIds = []
+        for (const i in items){
+          dbIds.push(items[i]._id);
+        }
+        for(const id in $cart){
+          if(dbIds.indexOf(id) == -1){
+            cart.update(obj => {
+              delete obj[id];
+              setCookie('cart',JSON.stringify(obj),30);
+              return obj;
+            });
+          }
+        }
+
         loaded = true;
       }).catch(err => {
         loaded = true;
-        cart.update(_ => {});
+        cart.update(_ => { return {} });
         deleteCookie('cart');
       })
     })
