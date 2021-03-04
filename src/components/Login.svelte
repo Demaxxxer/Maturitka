@@ -1,7 +1,7 @@
 <script>
     import axios from 'axios';
     import {push, pop, replace, location} from 'svelte-spa-router';
-    import { loginPopup, uzivatel, registracePopup, alertContent } from '../stores/stavy.js';
+    import { loginPopup, uzivatel, registracePopup, alertContent, cartUser } from '../stores/stavy.js';
 
     let lemail = '';
     let lpass = '';
@@ -41,7 +41,7 @@
 
           loginPopup.update(_ => false);
           alertContent.update(_ => res);
-          replace('/')
+          if($location != '/')replace('/')
       }).catch(err => {
         alertContent.update(_ => err);
       })
