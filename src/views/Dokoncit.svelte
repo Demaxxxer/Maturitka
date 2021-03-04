@@ -2,7 +2,7 @@
     import {nf,soucet} from '../scripty/uzitecne.js'
     import {kosik,platba} from '../stores/stavy.js';
 
-    $: sum = soucet($kosik);
+    //$: sum = soucet($kosik);
 
 </script>
 
@@ -14,7 +14,7 @@
 
 </main>
 <style>
-    
+
     main {
         height: 100%;
         width: 100%;

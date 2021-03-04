@@ -171,21 +171,4 @@ export const platba = writable({
     email:"",
     platba:"",
 })
-/*
-export const uzivatel = writable({
-    id:"1",
-    jmeno:"Jan",
-    prijmeni:"Pastierčin",
-    email:"jan.pastiercin@seznam.cz",
-    perms:true,
-
-})
-export const uzivatel = writable({
-    id:"2",
-    jmeno:"Jan",
-    prijmeni:"Pastierčin",
-    email:"demaxer@seznam.cz",
-    perms:false,
-})
-*/
 export const uzivatel = writable(false)

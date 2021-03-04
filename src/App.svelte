@@ -18,7 +18,7 @@ import Produkty from './views/Produkty.svelte';
 import Profil from './views/Profil.svelte';
 import Kupovani from './views/Kupovani.svelte';
 /* Import pro statické komponenty */
-import { uzivatel,cart } from './stores/stavy.js';
+import { uzivatel,cart,cartUser } from './stores/stavy.js';
 import Menu from './components/Menu.svelte';
 import Footer from './components/Footer.svelte';
 import Kategorie from './components/Kategorie.svelte';
@@ -38,7 +38,7 @@ onMount(_ => {
     deleteCookie('cart');
   }
 
-  /* Při načítání stránky kontroluje zěton uživatele */
+  /* Při načítání stránky kontroluje žeton uživatele */
   axios({
     method: 'get',
     url: '/api/user/loged',
@@ -51,6 +51,12 @@ onMount(_ => {
         email: res.data.email,
         perms: res.data.isAdmin,
       }
+    });
+    cartUser.update(obj => {
+      obj.fname = res.data.fname;
+      obj.sname = res.data.sname;
+      obj.email = res.data.email;
+      return obj;
     });
 
     loaded = true;

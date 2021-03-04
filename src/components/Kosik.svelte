@@ -1,12 +1,17 @@
 <script>
     import axios from 'axios';
+    import {push, pop, replace, location} from 'svelte-spa-router';
     import { onMount,createEventDispatcher } from 'svelte';
-    import { cart, cartState } from '../stores/stavy.js';
+    import { cart } from '../stores/stavy.js';
     import { nf,soucet,getImgUrl,getCookie,setCookie,deleteCookie } from '../scripty/uzitecne.js'
-    import { kosik } from '../stores/stavy.js';
 
   	const dispatch = createEventDispatcher();
-    export let items
+    export let items;
+
+    onMount(_ => {
+      //Přesměrování kdyby to někdo zkoušel přímo URL odkazem
+      if($location != '/kosik/')replace('/kosik')
+    })
 
     function handleNumberChange(e,id){
       if(isNaN(e.target.value))e.target.value = 1
@@ -27,11 +32,6 @@
         })
     }
 
-    function handleForward(){
-      cartState.update(_ => 'platba')
-      console.log($cartState)
-    }
-
     $: sum = soucet($cart,items);
 
 </script>
@@ -40,7 +40,15 @@
     <div class="bar">
 
         <div class="postup1">Košík</div>
-        <a href="/#/kosik/platba"><button class="postup2">Platba</button></a>
+        {#if items.length > 0}
+          <a href="/#/kosik/platba">
+            <button class="postup2">Platba</button>
+          </a>
+        {:else}
+          <div class="postup2">Platba</div>
+        {/if}
+
+
         <div class="postup3">Souhrn</div>
 
     </div>
@@ -51,7 +59,7 @@
     </div>
     {/if}
 
-    {#if items.length> 0}
+    {#if items.length > 0}
       <div class="polozky">
           {#each items as item,i}
 
@@ -100,6 +108,7 @@
 
     .postup1, .postup2, .postup3 {
         float: left;
+        box-sizing: border-box;
         text-align: center;
         height: 100%;
         line-height: 75px;

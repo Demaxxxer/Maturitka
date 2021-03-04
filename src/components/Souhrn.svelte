@@ -1,6 +1,6 @@
 <script>
     import {nf,soucet} from '../scripty/uzitecne.js'
-    import {cartUser, cart, kosik} from '../stores/stavy.js';
+    import {cartUser, cart} from '../stores/stavy.js';
 
     export let sumed;
     export let items;
