@@ -40,7 +40,7 @@
 
     <div class="backdrop" on:click={_ => close()}></div>
     <form class="formular" on:submit|preventDefault={_ => doRegister()}>
-        <p class="registrace">Nová registrace</p>
+        <div class="registrace">Nová registrace</div>
         <button class="krizek" on:click={_ => close()}>╳</button>
 
         <table>
@@ -122,7 +122,7 @@
         position: fixed;
         z-index: 21;
         width: 400px;
-        height: 320px;
+        height: 300px;
         background-color: var(--darkgrey);
         border-radius: 10px;
         left: 50%;
@@ -133,7 +133,7 @@
     .registrace{
         padding-top: 10px;
         font-size: 1.5em;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         text-align: center;
 
     }
@@ -146,13 +146,26 @@
         border-radius: 10px;
         font-size: 1.3em;
         margin: 0 auto;
-        margin-top: 20px
+        margin-top: 10px
     }
 
 
     tr{
         height: 35px;
     }
+    @media only screen and (max-width: 440px){
+        .formular{
+            width: 320px;
+            margin: 10px auto;
+        }
+        label{
+            font-size: 0.9em;
+        }
+        .input{
+            width: 150px;
 
+        }
+
+    }
 
 </style>

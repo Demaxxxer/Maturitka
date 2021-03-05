@@ -141,11 +141,9 @@
     background: #242830;
     //width: 180px;;
   }
-
   .small.l {
     left: 100px;
   }
-
   .small.r {
     right: 100px;
   }
@@ -155,7 +153,6 @@
     background: #2a303b;
     transform: scale(0.9);
   }
-
   .medium.l {
     left: 220px;
   }
@@ -168,7 +165,6 @@
     left: 50%;
     transform: translateX(-50%);
   }
-
   .large .cost {
     display: block;
   }

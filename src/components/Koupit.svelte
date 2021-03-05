@@ -45,8 +45,6 @@
         padding-right: 22px;
 
     }
-    .button:hover{
 
-    }
 
 </style>

@@ -57,7 +57,10 @@
         border-radius: 10px;
         margin: 10px auto 20px auto;
         padding: 5px 35px 5px 35px;
-
+        box-sizing: border-box;
+    }
+    .ohraniceni2{
+        box-sizing: border-box;
     }
     .jmeno, .email{
         margin-bottom: 5px;
@@ -116,6 +119,35 @@
         .ohraniceni1, .ohraniceni2{
             width: 400px;
             margin: 20px auto;
+        }
+
+    }
+    @media only screen and (max-width: 440px){
+        .ohraniceni1, .ohraniceni2{
+            width: 330px;
+            margin: 10px auto;
+            padding: 10px 20px;
+
+        }
+        .ohraniceni1{
+            height: 120px;
+
+        }
+        .nazev1, .nazev2, .nazev3, .nazev4{
+            top: 30;
+            font-size: 0.7em;
+        }
+        .nazev1{
+            left: 30px;
+        }
+        .nazev2{
+            left: 33%;
+        }
+        .nazev3{
+            left: 65%;
+        }
+        .nazev4{
+            right: 20px;
         }
 
     }

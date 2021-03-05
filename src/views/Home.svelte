@@ -104,14 +104,21 @@
             padding-bottom: 20px;
         }
 
-    }
-    @media only screen and (max-width: 940px){
-        .ohraniceni1, .ohraniceni2, .ohraniceni3, .ohraniceni4{
-            width: 400px;
-            margin: 20px auto;
-        }
+  }
+  @media only screen and (max-width: 940px){
+      .ohraniceni1, .ohraniceni2, .ohraniceni3, .ohraniceni4{
+          width: 400px;
+          margin: 20px auto;
+      }
 
-    }
+  }
+  @media only screen and (max-width: 940px){
+      .ohraniceni1, .ohraniceni2, .ohraniceni3, .ohraniceni4{
+          width: 330px;
+          margin: 10px auto;
+      }
+
+  }
 
 
 </style>

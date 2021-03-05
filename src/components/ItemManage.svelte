@@ -27,10 +27,6 @@
     <div class="id">{$cats[details.cat]}</div>
     <button class="odstranit" on:click={_ => odstranit(details._id)}>╳</button>
     <button class="edit" on:click={_ => upravit(details._id)}></button>
-    <form class="kusy">
-        <label for="number">Skladem: {details.storage}</label>
-
-    </form>
     <div class="cena">Cena: {nf(details.cost)} Kč</div>
 </div>
 
@@ -55,7 +51,7 @@
     .id{
         position: absolute;
         max-width: 230px;
-        bottom: 65px;
+        bottom: 45px;
         left: 38%;
         font-size: 1.1em;
     }
@@ -85,17 +81,55 @@
         top: 50px;
 
     }
-    .kusy{
-        position: absolute;
-        left: 38%;
-        bottom: 45px;
-
-    }
 
     .cena{
         position: absolute;
         left: 38%;
         bottom: 25px;
         font-family: roboto;
+    }
+    @media only screen and (max-width: 440px){
+        .polozka{
+            height: 200px;
+            width: 330px;
+            margin: 10px 15px;
+        }
+        .id, .cena{
+            font-size: 0.8em;
+        }
+
+        .id{
+            left: 50%;
+        }
+        .nazev{
+            width: 120px;
+            height: 90px;
+            font-size: 1em;
+            left: 50%;
+
+        }
+        .cena{
+            left: 50%;
+        }
+        .odstranit{
+            position: absolute;
+            top: 20px;
+            color: white;
+            right: 15px;
+            font-size: 1.1em;
+        }
+        .edit{
+            position: absolute;
+            height: 18px;
+            width: 18px;
+            background-image: url('/images/settings.svg');
+            background-repeat: none;
+            background-size: 100%;
+            right: 14px;
+            top: 50px;
+
+        }
+
+
     }
 </style>

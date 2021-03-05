@@ -203,6 +203,20 @@
             margin-left: 10px;
         }
     }
+    @media only screen and (max-width: 440px){
+        .ohraniceni1, .ohraniceni2{
+            width: 340px;
+            margin: 10px auto;
+        }
+        .cena{
+            width: 15%;
+        }
+        .sliderO{
+            width: 80%;
+            margin-left: 10px;
+        }
+    }
+
 
 
 </style>

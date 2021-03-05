@@ -61,17 +61,17 @@
             </div>
         </div>
 
-        <div class="spodek">
-            <div class="text">
-                Cena košíku:<span class="suma">{nf(sumed)} Kč</span>
-            </div>
 
-            <div class="flow">
-                <a class="button" href="/#/kosik"><button type="button" class="zpet">Zpět</button></a>
-
-                <button type="submit" class="pokracovat">Pokračovat </button>
-            </div>
+        <div class="text">
+            Cena košíku:<span class="suma">{nf(sumed)} Kč</span>
         </div>
+
+        <div class="flow">
+            <a class="button" href="/#/kosik"><button type="button" class="zpet">Zpět</button></a>
+
+            <button type="submit" class="pokracovat">Pokračovat </button>
+        </div>
+
     </form>
 </main>
 <style>
@@ -79,7 +79,7 @@
     main {
         height: 100%;
         width: 100%;
-        min-height: calc(100vh - 425px);
+        min-height: 680px;
         position: relative;
         color: var(--text);
 
@@ -143,7 +143,9 @@
         background-color: var(--darkgrey);
         color: var(--text);
     }
-
+    .ohraniceni1, .ohraniceni2{
+        box-sizing: border-box;
+    }
     .ohraniceni1 {
         max-width: 700px;
         height: 160px;
@@ -221,30 +223,26 @@
         padding-left: 70px;
         margin-left: 35px;
     }
-    .spodek{
-        position: relative;
-        width: 100%;
-        height: 100px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    }
     .text {
-        margin-top: 25px;
-        text-align: center;
+        position: absolute;
+        bottom: 75px;
+        left: 50%;
+        transform: translateX(-50%);
     }
     .text .suma {
         margin-left: 10px;
         font-size: 1.3em;
     }
     .flow {
-        height: 100%;
+        position: absolute;
+        height: 50px;
         width: 100%;
         display: flex;
         justify-content: space-evenly;
         margin: 20px 0 0 0;
         overflow: auto;
         box-sizing: border-box;
+        bottom: 20px;
     }
     .zpet {
         height: 40px;
@@ -273,15 +271,32 @@
             width: 700px;
             margin: 20px auto;
         }
-        main{
-            padding: 0 10px 110px;
-        }
+
 
     }
     @media only screen and (max-width: 800px){
         .ohraniceni1, .ohraniceni2{
             width: 400px;
             margin: 20px auto;
+        }
+
+    }
+    @media only screen and (max-width: 440px){
+        
+        .bar{
+            height: 50px;
+            margin-top: 10px;
+        }
+        .postup1, .postup2, .postup3 {
+            line-height: 50px;
+            font-size: 1.3em;
+        }
+        .ohraniceni1, .ohraniceni2{
+            width: 320px;
+            margin: 20px auto;
+        }
+        .input1, .input2, .input3 {
+            max-width: 150px;
         }
 
     }

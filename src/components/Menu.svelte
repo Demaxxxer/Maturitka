@@ -50,7 +50,7 @@
 		<div class="kosikObal">
 			<div class="kosikObalek">
 				<div class="kosik">
-					<a href="/#/kosik"><button>Košík</button></a>
+					<a href="/#/kosik"><button></button></a>
           <div class="cart-count">{sum}</div>
 				</div>
 			</div>
@@ -132,12 +132,12 @@
 	}
 	.hledat{
 		background: none;
-		width: 20px;
+		width: 22px;
 		height: 100%;
 		float: right;
 		background-image: url('/images/Lupa.svg');
 		background-repeat: no-repeat;
-		background-position: center left;
+		background-position: center right;
 		background-size: 15px;
 		box-sizing: border-box;
 	}
@@ -165,7 +165,14 @@
 		font-size: 1.6em;
 		color: var(--text);
 		padding-right: 40px;
+
   	}
+	.kosik a button::after{
+		content: "Košík";
+		font-size: 1em;
+		box-sizing: border-box;
+
+	}
   	.cart-count {
 		position: absolute;
 		top: -10px;
@@ -203,6 +210,55 @@
 			font-size: 1.3em;
 			background-size: 22px;
 			padding-right: 30px;
+		}
+	}
+	@media only screen and (max-width: 440px){
+		.logoObal{
+			width: 90px;
+		}
+		.logo a button{
+			padding: 10px 0 0 10px;
+			width: 80px;
+			height: 50px;
+		}
+		.lista{
+			height: 60px;
+		}
+		.hledani{
+			position: absolute;
+			border-bottom: solid 1px white;
+			box-sizing: border-box;
+			width: 100%;
+			height: 30px;
+			max-width: 200px;
+			margin: 0 auto;
+		}
+		.kosik{
+			left: 45%;
+			height: 40px;
+			width: 40px;
+			padding-top: 10px;
+		}
+
+		.kosik a button{
+			width: 50px;
+			background-size: 30px;
+			background-position: center;
+
+		}
+		.kosik a button::after{
+			content: " ";
+			background: none;
+		}
+		.cart-count {
+			position: absolute;
+			top: 0px;
+			left: 30px;
+			width: 30px;
+			height: 30px;
+			color: var(--text);
+			pointer-events: none;
+			text-align: center;
 		}
 	}
 </style>

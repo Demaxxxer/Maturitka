@@ -159,7 +159,21 @@
         font-size: 1.1em;
         margin-left: 20px;
     }
+    @media only screen and (max-width: 440px){
+        .formular{
+            width: 320px;
+            margin: 10px auto;
+            box-sizing: border-box;
+        }
+        label{
+            font-size: 0.9em;
+        }
+        input{
+            width: 150px;
 
+        }
+
+    }
 
 
 </style>
