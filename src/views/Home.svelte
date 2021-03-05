@@ -21,7 +21,6 @@
       url: '/api/items/get',
       params: {
         cat: catsKeys[index],
-        cat: 'race',
         limit: 3,
         sort: 'soldUp'
       }

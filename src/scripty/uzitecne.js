@@ -4,7 +4,7 @@ export function nf(x) {
 
 export function soucet(cart,items){
     let cena = 0;
-    if(items.length < 1)return cena;
+    if(!cart || items.length < 1)return cena;
     for (const i of items) {
       cena += i.cost * cart[i._id];
     }
@@ -15,6 +15,11 @@ export function soucet(cart,items){
 export function getImgUrl(path){
   const arr = path.split('\\');
   return '/api/uploads/' + arr[1];
+}
+
+export function addZero(num){
+  if (num < 10) return '0' + num;
+  return num;
 }
 
 /*

@@ -13,12 +13,11 @@ import Dokoncit from './views/Dokoncit.svelte';
 import Edit from './views/Edit.svelte';
 import Seznam from './views/Seznam.svelte';
 import SeznamU from './views/SeznamU.svelte';
-import Vyhledani from './views/Vyhledani.svelte';
 import Produkty from './views/Produkty.svelte';
 import Profil from './views/Profil.svelte';
 import Kupovani from './views/Kupovani.svelte';
 /* Import pro statické komponenty */
-import { uzivatel,cart } from './stores/stavy.js';
+import { uzivatel,cart,cartUser } from './stores/stavy.js';
 import Menu from './components/Menu.svelte';
 import Footer from './components/Footer.svelte';
 import Kategorie from './components/Kategorie.svelte';
@@ -32,13 +31,14 @@ let loaded = false;
 onMount(_ => {
   /* Vybírá košík z cookies a dává ho do store pro lechčí manipulaci */
   const savedCart = getCookie('cart');
-  try {
-    cart.update(_ => JSON.parse(savedCart));
-  } catch {
-    deleteCookie('cart');
+  if(savedCart){
+    try {
+      cart.update(_ => JSON.parse(savedCart));
+    } catch {
+      deleteCookie('cart');
+    }
   }
-
-  /* Při načítání stránky kontroluje zěton uživatele */
+  /* Při načítání stránky kontroluje žeton uživatele */
   axios({
     method: 'get',
     url: '/api/user/loged',
@@ -51,6 +51,12 @@ onMount(_ => {
         email: res.data.email,
         perms: res.data.isAdmin,
       }
+    });
+    cartUser.update(obj => {
+      obj.fname = res.data.fname;
+      obj.sname = res.data.sname;
+      obj.email = res.data.email;
+      return obj;
     });
 
     loaded = true;
@@ -98,7 +104,6 @@ const routes = {
   '/edit/:id': wrap(adminGuard(Edit)),
   '/seznam': wrap(adminGuard(Seznam)),
   '/seznamuzivatelu': wrap(adminGuard(SeznamU)),
-  '/vyhledani': Vyhledani,
   '/produkty': Produkty,
   '/produkty/:cat': Produkty,
   '/profil': wrap(userGuard(Profil)),

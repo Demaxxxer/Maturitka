@@ -104,16 +104,25 @@
         fields: itemManagefields,
       },
       {
-        path: 'api/item/get',
+        path: '/api/item/get',
         status: {
           404: 'Položka nenalezena'
         }
       },
       {
-        path: 'api/item/delete',
+        path: '/api/item/delete',
         status: {
           200: 'Položka úspěšně vymazána'
         }
+      },
+      {
+        path: '/api/order/create',
+        status: {
+          200: 'Vypadá to jakože sa to kůpilo'
+        },
+        fields: {
+          paymentMethod: 'Zadali jste špatnou formu platby'
+        },
       },
 
     ]

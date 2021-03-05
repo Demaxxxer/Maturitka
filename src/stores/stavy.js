@@ -9,6 +9,7 @@ export const cats = readable({
   race: 'Závodní hry'
 })
 
+export const uzivatel = writable(false)
 export const loginPopup = writable(false);
 export const registracePopup = writable(false);
 export const alertContent = writable(false);
@@ -22,87 +23,28 @@ export const cartUser = writable({
   payment: 'karta'
 })
 
-export const kosik = writable(
-    [
-        {
-            id:"1",
-            nazev:"Forza Horizon 4",
-            cena:"1200",
-            kusy:"1",
-            imgUrl:"/images/obrazek1.png",
-            skladem:true,
-        },
-        {
-            id:"2",
-            nazev:"Eurotruck Simulator 2",
-            cena:"200",
-            kusy:"2",
-            imgUrl:"/images/obrazek2.png",
-            skladem:true,
-        },
-        {
-            id:"3",
-            nazev:"Grand Theft Auto V",
-            cena:"500",
-            kusy:"1",
-            imgUrl:"/images/obrazek1.png",
-            skladem:true,
-        },
-    ]
-);
-export const polozky = writable(
-    [
-        {
-            id:"1",
-            nazev:"polozka1 fadfgwfghg fdjhsghf dshfghgfhsg",
-            cena:"111",
-            kusy:"25",
-            imgUrl:"/images/obrazek1.png",
-            skladem:true,
-        },
-        {
-            id:"2",
-            nazev:"polozka2",
-            cena:"5099",
-            kusy:"2",
-            imgUrl:"/images/obrazek2.png",
-            skladem:true,
-        },
-        {
-            id:"3",
-            nazev:"polozka1 fadfgwfghg fdjhsghf dshfghgfhsg",
-            cena:"111",
-            kusy:"25",
-            imgUrl:"/images/obrazek1.png",
-            skladem:true,
-        },
-        {
-            id:"4",
-            nazev:"polozka2",
-            cena:"5099",
-            kusy:"2",
-            imgUrl:"/images/obrazek2.png",
-            skladem:true,
-        },
-        {
-            id:"5",
-            nazev:"polozka1 fadfgwfghg fdjhsghf dshfghgfhsg",
-            cena:"111",
-            kusy:"25",
-            imgUrl:"/images/obrazek1.png",
-            skladem:true,
-        },
-        {
-            id:"6",
-            nazev:"polozka2",
-            cena:"5099",
-            kusy:"2",
-            imgUrl:"/images/obrazek2.png",
-            skladem:true,
-        },
+const obj = {
+  "details": {
+    "fname": "Chrobat",
+    "sname": "Nagrutil",
+    "email": "e@g.c",
+    "payment": "karta"
+  },
+  cost: 56440,
+  "content": [
+    {
+      "name": "Warcart #1",
+      "cost": 1800,
+      "count": 2
+    }
+  ],
+  "createdAt": "2021-03-04T17:02:27.050Z",
+  "user": "k1zMOpLLnyFuFQxV",
+  "_id": "mwow6LBe6ZSWvMNu"
+}
 
-    ]
-);
+export const orderInfo = writable(obj);
+
 export const polozkyTOP = writable(
     [
         {
@@ -117,75 +59,3 @@ export const polozkyTOP = writable(
 
     ]
 );
-export const toppolozky = writable(
-    [
-        {
-            id:"1",
-            nazev:"polozka1 fadfgwfghg fdjhsghf dshfghgfhsg",
-            cena:"111",
-            kusy:"25",
-            imgUrl:"/images/obrazek1.png",
-            skladem:true,
-        },
-        {
-            id:"2",
-            nazev:"polozka2",
-            cena:"5099",
-            kusy:"2",
-            imgUrl:"/images/obrazek2.png",
-            skladem:true,
-        },
-        {
-            id:"3",
-            nazev:"polozka1 fadfgwfghg fdjhsghf dshfghgfhsg",
-            cena:"111",
-            kusy:"25",
-            imgUrl:"/images/obrazek1.png",
-            skladem:true,
-        },
-
-
-    ]
-);
-export const objednavka = writable(
-    [
-        {
-            id:"1",
-            datum:"2.3.2021",
-            kusy:"5",
-            cena:"2121",
-
-        },
-        {
-            id:"2",
-            datum:"1.2.2021",
-            kusy:"12",
-            cena:"111",
-        },
-    ]
-);
-
-export const platba = writable({
-    jmeno:"",
-    prijmeni:"",
-    email:"",
-    platba:"",
-})
-/*
-export const uzivatel = writable({
-    id:"1",
-    jmeno:"Jan",
-    prijmeni:"Pastierčin",
-    email:"jan.pastiercin@seznam.cz",
-    perms:true,
-
-})
-export const uzivatel = writable({
-    id:"2",
-    jmeno:"Jan",
-    prijmeni:"Pastierčin",
-    email:"demaxer@seznam.cz",
-    perms:false,
-})
-*/
-export const uzivatel = writable(false)

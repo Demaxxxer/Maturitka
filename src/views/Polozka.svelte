@@ -27,7 +27,6 @@
         item = res.data;
         itemDate = new Date(item.release);
         loaded = true;
-        console.log(item);
       }).catch(err => {
         alertContent.update(_ => err);
         replace('/');

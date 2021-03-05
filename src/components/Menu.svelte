@@ -14,6 +14,11 @@
       for (const i in $cart){
         all += $cart[i]
       }
+
+      if(all > 99){
+        return '+99'
+      }
+
       return all;
     }
 

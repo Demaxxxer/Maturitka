@@ -1,6 +1,7 @@
 <script>
     import axios from 'axios';
-    import { loginPopup, uzivatel, registracePopup, alertContent } from '../stores/stavy.js';
+    import {push, pop, replace, location} from 'svelte-spa-router';
+    import { loginPopup, uzivatel, registracePopup, alertContent, cartUser } from '../stores/stavy.js';
 
     let lemail = '';
     let lpass = '';
@@ -30,8 +31,17 @@
               perms: res.data.isAdmin,
             }
           });
+
+          cartUser.update(obj => {
+            obj.fname = res.data.fname;
+            obj.sname = res.data.sname;
+            obj.email = res.data.email;
+            return obj;
+          })
+
           loginPopup.update(_ => false);
           alertContent.update(_ => res);
+          if($location != '/')replace('/')
       }).catch(err => {
         alertContent.update(_ => err);
       })

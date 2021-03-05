@@ -1,6 +1,8 @@
 <script>
 import axios from 'axios';
-import { loginPopup, alertContent, uzivatel, cats, cart } from '../stores/stavy.js';
+import { deleteCookie } from '../scripty/uzitecne.js'
+import {push, pop, replace, location} from 'svelte-spa-router';
+import { loginPopup, alertContent, uzivatel, cats, cart, cartUser } from '../stores/stavy.js';
 
 function open(){
     loginPopup.update(_ => true);
@@ -11,15 +13,23 @@ function logout(){
     url: '/api/user/logout',
   }).then(res => {
     uzivatel.update(_ => false);
-    replace('/')
     alertContent.update(_ => res);
+    cartUser.update(_ => {
+      return {
+        fname: '',
+        sname: '',
+        email: '',
+        payment: 'karta'
+      }
+    })
+    deleteCookie('sessionToken');
+    replace('/')
   }).catch(err => {
     alertContent.update(_ => err);
   })
 }
 function goToCatPage(cat){
   const url = '/produkty/' + cat;
-  console.log(url);
   push(url);
 }
 
