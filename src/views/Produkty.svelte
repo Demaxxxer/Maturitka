@@ -4,6 +4,7 @@
     import { onMount } from 'svelte';
     import {parse} from 'qs';
     import {querystring} from 'svelte-spa-router';
+    import { cats } from '../stores/stavy.js'
     import PolozkaShelf from '../components/PolozkaShelf.svelte';
 
     export let params = {};
@@ -56,7 +57,9 @@
 </script>
 <main>
     <div class="ohraniceni1">
-        <div class="nadpis">Kategorie:</div>
+        {#if params.cat && $cats[params.cat]}
+          <div class="nadpis">Kategorie: {$cats[params.cat]}</div>
+        {/if}
         <div class="filtr">
             <button on:click={handleFilters}>Filtry</button>
         </div>
