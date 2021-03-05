@@ -121,6 +121,66 @@
     transform: scale(0.9);
   }
 
+<<<<<<< HEAD
+  .items:nth-child(1) {
+    transform: translateX(calc(-50% - 300px) ) scale(0.6);
+  }
+
+  .items:nth-child(2) {
+    transform: translateX(calc(-50% - 150px) ) scale(0.8);
+  }
+
+  .items:nth-child(4) {
+    transform: translateX(calc(-50% + 150px) ) scale(0.8);
+    z-index: 4;
+  }
+
+  .items:nth-child(5) {
+    transform: translateX(calc(-50% + 300px) ) scale(0.6);
+  }
+
+    .polozky{
+        height: 500px;
+    }
+
+    .polozka{
+        position: relative;
+        border-radius: 10px;
+        width: 270px;
+        height: 300px;
+        padding-top: 20px;
+    }
+
+    .nazev{
+        position: absolute;
+        width: 100%;
+        top: 20px;
+        text-align: center;
+        font-size: 0.9em;
+    }
+    img{
+        position: absolute;
+        height: 150px;
+        width: 120px;
+        top: 85px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+    }
+    .cena{
+        position: absolute;
+        bottom: 30px;
+        left: 20px;
+        font-size: 0.8em;
+        font-family: roboto;
+    }
+    .koupit{
+        font-size: 0.8em;
+        position: absolute;
+        bottom: 22px;
+        right: 10px;
+    }
+=======
   .medium.l {
     left: 220px;
   }
@@ -147,6 +207,7 @@
     max-height: 100%;
   }
 
+<<<<<<< HEAD
   .btn-left, .btn-right {
     position: absolute;
     z-index: 3;
@@ -162,4 +223,7 @@
     right: 20px;
   }
 
+=======
+>>>>>>> 2c7f8e298a1fe760c2133d37bfe9cb30b932c195
+>>>>>>> db1343907618447cc1b3926e86e719d36e1b2961
 </style>
