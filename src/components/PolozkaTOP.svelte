@@ -7,7 +7,7 @@
 
     let items = [];
     let loaded = false;
-    let disabled = true;
+    let disabled = false;
 
     onMount(_ => {
       /*
@@ -19,11 +19,12 @@
         method: 'get',
         url: '/api/items/get',
         params: {
-          limit: 7,
+          limit: 20,
           sort: 'soldUp'
         }
       }).then(res => {
-        items = res.data;
+        console.log(res.data);
+        items = res.data.splice(0,7);
         loaded = true;
       }).catch(err => {
         loaded = true;
@@ -31,6 +32,10 @@
       })
 
     });
+
+    function move(dir){
+      console.log(dir);
+    }
 
     let attrs = [
       'invis l',
@@ -52,6 +57,8 @@
         </div>
       </div>
     {/each}
+    <button class="btn-left" on:click={_ => move('left')}></button>
+    <button class="btn-right" on:click={_ => move('right')}></button>
   {:else}
   <h2>Toto snad bude někdy fungovat</h2>
   {/if}
@@ -62,7 +69,7 @@
   .item-wrap {
     position: relative;
     margin-top: 25px;
-    background: green;
+    //background: green;
     height: 270px;
     width: 100%
   }
@@ -75,6 +82,7 @@
     border-radius: 20px;
     border: solid 1px black;
     box-sizing: border-box;
+    box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.5);
   }
 
   .invis {
@@ -84,8 +92,18 @@
     border: 0;
   }
 
+  .medium, .small {
+    display: flex;
+    align-items: center
+  }
+
+  .medium .img-wrap, .small .img-wrap {
+    margin-top: 0px;
+  }
+
   .small {
     transform: scale(0.75);
+    background: #242830;
     //width: 180px;;
   }
 
@@ -99,6 +117,7 @@
 
   .medium {
     z-index: 2;
+    background: #2a303b;
     transform: scale(0.9);
   }
 
@@ -120,13 +139,27 @@
     margin: 20px auto 0 auto;
     height: 190px;
     width: 130px;
-    background-color: pink;
     align-items: center
   }
 
   .img-wrap img {
     max-width: 100%;
     max-height: 100%;
+  }
+
+  .btn-left, .btn-right {
+    position: absolute;
+    z-index: 3;
+    height: 100%;
+    width: 350px;
+  }
+
+  .btn-left {
+    left: 20px;
+  }
+
+  .btn-right {
+    right: 20px;
   }
 
 </style>
