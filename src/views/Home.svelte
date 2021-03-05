@@ -60,12 +60,12 @@
     box-sizing: border-box;
     background-color: var(--darkgrey);
     border-radius: 10px;
-    height: 350px;
+    height: 370px;
     width: 940px;
     margin: 0 auto;
     margin-top: 10px;
     margin-bottom: 20px;
-    padding: 10px 10px 5px;
+    padding: 10px 10px 20px;
 
   }
   .ohraniceni1, .text{

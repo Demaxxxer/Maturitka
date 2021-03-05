@@ -81,20 +81,20 @@
 
 
   .items:nth-child(1) {
-    transform: translateX(calc(-50% - 250px) ) scale(0.6);
+    transform: translateX(calc(-50% - 300px) ) scale(0.6);
   }
 
   .items:nth-child(2) {
-    transform: translateX(calc(-50% - 100px) ) scale(0.8);
+    transform: translateX(calc(-50% - 150px) ) scale(0.8);
   }
 
   .items:nth-child(4) {
-    transform: translateX(calc(-50% + 100px) ) scale(0.8);
+    transform: translateX(calc(-50% + 150px) ) scale(0.8);
     z-index: 4;
   }
 
   .items:nth-child(5) {
-    transform: translateX(calc(-50% + 250px) ) scale(0.6);
+    transform: translateX(calc(-50% + 300px) ) scale(0.6);
   }
 
     .polozky{
@@ -115,7 +115,6 @@
         top: 20px;
         text-align: center;
         font-size: 0.9em;
-
     }
     img{
         position: absolute;

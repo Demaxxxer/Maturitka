@@ -18,13 +18,10 @@
     }
 
     $: sum = cartSum($cart)
-
-
 </script>
 
 <div class="lista">
     <div class="menu">
-
 		<div class="logoObal">
 			<div class="logoObalek">
 				<div class="logo">
@@ -107,12 +104,9 @@
 		left: 50%;
 		transform: translateX(-50%) translateY(-50%);
 	}
-
 	.logo a button{
-
 		width: 210px;
 		height: 37px;
-
 	}
 	.logo a button::after{
 		content: "BAGOSHOP";
@@ -166,18 +160,17 @@
 		font-size: 1.6em;
 		color: var(--text);
 		padding-right: 40px;
-  }
-
-  .cart-count {
-    position: absolute;
-    top: -10px;
-    right: -20px;
-    width: 30px;
-    height: 30px;
-    color: var(--yellow);
-    pointer-events: none;
-    text-align: center;
-  }
+  	}
+  	.cart-count {
+		position: absolute;
+		top: -10px;
+		right: -20px;
+		width: 30px;
+		height: 30px;
+		color: var(--text);
+		pointer-events: none;
+		text-align: center;
+  	}
 
 	@media only screen and (max-width: 800px){
 		.logo{
@@ -191,7 +184,6 @@
 			top: 50%;
 			transform: translateX(-50%) translateY(-50%);
 		}
-
 		.logo a button::after{
 			content: " ";
 			background: none;
@@ -206,8 +198,6 @@
 			font-size: 1.3em;
 			background-size: 22px;
 			padding-right: 30px;
-
 		}
-
 	}
 </style>
