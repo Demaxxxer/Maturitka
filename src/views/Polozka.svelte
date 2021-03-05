@@ -2,7 +2,7 @@
     import axios from 'axios';
     import Koupit from '../components/Koupit.svelte';
     import {push, pop, replace} from 'svelte-spa-router';
-    import { alertContent } from '../stores/stavy.js';
+    import { alertContent, uzivatel } from '../stores/stavy.js';
     import { nf,getImgUrl } from '../scripty/uzitecne.js';
 
 
@@ -52,6 +52,12 @@
 
         <div class="zpet"><button on:click={e => pop()}>Zpět</button></div>
 
+        <div class="edit">
+            {#if $uzivatel.perms}
+                <a href={'/#/edit/' + item._id}><button></button></a>
+            {/if}
+        </div>
+        
         <div class="nazev">{item.name}</div>
 
         <div class="vrch">
@@ -138,9 +144,10 @@
     }
     .zpet{
         box-sizing: border-box;
-        width: 100%;
+        width: 50%;
         height: 50px;
         padding: 20px 0 0 40px;
+        float: left;
     }
     .zpet button{
         height: 20px;
@@ -154,6 +161,27 @@
         background-repeat: no-repeat;
         background-position: center left;
         background-size: 13px;
+    }
+    .edit{
+        position: relative;
+        box-sizing: border-box;
+        width: 50%;
+        height: 50px;
+        float: right;
+
+    }
+    .edit a button{
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 25px;
+        width: 25px;
+        background-image: url('/images/settings.svg');
+        background-repeat: no-repeat;
+        background-position: center right;
+        background-size: 25px;
+
     }
     .vrch, .spodek{
         position: relative;
@@ -175,6 +203,8 @@
         position: absolute;
     }
     .nazev{
+        position: absolute;
+        margin-top: 50px;
         width: 100%;
         height: 45px;
         color: var(--yellow);
@@ -189,17 +219,18 @@
         top: 5%;
         left: 50%;
         transform: translateX(-50%);
+        margin-top: 40px;
     }
     .cena{
         left: 40.8%;
         transform: translateX(-50%);
-        bottom: 3px;
+        bottom: -45px;
         font-size: 1.3em;
     }
     .koupit{
         right: 30%;
         transform: translateX(-50%);
-        bottom: 0px;
+        bottom: -50px;
     }
     .nadpis{
         padding: 20px 40px;

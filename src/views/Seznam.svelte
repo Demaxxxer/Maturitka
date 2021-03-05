@@ -1,13 +1,16 @@
 <script>
     import axios from 'axios';
     import { onMount } from 'svelte';
-
+    import RangeSlider from "svelte-range-slider-pips";
     import { alertContent, cats } from '../stores/stavy.js';
     import ItemManage from '../components/ItemManage.svelte';
 
     let loaded = false;
     let items = [];
-
+    let costLimit = [
+      50,
+      2000,
+    ]
     let search = {
       name: '',
       cat: '',
@@ -27,6 +30,10 @@
       }).catch(err => {
         //Špatně všechno
       })
+    }
+
+    function handleCostLimit(e){
+      //reFetch(params.cat,parse($querystring).hledat)
     }
 
     onMount(_ => {
@@ -80,13 +87,9 @@
                 </select><br>
 
                 <div class="cena">Cena</div>
-                <div class="od"> od </div>
-                <input type="number" class="hodnota2" name="cena" min="1" max="9999" bind:value={search.costMin}>
-                <div class="do"> do </div>
-                <input type="number" class="hodnota3" name="cena" min="1" max="9999" bind:value={search.costMax}><br>
-
-                <input type="checkbox" class="radio" name="skladem">
-                <label for="skladem" class="radioText">Není skladem</label><br>
+                <div class="sliderO">
+                    <RangeSlider id="slider" range pushy bind:values={costLimit} float max={2000} min={0} on:stop={handleCostLimit} pips step={50} suffix="Kč" />
+                </div>
 
                 <div>
                     <button type="submit" class="hledat">Hledat</button>
@@ -137,22 +140,24 @@
         font-size: 1.4em;
         margin-bottom: 10px;
     }
-    .hodnota1, .hodnota2, .hodnota3, .od, .do, .cena{
+
+    .cena{
+        line-height: 30px;
+        height: 30px;
+        width: 100px;
+        margin-top: 10px;
+    }
+    .sliderO{
+        padding: 5px 20px;
+        height: 30px;
+        width: 60%;
+        margin-left: 60px;
+    }
+    .hodnota1, .cena{
         position: absolute;
     }
-    .od{
-        left: 120px;
-    }
-    .hodnota2{
-        left: 150px;
-    }
-    .do{
-        left: 220px;
-    }
-    .hodnota3{
-        left: 250px;
-    }
-    .hodnota1, .hodnota2, .hodnota3{
+  
+    .hodnota1{
         border-bottom: solid 1px var(--text);
         margin-top: 3px;
         color: var(--text);
@@ -161,9 +166,7 @@
         left: 120px;
         width: 200px;
     }
-    .hodnota2, .hodnota3{
-        width: 60px;
-    }
+
     .kategorie{
         width: 200px;
         background-color: var(--darkgrey);
@@ -174,6 +177,7 @@
         margin-top: 5px;
         color: var(--text);
     }
+
     select {
         text-align: center;
         text-align-last: center;
@@ -188,7 +192,7 @@
         outline: 0 none;
     }
     .hledat{
-        margin: 0 auto;
+        margin: 10px auto;
         height: 40px;
         width: 150px;
         border: solid 1px var(--grey);

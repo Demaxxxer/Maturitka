@@ -65,7 +65,6 @@
     margin-top: 10px;
     margin-bottom: 20px;
     padding: 10px 10px 20px;
-
   }
   .ohraniceni1, .text{
     font-size: 1.2em;
@@ -74,7 +73,7 @@
   }
 
 
-  .ohraniceni2, .ohraniceni3, .ohraniceni4{
+  .ohraniceni2{
     background-color: var(--darkgrey);
     border-radius: 10px;
     height: 50px;
@@ -96,7 +95,7 @@
   }
 
   @media only screen and (max-width: 1200px){
-        .ohraniceni1, .ohraniceni2, .ohraniceni3, .ohraniceni4{
+        .ohraniceni1, .ohraniceni2{
             width: 880px;
             margin: 20px auto;
         }
@@ -106,14 +105,14 @@
 
   }
   @media only screen and (max-width: 940px){
-      .ohraniceni1, .ohraniceni2, .ohraniceni3, .ohraniceni4{
+      .ohraniceni1, .ohraniceni2{
           width: 400px;
           margin: 20px auto;
       }
 
   }
   @media only screen and (max-width: 940px){
-      .ohraniceni1, .ohraniceni2, .ohraniceni3, .ohraniceni4{
+      .ohraniceni1, .ohraniceni2{
           width: 330px;
           margin: 10px auto;
       }

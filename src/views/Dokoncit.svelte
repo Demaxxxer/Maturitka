@@ -14,19 +14,28 @@
 </script>
 
 <main>
-    <div class="text">Objednávka byla dokončena, kliknutím na tlačítko se vrátíte zpět.</div>
-    <div>Id objednávky: {$orderInfo._id}</div>
-    <div>Datum: {time.getDate()}.{time.getMonth() + 1}.{time.getFullYear()}, {addZero(time.getHours())}:{addZero(time.getMinutes())}</div>
-    <p>Informace o uživateli: </p>
-    <div>{$orderInfo.details.fname} {$orderInfo.details.sname}</div>
-    <div>{$orderInfo.details.email}</div>
-    <div>{$orderInfo.details.payment}</div>
+    <div class="ohraniceni1">
+        <div class="zpet"><button>Zpět</button></div>
 
+        <div class="id">Id objednávky: {$orderInfo._id}</div>
+        <div class="date">Datum: {time.getDate()}.{time.getMonth() + 1}.{time.getFullYear()}, {addZero(time.getHours())}:{addZero(time.getMinutes())}</div>
+        <div class="info">Informace o uživateli: </div>
+        <div class="jmeno">{$orderInfo.details.fname} {$orderInfo.details.sname}</div>
+        <div class="email">{$orderInfo.details.email}</div>
+        <div class="pay">{$orderInfo.details.payment}</div>
+    </div>
 
-    {#each $orderInfo.content as item}
-      Item: <div>Název: {item.name} počet: {item.count} cena: {item.cost}</div>
-    {/each}
+    <div class="ohraniceni2">
+        <div class="">
 
+        </div>
+    </div>
+
+    <div class="ohraniceni3">
+        {#each $orderInfo.content as item}
+        <div>Název: {item.name} počet: {item.count} cena: {item.cost}</div>
+        {/each}
+    </div>
     <div>Celková cena: {$orderInfo.cost}</div>
 
     <div class="text"></div>
@@ -46,7 +55,31 @@
         color: var(--text);
         padding-bottom: 15px;
     }
-
+    .ohraniceni1{
+        box-sizing: border-box;
+        background-color: var(--darkgrey);
+        border-radius: 10px;
+        height: 400px;
+        width: 940px;
+        margin: 0 auto;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        padding: 10px 10px 20px;
+    }
+    .zpet{
+        
+    }
+    .ohraniceni2{
+        box-sizing: border-box;
+        background-color: var(--darkgrey);
+        border-radius: 10px;
+        height: 400px;
+        width: 940px;
+        margin: 0 auto;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        padding: 10px 10px 20px;
+    }
     .text {
         font-size: 1.7em;
         padding-top: 4px;
@@ -64,5 +97,6 @@
         border-radius: 10px;
         font-size: 1.3em;
     }
+
 
 </style>
