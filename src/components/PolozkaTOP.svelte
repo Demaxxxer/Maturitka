@@ -6,15 +6,12 @@
     import {polozkyTOP} from '../stores/stavy.js'
 
     let items = [];
+    let displayIndex = 0;
     let loaded = false;
     let disabled = false;
+    let trueItems = [];
 
     onMount(_ => {
-      /*
-      const catsKeys = Object.keys($cats)
-      const index = Math.floor(Math.random() * catsKeys.length);
-      choosedCat = $cats[catsKeys[index]];
-      */
       axios({
         method: 'get',
         url: '/api/items/get',
@@ -23,18 +20,51 @@
           sort: 'soldUp'
         }
       }).then(res => {
-        console.log(res.data);
-        items = res.data.splice(0,7);
+        if (res.data.length < 8){
+          disabled = true;
+          return;
+        }
+        items = res.data
+        trueItems = getDisplayed(0)
         loaded = true;
       }).catch(err => {
+        console.log(err);
         loaded = true;
         //Toto by se němělo stát ale može
       })
 
     });
 
+    function getDisplayed(){
+      let toDisplay = []
+      if(displayIndex >= items.length){
+        displayIndex = 0
+      }
+      if(displayIndex < -6){
+        displayIndex = items.length - 1;
+      }
+      let underIter = displayIndex
+      let overIter = 0;
+      for(let i=0;i<7;i++){
+        if(items[displayIndex + i]){
+          toDisplay.push(items[displayIndex + i])
+        } else {
+          if(displayIndex + i >= items.length){
+            toDisplay.push(items[overIter]);
+            overIter ++;
+          } else {
+            toDisplay.push(items[items.length + underIter]);
+            underIter ++;
+          }
+        }
+      }
+
+      return toDisplay;
+    }
+
     function move(dir){
-      console.log(dir);
+      displayIndex += dir
+      trueItems = getDisplayed()
     }
 
     let attrs = [
@@ -50,17 +80,18 @@
 </script>
 <div class="item-wrap">
   {#if loaded && !disabled}
-    {#each items as item,i}
+    {#each trueItems as item,i}
       <div class={'item ' + attrs[i]}>
         <div class="img-wrap">
           <img src={getImgUrl(item.thumbnail)}>
         </div>
+        <div class="cost">{item.cost} Kč</div>
       </div>
     {/each}
-    <button class="btn-left" on:click={_ => move('left')}></button>
-    <button class="btn-right" on:click={_ => move('right')}></button>
-  {:else}
-  <h2>Toto snad bude někdy fungovat</h2>
+    <button class="btn-left" on:click={_ => move(-1)}></button>
+    <button class="btn-right" on:click={_ => move(1)}></button>
+  {:else if disabled}
+  <h2>K zobrazení je potřeba aby v databázi bylo více než 8 položek</h2>
   {/if}
 </div>
 
@@ -83,6 +114,10 @@
     border: solid 1px black;
     box-sizing: border-box;
     box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.5);
+  }
+
+  .cost {
+    display: none;
   }
 
   .invis {
@@ -121,66 +156,6 @@
     transform: scale(0.9);
   }
 
-<<<<<<< HEAD
-  .items:nth-child(1) {
-    transform: translateX(calc(-50% - 300px) ) scale(0.6);
-  }
-
-  .items:nth-child(2) {
-    transform: translateX(calc(-50% - 150px) ) scale(0.8);
-  }
-
-  .items:nth-child(4) {
-    transform: translateX(calc(-50% + 150px) ) scale(0.8);
-    z-index: 4;
-  }
-
-  .items:nth-child(5) {
-    transform: translateX(calc(-50% + 300px) ) scale(0.6);
-  }
-
-    .polozky{
-        height: 500px;
-    }
-
-    .polozka{
-        position: relative;
-        border-radius: 10px;
-        width: 270px;
-        height: 300px;
-        padding-top: 20px;
-    }
-
-    .nazev{
-        position: absolute;
-        width: 100%;
-        top: 20px;
-        text-align: center;
-        font-size: 0.9em;
-    }
-    img{
-        position: absolute;
-        height: 150px;
-        width: 120px;
-        top: 85px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: white;
-    }
-    .cena{
-        position: absolute;
-        bottom: 30px;
-        left: 20px;
-        font-size: 0.8em;
-        font-family: roboto;
-    }
-    .koupit{
-        font-size: 0.8em;
-        position: absolute;
-        bottom: 22px;
-        right: 10px;
-    }
-=======
   .medium.l {
     left: 220px;
   }
@@ -192,6 +167,10 @@
     z-index: 3;
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  .large .cost {
+    display: block;
   }
 
   .img-wrap {
@@ -207,7 +186,6 @@
     max-height: 100%;
   }
 
-<<<<<<< HEAD
   .btn-left, .btn-right {
     position: absolute;
     z-index: 3;
@@ -223,7 +201,4 @@
     right: 20px;
   }
 
-=======
->>>>>>> 2c7f8e298a1fe760c2133d37bfe9cb30b932c195
->>>>>>> db1343907618447cc1b3926e86e719d36e1b2961
 </style>
