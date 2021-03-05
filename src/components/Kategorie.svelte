@@ -250,5 +250,38 @@ const editace = [
         }
 
     }
+    @media only screen and (max-width: 800px){
+
+        .dropdown{
+            width: 110px;
+        }
+        .dropdown button{
+            background-position: center left 10%;
+            font-size: 1em;
+        }
+        .cat{
+            font-size: 0.9rem;
+        }
+        .cats{
+            width: 110px;
+            top: 40px;
+            right: 3px;
+        }
+        .login{
+            width: 110px;
+        }
+        .login button{
+            font-size: 1em;
+        }
+        .edit{
+            font-size: 0.9rem;
+        }
+        .edits{
+            width: 112px;
+            top: 40px;
+            left: 2px;
+        }
+
+    }
 
 </style>

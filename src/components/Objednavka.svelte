@@ -37,6 +37,7 @@
         border-radius: 10px;
         margin: 10px auto 20px auto;
         padding: 5px 35px 5px 35px;
+        box-sizing: border-box;
     }
 
     .id, .datum, .pocet, .cena{
@@ -71,6 +72,14 @@
         .objednavka{
             width: 400px;
             margin: 20px auto;
+        }
+
+    }
+    @media only screen and (max-width: 440px){
+        .objednavka{
+            width: 330px;
+            margin: 10px auto;
+            padding: 10px;
         }
 
     }

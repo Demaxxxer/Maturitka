@@ -160,6 +160,8 @@
     }
     .o{
         right: 50px;
+        height: 50px;
+        width: 60px;
     }
 
   .hledat{
@@ -213,11 +215,46 @@
         }
         .o{
           top: 5px;
-          left: 280px;
+          right: 55px;
 
         }
 
     }
+    @media only screen and (max-width: 440px){
+        .ohraniceni1, .ohraniceni2{
+            width: 330px;
+            margin: 10 auto;
+
+        }
+        .ohraniceni2{
+          position: relative;
+          height: 80px;
+        }
+        .a, .j, .e, .o{
+        line-height: 40px;
+        }
+        .j{
+          top: 5px;
+          left: 20px;
+
+        }
+        .e{
+          bottom: 5px;
+          left: 20px;
+          transform: translateX(0%);
+        }
+        .a{
+          bottom: 5px;
+          right: 50px;
+          transform: translateX(0%);
+        }
+        .o{
+          top: 5px;
+
+        }
+
+    }
+
 
 
 </style>

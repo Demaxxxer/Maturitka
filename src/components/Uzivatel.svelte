@@ -112,5 +112,34 @@
         }
 
     }
+    @media only screen and (max-width: 440px){
+        .ohraniceni{
+            width: 330px;
+            height: 80px;
+            margin: 20px auto 0;
+        }
+        .admin, .jmeno, .email, .odstranit{
+            line-height: 40px;
+        }
+        .jmeno{
+            top: 5px;
+            left: 20px;
+        }
+        .email{
+            bottom: 5px;
+            left: 20px;
+            transform: translateX(0%) translateY(0%);
+        }
+        .admin{
+            top: 50px;
+            left: 305px;
+            transform: translateX(0%) translateY(0%);
+        }
+        .odstranit{
+            top: 5px;
+            left: 305px;
+        }
+
+    }
 
 </style>

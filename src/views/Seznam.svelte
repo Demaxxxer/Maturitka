@@ -214,6 +214,13 @@
         }
 
     }
+    @media only screen and (max-width: 440px){
+        .ohraniceni{
+            width: 330px;
+            margin: 10px auto;
+        }
+
+    }
 
 
 </style>

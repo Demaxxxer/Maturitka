@@ -50,7 +50,7 @@
   {#if loaded}
     <div class="ohraniceni">
 
-        <div class="zpet"><button on:click={e => pop()}></button></div>
+        <div class="zpet"><button on:click={e => pop()}>Zpět</button></div>
 
         <div class="nazev">{item.name}</div>
 
@@ -61,8 +61,6 @@
             </div>
         </div>
         <div class="spodek">
-            <div class="skladem">{item.storage} kusů</div>
-
             <div class="cena">{nf(item.cost)} Kč</div>
 
             <div class="koupit"><Koupit  itemId={item._id}></Koupit></div>
@@ -86,14 +84,7 @@
         <div class="rec">
             <div class="nadpis">Doporučené požadavky</div>
             <div class="prostredek">
-                <div class="vypisek">
-                    <div>{item.os}</div><br>
-                    <div>{item.dx}</div><br>
-                    <div>{item.cpu}</div><br>
-                    <div>{item.gpu}</div><br>
-                    <div>{item.ram} GB</div><br>
-                    <div>{item.size} GB</div>
-                </div>
+
                 <div class="info">
                     <div>Operační systém: </div><br>
                     <div>DirectX: </div><br>
@@ -102,7 +93,14 @@
                     <div>Paměť RAM: </div><br>
                     <div>Uložiště: </div>
                 </div>
-
+                <div class="vypisek">
+                    <div>{item.os}</div><br>
+                    <div>{item.dx}</div><br>
+                    <div>{item.cpu}</div><br>
+                    <div>{item.gpu}</div><br>
+                    <div>{item.ram} GB</div><br>
+                    <div>{item.size} GB</div>
+                </div>
             </div>
         </div>
 
@@ -122,7 +120,7 @@
         position: relative;
         max-width: 940px;
         height: 100%;
-        min-height: 550px;
+        min-height: 500px;
         background-color: var(--darkgrey);
         border-radius: 10px;
         margin: 0 auto;
@@ -164,15 +162,15 @@
     .vrch{
         width: 100%;
         height: 100%;
-        min-height: 320px;
+        min-height: 350px;
         float: left;
     }
     .spodek{
         width: 100%;
-        min-height: 100px;
+        min-height: 35px;
         float: right;
     }
-    .cena, .skladem, .koupit{
+    .cena, .koupit{
         box-sizing: border-box;
         position: absolute;
     }
@@ -191,12 +189,6 @@
         top: 5%;
         left: 50%;
         transform: translateX(-50%);
-    }
-    .skladem{
-        top: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 0.9em;
     }
     .cena{
         left: 40.8%;
@@ -279,25 +271,26 @@
     .info, .vypisek{
         box-sizing: border-box;
     }
-
-    .vypisek{
-        float: right;
-        width: 50%;
-        height: 160px;
-        line-height: 12px;
-        font-size: 1em;
-        text-align: left;
-        padding-left: 10px;
-    }
     .info{
-        float: right;
+        float: left;
         width: 20%;
         height: 160px;
         line-height: 12px;
         font-size: 1em;
         text-align:  left;
-        padding-left: 10px;
+        padding: 10px 0 0 40px;
     }
+    .vypisek{
+        float: left;
+        width: 75%;
+        height: 160px;
+        line-height: 12px;
+        font-size: 1em;
+        text-align: left;
+        padding: 10px 0 0 10px;
+
+    }
+
     @media only screen and (max-width: 1200px){
         .ohraniceni, .ohraniceni2{
             width: 700px;
@@ -308,11 +301,38 @@
         .koupit{
             right: 23%;
         }
+        .cara{
+            width: 630px;
+        }
+        .obrazky{
+            max-width: 630px;
+            height: 350px;
+        }
+        .control-left {
+            left: 3px;
+        }
+        .control-right {
+            right: 3px;
+
+        }
+        .info{
+            width: 25%;
+
+        }
+        .vypisek{
+            width: 70%;
+
+        }
     }
+
 
     @media only screen and (max-width: 800px){
         .ohraniceni, .ohraniceni2{
             width: 400px;
+        }
+        .nazev{
+            font-size: 1.5em;
+            height: 30px;
         }
         .cena{
             left: 28%;
@@ -322,6 +342,7 @@
         }
         .nadpis{
             text-align: center;
+            font-size: 1.3em;
         }
         .text{
             font-size: 0.7em;
@@ -340,16 +361,110 @@
             line-height: 8px;
             font-size: 0.6em;
         }
-        .vypisek{
-            left: 120px;
-            height: 100px;
-            width: 250px;
-            line-height: 8px;
-            font-size: 0.6em;
+        .obrazky{
+            max-width: 330px;
+            height: 180px;
+        }
+        .control-left {
+            left: 5px;
+            width: 40px;
+            height: 60px;
+        }
+        .control-right {
+            right: 5px;
+            width: 40px;
+            height: 60px;
+        }
+        .cara{
+            width: 330px;
         }
         .rec{
             height: 100px;
             min-height: 200px;
         }
+        .info{
+            width: 30%;
+
+        }
+        .vypisek{
+            left: 100px;
+            height: 100px;
+            width: 245px;
+            line-height: 8px;
+            font-size: 0.6em;
+        }
+
+    }
+    
+    @media only screen and (max-width: 440px){
+        .ohraniceni, .ohraniceni2{
+            width: 340px;
+        }
+        .nazev{
+            font-size: 1.5em;
+            height: 30px;
+        }
+        .cena{
+            left: 28%;
+        }
+        .koupit{
+            right: 0;
+        }
+        .nadpis{
+            text-align: center;
+            font-size: 1.3em;
+        }
+        .text{
+            font-size: 0.7em;
+            line-height: 15px;
+            padding: 0 0 30px;
+            margin: 0 15px;
+        }
+        .datum{
+            margin: 0 0 15px 15px;
+            font-size: 0.7em;
+        }
+        .info{
+            left: 35px;
+            height: 100px;
+            width: 100px;
+            line-height: 8px;
+            font-size: 0.6em;
+        }
+        .obrazky{
+            max-width: 330px;
+            height: 180px;
+        }
+        .control-left {
+            left: 5px;
+            width: 40px;
+            height: 60px;
+        }
+        .control-right {
+            right: 5px;
+            width: 40px;
+            height: 60px;
+        }
+        .cara{
+            width: 300px;
+        }
+        .rec{
+            height: 100px;
+            min-height: 200px;
+        }
+        .info{
+            width: 30%;
+            padding: 10px 0 0 15px;
+
+        }
+        .vypisek{
+            left: 60px;
+            height: 100px;
+            width: 200px;
+            line-height: 8px;
+            font-size: 0.6em;
+            padding: 10px 0 0
+        }
+
     }
 </style>

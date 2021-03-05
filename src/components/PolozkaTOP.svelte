@@ -102,7 +102,6 @@
     transform: scale(0.9);
   }
 
-<<<<<<< HEAD
   .items:nth-child(1) {
     transform: translateX(calc(-50% - 300px) ) scale(0.6);
   }
@@ -161,7 +160,6 @@
         bottom: 22px;
         right: 10px;
     }
-=======
   .medium.l {
     left: 220px;
   }
@@ -189,5 +187,4 @@
     max-height: 100%;
   }
 
->>>>>>> 2c7f8e298a1fe760c2133d37bfe9cb30b932c195
 </style>

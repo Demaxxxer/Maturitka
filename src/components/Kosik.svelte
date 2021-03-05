@@ -246,7 +246,19 @@
             width: 400px;
             margin: 20px auto;
         }
-
+        .bar{
+            height: 50px;
+        }
+        .postup1, .postup2, .postup3 {
+            line-height: 50px;
+            font-size: 1.1em;
+        }
+    }
+    @media only screen and (max-width: 440px){
+        .polozka{
+            width: 330px;
+            margin: 10px auto;
+        }
     }
 
 </style>

@@ -293,9 +293,6 @@
               <label for="nazev">Název</label>
               <input type="text" class="underline1" name="nazev" placeholder="Název hry" bind:value={name}><br>
 
-              <label for="kusy">Kusy skladem</label>
-              <input type="number" class="underline2" name="kusy" placeholder="20" min="0" max="9999" bind:value={storage}><span class="ks">ks</span><br>
-
               <label for="cena">Cena</label>
               <input type="number" class="underline3" name="cena" placeholder="3000" min="0" max="9999" bind:value={cost}><span class="kc">Kč</span><br>
 
@@ -497,7 +494,7 @@
     .podnadpis2{
         margin-top: 20px;
     }
-    .underline, .underline1, .underline2, .underline3, .underline4, .underline5{
+    .underline, .underline1, .underline3, .underline4, .underline5{
         position: absolute;
         left: 40%;
         border-bottom: solid 1px var(--lightgrey);
@@ -508,7 +505,7 @@
     .underline, .underline1{
         max-width: 200px;
     }
-    .underline2, .underline3{
+    .underline3{
         max-width: 65px;
     }
     .underline4{
@@ -561,16 +558,13 @@
     .box2{
         margin-top: 10px;
     }
-    .gb, .ks, .kc{
+    .gb, .kc{
         position: absolute;
         padding-top: 1px;
         font-size: 0.8em;
     }
     .gb{
         left: 42.5%;
-    }
-    .ks{
-        left: 43.5%;
     }
     .kc{
         left: 43.5%;
@@ -594,9 +588,6 @@
         .gb{
             left: 325px;
         }
-        .ks{
-            left: 333px;
-        }
         .kc{
             left: 333px;
         }
@@ -610,11 +601,36 @@
         .gb{
             left: 185px;
         }
-        .ks{
-            left: 193px;
-        }
         .kc{
             left: 193px;
+        }
+    }
+    @media only screen and (max-width: 440px){
+        .wrapper1, .wrapper2, .wrapper3{
+            width: 330px;
+            margin: 10px auto;
+        }
+        .gb{
+            left: 200px;
+        }
+        .kc{
+            left: 165px;
+        }
+        .underline, .underline5{
+          left: 50%;
+        }
+        .underline3, .underline5{
+          width: 30px;
+
+        }
+        .underline1, .underline{
+          width: 150px;
+        }
+        .podnadpis2{
+          font-size: 1em;
+        }
+        .text{
+
         }
     }
 
