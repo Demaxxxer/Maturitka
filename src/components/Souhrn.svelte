@@ -81,10 +81,10 @@
     main {
         height: 100%;
         width: 100%;
-        min-height: calc(100vh - 290px);
+        min-height: calc(100vh - 275px);
         position: relative;
         color: var(--text);
-        padding-bottom: 15px;
+
     }
 
     .nadpis{
@@ -187,21 +187,25 @@
     }
 
     .text {
-
-        text-align: center;
+        position: absolute;
+        bottom: 75px;
+        left: 50%;
+        transform: translateX(-50%);
     }
     .text .suma {
         margin-left: 10px;
         font-size: 1.3em;
     }
     .flow {
-        height: 100%;
+        position: absolute;
+        height: 50px;
         width: 100%;
         display: flex;
         justify-content: space-evenly;
-        padding-top: 20px;
+        margin: 20px 0 0 0;
         overflow: auto;
         box-sizing: border-box;
+        bottom: 20px;
     }
     .zpet {
         height: 40px;
@@ -238,6 +242,23 @@
             width: 400px;
             margin: 20px auto;
         }
+    }
+    @media only screen and (max-width: 440px){
+        
+        .bar{
+            height: 50px;
+            margin-top: 10px;
+        }
+        .postup1, .postup2, .postup3 {
+            line-height: 50px;
+            font-size: 1.3em;
+        }
+        .ohraniceni1, .ohraniceni2{
+            width: 320px;
+            margin: 20px auto;
+        }
+        
+
     }
 
 

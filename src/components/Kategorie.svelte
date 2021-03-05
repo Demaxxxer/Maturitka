@@ -250,7 +250,7 @@ const editace = [
         }
 
     }
-    @media only screen and (max-width: 800px){
+    @media only screen and (max-width: 440px){
 
         .dropdown{
             width: 110px;
@@ -277,7 +277,7 @@ const editace = [
             font-size: 0.9rem;
         }
         .edits{
-            width: 112px;
+            width: 132px;
             top: 40px;
             left: 2px;
         }

@@ -83,6 +83,7 @@
               Cena košíku:<span class="suma">{nf(sum)} Kč</span>
           </div>
           <div class="flow">
+              <button class="vysypat">Vysypat košík</button>
               <a href="/#/kosik/platba"><button class="pokracovat">Pokračovat</button></a>
           </div>
 
@@ -174,9 +175,9 @@
 
     .odstranit{
         position: absolute;
-        top: 15px;
+        top: 25px;
         color: white;
-        right: 15px;
+        right: 25px;
         font-size: 1.1em;
     }
     .kusy{
@@ -198,13 +199,10 @@
     .cena{
         position: absolute;
         bottom: 25px;
-        right: 15px;
+        right: 25px;
         font-family: roboto;
     }
-    .flow{
-        text-align: center;
-        bottom: 20px;
-    }
+
     .text {
         position: absolute;
         bottom: 75px;
@@ -215,21 +213,33 @@
         margin-left: 10px;
         font-size: 1.3em;
     }
-
-    .pokracovat {
+    .flow {
         position: absolute;
+        height: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        margin: 20px 0 0 0;
+        overflow: auto;
+        box-sizing: border-box;
+        bottom: 20px;
+    }
+    .vysypat {
         height: 40px;
         width: 150px;
         border: solid 1px var(--grey);
         background-color: var(--yellow);
         border-radius: 10px;
         font-size: 1.3em;
-        bottom: 15px;
-        transform: translateX(-50%);
-        left: 50%;
     }
-
-
+    .pokracovat {
+        height: 40px;
+        width: 150px;
+        border: solid 1px var(--grey);
+        background-color: var(--yellow);
+        border-radius: 10px;
+        font-size: 1.3em;
+    }
 
     @media only screen and (max-width: 1200px){
         .polozka{
@@ -247,6 +257,7 @@
             margin: 20px auto;
         }
         .bar{
+            margin-top: 10px;
             height: 50px;
         }
         .postup1, .postup2, .postup3 {
@@ -255,9 +266,48 @@
         }
     }
     @media only screen and (max-width: 440px){
+        main{
+            min-height: 480px;
+        }
         .polozka{
             width: 330px;
+            height: 140px;
             margin: 10px auto;
+            
+        }
+        img{
+
+            height: 100px;
+            width: 75px;
+            top: 20px;
+            left: 20px;
+        }
+
+        .nazev{
+            max-width: 300px;
+            top: 20px;
+            left: 120px;
+            font-size: 1.2em;
+            width: 150px;
+            height: 75px;
+        }
+
+        .odstranit{
+            top: 20px;
+            color: white;
+            right: 20px;
+            font-size: 0.9em;
+        }
+        .kusy, .cena{
+            font-size: 0.9em;
+        }
+        .kusy{
+            left: 120px;
+            bottom: 20px;
+        }
+        .cena{
+            bottom: 20px;
+            right: 20px;
         }
     }
 

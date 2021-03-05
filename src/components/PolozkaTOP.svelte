@@ -205,9 +205,6 @@
     max-height: 100%;
   }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
   .btn-left, .btn-right {
     position: absolute;
     z-index: 3;
@@ -223,8 +220,5 @@
     right: 20px;
   }
 
-=======
->>>>>>> 2c7f8e298a1fe760c2133d37bfe9cb30b932c195
->>>>>>> db1343907618447cc1b3926e86e719d36e1b2961
->>>>>>> 520825ef1887527896d7a19fa558a7cf066b6ee2
+
 </style>

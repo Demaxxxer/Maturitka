@@ -435,6 +435,7 @@
             max-width: 330px;
             height: 180px;
         }
+
         .control-left {
             left: 5px;
             width: 40px;
@@ -446,7 +447,7 @@
             height: 60px;
         }
         .cara{
-            width: 300px;
+            width: 310px;
         }
         .rec{
             height: 100px;
