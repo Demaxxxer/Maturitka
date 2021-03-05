@@ -7,7 +7,7 @@
     import PolozkaShelf from '../components/PolozkaShelf.svelte';
 
     export let params = {};
-
+    let filtersState = false;
     let loaded = false;
     let items = {};
     let costLimit = [
@@ -49,8 +49,8 @@
       reFetch(params.cat,parse($querystring).hledat)
     }
 
-    function open(){
-        filtry.update(_ => true);
+    function handleFilters(){
+      filtersState = !filtersState;
     }
 
 </script>
@@ -58,10 +58,10 @@
     <div class="ohraniceni1">
         <div class="nadpis">Kategorie:</div>
         <div class="filtr">
-            <button on:click >Filtry</button>
+            <button on:click={handleFilters}>Filtry</button>
         </div>
     </div>
-    <div class="ohraniceni2">
+    <div class="ohraniceni2" active={filtersState}>
         <div class="serazeni">
             <label for="seradit">Seřadit:</label>
             <select class="seradit" name="seradit" on:input={handleSort} bind:value={sortValue}>
@@ -107,6 +107,7 @@
         margin-bottom: 20px;
     }
     .ohraniceni2{
+        display: none;
         margin: 0 auto;
         width: 940px;
         height: 120px;
@@ -114,6 +115,9 @@
         border-radius: 10px;
         padding: 20px 30px;
         box-sizing: border-box;
+    }
+    .ohraniceni2[active="true"] {
+      display: block;
     }
     .nadpis{
         position: absolute;

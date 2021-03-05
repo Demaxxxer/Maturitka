@@ -81,12 +81,14 @@
 <div class="item-wrap">
   {#if loaded && !disabled}
     {#each trueItems as item,i}
-      <div class={'item ' + attrs[i]}>
-        <div class="img-wrap">
-          <img src={getImgUrl(item.thumbnail)}>
+      <a href={'/#/polozka/' + item._id}>
+        <div class={'item ' + attrs[i]}>
+          <div class="img-wrap">
+            <img src={getImgUrl(item.thumbnail)} alt="Bohužel nejde načíst">
+          </div>
+          <div class="cost">{item.cost} Kč</div>
         </div>
-        <div class="cost">{item.cost} Kč</div>
-      </div>
+      </a>
     {/each}
     <button class="btn-left" on:click={_ => move(-1)}></button>
     <button class="btn-right" on:click={_ => move(1)}></button>
@@ -165,8 +167,12 @@
     left: 50%;
     transform: translateX(-50%);
   }
+  .large:hover {
+    border-color: rgba(255,255,255,0.5)
+  }
   .large .cost {
     display: block;
+    margin-top: 10px;
   }
 
   .img-wrap {

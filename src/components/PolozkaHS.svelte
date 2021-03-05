@@ -25,15 +25,14 @@
         height: 300px;
         margin-bottom: 20px;
     }
-
     .nazev{
         position: absolute;
         width: 100%;
         top: 25px;
         text-align: center;
         font-size: 1em;
-
     }
+
     img{
         position: absolute;
         height: 150px;
@@ -58,6 +57,11 @@
         left: 0;
         width: 100%;
         height: 100%;
+    }
+
+    .link:hover {
+      border-radius: 10px;
+      border: solid 1px rgba(255,255,255,0.5);
     }
 
     .koupit{

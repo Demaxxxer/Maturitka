@@ -37,6 +37,11 @@
       width: 100%;
     }
 
+    .link:hover {
+      border-radius: 10px;
+      border: solid 1px rgba(255,255,255,0.5);
+    }
+
     .nazev{
         position: absolute;
         width: 100%;

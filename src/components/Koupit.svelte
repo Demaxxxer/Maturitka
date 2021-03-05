@@ -43,7 +43,10 @@
         background-position: center right 8px;
         background-size: 15px;
         padding-right: 22px;
+    }
 
+    .button:hover {
+        border-color: rgba(255,255,255,0.5);
     }
 
 

@@ -13,8 +13,11 @@ export function soucet(cart,items){
 
 /* Toto na linuxu asi fungovat nebude sa obávám */
 export function getImgUrl(path){
-  const arr = path.split('\\');
-  return '/api/uploads/' + arr[1];
+  if(path){
+    const arr = path.split('\\');
+    return '/api/uploads/' + arr[1];
+  }
+  return '';
 }
 
 export function addZero(num){

@@ -13,6 +13,14 @@
       if($location != '/kosik/')replace('/kosik')
     })
 
+    function handleCartEmpty(){
+      items = [];
+      cart.update(_ => {
+        return {};
+      })
+      deleteCookie('cart');
+    }
+
     function handleNumberChange(e,id){
       if(isNaN(e.target.value))e.target.value = 1
       cart.update(obj => {
@@ -83,7 +91,7 @@
               Cena košíku:<span class="suma">{nf(sum)} Kč</span>
           </div>
           <div class="flow">
-              <button class="vysypat">Vysypat košík</button>
+              <button class="vysypat" on:click={handleCartEmpty}>Vysypat košík</button>
               <a href="/#/kosik/platba"><button class="pokracovat">Pokračovat</button></a>
           </div>
 
@@ -273,7 +281,7 @@
             width: 330px;
             height: 140px;
             margin: 10px auto;
-            
+
         }
         img{
 
