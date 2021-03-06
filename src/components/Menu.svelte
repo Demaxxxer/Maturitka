@@ -223,6 +223,7 @@
 		}
 		.lista{
 			height: 60px;
+			max-width: 375px;
 		}
 		.hledani{
 			position: absolute;

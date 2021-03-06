@@ -46,14 +46,14 @@
     </div>
     <div class="ohraniceni1">
         <div class="nadpis">Osobní údaje</div>
-        <div class="udaje">Jméno <span class="udaj1">{$cartUser.fname}</span></div>
-        <div class="udaje">Příjmení <span class="udaj2">{$cartUser.sname}</span></div>
-        <div class="udaje">Email <span class="udaj3">{$cartUser.email}</span></div>
+        <div class="udaje">Jméno:<span class="udaj1">{$cartUser.fname}</span></div>
+        <div class="udaje">Příjmení:<span class="udaj2">{$cartUser.sname}</span></div>
+        <div class="udaje">Email:<span class="udaj3">{$cartUser.email}</span></div>
     </div>
     <div class="ohraniceni2">
-        <div class="nadpis">Objednávka</div>
+        <div class="nadpis1">Objednávka</div>
 
-        <div class="nazev2">Název</div>
+        <div class="nazev2">Název produktu</div>
         <div class="nazev3">Počet položek</div>
         <div class="nazev4">Cena</div>
     </div>
@@ -95,11 +95,15 @@
 
     .nadpis{
         font-size: 1.3em;
-        padding: 10px 35px 20px;
+        padding: 10px 0;
+    }
+    .nadpis1{
+        font-size: 1.3em;
+        padding: 15px 35px;
     }
     .ohraniceni1{
         max-width: 700px;
-        height: 160px;
+        height: 140px;
         box-sizing: border-box;
         background-color: var(--darkgrey);
         border-radius: 10px;
