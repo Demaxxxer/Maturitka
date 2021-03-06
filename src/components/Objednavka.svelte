@@ -20,17 +20,18 @@
 
 </script>
 
-<button class="faktura">
-    <div class="objednavka">
-        <div class="datum">{date}</div>
-        <div class="pocet">{trueCount} Kusů</div>
-        <div class="cena">{udaje.cost} Kč</div>
-    </div>
-</button>
+
+<div class="objednavka">
+    <div class="datum">{date}</div>
+    <div class="pocet">{trueCount} Kusů</div>
+    <div class="cena">{udaje.cost} Kč</div>
+</div>
+
 
 <style>
 
     .objednavka{
+        color: car(--text);
         position: relative;
         max-width: 940px;
         height: 50px;
@@ -42,6 +43,7 @@
     .datum, .pocet, .cena{
         position: absolute;
         line-height: 50px;
+        
     }
     .datum{
         left: 35px;

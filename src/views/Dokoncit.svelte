@@ -1,5 +1,5 @@
 <script>
-    import {nf,addZero} from '../scripty/uzitecne.js'
+    import { nf,addZero} from '../scripty/uzitecne.js'
     import { orderInfo } from '../stores/stavy.js';
     import { onMount } from 'svelte';
 
@@ -15,37 +15,48 @@
 
 <main>
     <div class="ohraniceni1">
-        <div class="zpet"><a href='/#/home'><button>Zpět</button></a></div>
-        <div class="thx">Děkujeme za vaši objednávku v obchodě BAGOSHOP.</div>
-        <div class="nadpis">Detaily objednávky</div>
-        <div class="id">Id objednávky: {$orderInfo._id}</div>
-        <div class="date">Datum: {time.getDate()}.{time.getMonth() + 1}.{time.getFullYear()}, {addZero(time.getHours())}:{addZero(time.getMinutes())}</div>
-        <div class="info">Informace o uživateli: </div>
-        <div class="jmeno">{$orderInfo.details.fname} {$orderInfo.details.sname}</div>
-        <div class="email">{$orderInfo.details.email}</div>
-        <div class="pay">{$orderInfo.details.payment}</div>
+        <div class="zpet"><a href='/#/'><button>Zpět</button></a></div>
+        <div class="thx">Děkujeme za vaši objednávku v internetovém obchodě BAGOSHOP.</div>
+        <div class="nadpis1">Detaily objednávky</div>
+        <div class="left1">
+            <div>Id objednávky:</div>
+            <div>Datum objednávky:</div>
+        </div>
+        <div class="right1">
+            <div>{$orderInfo._id}</div>
+            <div>{time.getDate()}.{time.getMonth() + 1}.{time.getFullYear()}, {addZero(time.getHours())}:{addZero(time.getMinutes())}</div>
+        </div>
+        <div class="nadpis2">Informace o uživateli</div>
+        <div class="left2">
+            <div>Jméno a příjmení:</div>
+            <div>E-mail:</div>
+            <div>Typ platby:</div>
+        </div>
+        <div class="right2">
+            <div>{$orderInfo.details.fname} {$orderInfo.details.sname}</div>
+            <div>{$orderInfo.details.email}</div>
+            <div>{$orderInfo.details.payment}</div>
+        </div>
     </div>
 
     <div class="ohraniceni2">
-        <div class="nazev">Název:</div> 
-        <div class="pocet">počet:</div>
-        <div class="cena">cena:</div>
+        <div class="nazev">Název</div> 
+        <div class="pocet">Počet</div>
+        <div class="cena">Cena</div>
     </div>
 
     <div class="ohraniceni3">
         {#each $orderInfo.content as item}
-        <div class="n">{item.name}</div>
-        <div class="k">{item.count}</div>
-        <div class="c">{item.cost}</div>
+        <div class="nazev">{item.name}</div>
+        <div class="pocet">{item.count} Ks</div>
+        <div class="cena">{nf(item.cost)} Kč</div>
         {/each}
     </div>
-
-    <div class="suma">Celková cena: {$orderInfo.cost}</div>
-
-    <div class="tajne">Zákazník zatím nemá právo na reklamaci, jde tady celkem o gembl no...</div>
-
-
-
+    <div class="ohraniceni4">
+        <div class="suma">Celková cena:</div>
+        <div class="sumaHodnota">{nf($orderInfo.cost)} Kč</div>
+        <div class="tajne">Zákazník zatím nemá právo na reklamaci, jde tady celkem o gembl no...</div>
+    </div>
 </main>
 <style>
 
@@ -57,38 +68,229 @@
         color: var(--text);
         padding-bottom: 15px;
     }
-    .ohraniceni1{
+    .ohraniceni1, .ohraniceni2, .ohraniceni3, .ohraniceni4{
+        position: relative;
         box-sizing: border-box;
         background-color: var(--darkgrey);
         border-radius: 10px;
-        height: 400px;
         width: 940px;
-        margin: 0 auto;
-        margin-top: 10px;
-        margin-bottom: 20px;
-        padding: 10px 10px 20px;
+        margin: 10px auto;
+    }
+    .ohraniceni1{
+        height: 330px;
+    }
+    .ohraniceni2, .ohraniceni3{
+        height: 50px;
+    }
+    .ohraniceni4{
+        height: 80px;
+    }
+    .nazev, .pocet, .cena{
+        position: absolute;
+        line-height: 50px; 
+    }
+    .nazev{
+        left: 30px;
+    }
+    .pocet{
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .cena{
+        width: 90px;
+        height: 50px;
+        right: 30px;
     }
     .zpet{
+        box-sizing: border-box;
+        width: 100%;
+        height: 30px;
+        padding: 10px 0 0 20px;
+        float: left;
+    }
+    .zpet a{
+        height: 20px;
+        width: 15px;
+    }
+    .zpet a button{
+        padding-left: 15px;
+
+        color: var(--text);
+        font-size: 1em;
+
+        background-image: url('/images/zpet.svg');
+        background-repeat: no-repeat;
+        background-position: center left;
+        background-size: 13px;
+    }
+    .thx, .nadpis1, .nadpis2{
         position: absolute;
 
     }
-    .ohraniceni2{
-        box-sizing: border-box;
-        background-color: var(--darkgrey);
-        border-radius: 10px;
-        height: 50px;
-        width: 940px;
-        margin: 0 auto;
-        margin-top: 10px;
-        margin-bottom: 20px;
-        padding: 10px 10px 20px;
+    .thx{
+        height: 20px;
+        width: 100%;
+        font-size: 1.4em;
+        text-align: center;
+        top: 50px;
     }
-    .nadpis {
-        font-size: 1.7em;
+    .nadpis1 {
+        height: 20px;
+        width: 100%;
+        font-size: 1.1em;
         padding-top: 4px;
         text-align: center;
-        padding-top: 100px;
+        top: 100px;
         margin-bottom: 150px;
     }
+    .nadpis2{
+        height: 20px;
+        width: 100%;
+        font-size: 1.2em;
+        top: 200px;
+        text-align: center;
+    }
+    .left1, .left2, .right1, .right2{
+        position: absolute;
+        text-align: left;
 
+        line-height: 25px;
+    }
+    .left1, .left2{
+        left: 35%;
+    }
+    .left1{
+        top: 130px;
+        width: 150px;
+        height: 50px;
+    }
+    .left2{
+        top: 230px;
+        width: 150px;
+        height: 75px;
+    }
+    .right1, .right2{
+        position: absolute;
+        width: 200px;
+        left: 53%;
+    }
+    .right1{
+        height: 40px;
+        top: 130px;
+    }
+    .right2{
+        height: 60px;
+        top: 230px;
+    }
+    .suma, .sumaHodnota{
+        position: absolute;
+        top: 10px;
+        width: 48%;
+        height: 50px;
+        font-size: 1.4em;
+    }
+    .suma{
+        left: 0px;
+        text-align: right;
+    }
+    .sumaHodnota{
+        right: 0px;
+        text-align: left;
+    }
+    .tajne{
+        position: absolute;
+        top: 50px;
+        font-size: 0.7em;
+        opacity: 0.5;
+        width: 100%;
+        text-align: center;
+    }
+    @media only screen and (max-width: 1200px){
+        .ohraniceni1, .ohraniceni2, .ohraniceni3, .ohraniceni4{
+            width: 760px;
+            margin: 20px auto;
+        }
+        main{
+            padding-bottom: 20px;
+        }
+        .left1, .left2{
+            left: 32%;
+        }
+
+    }
+    @media only screen and (max-width: 800px){
+        .ohraniceni1, .ohraniceni2, .ohraniceni3, .ohraniceni4{
+            width: 400px;
+            margin: 20px auto;
+        }
+        .ohraniceni2, .ohraniceni3{
+            height: 40px;
+
+        }
+        .thx{
+            top: 40px;
+            font-size: 1.3em;
+        }
+        .left1, .left2{
+            left: 15%;
+        }
+        .pocet{
+            left: 70%;
+        }
+        .cena{
+            width: 70px;
+            right: 10px;
+        }
+        .left1, .left2, .right1, .right2{
+            font-size: 0.8em;
+        }
+        .nazev, .pocet, .cena{
+            line-height: 40px;
+            font-size: 0.9em;
+        }
+        .nazev{
+            left: 15px;
+        }
+    }
+    @media only screen and (max-width: 440px){
+        main{
+            padding-bottom: 0;
+        }
+        .ohraniceni1, .ohraniceni2, .ohraniceni3, .ohraniceni4{
+            width: 340px;
+            margin: 20px auto;
+        }
+        .ohraniceni2, .ohraniceni3{
+            height: 40px;
+
+        }
+        .thx{
+            top: 40px;
+            font-size: 1.2em;
+        }
+        .left1, .left2{
+            left: 15%;
+        }
+        .pocet{
+            left: 70%;
+        }
+        .cena{
+            width: 70px;
+            right: 5px;
+        }
+        .left1, .left2, .right1, .right2{
+            font-size: 0.8em;
+        }
+        .nazev, .pocet, .cena{
+            line-height: 40px;
+            font-size: 0.9em;
+        }
+        .nazev{
+            left: 15px;
+        }
+        .tajne{
+            font-size: 0.6em;
+        }
+
+    }
 </style>

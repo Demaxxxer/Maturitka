@@ -115,12 +115,6 @@ const routes = {
 
 <main>
     {#if loaded}
-        <div class="warn-wrap">
-          <div class="warn-cont">
-            <div>Pozor!</div>
-            <div>Toto není opravdový e-shop.</div>
-          </div>
-        </div>
         <Alert />
         <Menu />
         <Kategorie />
@@ -136,26 +130,6 @@ const routes = {
 </main>
 
 <style>
-    .warn-wrap {
-        position: fixed;
-        bottom: 0;
-        left: -110px;
-        width: 100px;
-        height: 100px;
-        z-index: 12;
-    }
-
-    .warn-cont {
-        width: 250px;
-        height: 30px;
-        background: var(--darkgrey);
-        color: var(--yellow);
-        font-size: 0.8em;
-        border: dashed 2px rgba(255,0,0,0.7);
-        padding: 5px 60px;
-        text-align: center;
-        transform: rotate(45deg);
-    }
 
     .wrapper{
         width: 100%;

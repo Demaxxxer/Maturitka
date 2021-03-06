@@ -112,7 +112,7 @@
     <button class="btn-left" on:click={_ => move(-1)}></button>
     <button class="btn-right" on:click={_ => move(1)}></button>
   {:else if disabled}
-  <h2>K zobrazení je potřeba aby v databázi bylo více než 8 položek</h2>
+    <div>Není žádné zboží k dispozici.</div>
   {/if}
 </div>
 
