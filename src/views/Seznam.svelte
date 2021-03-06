@@ -1,6 +1,7 @@
 <script>
     import axios from 'axios';
     import { onMount } from 'svelte';
+    import { flip } from 'svelte/animate'
     import RangeSlider from "svelte-range-slider-pips";
     import { alertContent, cats } from '../stores/stavy.js';
     import ItemManage from '../components/ItemManage.svelte';
@@ -33,7 +34,9 @@
     }
 
     function handleCostLimit(e){
-      //reFetch(params.cat,parse($querystring).hledat)
+      search.costMin = costLimit[0];
+      search.costMax = costLimit[1];
+      fetchItems(search);
     }
 
     onMount(_ => {
@@ -42,15 +45,10 @@
 
     function handleSearch(e){
       e.preventDefault();
-      fetchItems(search)
+      fetchItems(search);
     }
 
     function handleDelete(e){
-      /*
-        let novePolozky = [...$polozky];
-        novePolozky=novePolozky.filter(polozka => {return polozka.id != id});
-        kosik.update(_ => novePolozky);
-      */
 
       axios({
         method: 'delete',
@@ -101,8 +99,10 @@
     <div class="sloupce">
 
       <div class="polozky">
-        {#each items as item,i}
-          <ItemManage details={item} on:itemDelete={handleDelete}/>
+        {#each items as item,i (item._id)}
+          <div animate:flip={{duration: 500}}>
+            <ItemManage details={item} on:itemDelete={handleDelete}/>
+          </div>
         {/each}
       </div>
 
@@ -156,7 +156,7 @@
     .hodnota1, .cena{
         position: absolute;
     }
-  
+
     .hodnota1{
         border-bottom: solid 1px var(--text);
         margin-top: 3px;

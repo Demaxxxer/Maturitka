@@ -1,5 +1,7 @@
 <script>
     import axios from 'axios';
+    import { fade, slide, scale } from 'svelte/transition'
+    import { flip } from 'svelte/animate'
     import {push, pop, replace, location} from 'svelte-spa-router';
     import { onMount,createEventDispatcher } from 'svelte';
     import { cart } from '../stores/stavy.js';
@@ -69,9 +71,9 @@
 
     {#if items.length > 0}
       <div class="polozky">
-          {#each items as item,i}
+          {#each items as item,i (item._id)}
 
-          <div class="polozka">
+          <div class="polozka" in:scale={{duration:200 * i}} animate:flip={{duration: 500}}>
               <img  alt="error" src={getImgUrl(item.thumbnail)}>
               <div class="nazev">{ item.name}</div>
               <button class="odstranit" on:click={_ => dispatch('delete',{index: i})}>╳</button>

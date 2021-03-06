@@ -10,6 +10,7 @@
     let loaded = false;
     let disabled = false;
     let trueItems = [];
+    let animTimer = false;
 
     onMount(_ => {
       axios({
@@ -63,8 +64,26 @@
     }
 
     function move(dir){
-      displayIndex += dir
-      trueItems = getDisplayed()
+      if(!animTimer){
+        displayIndex += dir
+        trueItems = getDisplayed()
+        const elem = document.querySelector('#slider-widget');
+  /*
+        if(animTimer){
+          let newClasses = Array.from(elem.classList).splice(0,2);
+          elem.className = newClasses.join(' ');
+          window.clearTimeout(animTimer);
+        }
+        */
+
+        elem.classList.add('move' + dir);
+
+        animTimer = window.setTimeout(()=> {
+          elem.classList.remove('move' + dir);
+          animTimer = false;
+        },300);
+      }
+
     }
 
     let attrs = [
@@ -78,7 +97,7 @@
     ]
 
 </script>
-<div class="item-wrap">
+<div class="item-wrap" id="slider-widget">
   {#if loaded && !disabled}
     {#each trueItems as item,i}
       <a href={'/#/polozka/' + item._id}>
@@ -86,7 +105,7 @@
           <div class="img-wrap">
             <img src={getImgUrl(item.thumbnail)} alt="Bohužel nejde načíst">
           </div>
-          <div class="cost">{item.cost} Kč</div>
+          <div class="selected">{item.cost} Kč</div>
         </div>
       </a>
     {/each}
@@ -98,15 +117,18 @@
 </div>
 
 <style>
+  /* Wrapper  */
+
 
   .item-wrap {
     position: relative;
     margin-top: 25px;
-    //background: green;
+    opacity: 1;
     height: 270px;
-    width: 100%
+    width: 860px;
+    transition: background;
   }
-
+  /* Item */
   .item {
     position: absolute;
     height: 100%;
@@ -118,15 +140,25 @@
     box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.5);
   }
 
-  .cost {
-    display: none;
-  }
-
+  /* Neviditelné itemy  */
   .invis {
     visibility: hidden;
     height: 0;
     width: 0;
     border: 0;
+    background: #242830;
+  }
+
+  .invis .img-wrap {
+    margin-top: 40px;
+  }
+
+  .invis.l {
+      left: 100px;
+  }
+
+  .invis.r {
+      right: 100px;
   }
 
   .medium, .small {
@@ -137,11 +169,11 @@
   .medium .img-wrap, .small .img-wrap {
     margin-top: 0px;
   }
-
+  /* Nejmenší itemy  */
   .small {
     transform: scale(0.75);
     background: #242830;
-    //width: 180px;;
+    z-index: 1;
   }
   .small.l {
     left: 100px;
@@ -149,7 +181,7 @@
   .small.r {
     right: 100px;
   }
-
+  /* Střední itemy vedle velkého  */
   .medium {
     z-index: 2;
     background: #2a303b;
@@ -161,18 +193,27 @@
   .medium.r {
     right: 220px;
   }
-
+  /* Prostřední item  */
   .large {
     z-index: 3;
-    left: 50%;
-    transform: translateX(-50%);
+    left: calc(50% - 90px);
   }
   .large:hover {
     border-color: rgba(255,255,255,0.5)
   }
-  .large .cost {
-    display: block;
+
+  .large .selected {
+    visibility: visible;
+    height: auto;
+    width: auto;
     margin-top: 10px;
+  }
+
+  /* Detaily Itemu  */
+  .selected {
+    visibility: hidden;
+    height: 0;
+    width: 0;
   }
 
   .img-wrap {
@@ -180,7 +221,7 @@
     margin: 20px auto 0 auto;
     height: 190px;
     width: 130px;
-    align-items: center
+    align-items: center;
   }
 
   .img-wrap img {
@@ -188,6 +229,7 @@
     max-height: 100%;
   }
 
+  /* Neviditelné zóny kliknuti pro posunutí */
   .btn-left, .btn-right {
     position: absolute;
     z-index: 3;
@@ -202,5 +244,193 @@
   .btn-right {
     right: 20px;
   }
+
+  /* Posunovací animace */
+  @keyframes invis-r-move-1 {
+    0% {
+      visibility: visible;
+      opacity: 1;
+      transform: scale(0.75) translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.50) translateX(100px);
+    }
+  }
+
+  @keyframes small-r-move-1 {
+    0% {
+      transform: scale(0.9) translateX(-130px);
+    }
+    100% {
+      transform: scale(0.75) translateX(0);
+    }
+  }
+
+  @keyframes medium-r-move-1 {
+    0% {
+      transform: scale(1) translateX(-120px);
+    }
+    100% {
+      transform: scale(0.9) translateX(0);
+    }
+  }
+
+  @keyframes large-move-1 {
+    0% {
+      transform: scale(0.9) translateX(-130px);
+    }
+    100% {
+      transform: scale(1) translateX(0);
+    }
+  }
+
+  @keyframes medium-l-move-1 {
+    0% {
+      transform: scale(0.75) translateX(-160px);
+    }
+    100% {
+      transform: scale(0.9) translateX(0);
+    }
+  }
+
+  @keyframes small-l-move-1 {
+    0% {
+      opacity: 0;
+      transform: scale(0.50) translateX(-130px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(0.75) translateX(0);
+    }
+  }
+
+  .move-1 a .invis.r {
+    visibility: hidden;
+    height: 100%;
+    width: 180px;
+    border: solid 1px black;
+    animation: invis-r-move-1 var(--widget-duration) ease-in-out
+  }
+
+  .move-1 a .small.r {
+    transform: scale(0.75) translateX(0);
+    animation: small-r-move-1 var(--widget-duration) ease-in-out
+  }
+
+  .move-1 a .medium.r {
+    transform: scale(0.9) translateX(0);
+    animation: medium-r-move-1 var(--widget-duration) ease-in-out
+  }
+
+  .move-1 a .large {
+    animation: large-move-1 var(--widget-duration) ease-in-out
+  }
+
+  .move-1 a .medium.l {
+    animation: medium-l-move-1 var(--widget-duration) ease-in-out
+  }
+
+  .move-1 a .small.l {
+    animation: small-l-move-1 var(--widget-duration) ease-in-out
+  }
+
+
+  @keyframes invis-l-move1 {
+    0% {
+      visibility: visible;
+      opacity: 1;
+      transform: scale(0.75) translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.50) translateX(-100px);
+    }
+  }
+
+  @keyframes small-l-move1 {
+    0% {
+      transform: scale(0.9) translateX(130px);
+    }
+    100% {
+      transform: scale(0.75) translateX(0);
+    }
+  }
+
+  @keyframes medium-l-move1 {
+    0% {
+      transform: scale(1) translateX(120px);
+    }
+    100% {
+      transform: scale(0.9) translateX(0);
+    }
+  }
+
+  @keyframes large-move1 {
+    0% {
+      transform: scale(0.9) translateX(130px);
+    }
+    100% {
+      transform: scale(1) translateX(0);
+    }
+  }
+
+  @keyframes medium-r-move1 {
+    0% {
+      transform: scale(0.75) translateX(160px);
+    }
+    100% {
+      transform: scale(0.9) translateX(0);
+    }
+  }
+
+  @keyframes small-r-move1 {
+    0% {
+      opacity: 0;
+      transform: scale(0.50) translateX(130px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(0.75) translateX(0);
+    }
+  }
+
+  .move1 a .invis.l {
+    visibility: hidden;
+    height: 100%;
+    width: 180px;
+    border: solid 1px black;
+    animation: invis-l-move1 var(--widget-duration) ease-in-out
+  }
+
+  .move1 a .small.l {
+    transform: scale(0.75) translateX(130);
+    animation: small-l-move1 var(--widget-duration) ease-in-out
+  }
+
+  .move1 a .medium.l {
+    transform: scale(0.9) translateX(0);
+    animation: medium-l-move1 var(--widget-duration) ease-in-out
+  }
+
+  .move1 a .large {
+    animation: large-move1 var(--widget-duration) ease-in-out
+  }
+
+  .move1 a .medium.r {
+    transform: scale(0.75) translateX(0);
+    animation: medium-r-move1 var(--widget-duration) ease-in-out
+  }
+
+  .move1 a .small.r {
+    animation: small-r-move1 var(--widget-duration) ease-in-out
+  }
+
+  @media only screen and (max-width: 940px){
+      .item-wrap {
+        background-color: red;
+      }
+  }
+
 
 </style>

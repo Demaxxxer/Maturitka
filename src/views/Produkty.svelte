@@ -2,6 +2,7 @@
     import axios from 'axios';
     import RangeSlider from "svelte-range-slider-pips";
     import { onMount } from 'svelte';
+    import { fade, slide, scale } from 'svelte/transition'
     import {parse} from 'qs';
     import {querystring} from 'svelte-spa-router';
     import { cats } from '../stores/stavy.js'
@@ -85,8 +86,10 @@
         <div class="sloupce">
             <div class="polozka">
                 <div class="polozky">
-                    {#each items as item}
-                        <PolozkaShelf details={item} />
+                    {#each items as item,i}
+                        <div in:scale={{duration:200 * i}}>
+                            <PolozkaShelf details={item} />
+                        </div>
                     {/each}
                 </div>
             </div>

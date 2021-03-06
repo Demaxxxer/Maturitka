@@ -163,6 +163,16 @@ const routes = {
         margin-top: 140px;
 
     }
+
+    @keyframes pozadi-anim {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
     .pozadi{
         background-color: var(--grey);
         width: 100%;
@@ -172,8 +182,9 @@ const routes = {
         margin: 0 auto;
         box-sizing: border-box;
         padding-top: 15px;
-        /*padding-bottom: 15px;*/
+        animation: pozadi-anim 0.2s linear;
     }
+    
     @media only screen and (max-width: 1200px){
         .wrapper{
             margin-top: 105px;

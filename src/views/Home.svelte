@@ -1,5 +1,6 @@
 <script>
   import axios from 'axios';
+      import { fade, slide, scale } from 'svelte/transition'
   import { onMount } from 'svelte';
   import { cats} from '../stores/stavy.js'
   import PolozkaHS from '../components/PolozkaHS.svelte'
@@ -43,8 +44,10 @@
   {#if loaded}
     <div class="ohraniceni2">Nejprodávanější {choosedCat}</div>
     <div class="polozky">
-        {#each items as item}
-          <PolozkaHS details={item} />
+        {#each items as item,i}
+          <div in:scale={{duration:200 * i}}>
+              <PolozkaHS details={item} />
+          </div>
         {/each}
     </div>
   {/if}

@@ -1,6 +1,7 @@
 <script>
     import axios from 'axios';
     import { onMount } from 'svelte';
+    import { fade, slide, scale } from 'svelte/transition'
     import Objednavka from '../components/Objednavka.svelte'
     import {alertContent, uzivatel} from '../stores/stavy.js';
 
@@ -41,8 +42,10 @@
     </div>
     <div>
       {#if loaded}
-        {#each orders as order}
-            <Objednavka udaje={order}></Objednavka>
+        {#each orders as order,i}
+            <div in:scale={{duration:200 * i}}>
+              <Objednavka udaje={order}></Objednavka>
+            </div>
         {/each}
       {/if}
     </div>

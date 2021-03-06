@@ -11,6 +11,9 @@
     --menuHeight:  120px;
     --footerHeight: 100px;
     --sumasumarum: calc( var(--footerHeight) + var(--menuHeight));
+
+    --widget-duration: 0.3s;
+
 }
 
 * {
