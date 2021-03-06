@@ -105,7 +105,7 @@
           <div class="img-wrap">
             <img src={getImgUrl(item.thumbnail)} alt="Bohužel nejde načíst">
           </div>
-          <div class="selected">{item.cost} Kč</div>
+          <div class="selected">{nf(item.cost)} Kč</div>
         </div>
       </a>
     {/each}
