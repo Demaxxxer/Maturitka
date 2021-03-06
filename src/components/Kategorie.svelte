@@ -251,9 +251,7 @@ const editace = [
 
     }
     @media only screen and (max-width: 440px){
-        .lista{
-            max-width: 375px;
-        }
+
         .dropdown{
             width: 110px;
         }
