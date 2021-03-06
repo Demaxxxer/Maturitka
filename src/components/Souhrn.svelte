@@ -52,6 +52,12 @@
     </div>
     <div class="ohraniceni2">
         <div class="nadpis">Objednávka</div>
+
+        <div class="nazev2">Název</div>
+        <div class="nazev3">Počet položek</div>
+        <div class="nazev4">Cena</div>
+    </div>
+    <div class="ohraniceni3">
         {#each items as item,i}
             <div class="polozka">
                 <div class="nazev">{item.name}</div>
@@ -89,7 +95,7 @@
 
     .nadpis{
         font-size: 1.3em;
-        margin: 20px 0;
+        padding: 10px 35px 20px;
     }
     .ohraniceni1{
         max-width: 700px;
@@ -101,15 +107,44 @@
         padding: 5px 35px 5px 35px;
     }
     .ohraniceni2{
+        position: relative;
         max-width: 700px;
         height: 100%;
+        min-height: 90px;
         box-sizing: border-box;
         background-color: var(--darkgrey);
         border-radius: 10px;
         margin: 20px auto 10px auto;
-        padding: 5px 35px 5px 35px;
+    }
+    .nazev2, .nazev3, .nazev4{
+        position: absolute;
+        bottom: 10px;
     }
 
+    .nazev2{
+        padding-left: 35px;
+        left: 0px;
+    }
+    .nazev3{
+        right: 205px;
+        text-align: center;
+
+    }
+    .nazev4{
+        padding-right: 35px;
+        right: 0;
+    }
+    .ohraniceni3{
+        position: relative;
+        max-width: 700px;
+        height: 100%;
+        min-height: 40px;
+        box-sizing: border-box;
+        background-color: var(--darkgrey);
+        border-radius: 10px;
+        margin: 20px auto 10px auto;
+
+    }
 
     .bar {
         background-color: var(--darkgrey);
@@ -173,17 +208,25 @@
         width: 100%;
         height: 30px;
     }
+    .nazev, .pocet, .cena{
+        position: absolute;
+        line-height: 40px;
+    }
     .nazev {
-        float: left;
+        left: 35px;
+        width: 100%;
+        max-width: 350px;
     }
 
     .pocet {
       position: absolute;
-      right: 100px;
+      right: 250px;
+      text-align: left;
     }
 
     .cena {
-        float: right;
+        right: 35px;
+        text-align: right;
     }
 
     .text {
@@ -229,7 +272,7 @@
         width: 150px;
     }
     @media only screen and (max-width: 1200px){
-        .ohraniceni1, .ohraniceni2{
+        .ohraniceni1, .ohraniceni2, .ohraniceni3{
             width: 760px;
             margin: 20px auto;
         }
@@ -238,9 +281,18 @@
         }
     }
     @media only screen and (max-width: 800px){
-        .ohraniceni1, .ohraniceni2{
+        .ohraniceni1, .ohraniceni2, .ohraniceni3{
             width: 400px;
             margin: 20px auto;
+        }
+        .nazev {
+            left: 35px;
+            width: 100%;
+            max-width: 200px;
+        }
+        .pocet {
+            right: 150px;
+
         }
     }
     @media only screen and (max-width: 440px){
@@ -253,7 +305,7 @@
             line-height: 50px;
             font-size: 1.3em;
         }
-        .ohraniceni1, .ohraniceni2{
+        .ohraniceni1, .ohraniceni2, .ohraniceni3{
             width: 320px;
             margin: 20px auto;
         }

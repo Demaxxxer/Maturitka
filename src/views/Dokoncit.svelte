@@ -15,8 +15,9 @@
 
 <main>
     <div class="ohraniceni1">
-        <div class="zpet"><button>Zpět</button></div>
-
+        <div class="zpet"><a href='/#/home'><button>Zpět</button></a></div>
+        <div class="thx">Děkujeme za vaši objednávku v obchodě BAGOSHOP.</div>
+        <div class="nadpis">Detaily objednávky</div>
         <div class="id">Id objednávky: {$orderInfo._id}</div>
         <div class="date">Datum: {time.getDate()}.{time.getMonth() + 1}.{time.getFullYear()}, {addZero(time.getHours())}:{addZero(time.getMinutes())}</div>
         <div class="info">Informace o uživateli: </div>
@@ -26,23 +27,24 @@
     </div>
 
     <div class="ohraniceni2">
-        <div class="">
-
-        </div>
+        <div class="nazev">Název:</div> 
+        <div class="pocet">počet:</div>
+        <div class="cena">cena:</div>
     </div>
 
     <div class="ohraniceni3">
         {#each $orderInfo.content as item}
-        <div>Název: {item.name} počet: {item.count} cena: {item.cost}</div>
+        <div class="n">{item.name}</div>
+        <div class="k">{item.count}</div>
+        <div class="c">{item.cost}</div>
         {/each}
     </div>
-    <div>Celková cena: {$orderInfo.cost}</div>
 
-    <div class="text"></div>
+    <div class="suma">Celková cena: {$orderInfo.cost}</div>
 
-    <div class="flow">
-        <a class="button" href="/#/"><button class="zpet">Zpět na úvodní stránku</button></a>
-    </div>
+    <div class="tajne">Zákazník zatím nemá právo na reklamaci, jde tady celkem o gembl no...</div>
+
+
 
 </main>
 <style>
@@ -67,36 +69,26 @@
         padding: 10px 10px 20px;
     }
     .zpet{
-        
+        position: absolute;
+
     }
     .ohraniceni2{
         box-sizing: border-box;
         background-color: var(--darkgrey);
         border-radius: 10px;
-        height: 400px;
+        height: 50px;
         width: 940px;
         margin: 0 auto;
         margin-top: 10px;
         margin-bottom: 20px;
         padding: 10px 10px 20px;
     }
-    .text {
+    .nadpis {
         font-size: 1.7em;
         padding-top: 4px;
         text-align: center;
         padding-top: 100px;
         margin-bottom: 150px;
     }
-
-    .zpet {
-        margin: 0 auto;
-        height: 40px;
-        width: 250px;
-        border: solid 1px var(--grey);
-        background-color: var(--yellow);
-        border-radius: 10px;
-        font-size: 1.3em;
-    }
-
 
 </style>

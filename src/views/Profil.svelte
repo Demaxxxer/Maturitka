@@ -34,7 +34,7 @@
     </div>
     <div class="ohraniceni2">
         <div class="nadpis">Objednávky</div>
-        <div class="nazev1">ID</div>
+        <div class="info">Kliknutím na objednávku otevřete fakturu</div>
         <div class="nazev2">Datum</div>
         <div class="nazev3">Počet položek</div>
         <div class="nazev4">Cena</div>
@@ -55,14 +55,12 @@
     .ohraniceni1{
         position: relative;
         max-width: 940px;
-        height: 100px;
+        height: 100%;
+        min-height: 110px;
         background-color: var(--darkgrey);
         border-radius: 10px;
         margin: 10px auto 20px auto;
         padding: 5px 35px 5px 35px;
-        box-sizing: border-box;
-    }
-    .ohraniceni2{
         box-sizing: border-box;
     }
     .jmeno, .email{
@@ -74,10 +72,15 @@
     .emailH{
         margin-left: 88px;
     }
+    .info{
+        font-size: 0.8em;
+        color: grey;
+    }
     .ohraniceni2{
+        box-sizing: border-box;
         position: relative;
         max-width: 940px;
-        height: 90px;
+        height: 110px;
         background-color: var(--darkgrey);
         border-radius: 10px;
         margin: 10px auto 20px auto;
@@ -85,26 +88,24 @@
     }
     .nadpis{
         font-size: 1.3em;
-        padding: 10px 0;
+        padding: 10px 0 5px;
     }
-    .nazev1, .nazev2, .nazev3, .nazev4{
+    .nazev2, .nazev3, .nazev4{
         position: absolute;
-        top: 60px;
+        bottom: 10px;
     }
 
-    .nazev1{
-        left: 35px;
-    }
     .nazev2{
-        left: 35%;
-        transform: translateX(-50%);
+        padding-left: 35px;
+        left: 0px;
     }
     .nazev3{
-        left: 65%;
+        left: 50%;
         transform: translateX(-50%);
     }
     .nazev4{
-        right: 50px;
+        padding-right: 35px;
+        right: 0;
     }
 
 
@@ -136,18 +137,12 @@
             height: 120px;
 
         }
-        .nazev1, .nazev2, .nazev3, .nazev4{
+        .nazev2, .nazev3, .nazev4{
             top: 30;
             font-size: 0.7em;
         }
-        .nazev1{
-            left: 30px;
-        }
         .nazev2{
-            left: 33%;
-        }
-        .nazev3{
-            left: 65%;
+            left: 20px;
         }
         .nazev4{
             right: 20px;

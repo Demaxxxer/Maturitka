@@ -20,12 +20,13 @@
 
 </script>
 
-<div class="objednavka">
-    <div class="id">To tu nebude</div>
-    <div class="datum">{date}</div>
-    <div class="pocet">{trueCount} Kusů</div>
-    <div class="cena">{udaje.cost} Kč</div>
-</div>
+<button class="faktura">
+    <div class="objednavka">
+        <div class="datum">{date}</div>
+        <div class="pocet">{trueCount} Kusů</div>
+        <div class="cena">{udaje.cost} Kč</div>
+    </div>
+</button>
 
 <style>
 
@@ -36,28 +37,21 @@
         background-color: var(--darkgrey);
         border-radius: 10px;
         margin: 10px auto 20px auto;
-        padding: 5px 35px 5px 35px;
         box-sizing: border-box;
     }
-
-    .id, .datum, .pocet, .cena{
+    .datum, .pocet, .cena{
         position: absolute;
         line-height: 50px;
-
-    }
-    .id{
-        left: 35px;
     }
     .datum{
-        left: 35%;
-        transform: translateX(-50%);
+        left: 35px;
     }
     .pocet{
-        left: 65%;
+        left: 50%;
         transform: translateX(-50%);
     }
     .cena{
-        right: 50px;
+        right: 35px;
     }
 
 
@@ -71,15 +65,12 @@
     @media only screen and (max-width: 800px){
         .objednavka{
             width: 400px;
-            margin: 20px auto;
         }
 
     }
     @media only screen and (max-width: 440px){
         .objednavka{
             width: 330px;
-            margin: 10px auto;
-            padding: 10px;
         }
 
     }
