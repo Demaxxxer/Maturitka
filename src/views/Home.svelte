@@ -71,8 +71,7 @@
     text-align: center;
     padding-bottom: 10px;
   }
-
-
+  
   .ohraniceni2{
     background-color: var(--darkgrey);
     border-radius: 10px;
