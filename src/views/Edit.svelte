@@ -384,6 +384,10 @@
         padding: 20px 25px;
         width: 940px;
     }
+    .wrapper1{
+        height: 100%;
+        min-height: 400px;
+    }
 
     .nahledak{
         position: relative;

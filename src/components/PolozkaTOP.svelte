@@ -112,7 +112,7 @@
     <button class="btn-left" on:click={_ => move(-1)}></button>
     <button class="btn-right" on:click={_ => move(1)}></button>
   {:else if disabled}
-    <div>Není žádné zboží k dispozici.</div>
+    <div>Není dostatek zboží k dispozici pro vystavení.</div>
   {/if}
 </div>
 
@@ -137,7 +137,6 @@
     border-radius: 20px;
     border: solid 1px black;
     box-sizing: border-box;
-    box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.5);
   }
 
   /* Neviditelné itemy  */
@@ -197,9 +196,10 @@
   .large {
     z-index: 3;
     left: calc(50% - 90px);
+    font-size: 1.2em;
   }
   .large:hover {
-    border-color: rgba(255,255,255,0.5)
+    border-color: var(--yellow);
   }
 
   .large .selected {
@@ -404,12 +404,12 @@
   }
 
   .move1 a .small.l {
-    transform: scale(0.75) translateX(130);
+    //transform: scale(0.75) translateX(130);
     animation: small-l-move1 var(--widget-duration) ease-in-out
   }
 
   .move1 a .medium.l {
-    transform: scale(0.9) translateX(0);
+    //transform: scale(0.9) translateX(0);
     animation: medium-l-move1 var(--widget-duration) ease-in-out
   }
 
@@ -418,7 +418,7 @@
   }
 
   .move1 a .medium.r {
-    transform: scale(0.75) translateX(0);
+    //transform: scale(0.75) translateX(0);
     animation: medium-r-move1 var(--widget-duration) ease-in-out
   }
 
@@ -426,11 +426,36 @@
     animation: small-r-move1 var(--widget-duration) ease-in-out
   }
 
-  @media only screen and (max-width: 940px){
+  @media only screen and (max-width: 800px){
       .item-wrap {
-        background-color: red;
+        width: 400px;
       }
-  }
+      .invis{
+        display: none;
+      }
+      .small{
+        display: none;
+      }
+      
+      .btn-left {
+        left: 0px;
+        width: 110px;
+
+      }
+
+      .btn-right {
+        right: 0px;
+        width: 110px;
+      }
+      .move-1 a .invis.r, .move-1 a .small.r, .move-1 a .medium.r, .move-1 a .large, .move-1 a .medium.l, .move-1 a .small.l{
+        animation: none;
+      }
+      .move1 a .invis.l, .move1 a .small.l, .move1 a .medium.l, .move1 a .large, .move1 a .medium.r, .move1 a .small.r{
+        animation: none;
+      }
+
+
+      }
 
 
 </style>

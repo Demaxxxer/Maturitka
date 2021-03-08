@@ -151,7 +151,7 @@
         padding: 5px 20px;
         height: 30px;
         width: 60%;
-        margin-left: 60px;
+        margin-left: 65px;
     }
     .hodnota1, .cena{
         position: absolute;

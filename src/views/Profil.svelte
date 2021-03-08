@@ -34,7 +34,6 @@
     </div>
     <div class="ohraniceni2">
         <div class="nadpis">Objednávky</div>
-        <div class="info">Kliknutím na objednávku otevřete fakturu</div>
         <div class="nazev2">Datum</div>
         <div class="nazev3">Počet položek</div>
         <div class="nazev4">Cena</div>
@@ -72,15 +71,12 @@
     .emailH{
         margin-left: 88px;
     }
-    .info{
-        font-size: 0.8em;
-        color: grey;
-    }
+
     .ohraniceni2{
         box-sizing: border-box;
         position: relative;
         max-width: 940px;
-        height: 110px;
+        height: 90px;
         background-color: var(--darkgrey);
         border-radius: 10px;
         margin: 10px auto 20px auto;
@@ -88,7 +84,8 @@
     }
     .nadpis{
         font-size: 1.3em;
-        padding: 10px 0 5px;
+        padding: 10px 0;
+        margin-bottom: 15px;
     }
     .nazev2, .nazev3, .nazev4{
         position: absolute;

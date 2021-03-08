@@ -35,8 +35,8 @@
 
     img{
         position: absolute;
-        height: 150px;
-        width: 120px;
+        height: 160px;
+        width: 115px;
         top: 75px;
         left: 50%;
         transform: translateX(-50%);

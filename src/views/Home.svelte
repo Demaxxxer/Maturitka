@@ -36,13 +36,17 @@
 
 </script>
 <main>
-  <div class="ohraniceni1">
-    <dit class="text">Top produkty týdne</dit>
-    <PolozkaTOP></PolozkaTOP>
-  </div>
+    <div class="ohraniceni1">
+      <div class="text">Top produkty týdne</div>
+    </div>
+    <div class="ohraniceni2">
+      <div class="stred">
+        <PolozkaTOP></PolozkaTOP>
+      </div>
+    </div>
   <div>
   {#if loaded}
-    <div class="ohraniceni2">Nejprodávanější {choosedCat}</div>
+    <div class="ohraniceni3">Nejprodávanější {choosedCat}</div>
     <div class="polozky">
         {#each items as item,i}
           <div in:scale={{duration:200 * i}}>
@@ -59,23 +63,29 @@
 
 <style>
   .ohraniceni1{
-    box-sizing: border-box;
     background-color: var(--darkgrey);
     border-radius: 10px;
-    height: 370px;
+    height: 50px;
     width: 940px;
-    margin: 0 auto;
-    margin-top: 10px;
+    margin: 10px auto 0;
+  }
+  .text{
+    line-height: 50px;
+    text-align: center;
+    font-size: 1.3em;
+  }
+  .ohraniceni2{
+    position: relative;
+    box-sizing: border-box;
+    text-align: center;
+    height: 320px;
+    width: 940px;
+    margin: 0 auto 300px;
     margin-bottom: 20px;
     padding: 10px 10px 20px;
   }
-  .ohraniceni1, .text{
-    font-size: 1.2em;
-    text-align: center;
-    padding-bottom: 10px;
-  }
   
-  .ohraniceni2{
+  .ohraniceni3{
     background-color: var(--darkgrey);
     border-radius: 10px;
     height: 50px;
@@ -86,7 +96,11 @@
     text-align: center;
     line-height: 50px;
   }
-
+  .stred{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
   .polozky{
       max-width: 940px;
       width: calc(100% - 80px);
@@ -97,8 +111,8 @@
   }
 
   @media only screen and (max-width: 1200px){
-        .ohraniceni1, .ohraniceni2{
-            width: 880px;
+        .ohraniceni1, .ohraniceni2, .ohraniceni3{
+            width: 740px;
             margin: 20px auto;
         }
         main{
@@ -106,15 +120,16 @@
         }
 
   }
-  @media only screen and (max-width: 940px){
-      .ohraniceni1, .ohraniceni2{
+  @media only screen and (max-width: 800px){
+      .ohraniceni1, .ohraniceni2, .ohraniceni3{
           width: 400px;
           margin: 20px auto;
       }
+      
 
   }
-  @media only screen and (max-width: 940px){
-      .ohraniceni1, .ohraniceni2{
+  @media only screen and (max-width: 440px){
+      .ohraniceni1, .ohraniceni2, .ohraniceni3{
           width: 330px;
           margin: 10px auto;
       }

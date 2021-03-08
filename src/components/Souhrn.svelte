@@ -147,7 +147,7 @@
         background-color: var(--darkgrey);
         border-radius: 10px;
         margin: 20px auto 10px auto;
-
+        padding: 20px 0;
     }
 
     .bar {

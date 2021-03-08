@@ -43,7 +43,7 @@
     img{
         position: absolute;
         height: 150px;
-        width: 120px;
+        width: 110px;
         top: 25px;
         left: 25px;
         background: white;
@@ -52,14 +52,14 @@
         position: absolute;
         max-width: 230px;
         bottom: 45px;
-        left: 38%;
+        left: 35%;
         font-size: 1.1em;
     }
     .nazev{
         position: absolute;
         max-width: 230px;
         top: 25px;
-        left: 38%;
+        left: 35%;
         font-size: 1.2em;
     }
 
@@ -84,7 +84,7 @@
 
     .cena{
         position: absolute;
-        left: 38%;
+        left: 35%;
         bottom: 25px;
         font-family: roboto;
     }
