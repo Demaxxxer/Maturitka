@@ -11,7 +11,7 @@
     export let params = {};
     let filtersState = false;
     let loaded = false;
-    let items = {};
+    let items = [];
     let costLimit = [
       50,
       2000,
@@ -19,6 +19,11 @@
     let sortValue = 'soldUp';
     let fetchSkip = 0;
     let skipStop = false;
+    let fetchAvalible = true;
+
+    onMount(_ => {
+      emptySkip();
+    })
 
     $: emptySkip(params.cat,$querystring);
     $: reFetch(params.cat,parse($querystring).hledat,$scrollEvent);
@@ -26,21 +31,21 @@
     function emptySkip(){
       skipStop = false;
       fetchSkip = 0;
+      items = [];
     }
 
     function fetchItems(query = {}, append){
+      if(!fetchAvalible)return;
+      fetchAvalible = false;
       axios({
         method: 'get',
         url: '/api/items/get',
         params: query
       }).then(res => {
-        if(append){
-          items = [...items, ...res.data];
-          if(res.data.length == 0) skipStop = true;
-        } else {
-          items = res.data;
-        }
-        fetchSkip += items.length;
+        items = [...items, ...res.data];
+        fetchSkip = items.length;
+        if(res.data.length == 0)skipStop = true;
+        fetchAvalible = true;
         loaded = true;
       }).catch(err => {
         //Špatně všechno
@@ -111,7 +116,7 @@
             <div class="polozka">
                 <div class="polozky">
                     {#each items as item,i}
-                        <div in:scale={{duration:200 * i}}>
+                        <div in:scale={{duration:120 * i}}>
                             <PolozkaShelf details={item} />
                         </div>
                     {/each}

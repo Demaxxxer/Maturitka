@@ -16,7 +16,6 @@
       }).then(res => {
         orders = res.data;
         loaded = true;
-        console.log(orders)
       }).catch(err => {
         loaded = true;
         alertContent.update(_ => err);
@@ -43,7 +42,7 @@
     <div>
       {#if loaded}
         {#each orders as order,i}
-            <div in:scale={{duration:200 * i}}>
+            <div in:scale={{duration:120 * i}}>
               <Objednavka udaje={order}></Objednavka>
             </div>
         {/each}

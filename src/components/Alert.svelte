@@ -118,13 +118,12 @@
       {
         path: '/api/order/create',
         status: {
-          200: 'Vypadá to jakože sa to kůpilo'
+          201: 'Objednávka úspěšně vytvořena'
         },
         fields: {
           paymentMethod: 'Zadali jste špatnou formu platby'
         },
-      },
-
+      }
     ]
 
     function chooseAlertText(url,code,data){
