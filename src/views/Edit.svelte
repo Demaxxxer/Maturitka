@@ -195,7 +195,11 @@
       previewGallery = previewGallery;
     }
 
-    function handleNew(){
+    let transfer = false;
+
+    function handleNew(e){
+      if(transfer) return;
+      transfer = true;
       const payload = new FormData();
       //Přidává galerii
       gallery.forEach( file => {
@@ -221,14 +225,17 @@
       }).then(res => {
         alertContent.update(_ => res);
         replace('/seznam')
+        transfer = false;
       }).catch(err => {
         alertContent.update(_ => err);
+        transfer = false;
         //Špatné údaje třeba
       })
     }
 
-    function handleSave(){
-
+    function handleSave(e){
+      if(transfer) return;
+      transfer = true;
       const payload = new FormData();
 
       //Přidává galerii
@@ -267,9 +274,10 @@
       }).then(res => {
         alertContent.update(_ => res);
         replace('/seznam')
+        transfer = false;
       }).catch(err => {
         alertContent.update(_ => err);
-        console.log(err.response)
+        transfer = false;
         //Špatné údaje třeba
       })
 
@@ -281,10 +289,10 @@
 <main>
   <form on:submit|preventDefault={e => {
     if(params.id){
-        handleSave()
+        handleSave(e)
         return;
       }
-      handleNew()
+      handleNew(e)
     }
   }>
       <div class="wrapper1">

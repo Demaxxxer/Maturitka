@@ -82,7 +82,7 @@ export default {
 				extend(app, modules) {
 					//app.use(proxy)
           app.use(proxy({
-            host:  'http://localhost:8080', // proxy alicdn.com...
+            host:  'http://localhost:8003', // proxy alicdn.com...
             match: /^\/api\//        // ...just the /static folder
           }));
         },

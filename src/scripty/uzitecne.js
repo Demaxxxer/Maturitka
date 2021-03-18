@@ -14,7 +14,12 @@ export function soucet(cart,items){
 /* Toto na linuxu asi fungovat nebude sa obávám */
 export function getImgUrl(path){
   if(path){
-    const arr = path.split('\\');
+    let arr;
+    if(path.indexOf('\\') == -1){
+      arr = path.split('/');
+    } else {
+      arr = path.split('\\');
+    }
     return '/api/uploads/' + arr[1];
   }
   return '';
