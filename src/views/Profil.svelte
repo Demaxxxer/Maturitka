@@ -16,6 +16,7 @@
       }).then(res => {
         orders = res.data;
         loaded = true;
+        console.log(orders)
       }).catch(err => {
         loaded = true;
         alertContent.update(_ => err);

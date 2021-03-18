@@ -5,7 +5,7 @@
     import { fade, slide, scale } from 'svelte/transition'
     import {parse} from 'qs';
     import {querystring} from 'svelte-spa-router';
-    import { cats } from '../stores/stavy.js'
+    import { cats, scrollEvent } from '../stores/stavy.js'
     import PolozkaShelf from '../components/PolozkaShelf.svelte';
 
     export let params = {};
@@ -17,30 +17,50 @@
       2000,
     ]
     let sortValue = 'soldUp';
+    let fetchSkip = 0;
+    let skipStop = false;
 
-    $: reFetch(params.cat,parse($querystring).hledat);
+    $: emptySkip(params.cat,$querystring);
+    $: reFetch(params.cat,parse($querystring).hledat,$scrollEvent);
 
-    function fetchItems(query = {}){
+    function emptySkip(){
+      skipStop = false;
+      fetchSkip = 0;
+    }
+
+    function fetchItems(query = {}, append){
       axios({
         method: 'get',
         url: '/api/items/get',
         params: query
       }).then(res => {
-        items = res.data;
+        if(append){
+          items = [...items, ...res.data];
+          if(res.data.length == 0) skipStop = true;
+        } else {
+          items = res.data;
+        }
+        fetchSkip += items.length;
         loaded = true;
       }).catch(err => {
         //Špatně všechno
       })
     }
 
-    function reFetch(cat,search){
+    function reFetch(cat,search,scroll = false){
+      if(scroll){
+        scrollEvent.update(_ => false)
+        if(skipStop) return;
+      }
       let query = {};
       if(cat)query.cat = cat;
       if(search)query.name = search;
       query.sort = sortValue;
-      query.costMax = costLimit[1]
-      query.costMin = costLimit[0]
-      fetchItems(query);
+      query.costMax = costLimit[1];
+      query.costMin = costLimit[0];
+      query.skip = fetchSkip;
+      query.limit = 9;
+      fetchItems(query,scroll);
     }
 
     function handleCostLimit(e){
@@ -55,8 +75,12 @@
       filtersState = !filtersState;
     }
 
+    function handleScroll(){
+
+    }
+
 </script>
-<main>
+<main on:scroll={handleScroll}>
     <div class="ohraniceni1">
         {#if params.cat && $cats[params.cat]}
           <div class="nadpis">Kategorie: {$cats[params.cat]}</div>

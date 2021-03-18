@@ -2,7 +2,7 @@
     import axios from 'axios';
     import {push, pop, replace} from 'svelte-spa-router';
     import {nf,soucet,deleteCookie} from '../scripty/uzitecne.js'
-    import { cart, cartUser, orderInfo } from '../stores/stavy.js';
+    import { alertContent, cart, cartUser, orderInfo } from '../stores/stavy.js';
 
     export let sumed;
     export let items;
@@ -19,13 +19,14 @@
           payment: $cartUser.payment
         }
       }).then(res => {
-        push('/dokoncit');
         cart.update(_ => { return {} });
         deleteCookie('cart');
         alertContent.update(_ => res);
         orderInfo.update(_ => res.data)
         e.target.disabled = false;
+        push('/dokoncit');
       }).catch(err => {
+        console.log(err)
         //Chyba při nákupu
         alertContent.update(_ => err);
         e.target.disabled = false;
@@ -300,7 +301,7 @@
         }
     }
     @media only screen and (max-width: 440px){
-        
+
         .bar{
             height: 50px;
             margin-top: 10px;
@@ -313,7 +314,7 @@
             width: 320px;
             margin: 20px auto;
         }
-        
+
 
     }
 

@@ -4,15 +4,6 @@
 
     export let sumed;
 
-    function zapis(e,klic){
-/*
-        platba.update(test => {
-            test[klic] = e.target.value
-            return test
-        })
-*/
-    }
-
 </script>
 
 <main>
@@ -282,7 +273,7 @@
 
     }
     @media only screen and (max-width: 440px){
-        
+
         .bar{
             height: 50px;
             margin-top: 10px;

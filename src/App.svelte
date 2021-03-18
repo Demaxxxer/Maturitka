@@ -17,7 +17,7 @@ import Produkty from './views/Produkty.svelte';
 import Profil from './views/Profil.svelte';
 import Kupovani from './views/Kupovani.svelte';
 /* Import pro statické komponenty */
-import { uzivatel,cart,cartUser } from './stores/stavy.js';
+import { scrollEvent,uzivatel,cart,cartUser } from './stores/stavy.js';
 import Menu from './components/Menu.svelte';
 import Footer from './components/Footer.svelte';
 import Kategorie from './components/Kategorie.svelte';
@@ -27,8 +27,16 @@ import Alert from './components/Alert.svelte';
 
 let loaded = false;
 
+function scrollFunction(e) {
+  let h = window.pageYOffset + window.innerHeight
+  if(h >= document.body.scrollHeight){
+    scrollEvent.update(_ => true)
+  }
+}
+
 
 onMount(_ => {
+  window.onscroll = scrollFunction;
   /* Vybírá košík z cookies a dává ho do store pro lechčí manipulaci */
   const savedCart = getCookie('cart');
   if(savedCart){
@@ -113,7 +121,7 @@ const routes = {
 </script>
 
 
-<main>
+<main id="container">
     {#if loaded}
         <Alert />
         <Menu />
@@ -158,7 +166,7 @@ const routes = {
         padding-top: 15px;
         animation: pozadi-anim 0.2s linear;
     }
-    
+
     @media only screen and (max-width: 1200px){
         .wrapper{
             margin-top: 105px;

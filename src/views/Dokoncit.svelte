@@ -1,62 +1,68 @@
 <script>
+    import {push, pop, replace} from 'svelte-spa-router';
     import { nf,addZero} from '../scripty/uzitecne.js'
     import { orderInfo } from '../stores/stavy.js';
     import { onMount } from 'svelte';
 
     const time = new Date($orderInfo.createdAt);
 
+    const info = $orderInfo;
+    orderInfo.update(_ => false);
 
     onMount(_ => {
-      console.log($orderInfo);
+      if(!info){
+        replace('/');
+      }
     })
 
 
 </script>
 
 <main>
-    <div class="ohraniceni1">
-        <div class="zpet"><a href='/#/'><button>Zpět</button></a></div>
-        <div class="thx">Děkujeme za vaši objednávku v internetovém obchodě BAGOSHOP.</div>
-        <div class="nadpis1">Detaily objednávky</div>
-        <div class="left1">
-            <div>Id objednávky:</div>
-            <div>Datum objednávky:</div>
-        </div>
-        <div class="right1">
-            <div>{$orderInfo._id}</div>
-            <div>{time.getDate()}.{time.getMonth() + 1}.{time.getFullYear()}, {addZero(time.getHours())}:{addZero(time.getMinutes())}</div>
-        </div>
-        <div class="nadpis2">Informace o uživateli</div>
-        <div class="left2">
-            <div>Jméno a příjmení:</div>
-            <div>E-mail:</div>
-            <div>Typ platby:</div>
-        </div>
-        <div class="right2">
-            <div>{$orderInfo.details.fname} {$orderInfo.details.sname}</div>
-            <div>{$orderInfo.details.email}</div>
-            <div>{$orderInfo.details.payment}</div>
-        </div>
-    </div>
+    {#if info}
+      <div class="ohraniceni1">
+          <div class="zpet"><a href='/#/'><button>Zpět</button></a></div>
+          <div class="thx">Děkujeme za vaši objednávku v internetovém obchodě BAGOSHOP.</div>
+          <div class="nadpis1">Detaily objednávky</div>
+          <div class="left1">
+              <div>Id objednávky:</div>
+              <div>Datum objednávky:</div>
+          </div>
+          <div class="right1">
+              <div>{info._id}</div>
+              <div>{time.getDate()}.{time.getMonth() + 1}.{time.getFullYear()}, {addZero(time.getHours())}:{addZero(time.getMinutes())}</div>
+          </div>
+          <div class="nadpis2">Informace o uživateli</div>
+          <div class="left2">
+              <div>Jméno a příjmení:</div>
+              <div>E-mail:</div>
+              <div>Typ platby:</div>
+          </div>
+          <div class="right2">
+              <div>{info.details.fname} {info.details.sname}</div>
+              <div>{info.details.email}</div>
+              <div>{info.details.payment}</div>
+          </div>
+      </div>
 
-    <div class="ohraniceni2">
-        <div class="nazev">Název</div> 
-        <div class="pocet">Počet</div>
-        <div class="cena">Cena</div>
-    </div>
-
-    <div class="ohraniceni3">
-        {#each $orderInfo.content as item}
-        <div class="nazev">{item.name}</div>
-        <div class="pocet">{item.count} Ks</div>
-        <div class="cena">{nf(item.cost)} Kč</div>
-        {/each}
-    </div>
-    <div class="ohraniceni4">
-        <div class="suma">Celková cena:</div>
-        <div class="sumaHodnota">{nf($orderInfo.cost)} Kč</div>
-        <div class="tajne">Zákazník zatím nemá právo na reklamaci, jde tady celkem o gembl no...</div>
-    </div>
+      <div class="ohraniceni2">
+          <div class="nazev">Název</div>
+          <div class="pocet">Počet</div>
+          <div class="cena">Cena</div>
+      </div>
+      {#each info.content as item}
+        <div class="ohraniceni3">
+          <div class="nazev">{item.name}</div>
+          <div class="pocet">{item.count} Ks</div>
+          <div class="cena">{nf(item.cost)} Kč</div>
+        </div>
+      {/each}
+      <div class="ohraniceni4">
+          <div class="suma">Celková cena:</div>
+          <div class="sumaHodnota">{nf(info.cost)} Kč</div>
+          <div class="tajne">Zákazník zatím nemá právo na reklamaci, jde tady celkem o gembl no...</div>
+      </div>
+    {/if}
 </main>
 <style>
 
@@ -87,7 +93,7 @@
     }
     .nazev, .pocet, .cena{
         position: absolute;
-        line-height: 50px; 
+        line-height: 50px;
     }
     .nazev{
         left: 30px;

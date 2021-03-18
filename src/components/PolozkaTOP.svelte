@@ -3,7 +3,6 @@
     import { onMount } from 'svelte';
     import Koupit from './Koupit.svelte'
     import {nf, getImgUrl} from '../scripty/uzitecne.js'
-    import {polozkyTOP} from '../stores/stavy.js'
 
     let items = [];
     let displayIndex = 0;
@@ -234,7 +233,7 @@
     position: absolute;
     z-index: 3;
     height: 100%;
-    width: 350px;
+    width: 320px;
   }
 
   .btn-left {
@@ -436,7 +435,7 @@
       .small{
         display: none;
       }
-      
+
       .btn-left {
         left: 0px;
         width: 110px;

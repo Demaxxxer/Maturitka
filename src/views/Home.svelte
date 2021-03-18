@@ -1,6 +1,6 @@
 <script>
   import axios from 'axios';
-      import { fade, slide, scale } from 'svelte/transition'
+  import { fade, slide, scale } from 'svelte/transition'
   import { onMount } from 'svelte';
   import { cats} from '../stores/stavy.js'
   import PolozkaHS from '../components/PolozkaHS.svelte'
@@ -84,7 +84,7 @@
     margin-bottom: 20px;
     padding: 10px 10px 20px;
   }
-  
+
   .ohraniceni3{
     background-color: var(--darkgrey);
     border-radius: 10px;
@@ -125,7 +125,7 @@
           width: 400px;
           margin: 20px auto;
       }
-      
+
 
   }
   @media only screen and (max-width: 440px){
