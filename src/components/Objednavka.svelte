@@ -27,51 +27,52 @@
 
 </script>
 
-<div>
-  <div class="objednavka" on:click={_ => openInfo()}>
-      <div class="datum">{date}</div>
-      <div class="pocet">{trueCount} Kusů</div>
-      <div class="cena">{udaje.cost} Kč</div>
-  </div>
 
-  <div class="vice" active={open}>
-
-    <div class="ohraniceni1">
-      <div class="nadpis2">Informace o uživateli</div>
-      <div class="left2">
-          <div>Jméno a příjmení:</div>
-          <div>E-mail:</div>
-          <div>Typ platby:</div>
-      </div>
-      <div class="right2">
-          <div>{udaje.details.fname} {udaje.details.sname}</div>
-          <div>{udaje.details.email}</div>
-          <div>{udaje.details.payment}</div>
-      </div>
+<div class="main">
+    <div class="objednavka" on:click={_ => openInfo()}>
+        <div class="datum">{date}</div>
+        <div class="pocet">{trueCount} Kusů</div>
+        <div class="cena">{udaje.cost} Kč</div>
     </div>
 
-    <div class="ohraniceni2">
-        <div class="nazev">Název</div>
-        <div class="pocet">Počet</div>
-        <div class="cena">Cena</div>
+    <div class="vice" active={open}>
+
+        <div class="ohraniceni1">
+        <div class="nadpis2">Informace o uživateli</div>
+        <div class="left2">
+            <div>Jméno a příjmení:</div>
+            <div>E-mail:</div>
+            <div>Typ platby:</div>
+        </div>
+        <div class="right2">
+            <div>{udaje.details.fname} {udaje.details.sname}</div>
+            <div>{udaje.details.email}</div>
+            <div>{udaje.details.payment}</div>
+        </div>
+        </div>
+
+        <div class="ohraniceni2">
+            <div class="nazev">Název</div>
+            <div class="pocet">Počet</div>
+            <div class="cena">Cena</div>
+        </div>
+
+        {#each udaje.content as item}
+        <div class="ohraniceni3">
+            <div class="nazev">{item.name}</div>
+            <div class="pocet">{item.count} Ks</div>
+            <div class="cena">{nf(item.cost)} Kč</div>
+        </div>
+        {/each}
+
+
+
     </div>
-
-    {#each udaje.content as item}
-      <div class="ohraniceni3">
-        <div class="nazev">{item.name}</div>
-        <div class="pocet">{item.count} Ks</div>
-        <div class="cena">{nf(item.cost)} Kč</div>
-      </div>
-    {/each}
-
-
-
-  </div>
-
 </div>
-
 <style>
-
+    .main{
+        padding-bottom: 20px;
+    }
     .vice {
       display: none;
     }
@@ -87,9 +88,10 @@
         height: 50px;
         background-color: var(--darkgrey);
         border-radius: 10px;
-        margin: 10px auto 20px auto;
+        margin: 0 auto;
         box-sizing: border-box;
         cursor: pointer;
+
     }
     .datum, .pocet, .cena{
         position: absolute;
