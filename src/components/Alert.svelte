@@ -75,6 +75,7 @@
         path: '/api/user/login',
         status: {
           404: 'Uživatel s tímto emailem nenalezen',
+          401: 'Email a heslo se neshodují',
           200: 'Uživatel úspěšně přihlášen'
         }
       },

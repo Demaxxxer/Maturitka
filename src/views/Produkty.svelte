@@ -69,11 +69,13 @@
     }
 
     function handleCostLimit(e){
-      reFetch(params.cat,parse($querystring).hledat)
+      emptySkip();
+      reFetch(params.cat,parse($querystring).hledat);
     }
 
     function handleSort(){
-      reFetch(params.cat,parse($querystring).hledat)
+      emptySkip();
+      reFetch(params.cat,parse($querystring).hledat);
     }
 
     function handleFilters(){

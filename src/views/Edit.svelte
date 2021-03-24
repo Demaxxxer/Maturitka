@@ -5,6 +5,7 @@
 
     import { alertContent, cats } from '../stores/stavy.js'
     import { getImgUrl } from '../scripty/uzitecne.js';
+    import Loading from '../components/Loading.svelte'
 
 
     export let params = {}
@@ -287,6 +288,11 @@
 
 </script>
 <main>
+  {#if transfer}
+    <div class="loading-wrap">
+      <Loading />
+    </div>
+  {/if}
   <form on:submit|preventDefault={e => {
     if(params.id){
         handleSave(e)
@@ -381,6 +387,17 @@
 <style>
     main{
         padding: 5px 0 20px;
+    }
+
+    .loading-wrap {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 12;
+      display: flex;
     }
 
     .wrapper1, .wrapper2, .wrapper3{
