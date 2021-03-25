@@ -178,7 +178,7 @@
         position: absolute;
         float: right;
         background-color: var(--darkgrey);
-        left: 100px;
+        left: 115px;
         line-height: 50px;
     }
     select {
@@ -229,7 +229,9 @@
         main{
             padding-bottom: 20px;
         }
-
+        .seradit{
+            left: 100px;
+        }
     }
     @media only screen and (max-width: 800px){
         .ohraniceni1, .ohraniceni2{

@@ -218,7 +218,7 @@ const editace = [
             height: 40px;
         }
         .dropdown{
-            width: 110px;
+            width: 130px;
 
         }
         .dropdown button{
@@ -226,13 +226,16 @@ const editace = [
             font-size: 1em;
         }
         .cat{
+            width: 134px;
+            box-sizing: border-box;
+            padding: 10px 5px ;
             font-size: 0.9rem;
         }
         .cats{
-            width: 110px;
+            width: 130px;
+            display: none;
+            left: -3px;
             top: 40px;
-            right: 3px;
-
         }
         .login{
             width: 150px;
@@ -263,23 +266,27 @@ const editace = [
             font-size: 0.9rem;
         }
         .cats{
-            width: 110px;
+            width: 130px;
             top: 40px;
             right: 3px;
         }
         .login{
-            width: 110px;
+            width: 130px;
+            text-align: center;
         }
         .login button{
             font-size: 1em;
         }
         .edit{
+            padding: 5px;
+            width: 130px;
             font-size: 0.9rem;
         }
         .edits{
-            width: 132px;
-            top: 40px;
-            left: 2px;
+
+            width: 134px;
+            left: -2px;
+            right: 20px;
         }
 
     }

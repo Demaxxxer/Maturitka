@@ -80,7 +80,7 @@
     text-align: center;
     height: 320px;
     width: 940px;
-    margin: 0 auto 300px;
+    margin: 0 auto;
     margin-bottom: 20px;
     padding: 10px 10px 20px;
   }
@@ -132,7 +132,14 @@
       .ohraniceni1, .ohraniceni2, .ohraniceni3{
           width: 330px;
           margin: 10px auto;
+          box-sizing: border-box;
       }
+      .ohraniceni2{
+        height: 270px;
+        padding: 0;
+
+      }
+      
 
   }
 
