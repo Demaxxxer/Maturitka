@@ -7,89 +7,119 @@
     let alertText = '';
 
     const alertBasic = {
-      500: 'Nastala chyba na straně serveru',
-      409: 'Objekt už existuje',
-      404: 'Objekt nenalezen',
-      403: 'Zakázáno',
-      401: 'Nejste přihlášen',
-      400: 'Zadán špatný formát',
-      201: 'Úspěšně vytvořeno',
-      200: 'Požadavek splněn'
+      500: 'Nastala chyba na straně serveru.',
+      409: 'Objekt už existuje.',
+      404: 'Objekt nenalezen.',
+      403: 'Zakázáno.',
+      401: 'Nejste přihlášen.',
+      400: 'Zadán špatný formát.',
+      201: 'Úspěšně vytvořeno.',
+      200: 'Požadavek splněn.'
     }
 
+    const userFieldsAndType = {
+      firstname: {
+        empty: 'Nebylo zadáno jméno.',
+        short: 'Jméno je moc krátké.',
+        long: 'Jméno je moc dlouhé.',
+        wrongChars: 'Jméno obsahuje nepovolené znaky.'
+      },
+      surname: {
+        empty: 'Nebylo zadáno příjmení.',
+        short: 'Příjmení je moc krátké.',
+        long: 'Příjmení je moc dlouhé.',
+        wrongChars: 'Příjmení obsahuje nepovolené znaky.'
+      },
+      pass: {
+        empty: 'Nebylo zadáno heslo.',
+        short: 'Heslo je moc krátké.',
+        long: 'Heslo je moc dlouhé.',
+      },
+      email: {
+        empty: 'Nebylo zadán email.',
+        short: 'Email je moc krátký',
+        long: 'Email je moc dlouhé.',
+        wrongChars: 'Email obsahuje nepovolené znaky'
+      },
+      passRepeat: {
+        passConfirm: 'Hesla se neshodují.'
+      }
+    }
 
     const itemManageFieldsAndType = {
       name: {
-        empty: 'Nebylo zadáno jméno',
-        short: 'Název produktu je moc krátky',
-        long: 'Název produktu je moc dlouhý',
-        wrongChars: 'Název produktu obsahuje nepovolené znaky'
+        empty: 'Nebylo zadáno jméno.',
+        short: 'Název produktu je moc krátky.',
+        long: 'Název produktu je moc dlouhý.',
+        wrongChars: 'Název produktu obsahuje nepovolené znaky.'
       },
       storage: {
-        empty: 'Nebyly zadány kusy skladem',
-        notANumber: 'Kusy skladem neni platné číslo'
+        empty: 'Nebyly zadány kusy skladem.',
+        notANumber: 'Kusy skladem neni platné číslo.'
       },
       cost: {
-        empty: 'Nebyla zadána cena',
-        notANumber: 'Cena neni platné číslo'
+        empty: 'Nebyla zadána cena.',
+        notANumber: 'Cena neni platné číslo.'
       },
       release: {
-        empty: 'Nebyl zadán datum',
-        notADate: 'Nebylo správně vyplněno datum vydání',
+        empty: 'Nebyl zadán datum.',
+        notADate: 'Nebylo správně vyplněno datum vydání.',
       },
       os: {
-        empty: 'Nebyl zadán operační systém',
-        wrongChars: 'Operační systém obsahuje nepovolené znaky'
+        empty: 'Nebyl zadán operační systém.',
+        wrongChars: 'Operační systém obsahuje nepovolené znaky.'
       },
       cpu: {
-        empty: 'Nebyl zadán procesor',
-        wrongChars: 'Procesor obsahuje nepovolené znaky'
+        empty: 'Nebyl zadán procesor.',
+        wrongChars: 'Procesor obsahuje nepovolené znaky.'
       },
       gpu: {
-        empty: 'Nebyla zadána grafická karta',
-        wrongChars: 'Grafická karta obsahuje nepovolené znaky'
+        empty: 'Nebyla zadána grafická karta.',
+        wrongChars: 'Grafická karta obsahuje nepovolené znaky.'
       },
       dx: {
-        empty: 'Nebyl zadán DirectX',
-        wrongChars: 'DirectX obsahuje nepovolené znaky'
+        empty: 'Nebyl zadán DirectX.',
+        wrongChars: 'DirectX obsahuje nepovolené znaky.'
       },
       size: {
-        empty: 'Nebyl zadáno uložiště',
-        notANumber: 'Uložiště není číslo'
+        empty: 'Nebyl zadáno uložiště.',
+        notANumber: 'Uložiště není číslo.'
       },
     }
     const itemManagefields = {
-      'galleryOrThumbnail': 'Nebyl vložen náhled hry nebo alespoň jeden obrázek do galerie',
-      'galleryOld': 'Rozdíl upravených obrázku nebyl poslán v dobrém formátu',
+      'galleryOrThumbnail': 'Nebyl vložen náhled hry nebo alespoň jeden obrázek do galerie.',
+      'galleryOld': 'Rozdíl upravených obrázku nebyl poslán v dobrém formátu.',
     }
-
 
     const alertRouting = [
       {
         path: '/api/user/create',
         status: {
-          201: 'Uživatel úspěšně zaregistrován'
-        }
+          409: 'Uživatel s tímto emailem už existuje.',
+          201: 'Uživatel úspěšně zaregistrován.'
+        },
+        fieldsAndType: userFieldsAndType
       },
       {
         path: '/api/user/login',
         status: {
-          404: 'Uživatel s tímto emailem nenalezen',
-          401: 'Email a heslo se neshodují',
-          200: 'Uživatel úspěšně přihlášen'
-        }
+          404: 'Uživatel s tímto emailem nenalezen.',
+          401: 'Email a heslo se neshodují.',
+          200: 'Uživatel úspěšně přihlášen.'
+        },
+        fieldsAndType: userFieldsAndType
       },
       {
         path: '/api/user/logout',
         status: {
-          200: 'Uživatel úspěšně odhlášen'
+          200: 'Uživatel úspěšně odhlášen.'
         }
       },
       {
         path: '/api/item/create',
         status: {
-          409: 'Položka s tímto jménem už existuje',
-          201: 'Položka úspěšně přidána'
+          409: 'Položka s tímto jménem už existuje.',
+          201: 'Položka úspěšně přidána.'
         },
         fieldsAndType: itemManageFieldsAndType,
         fields: itemManagefields,
@@ -97,9 +127,9 @@
       {
         path: '/api/item/update',
         status: {
-          409: 'Položka s tímto jménem už existuje',
-          404: 'Položka s tímto id neexistuje',
-          200: 'Položka úspěšně upravena'
+          409: 'Položka s tímto jménem už existuje.',
+          404: 'Položka s tímto id neexistuje.',
+          200: 'Položka úspěšně upravena.'
         },
         fieldsAndType: itemManageFieldsAndType,
         fields: itemManagefields,
@@ -107,29 +137,27 @@
       {
         path: '/api/item/get',
         status: {
-          404: 'Položka nenalezena'
+          404: 'Položka nenalezena.'
         }
       },
       {
         path: '/api/item/delete',
         status: {
-          200: 'Položka úspěšně vymazána'
+          200: 'Položka úspěšně vymazána.'
         }
       },
       {
         path: '/api/order/create',
         status: {
-          201: 'Objednávka úspěšně vytvořena'
+          201: 'Objednávka úspěšně vytvořena.'
         },
         fields: {
-          paymentMethod: 'Zadali jste špatnou formu platby'
+          paymentMethod: 'Zadali jste špatnou formu platby.'
         },
       }
     ]
 
     function chooseAlertText(url,code,data){
-
-      console.log(data);
 
       for (const i in alertRouting){
         const route = alertRouting[i];
@@ -137,11 +165,13 @@
 
           if(code == 400 && data && data.field){
             if(data.type){
-              if(route.fieldsAndType[data.field] && route.fieldsAndType[data.field][data.type]){
+
+              if(route.fieldsAndType && route.fieldsAndType[data.field] && route.fieldsAndType[data.field][data.type]){
                 return route.fieldsAndType[data.field][data.type];
               }
+
             }
-            if(route.fields[data.field]){
+            if(route.fields && route.fields[data.field]){
               return route.fields[data.field];
             }
           }
@@ -158,7 +188,7 @@
         console.log(data);
         return alertBasic[code];
       } else {
-        return 'Neočekaváná chyba: ' + code;
+        return 'Neočekaváná chyba: ' + code + '.';
       }
 
     }
@@ -179,7 +209,7 @@
         statusCode = $alertContent.status
       } else {
         //Chyba internetu
-        alertText = 'Chyba připojení'
+        alertText = 'Chyba připojení.'
         return
       }
 
