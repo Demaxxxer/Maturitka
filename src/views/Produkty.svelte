@@ -68,12 +68,13 @@
       fetchItems(query,scroll);
     }
 
-    function handleCostLimit(e){
+    function handleCostLimit(){
       emptySkip();
       reFetch(params.cat,parse($querystring).hledat);
     }
 
-    function handleSort(){
+    function handleSort(e){
+      sortValue = e.target.value;
       emptySkip();
       reFetch(params.cat,parse($querystring).hledat);
     }
@@ -99,10 +100,10 @@
     <div class="ohraniceni2" active={filtersState}>
         <div class="serazeni">
             <label for="seradit">Seřadit:</label>
-            <select class="seradit" name="seradit" on:input={handleSort} bind:value={sortValue}>
-                <option value="costDown">Od nejdražšího</option>
-                <option value="costUp">Od nejlevnějšího</option>
-                <option value="soldUp">Od nejprodávanějšího</option>
+            <select class="seradit" name="seradit" on:input={e => handleSort(e)}>
+                <option value="costUp">Od nejdražšího</option>
+                <option value="costDown">Od nejlevnějšího</option>
+                <option value="soldUp" selected>Od nejprodávanějšího</option>
             </select>
         </div>
 
